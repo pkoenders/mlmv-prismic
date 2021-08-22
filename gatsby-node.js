@@ -49,16 +49,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await wrapper(
     graphql(`
       {
-        primaryNav: allPrismicMainNavigation {
-          edges {
-            node {
-              id
-              lang
-              type
-            }
-          }
-        }
-
         indexPage: allPrismicHomepage {
           edges {
             node {

@@ -30,16 +30,6 @@ const SecondaryNavWrapper = styled.section`
     align-items: center;
     flex-basis: 100%;
 
-    @include respond-below(md) {
-      width: 100%;
-      position: relative;
-      top: 0px;
-    }
-
-    @include respond-below(md) {
-      flex-basis: 100%;
-    }
-
     button,
     a {
       display: flex;

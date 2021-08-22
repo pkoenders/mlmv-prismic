@@ -1,4 +1,4 @@
-import '/src/styles/index.scss'
+// import '/src/styles/index.scss'
 
 import * as React from 'react'
 

@@ -35,6 +35,7 @@ const ListTagBtnsWrapper = styled.div`
       grid-gap: ${({ theme }) => theme.padding['1/4']};
       justify-content: center;
       height: min-content;
+      margin: 0 24px;
     }
   }
 

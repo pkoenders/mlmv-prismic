@@ -31,9 +31,14 @@ import hexRgb from 'hex-rgb'
 
 // Validate text string
 export function validateString(string) {
-  if (string === null || undefined) {
+  if (string === null) {
     string = 0
   }
+
+  if (string === undefined) {
+    string = 0
+  }
+
   var stringLenth
   stringLenth = string.length
   switch (stringLenth) {

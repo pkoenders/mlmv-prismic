@@ -7,12 +7,12 @@ import { withPrismicPreview } from 'gatsby-plugin-prismic-previews'
 
 import HomeTemplate from './index'
 import PageTemplate from '../templates/generalPage'
+import Button from '/src/components/common/buttons/linkButton'
 
 const NotFoundPage = ({ data }) => {
   if (!data) return null
-  const primaryNav = data.prismicPrimaryNavigation.data.top_navigation
-  const currentLang = data.prismicNavigation.lang
-
+  const primaryNav = data.prismicMainNavigation.data.nav
+  const currentLang = data.prismicMainNavigation.lang
   return (
     <Layout currentLang={currentLang} primaryNav={primaryNav}>
       <Bground404 />
@@ -21,12 +21,19 @@ const NotFoundPage = ({ data }) => {
         <span>
           <h1>Oh purr-leaze!</h1>
           <p>It appears that Zoe has hidden this page.</p>
-          <Link className={'buttonTertiary'} to="/">
-            <i className={'material-icons-round md-36'} aria-hidden="true">
+          {/* <Button className="btn primary" to="/">
+            <i className="material-icons-round md-36" aria-hidden="true">
               home
             </i>
             Take me home
-          </Link>
+          </Button> */}
+
+          <Button
+            buttonLabel={'Take me home'}
+            buttonType={'Static'}
+            staticLink={'/'}
+            buttonStyle={'black'}
+          />
         </span>
       </section>
     </Layout>
@@ -45,19 +52,33 @@ export default withPrismicPreview(NotFoundPage, {
 export const query = graphql`
   query errorPage($locale: String) {
     ## Get the primary nav in local context
-    prismicPrimaryNavigation(lang: { eq: $locale }) {
+    prismicMainNavigation(lang: { eq: $locale }) {
       type
       lang
-
       data {
-        top_navigation {
-          link {
-            uid
-            type
-            lang
-          }
-          link_label {
-            text
+        nav {
+          ... on PrismicMainNavigationDataNavNavItem {
+            id
+            primary {
+              label {
+                text
+              }
+              link {
+                uid
+                lang
+                type
+              }
+            }
+            items {
+              sub_nav_link {
+                uid
+                type
+                lang
+              }
+              sub_nav_link_label {
+                text
+              }
+            }
           }
         }
       }

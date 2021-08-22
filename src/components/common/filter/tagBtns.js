@@ -116,10 +116,6 @@ const ListTagBtns = ({ resetFilterBtns, tagList, resetCards, resetSearchQuery })
   // Sort tag list (A-Z)
   tagList.sort()
 
-  // Get all cards
-  var allCards = document.getElementsByClassName('item')
-  var activeFilterBtns = document.getElementsByClassName('tagButton isActive')
-
   // Filter list items
   const handleFilterItem = (e) => {
     const tagBtn = e.target
@@ -127,8 +123,13 @@ const ListTagBtns = ({ resetFilterBtns, tagList, resetCards, resetSearchQuery })
     // Select filter btn
     tagBtn.classList.toggle('isActive')
 
+    //  var activeFilterBtns = document.getElementsByClassName('tagButton isActive')
+    var allCards = document.getElementsByClassName('item')
+    // var activeFilterBtns = document.getElementsByClassName('tagButton isActive')
+
     for (var i = 0; i < allCards.length; ++i) {
       // Check tag list for each card
+
       var allCardTags = document.getElementsByClassName('tagName')
       for (var x = 0; x < allCardTags.length; ++x) {
         var cardTag = allCardTags[x]
@@ -161,6 +162,9 @@ const ListTagBtns = ({ resetFilterBtns, tagList, resetCards, resetSearchQuery })
   }
 
   const updateAllCards = useCallback(() => {
+    var allCards = document.getElementsByClassName('item')
+    var activeFilterBtns = document.getElementsByClassName('tagButton isActive')
+
     // If all filter buttons are inActive Reset the cards to visible
     for (var i = 0; i < allCards.length; ++i) {
       if (activeFilterBtns.length === 0) {
@@ -174,7 +178,7 @@ const ListTagBtns = ({ resetFilterBtns, tagList, resetCards, resetSearchQuery })
     // Check if filter btns are active and display the reset btn
     activeFilterBtns.length === 0 ? setTagBtnsReset(false) : setTagBtnsReset(true)
     // console.log(tagBtnsReset)
-  }, [allCards, activeFilterBtns])
+  }, [])
 
   // Hide the reset btn
   const hideTagReset = useCallback(

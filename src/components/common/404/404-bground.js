@@ -44,6 +44,9 @@ const BackgroundSection = () => {
         bottom: 0,
         left: 0,
         right: 0,
+        // backgroundColor: '#000',
+        // opacity: '.3',
+
         // zIndex: '-1',
       }}
     >

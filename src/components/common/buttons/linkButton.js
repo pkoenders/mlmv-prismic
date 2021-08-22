@@ -197,7 +197,7 @@ const BtnWrapper = styled.span`
     }
   }
 `
-const LinkButton = ({ buttonLabel, buttonType, buttonStyle, onClick }) => {
+const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick }) => {
   // console.log(buttonLink)
 
   return (
@@ -231,6 +231,17 @@ const LinkButton = ({ buttonLabel, buttonType, buttonStyle, onClick }) => {
 
       {buttonType.link_type === 'Media' && (
         <a href={buttonType.url} className={'btn ' + buttonStyle}>
+          {buttonLabel}
+          {buttonStyle === 'link' && (
+            <i className="material-icons-round" aria-hidden="true">
+              arrow_forward
+            </i>
+          )}
+        </a>
+      )}
+
+      {buttonType === 'Static' && (
+        <a href={staticLink} className={'btn ' + buttonStyle}>
           {buttonLabel}
           {buttonStyle === 'link' && (
             <i className="material-icons-round" aria-hidden="true">

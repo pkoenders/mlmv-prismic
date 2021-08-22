@@ -1,0 +1,164 @@
+@use 'sass:math';
+@import './scss';
+@import './reset';
+@import './checkbox-radios';
+
+a,
+a:link,
+a:hover {
+  // cursor: pointer;
+  color: $txtColor;
+  color: $primaryColor;
+  text-decoration: none;
+}
+
+p a {
+  font-weight: 500;
+}
+
+a:hover {
+  color: $primaryColor;
+  text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  // @include focusVisibleForDark;
+}
+
+button.buttonPrimary,
+button.buttonPrimaryGhost,
+button.buttonPrimaryDark,
+button.buttonSecondary button.buttonTertiary,
+.buttonPrimary,
+.buttonPrimaryGhost,
+.buttonPrimaryDark,
+.buttonSecondary,
+.buttonTertiary {
+  padding: math.div($defaultPadding, 2) math.div($defaultPadding, 1);
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+  cursor: pointer;
+  line-height: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+  font-size: $font-size;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-width: 0;
+  background-color: $primaryColor;
+  color: #ffffff !important;
+  box-shadow: 0px 0px 5px 0px rgba(35, 35, 35, 0.5);
+  display: flex;
+  align-self: center;
+  margin: 0 auto;
+  align-items: center;
+  // line-height: initial;
+  width: fit-content;
+
+  i {
+    margin-right: math.div($defaultPadding, 2);
+  }
+}
+
+button.buttonPrimaryGhost,
+.buttonPrimaryGhost {
+  background-color: #eb568650;
+  border: 3px solid $primaryColor;
+}
+
+button.buttonPrimaryDark,
+.buttonPrimaryDark {
+  background-color: $ctaColorDark;
+}
+
+button:hover.buttonPrimary,
+button:hover.buttonPrimaryGhost,
+button:hover.buttonPrimaryDark,
+.buttonPrimary:hover,
+.buttonPrimaryGhost:hover,
+.buttonPrimaryDark:hover {
+  color: #ffffff;
+  box-shadow: 0px 1px 10px 0px rgba(35, 35, 35, 0.5);
+  text-decoration: none;
+  transform: scale(1.033);
+  background-color: $ctaColorDark;
+  //color: #ffffff;
+}
+
+// Btn Secondary
+button.buttonSecondary,
+.buttonSecondary,
+button.buttonSecondary:focus,
+.buttonSecondary:focus {
+  padding: math.div($defaultPadding, 3) math.div($defaultPadding, 2);
+  border: 1px solid #3d5269;
+  border: 1px solid #c2c9d6;
+  // border-bottom: 2px solid #3d5269;
+  background-color: #283746;
+}
+
+button.buttonSecondary.isActive,
+.buttonSecondary.isActive {
+  // border: 1px solid $primaryColor;
+  // border-bottom: 2px solid $primaryColor;
+  background-color: $primaryColor;
+}
+
+button.buttonSecondary:hover,
+.buttonSecondary:hover {
+  // border: 1px solid $primaryColor;
+  text-decoration: none;
+}
+
+// Btn Tertiary
+button.buttonTertiary,
+.buttonTertiary,
+button.buttonTertiary:focus,
+.buttonTertiary:focus {
+  color: $txtColor !important;
+  border: 1px solid $txtColor;
+  //border-bottom: 2px solid $txtColor;
+  background-color: #ffffff;
+}
+
+button.buttonTertiary.isActive,
+.buttonTertiary.isActive {
+  border: 1px solid $txtColor;
+  //border-bottom: 2px solid $txtColor;
+  background-color: #ffffff;
+}
+
+button.buttonTertiary:hover,
+.buttonTertiary:hover {
+  border: 1px solid $txtColor;
+  text-decoration: none;
+}
+
+button.buttonTag,
+.buttonTag,
+.buttonTag.isActive {
+  font-size: 100%;
+  border: none !important;
+  border-radius: 999rem;
+  padding: math.div($defaultPadding, 6) math.div($defaultPadding, 2) !important;
+}
+
+button.buttonTag.isActive,
+.buttonTag.isActive {
+  background-color: $primaryColor;
+}

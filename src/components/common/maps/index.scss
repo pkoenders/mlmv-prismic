@@ -1,0 +1,34 @@
+@use 'sass:math';
+@import "src/styles/scss";
+
+.google-map {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #bebebe;
+}
+
+.pin {
+  display: inline-flex;
+  align-items: flex-start;
+  margin-left: -20px;
+  width: 100%;
+  font-size: initial;
+
+  p {
+    white-space: nowrap;
+    background-color: #ffffff;
+    border: 1px solid #bebebe;
+    border-radius: $globalBorderRadiusA;
+    box-shadow: $globalBoxShadowA;
+    margin-left: math.div($defaultMargin, 4);
+    padding: math.div($defaultMargin, 4);
+  }
+
+  i {
+    font-size: 40px;
+    color: $primaryColor;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+  }
+}

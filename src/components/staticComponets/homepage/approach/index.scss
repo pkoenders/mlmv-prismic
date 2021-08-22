@@ -1,0 +1,105 @@
+@use 'sass:math';
+@import '/src/styles/scss';
+
+section.sectionApproach {
+  // background: rgb(65, 87, 111);
+  // background: linear-gradient(0deg, rgba(65, 87, 111, 1) 0%, rgba(37, 50, 64, 1) 100%);
+  padding: math.div($defaultPadding, 1) 0;
+  display: flex;
+  z-index: 999;
+
+  .intro {
+    // max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
+    overflow: hidden;
+    // border-radius: 8px 8px 0 0;
+
+    @include respond-below(lg) {
+      border-radius: 0px;
+      box-shadow: none;
+    }
+
+    div {
+      padding: math.div($defaultMargin, 2) 0;
+      // width: calc(50% - 1px);
+      width: 100%;
+      align-items: stretch;
+      display: flex;
+      // margin: 1px 0.5px 0 0.5px;
+      position: relative;
+
+      i {
+        font-size: 40px;
+        margin-right: math.div($defaultMargin, 2);
+        height: auto;
+        position: relative;
+        color: $tertiaryColor;
+        color: #e098af;
+        color: #99dfbe;
+        color: $headerBgColor;
+        opacity: 0.75;
+        margin-top: -9px;
+      }
+
+      span {
+        align-items: center;
+        width: 100%;
+
+        p:first-of-type {
+          font-weight: 600;
+          margin-bottom: 0.3em;
+        }
+        p,
+        ul,
+        li {
+          // color: #ffffffb8;
+          -webkit-margin-after: 0;
+          margin-bottom: 1.3em;
+          text-align: left;
+        }
+
+        ul {
+          text-align: left;
+
+          li {
+            list-style-type: square;
+            margin: 0 0 0px 0;
+            padding-left: 8px;
+          }
+        }
+
+        svg {
+          width: 45%;
+          height: auto;
+          display: block;
+          margin: 0px auto 32px auto;
+        }
+
+        // a {
+        //   margin: 32px auto 15px auto;
+        //   color: #ffffff !important;
+        //   background-color: $primaryColor;
+        //   transition: all, 0.15s ease-out;
+        // }
+
+        // a:hover {
+        //   transform: scale(1.075);
+        // }
+      }
+    }
+  }
+
+  svg {
+    display: block;
+    width: 160px;
+    height: auto;
+    margin: 32px auto;
+    pointer-events: none;
+    animation: fadein 4s;
+  }
+}

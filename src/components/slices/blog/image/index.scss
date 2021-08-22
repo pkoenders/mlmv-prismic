@@ -1,0 +1,8 @@
+@use 'sass:math';
+@import '/src/styles/scss';
+
+.blogImage {
+  max-width: $md !important;
+  display: flex;
+  margin: math.div($defaultMargin, 1) auto !important;
+}

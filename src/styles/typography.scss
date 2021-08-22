@@ -1,0 +1,111 @@
+@use 'sass:math';
+@import './scss';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  //font-family: 'Roboto-Slab', sans-serif;
+  //font-family: 'Vollkorn', serif;
+  font-size: $font-size;
+  -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+  font-kerning: normal;
+  //letter-spacing: .01em;
+  margin: 0;
+  line-height: $line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  margin-bottom: 0.66em;
+  color: inherit;
+  font-size: $font-size;
+  // line-height: $line-height;
+  // margin-bottom: math.div($defaultMargin, 2) !important;
+  margin-bottom: 0.3rem;
+}
+
+p,
+li,
+pre {
+  font-size: $font-size;
+}
+p.titleText {
+  margin-bottom: math.div($defaultMargin, 2) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+}
+h1,
+h2,
+h3 {
+  font-family: 'Rokkitt', serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: $h2;
+}
+
+h2 {
+  font-size: $h3;
+}
+
+h3 {
+  font-size: $h4;
+  font-weight: 600;
+}
+
+h4,
+p.titleText {
+  font-size: $h5;
+  font-weight: 500;
+}
+
+/* Bring everything up two steps for larger screens */
+@include respond-above(sm) {
+  h1 {
+    font-size: $h1;
+  }
+  h2 {
+    font-size: $h2;
+  }
+
+  h3 {
+    font-size: $h3;
+  }
+
+  h4,
+  p.titleText {
+    font-size: $h4;
+  }
+}
+
+.quote blockquote {
+  font-family: 'Rokkitt', serif;
+  font-weight: 500;
+  font-size: $h2;
+}
+.quote blockquote:before,
+.quote blockquote:after {
+  font-family: 'Bodoni Moda', Serif;
+  font-size: $h4;
+  font-weight: 800;
+  line-height: 0.1em;
+}

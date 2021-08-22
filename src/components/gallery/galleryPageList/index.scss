@@ -1,0 +1,129 @@
+@use 'sass:math';
+@import 'src/styles/scss';
+
+.gallery {
+  //display: flex;
+  position: relative;
+  padding-top: math.div($defaultPadding, 4);
+  margin-bottom: math.div($defaultMargin, 1);
+
+  //margin: 64px auto 32px;
+
+  div {
+    .search {
+      display: flex;
+      justify-content: center;
+      margin: 0 0 math.div($defaultMargin, 1) 0;
+      position: relative;
+
+      label {
+        width: 100%;
+        margin: 0 25%;
+        justify-content: center;
+        //
+
+        @include respond-below(sm) {
+          margin: 0 0;
+        }
+
+        input {
+          padding: math.div($defaultPadding, 3) 0 math.div($defaultPadding, 3)
+            ($defaultPadding * 1.5);
+        }
+
+        i {
+          position: absolute;
+          left: math.div($defaultMargin, 2);
+          align-self: center;
+        }
+      }
+    }
+
+    .filter {
+      display: flex;
+      flex-wrap: wrap;
+      grid-gap: math.div($defaultMargin, 3);
+      justify-content: center;
+      margin: math.div($defaultPadding, 2) auto;
+
+      button {
+        font-size: 85%;
+        cursor: pointer;
+        padding: math.div($defaultPadding, 4) math.div($defaultPadding, 2);
+        white-space: nowrap;
+        margin: 0;
+        color: $headerBgColor !important;
+        background-color: #ffffff;
+        border: 1px solid #dad8d8 !important;
+        box-shadow: none;
+      }
+
+      button.isActive {
+        color: #ffffff !important;
+        background-color: $primaryColor;
+      }
+    }
+  }
+}
+
+ul.masonry-grid {
+  display: grid;
+  position: relative;
+  align-items: flex-start;
+  // grid-row-gap: math.div($defaultPadding, 1);
+  // grid-column-gap: math.div($defaultPadding, 1);
+  // grid-row-gap: math.div($defaultPadding, 1);
+  grid-row-gap: ($defaultPadding * 1.5);
+  grid-column-gap: ($defaultPadding * 2);
+
+  grid-template-columns: repeat(2, 1fr);
+  // grid-auto-rows: min-content;
+  grid-auto-rows: min-content;
+  list-style: none;
+  margin: 0;
+  //min-height: calc(100vh - 320px);
+  //min-height: 100vh;
+  //min-height: 100%;
+  min-height: fit-content !important;
+  height: 100%;
+  //max-height: fit-content;
+  //align-content: space-between;
+  align-content: space-between;
+  align-items: flex-start;
+  justify-content: space-around;
+  //background-color: #ffffff;
+  z-index: 1000;
+  width: auto;
+
+  @include respond-below(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-below(md) {
+    grid-row-gap: ($defaultPadding * 0.75);
+    grid-column-gap: ($defaultPadding * 1);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-below(sm) {
+    grid-row-gap: ($defaultPadding * 1.25);
+    grid-column-gap: ($defaultPadding * 1);
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @include respond-below(xs) {
+    grid-row-gap: ($defaultPadding * 1.25);
+    grid-column-gap: ($defaultPadding * 1);
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  li {
+    // position: relative;
+    // min-height: fit-content;
+    // height: fit-content !important;
+    transition: all 0.2s ease-in-out;
+    z-index: 5;
+    //margin-bottom: math.div($defaultPadding, 1);
+    //width: auto;
+  }
+}

@@ -1,0 +1,66 @@
+import React from 'react'
+
+import styled from 'styled-components'
+
+const ArrowBtn = styled.button.attrs((props) => ({
+  type: props.type || 'button',
+}))`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  background-color: #ffffff80 !important;
+  padding: ${({ theme }) => theme.padding['1/2']} ${({ theme }) => theme.padding['1/4']};
+  position: absolute;
+  align-self: center;
+  height: auto;
+
+  &.prev {
+    left: 0px;
+  }
+  &.next {
+    right: 0px;
+  }
+  &.disabled {
+  }
+
+  i {
+    font-size: 36px;
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.primary.default};
+  }
+`
+const NavArrow = (props) => {
+  const disabeld = props.disabled ? 'disabled' : ''
+  const direction = props.direction
+
+  return (
+    <>
+      {direction === 'next' && (
+        <ArrowBtn
+          onClick={props.onClick}
+          className={direction + ' ' + disabeld}
+          aria-label="Slide to next item"
+        >
+          <i className="material-icons-round" aria-hidden="true">
+            arrow_forward_ios
+          </i>
+        </ArrowBtn>
+      )}
+
+      {direction === 'prev' && (
+        <ArrowBtn
+          onClick={props.onClick}
+          className={direction + ' ' + disabeld}
+          aria-label="Slide to previous item"
+        >
+          <i className="material-icons-round" aria-hidden="true">
+            arrow_back_ios
+          </i>
+        </ArrowBtn>
+      )}
+    </>
+  )
+}
+
+export default NavArrow

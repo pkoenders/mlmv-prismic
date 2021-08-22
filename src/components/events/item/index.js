@@ -28,7 +28,9 @@ const SupportersHeader = styled.div`
   & .intro {
     width: 100%;
     padding-bottom: ${({ theme }) => theme.padding['1/4']};
-    @media (max-width: ${({ theme }) => theme.screens.sm}) {
+    padding-right: ${({ theme }) => theme.padding.default};
+    @media (max-width: ${({ theme }) => theme.screens.md}) {
+      padding-right: 0;
       width: 100%;
     }
     span {
@@ -80,7 +82,9 @@ const SupportersBody = styled.div`
   grid-gap: ${({ theme }) => theme.padding.default};
   & .content {
     width: 66%;
+    padding-right: ${({ theme }) => theme.padding.default};
     @media (max-width: ${({ theme }) => theme.screens.md}) {
+      padding-right: 0;
       width: 100%;
     }
     font-size: 110%;

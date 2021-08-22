@@ -436,7 +436,7 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     pathName = window.location.pathname
   }
 
-  console.log(primaryNav)
+  // console.log(primaryNav)
   // console.log('pathName = ' + pathName)
 
   const isPartiallyActive = ({ isPartiallyCurrent }) => {

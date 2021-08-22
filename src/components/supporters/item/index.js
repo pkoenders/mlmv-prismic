@@ -23,12 +23,16 @@ const SupportersHeader = styled.div`
     grid-gap: ${({ theme }) => theme.padding['1/2']};
   }
   margin: ${({ theme }) => theme.padding['4xl']} auto ${({ theme }) => theme.padding.default} auto;
-  padding-bottom: ${({ theme }) => theme.padding.default};
+  padding-bottom: ${({ theme }) => theme.padding['1/2']};
   border-bottom: 4px solid ${({ theme }) => theme.colors.page[300]};
 
   & .intro {
     width: 66%;
-    @media (max-width: ${({ theme }) => theme.screens.sm}) {
+    padding-bottom: ${({ theme }) => theme.padding['1/4']};
+
+    padding-right: ${({ theme }) => theme.padding.default};
+    @media (max-width: ${({ theme }) => theme.screens.md}) {
+      padding-right: 0;
       width: 100%;
     }
     span {
@@ -36,10 +40,10 @@ const SupportersHeader = styled.div`
       align-items: center;
       margin-bottom: ${({ theme }) => theme.margin['1/2']};
       img {
-        width: 75px;
-        height: 75px;
+        width: 75px !important;
+        height: 75px !important;
         border-radius: 50%;
-        border: 1pxx solid #fff;
+        border: 1px solid #fff;
         margin-right: ${({ theme }) => theme.margin['1/2']};
       }
     }
@@ -61,7 +65,9 @@ const SupportersBody = styled.div`
   grid-gap: ${({ theme }) => theme.padding.default};
   & .content {
     width: 66%;
+    padding-right: ${({ theme }) => theme.padding.default};
     @media (max-width: ${({ theme }) => theme.screens.md}) {
+      padding-right: 0;
       width: 100%;
     }
     font-size: 110%;

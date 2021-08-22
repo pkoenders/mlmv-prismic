@@ -22,7 +22,7 @@ const ListTagBtnsWrapper = styled.div`
   }
 
   span.wrapper {
-    height: 25px;
+    height: 26px;
     max-height: 100%;
     transition: all 3.5s ease-in;
     display: flex;

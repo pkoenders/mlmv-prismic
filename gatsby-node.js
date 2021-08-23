@@ -16,6 +16,10 @@ exports.onCreatePage = ({ page, actions }) => {
     return
   }
 
+  if (page.path.includes('preview')) {
+    return
+  }
+
   // First delete the pages so we can re-create them
   deletePage(page)
 

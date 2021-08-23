@@ -4,6 +4,7 @@ import Layout from '../components/layout'
 import SeoZone from '/src/components/slices/seoZone'
 import SliceZone from '/src/components/slices/sliceZone'
 import { withPrismicPreview } from 'gatsby-plugin-prismic-previews'
+import { linkResolver } from '../utils/linkResolver'
 
 const HomeTemplate = ({ data, location }) => {
   //Validate data for Gastby Build Gatsby Build breaks here for Deleate / createPages  - see  https://github.com/birkir/gatsby-source-prismic-graphql/issues/174
@@ -27,6 +28,7 @@ const HomeTemplate = ({ data, location }) => {
 export default withPrismicPreview(HomeTemplate, [
   {
     repositoryName: `${process.env.GATSBY_PRISMIC_REPO_NAME}`,
+    linkResolver,
   },
 ])
 

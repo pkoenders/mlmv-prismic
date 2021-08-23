@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '/src/components/layout'
 import Bground404 from '/src/components/common/404/404-bground'
 

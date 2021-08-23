@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 // Import our Theme and wrap in the Them Provider
 import { ThemeProvider } from 'styled-components'

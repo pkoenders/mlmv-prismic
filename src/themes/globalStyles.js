@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 
 import { defaultTheme } from './default'
-// import { H1 } from './default/typography'
 
 export const theme = defaultTheme
 // export const typography = defaultTypography
@@ -43,6 +42,27 @@ export const GlobalStyles = createGlobalStyle`
    section.dark {
     color: ${({ theme }) => theme.colors.page[100]};
   }
+
+  /* Rules for sizing the icon. */
+.material-icons.md-18,
+.material-icons-round.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24,
+.material-icons-round.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36,
+.material-icons-round.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48,
+.material-icons-round.md-48 {
+  font-size: 48px;
+}
 
   a,
   a:link,

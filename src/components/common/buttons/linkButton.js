@@ -57,6 +57,7 @@ const BtnWrapper = styled.span`
     border: 1px solid ${({ theme }) => theme.colors.secondary[1200]};
   }
   .btn.tertiary {
+    color: ${({ theme }) => theme.colors.grey.default};
     background-color: ${({ theme }) => theme.colors.tertiary.default};
     border: 1px solid ${({ theme }) => theme.colors.tertiary[1200]};
   }
@@ -68,7 +69,7 @@ const BtnWrapper = styled.span`
   .btn.black {
     color: ${({ theme }) => theme.colors.grey[100]};
     background-color: ${({ theme }) => theme.colors.grey.default};
-    border: 1px solid ${({ theme }) => theme.colors.tertiary[1200]};
+    border: 1px solid ${({ theme }) => theme.colors.grey[1200]};
   }
 
   .btn.link {
@@ -147,12 +148,12 @@ const BtnWrapper = styled.span`
     .btn.white {
       color: ${({ theme }) => theme.colors.grey.default};
       background-color: ${({ theme }) => theme.colors.grey[100]};
-      border: 1px solid ${({ theme }) => theme.colors.tertiary[200]};
+      border: 1px solid ${({ theme }) => theme.colors.grey[200]};
     }
     .btn.black {
       color: ${({ theme }) => theme.colors.grey[100]};
       background-color: ${({ theme }) => theme.colors.grey.default};
-      border: 1px solid ${({ theme }) => theme.colors.tertiary[1200]};
+      border: 1px solid ${({ theme }) => theme.colors.grey[1200]};
     }
     .btn.transparent {
       color: ${({ theme }) => theme.colors.grey[100]};

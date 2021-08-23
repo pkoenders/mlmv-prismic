@@ -13,6 +13,7 @@ import 'gatsby-plugin-prismic-previews/dist/styles.css'
 // Adds a shared React Context for Prismic preview sessions.
 
 export const wrapPageElement = ({ element }) => (
+  // export const wrapRootElement = ({ element }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
     <PrismicPreviewProvider>{element}</PrismicPreviewProvider>

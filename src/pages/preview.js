@@ -12,7 +12,7 @@ const PreviewPage = () => {
 
 export default withPrismicPreviewResolver(PreviewPage, [
   {
-    repositoryName: 'pkoenders',
+    repositoryName: 'mlmv',
     linkResolver,
   },
 ])

@@ -130,16 +130,14 @@ const CardsWrapper = styled.section`
       .item {
         width: ${({ theme }) => theme.padding['1/2']};
         height: ${({ theme }) => theme.padding['1/2']};
-        background-color: ${({ theme }) => theme.colors.tertiary.default};
+        background-color: ${({ theme }) => theme.colors.page.default};
         border-radius: ${({ theme }) => theme.borderRadius.sm};
-        border: 1px solid transparent;
       }
 
       .item:hover,
       .item.active {
         cursor: pointer;
         background-color: ${({ theme }) => theme.colors.primary.default};
-        border: 1px solid ${({ theme }) => theme.colors.primary[1200]};
       }
     }
 
@@ -179,17 +177,20 @@ const CardsWrapper = styled.section`
       .prev,
       .next {
         i {
-          color: ${({ theme }) => theme.colors.page.default};
+          color: ${({ theme }) => theme.colors.primary.default};
         }
       }
       .image {
-        border: 1px solid ${({ theme }) => theme.colors.grey[800]};
+        /* border: 1px solid ${({ theme }) => theme.colors.grey[800]}; */
       }
       .nav {
+        .item {
+          background-color: ${({ theme }) => theme.colors.page[100]};
+        }
+
         .item:hover,
         .item.active {
-          background-color: ${({ theme }) => theme.colors.page[100]};
-          border-color: ${({ theme }) => theme.colors.page[200]};
+          background-color: ${({ theme }) => theme.colors.primary.default};
         }
       }
 

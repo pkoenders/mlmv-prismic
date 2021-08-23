@@ -49,6 +49,7 @@ const CardsWrapper = styled.section`
   }
 
   .masonry-grid {
+    padding: 0 ${({ theme }) => theme.padding['1/2']};
     display: flex;
     grid-gap: ${({ theme }) => theme.padding.default};
     @media (max-width: ${({ theme }) => theme.screens.sm}) {

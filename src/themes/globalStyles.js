@@ -131,6 +131,10 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
   strong {
     font-weight: ${({ theme }) => theme.fontWeight.semibold};
   }

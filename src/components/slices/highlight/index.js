@@ -40,6 +40,7 @@ const Highlight = styled.section`
 
   @media (max-width: ${({ theme }) => theme.screens.sm}) {
     margin: 0;
+    padding-top: 0 !important;
     .content {
       padding: 0 ${({ theme }) => theme.padding['1/2']};
     }

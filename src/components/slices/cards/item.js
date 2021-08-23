@@ -11,8 +11,6 @@ import { validateString } from '/src/utils/helpers'
 import styled from 'styled-components'
 
 const CardItemWrapper = styled.div`
-  padding: 0 ${({ theme }) => theme.padding['1/2']};
-
   a {
     border: 1px solid transparent;
     display: block;

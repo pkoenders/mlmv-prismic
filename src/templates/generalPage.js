@@ -133,7 +133,7 @@ export const query = graphql`
                 localFile {
                   childImageSharp {
                     gatsbyImageData(
-                      quality: 90
+                      quality: 50
                       layout: FULL_WIDTH
                       transformOptions: { fit: COVER, cropFocus: ATTENTION }
                       placeholder: BLURRED

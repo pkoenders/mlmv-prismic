@@ -378,9 +378,9 @@ const HeaderWrapper = styled.header`
             visibility: hidden;
             background-color: ${({ theme }) => theme.colors.page.bground.default};
             height: ${({ theme }) => theme.margin['1/8']};
+            /* margin: 0 2px; */
             border-radius: 0;
-            width: 100%;
-            left: 0;
+
             transform: scaleX(0);
             transition: all 150ms ease-in-out;
           }
@@ -389,6 +389,9 @@ const HeaderWrapper = styled.header`
           button:hover:after,
           a.activeNavItem:after,
           button.activeNavItem:after {
+            left: 2px;
+            right: 2px;
+            width: auto;
             visibility: visible;
             transform: scaleX(1);
           }

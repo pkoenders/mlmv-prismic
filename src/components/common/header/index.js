@@ -61,9 +61,8 @@ const HeaderWrapper = styled.header`
       }
 
       svg {
-        height: 20px;
+        height: 36px;
         width: auto;
-        margin: 14px 0;
       }
     }
 

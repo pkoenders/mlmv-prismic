@@ -34,7 +34,7 @@ const FooterWrapper = styled.footer`
 
       svg {
         width: auto;
-        height: 24px;
+        height: 32px;
         margin: ${({ theme }) => theme.margin['1/4']} auto;
       }
     }

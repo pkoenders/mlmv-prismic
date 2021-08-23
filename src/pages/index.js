@@ -259,7 +259,7 @@ export const query = graphql`
                   childImageSharp {
                     gatsbyImageData(
                       aspectRatio: 1.777777
-                      quality: 80
+                      quality: 50
                       width: 564
                       layout: CONSTRAINED
                       formats: [AUTO, WEBP, AVIF]
@@ -328,7 +328,7 @@ export const query = graphql`
                                 childImageSharp {
                                   gatsbyImageData(
                                     aspectRatio: 1.777777
-                                    quality: 90
+                                    quality: 50
                                     #width:735,
                                     #layout: CONSTRAINED,
                                     layout: FULL_WIDTH

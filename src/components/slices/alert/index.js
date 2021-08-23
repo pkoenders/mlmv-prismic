@@ -14,7 +14,7 @@ import styled from 'styled-components'
 const AlertWrapper = styled.div`
   aspect-ratio: unset !important;
   position: relative;
-  padding: ${({ theme }) => theme.padding['1/2']} 0;
+  padding: ${({ theme }) => theme.padding['1/2']};
   text-align: left;
   color: #fff;
   background-color: ${({ theme }) => theme.colors.alert.l1.default};

@@ -17,6 +17,8 @@ import {
 import styled from 'styled-components'
 
 const QuoteWrapper = styled.section`
+  padding: 0 ${({ theme }) => theme.padding['1/2']};
+
   .title {
     width: 100%;
     display: flex;

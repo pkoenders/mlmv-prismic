@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 // Import our Theme and wrap in the Them Provider
 import { ThemeProvider } from 'styled-components'
@@ -11,7 +11,7 @@ import { PrismicPreviewProvider } from 'gatsby-plugin-prismic-previews'
 import 'gatsby-plugin-prismic-previews/dist/styles.css'
 // Adds a shared React Context for Prismic preview sessions.
 
-export const wrapRootElement = ({ element }) => (
+export const wrapPageElement = ({ element }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
     <PrismicPreviewProvider>{element}</PrismicPreviewProvider>

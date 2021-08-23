@@ -1,5 +1,4 @@
-import React from 'react'
-
+import * as React from 'react'
 import styled from 'styled-components'
 
 import Header from './common/header/'
@@ -7,8 +6,6 @@ import Footer from './common/footer'
 import i18n from '../../config/i18n'
 
 const LayoutWrapper = styled.div`
-  margin: 0;
-  padding: 0;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -87,22 +84,6 @@ const Layout = ({ children, currentLang, primaryNav }) => {
     path = path.substring(1)
     return path
   }
-
-  // const observer = new MutationObserver(function (mutations_list) {
-  //   mutations_list.forEach(function (mutation) {
-  //     mutation.removedNodes.forEach(function (removed_node) {
-  //       if (removed_node.class === 'alert') {
-  //         console.log('#child has been removed')
-  //         observer.disconnect()
-  //       }
-  //     })
-  //   })
-  // })
-
-  // observer.observe(document.querySelector('.layoutInner'), {
-  //   subtree: true,
-  //   childList: true,
-  // })
 
   // console.log('currentPath = ' + currentPath)
 

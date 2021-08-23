@@ -113,7 +113,7 @@ const WrapperHeroImage = styled.section`
       }
 
       .content {
-        padding: 0 ${({ theme }) => theme.padding['1/2']};
+        padding: 0;
         color: #ffffff;
         width: 100%;
         display: grid;

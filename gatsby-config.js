@@ -22,6 +22,12 @@ module.exports = {
   },
 
   plugins: [
+    `babel-plugin-styled-components`,
+
+    `gatsby-plugin-styled-components`,
+
+    'gatsby-plugin-sass',
+
     {
       resolve: `gatsby-plugin-webfonts`,
       options: {
@@ -108,30 +114,6 @@ module.exports = {
         rule: {
           include: /\.inline\.svg$/,
         },
-      },
-    },
-
-    {
-      resolve: 'gatsby-plugin-sass',
-      options: {
-        useResolveUrlLoader: {
-          options: {
-            debug: true,
-            sourceMap: true, //default is false
-          },
-        },
-      },
-    },
-
-    `babel-plugin-styled-components`,
-
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {
-        // ssr: false
-        // displayName: false,
-        // minify: false
-        // see docs
       },
     },
 

@@ -20,6 +20,7 @@ import {
 import styled from 'styled-components'
 
 const List = styled.section`
+  padding: 0 ${({ theme }) => theme.padding['1/2']};
   ul {
     list-style: none;
     padding: 0;
@@ -31,7 +32,11 @@ const List = styled.section`
       display: flex;
       align-items: center;
       width: 100%;
+
       font-size: ${({ theme }) => theme.fontSize.lg};
+      p {
+        margin-bottom: 0;
+      }
       span {
         display: flex;
         align-items: center;

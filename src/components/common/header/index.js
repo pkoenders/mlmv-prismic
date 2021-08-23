@@ -88,7 +88,7 @@ const HeaderWrapper = styled.header`
 
     button.hamburger {
       order: 0;
-      display: flex;
+      display: none;
       position: absolute;
       left: ${({ theme }) => theme.padding['1/2']};
       margin: 0 0 auto 0;
@@ -243,153 +243,156 @@ const HeaderWrapper = styled.header`
   }
 
   // Desktop nav
-  nav.headerNav.desktop {
-    position: relative;
-    max-width: ${({ theme }) => theme.screens.xl};
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
-
-    > button {
-      display: none;
-    }
-
-    > ul {
-      display: flex;
-      justify-self: center;
-      align-items: stretch;
-      padding: 0px ${({ theme }) => theme.padding['3xl']};
-      margin: 0 auto;
-      top: 0px;
+  @media (min-width: ${({ theme }) => theme.screens.sm}) {
+    nav.headerNav {
       position: relative;
-      width: auto;
-      overflow-x: visible;
+      max-width: ${({ theme }) => theme.screens.xl};
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      align-items: center;
+      justify-content: space-between;
 
-      li {
-        display: flex;
-        align-items: center;
-        position: relative;
-
-        button.secondaryNavBtn {
-          display: flex;
-          align-items: center;
-          i {
-            margin-left: ${({ theme }) => theme.margin['1/4']};
-            color: ${({ theme }) => theme.colors.primary[800]};
-          }
-        }
-
-        button.secondaryNavBtn.isActive {
-          i {
-            transform: rotate(180deg);
-          }
-        }
-
-        ul.secondaryNavList {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          margin: 0;
-          padding: ${({ theme }) => theme.padding['1/2']} 0;
-          border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
-            ${({ theme }) => theme.borderRadius.default};
-          top: ${({ theme }) => theme.header.height};
-          margin-top: -4px;
-          z-index: 10000;
-          background-color: ${({ theme }) => theme.colors.header.bground.default};
-          box-shadow: ${({ theme }) => theme.boxShadow.md} !important;
-
-          li {
-            padding: ${({ theme }) => theme.padding['1/8']} ${({ theme }) => theme.padding['1/2']};
-            position: relative;
-            a {
-              white-space: nowrap;
-              padding: ${({ theme }) => theme.padding['1/8']} ${({ theme }) => theme.padding['1/2']};
-              border-radius: ${({ theme }) => theme.borderRadius.sm};
-              display: flex;
-              align-items: center;
-
-              i {
-                visibility: hidden;
-                display: none;
-              }
-            }
-
-            a:hover,
-            a.activeNavItem {
-              background-color: ${({ theme }) => theme.colors.primary.default};
-              i {
-                display: none;
-              }
-            }
-
-            a:after {
-              height: 0px;
-            }
-          }
-        }
-
-        ul.secondaryNavList.isActive {
-          display: flex;
-        }
-
-        a,
-        p,
-        span,
-        button {
-          font-size: 95%;
-          line-height: 190%;
-          font-weight: 400;
-          color: ${({ theme }) => theme.colors.header.default};
-          margin: 0 1px;
-          padding-left: ${({ theme }) => theme.padding['1/2']};
-          padding-right: ${({ theme }) => theme.padding['1/2']};
-          position: relative;
-          text-align: center;
-          cursor: pointer;
-          z-index: 10000;
-        }
-
-        a:hover,
-        button:hover {
-          color: ${({ theme }) => theme.colors.header.default};
-        }
-
-        a.activeNavItem,
-        button.activeNavItem {
-          border-left: none;
-          color: ${({ theme }) => theme.colors.header.default};
-        }
-
-        a:after,
-        button:after {
-          content: '';
-          position: absolute;
-          bottom: 0px;
-          visibility: hidden;
-          background-color: ${({ theme }) => theme.colors.page.bground.default};
-          height: ${({ theme }) => theme.margin['1/8']};
-          border-radius: 0;
-          width: 100%;
-          left: 0;
-          transform: scaleX(0);
-          transition: all 150ms ease-in-out;
-        }
-
-        a:hover:after,
-        button:hover:after,
-        a.activeNavItem:after,
-        button.activeNavItem:after {
-          visibility: visible;
-          transform: scaleX(1);
-        }
+      > button {
+        display: none;
       }
 
-      li.hide {
-        display: none;
+      > ul {
+        display: flex;
+        justify-self: center;
+        align-items: stretch;
+        padding: 0px ${({ theme }) => theme.padding['3xl']};
+        margin: 0 auto;
+        top: 0px;
+        position: relative;
+        width: auto;
+        overflow-x: visible;
+
+        li {
+          display: flex;
+          align-items: center;
+          position: relative;
+
+          button.secondaryNavBtn {
+            display: flex;
+            align-items: center;
+            i {
+              margin-left: ${({ theme }) => theme.margin['1/4']};
+              color: ${({ theme }) => theme.colors.primary[800]};
+            }
+          }
+
+          button.secondaryNavBtn.isActive {
+            i {
+              transform: rotate(180deg);
+            }
+          }
+
+          ul.secondaryNavList {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            margin: 0;
+            padding: ${({ theme }) => theme.padding['1/2']} 0;
+            border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
+              ${({ theme }) => theme.borderRadius.default};
+            top: ${({ theme }) => theme.header.height};
+            margin-top: -4px;
+            z-index: 10000;
+            background-color: ${({ theme }) => theme.colors.header.bground.default};
+            box-shadow: ${({ theme }) => theme.boxShadow.md} !important;
+
+            li {
+              padding: ${({ theme }) => theme.padding['1/8']} ${({ theme }) => theme.padding['1/2']};
+              position: relative;
+              a {
+                white-space: nowrap;
+                padding: ${({ theme }) => theme.padding['1/8']}
+                  ${({ theme }) => theme.padding['1/2']};
+                border-radius: ${({ theme }) => theme.borderRadius.sm};
+                display: flex;
+                align-items: center;
+
+                i {
+                  visibility: hidden;
+                  display: none;
+                }
+              }
+
+              a:hover,
+              a.activeNavItem {
+                background-color: ${({ theme }) => theme.colors.primary.default};
+                i {
+                  display: none;
+                }
+              }
+
+              a:after {
+                height: 0px;
+              }
+            }
+          }
+
+          ul.secondaryNavList.isActive {
+            display: flex;
+          }
+
+          a,
+          p,
+          span,
+          button {
+            font-size: 95%;
+            line-height: 190%;
+            font-weight: 400;
+            color: ${({ theme }) => theme.colors.header.default};
+            margin: 0 1px;
+            padding-left: ${({ theme }) => theme.padding['1/2']};
+            padding-right: ${({ theme }) => theme.padding['1/2']};
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            z-index: 10000;
+          }
+
+          a:hover,
+          button:hover {
+            color: ${({ theme }) => theme.colors.header.default};
+          }
+
+          a.activeNavItem,
+          button.activeNavItem {
+            border-left: none;
+            color: ${({ theme }) => theme.colors.header.default};
+          }
+
+          a:after,
+          button:after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            visibility: hidden;
+            background-color: ${({ theme }) => theme.colors.page.bground.default};
+            height: ${({ theme }) => theme.margin['1/8']};
+            border-radius: 0;
+            width: 100%;
+            left: 0;
+            transform: scaleX(0);
+            transition: all 150ms ease-in-out;
+          }
+
+          a:hover:after,
+          button:hover:after,
+          a.activeNavItem:after,
+          button.activeNavItem:after {
+            visibility: visible;
+            transform: scaleX(1);
+          }
+        }
+
+        li.hide {
+          display: none;
+        }
       }
     }
   }
@@ -491,25 +494,25 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     const clickBrand = document.querySelector('.brand')
 
     var prevScrollpos = window.pageYOffset
-    var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    // var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 
     //
     // Set menu mode (Mobile or Desktop)
-    viewportWidth >= 768 ? setDesktopNav() : setMobileNav()
-    'load, resize, orientationchange'.split(', ').forEach(function (e) {
-      window.addEventListener(e, () => {
-        viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-        viewportWidth >= 768 ? setDesktopNav() : setMobileNav()
-      })
-    })
+    // viewportWidth >= 768 ? setDesktopNav() : setMobileNav()
+    // 'load, resize, orientationchange'.split(', ').forEach(function (e) {
+    //   window.addEventListener(e, () => {
+    //     viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    //     viewportWidth >= 768 ? setDesktopNav() : setMobileNav()
+    //   })
+    // })
 
-    function setDesktopNav() {
-      headerNav.classList.add('desktop')
-      closeHamburgerNav(headerNav)
-    }
-    function setMobileNav() {
-      headerNav.classList.remove('desktop')
-    }
+    // function setDesktopNav() {
+    //   headerNav.classList.add('desktop')
+    //   closeHamburgerNav(headerNav)
+    // }
+    // function setMobileNav() {
+    //   headerNav.classList.remove('desktop')
+    // }
 
     //
     // Toggle mobile menu
@@ -590,7 +593,7 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
       }
       aria-label="Main heading"
     >
-      <nav className="headerNav " aria-label="Main navigation" role="navigation">
+      <nav className="headerNav" aria-label="Main navigation" role="navigation">
         <button
           className="hamburger hamburger--squeeze"
           type="button"

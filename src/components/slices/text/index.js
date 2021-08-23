@@ -27,6 +27,11 @@ import Button from '/src/components/common/buttons/linkButton'
 import styled from 'styled-components'
 
 const TextBlock = styled.section`
+  padding: 0 ${({ theme }) => theme.padding['1/2']};
+  .col1,
+  .col2 {
+  }
+
   .col2 {
     column-count: 2;
     grid-gap: ${({ theme }) => theme.padding.default};

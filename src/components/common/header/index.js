@@ -284,6 +284,7 @@ const HeaderWrapper = styled.header`
           }
 
           button.secondaryNavBtn.isActive {
+            font-weight: normal;
             i {
               transform: rotate(180deg);
             }
@@ -346,7 +347,7 @@ const HeaderWrapper = styled.header`
             line-height: 190%;
             font-weight: 400;
             color: ${({ theme }) => theme.colors.header.default};
-            margin: 0 1px;
+            margin: 0;
             padding-left: ${({ theme }) => theme.padding['1/2']};
             padding-right: ${({ theme }) => theme.padding['1/2']};
             position: relative;
@@ -363,6 +364,8 @@ const HeaderWrapper = styled.header`
           a.activeNavItem,
           button.activeNavItem {
             border-left: none;
+            font-weight: normal;
+            margin: inherit;
             color: ${({ theme }) => theme.colors.header.default};
           }
 

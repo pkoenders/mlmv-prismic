@@ -12,8 +12,8 @@ const PreviewPage = () => {
 
 export default withPrismicPreviewResolver(PreviewPage, [
   {
-    repositoryName: 'mlmv',
-    // repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
+    // repositoryName: 'mlmv',
+    repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
     linkResolver,
     // linkResolver: () => linkResolver,
   },

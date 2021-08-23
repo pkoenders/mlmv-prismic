@@ -21,6 +21,7 @@ const CardItemWrapper = styled.div`
       z-index: 99;
       aspect-ratio: 16/9;
       img {
+        width: 100%;
         transition: ${({ theme }) => theme.transition.linear.quick};
         transform: scale(1.033) !important;
       }

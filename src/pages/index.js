@@ -85,6 +85,8 @@ export const query = graphql`
       type
       uid
       id
+      _previewable
+
       alternate_languages {
         lang
         uid
@@ -92,7 +94,6 @@ export const query = graphql`
         id
       }
 
-      _previewable
       data {
         # Page data
         body {

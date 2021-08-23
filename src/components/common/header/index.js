@@ -279,6 +279,7 @@ const HeaderWrapper = styled.header`
             align-items: center;
             i {
               margin-left: ${({ theme }) => theme.margin['1/4']};
+              margin-right: -${({ theme }) => theme.margin['1/4']};
               color: ${({ theme }) => theme.colors.primary[800]};
             }
           }

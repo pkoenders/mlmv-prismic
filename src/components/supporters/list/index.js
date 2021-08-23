@@ -203,13 +203,17 @@ const ResourcesList = ({ pageIntro, dataList }) => {
     // Create an array for the filtered that matches the query
     const filteredData = data.filter((data) => {
       // Filter by...
-      const { title, content, location } = data.item.document.data
+      const { first_name, last_name, intro, location } = data.item.document.data
       // And filter by tags
       const { tags } = data.item.document
 
+      const fullName = first_name.text + ' ' + last_name.text
+
       return (
-        title.text.toLowerCase().includes(query.toLowerCase()) ||
-        content.text.toLowerCase().includes(query.toLowerCase()) ||
+        fullName.toLowerCase().includes(query.toLowerCase()) ||
+        // first_name.text.toLowerCase().includes(query.toLowerCase()) ||
+        // last_name.text.toLowerCase().includes(query.toLowerCase()) ||
+        intro.text.toLowerCase().includes(query.toLowerCase()) ||
         location.toLowerCase().includes(query.toLowerCase()) ||
         (tags && tags.join(' ').toLowerCase().includes(query.toLowerCase()))
       )
@@ -231,7 +235,7 @@ const ResourcesList = ({ pageIntro, dataList }) => {
   allPosts = hasSearchResults ? filteredData : sourceList
 
   // Done - We can log the results
-  // console.log(allPosts)
+  console.log(allPosts)
 
   return (
     // Set content width - xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'full'

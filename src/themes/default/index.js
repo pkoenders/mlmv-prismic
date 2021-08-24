@@ -110,7 +110,7 @@ export const defaultTheme = {
     },
 
     primary: {
-      default: '#51primicpb5e0',
+      default: '#51b5e0',
       100: '#EDF7FB',
       200: '#DCF0F8',
       300: '#CAE8F5',

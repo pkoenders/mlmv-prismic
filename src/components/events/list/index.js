@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react'
 
 // Helpers
 import moment from 'moment'
+import i18n from '/config/i18n'
 
 // Layout
 import Section from '/src/components/common/layout/pageLayout/'
@@ -13,7 +14,6 @@ import GridItem from './item'
 import Filter from '/src/components/common/filter/filter'
 import ListTagBtns from '/src/components/common/filter/tagBtns'
 import SearchBox from '/src/components/common/filter/searchBox'
-import Sort from '/src/components/common/filter/sort'
 import SortList from '/src/components/common/filter/sortList'
 import AscDesc from '/src/components/common/filter/ascDesc'
 import SearchInput from '/src/components/common/filter/searchInput'
@@ -31,7 +31,7 @@ const List = styled.ul`
   grid-gap: ${({ theme }) => theme.margin.default};
 `
 
-const EventsList = ({ pageIntro, dataList }) => {
+const EventsList = ({ currentLang, pageIntro, dataList }) => {
   // A little loDash for sorting assistance
   var _ = require('lodash')
 
@@ -258,6 +258,7 @@ const EventsList = ({ pageIntro, dataList }) => {
             <SearchBox className="search">
               {pageIntro.show_input === true && (
                 <SearchInput
+                  currentLang={currentLang}
                   handleSearchChange={handleSearchChange}
                   queryLength={queryLength}
                   resetFilters={resetFilters}
@@ -265,21 +266,31 @@ const EventsList = ({ pageIntro, dataList }) => {
               )}
 
               {pageIntro.show_sorting === true && (
-                <Sort className="sort">
-                  <p>Sort by</p>
-                  <SortList
-                    toggleSortListClick={toggleSortListClick}
-                    sortItemClick={sortItemClick}
-                    // Pass the 'Sort by' properties. First being the default. Will display Asc order
-                    items={[
-                      { title: 'Date', nodePath: 'item.document.data.start_date_time' },
-                      { title: 'Title', nodePath: 'item.document.data.title.text' },
-                      { title: 'Location', nodePath: 'item.document.data.location' },
-                      { title: 'Type', nodePath: 'item.document.data.type' },
-                    ]}
-                  />
-                  <AscDesc onClick={sortAscDescClick} />
-                </Sort>
+                <SortList
+                  currentLang={currentLang}
+                  toggleSortListClick={toggleSortListClick}
+                  sortItemClick={sortItemClick}
+                  // Pass the 'Sort by' properties. First being the default. Will display Asc order
+                  items={[
+                    {
+                      title: `${i18n[currentLang].sortByDate}`,
+                      nodePath: 'item.document.data.start_date_time',
+                    },
+                    {
+                      title: `${i18n[currentLang].sortByTitle}`,
+                      nodePath: 'item.document.data.title.text',
+                    },
+                    {
+                      title: `${i18n[currentLang].sortByLocation}`,
+                      nodePath: 'item.document.data.location',
+                    },
+                    {
+                      title: `${i18n[currentLang].sortByType}`,
+                      nodePath: 'item.document.data.type',
+                    },
+                  ]}
+                  sortAscDescClick={sortAscDescClick}
+                />
               )}
               {(pageIntro.show_sorting === false && pageIntro.show_input === true) === true && (
                 <AscDesc onClick={sortAscDescClick} />
@@ -298,6 +309,7 @@ const EventsList = ({ pageIntro, dataList }) => {
           <List>
             {allPosts.map((node, index) => (
               <GridItem
+                currentLang={currentLang}
                 thisItem={allPosts[index]}
                 showTags={pageIntro.show_tags}
                 key={allPosts[index].item.id}

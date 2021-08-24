@@ -59,7 +59,7 @@ const BtnWrapper = styled.span`
   .btn.tertiary {
     color: ${({ theme }) => theme.colors.grey.default};
     background-color: ${({ theme }) => theme.colors.tertiary.default};
-    border: 1px solid ${({ theme }) => theme.colors.tertiary[1200]};
+    border: 1px solid ${({ theme }) => theme.colors.tertiary[1100]};
   }
   .btn.white {
     color: ${({ theme }) => theme.colors.grey.default};

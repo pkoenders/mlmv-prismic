@@ -6,7 +6,8 @@ const SearchBox = styled.div`
   margin: 0 0;
   // margin: 0 ${({ theme }) => theme.margin['1xl']} 0 0;
   width: 100%;
-  grid-gap: ${({ theme }) => theme.margin['1/2']};
+  grid-column-gap: ${({ theme }) => theme.margin.default};
+  grid-row-gap: ${({ theme }) => theme.margin['1/2']};
 
   @media (max-width: ${({ theme }) => theme.screens.sm}) {
     flex-direction: column;

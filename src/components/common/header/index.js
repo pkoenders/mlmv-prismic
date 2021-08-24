@@ -290,16 +290,27 @@ const HeaderWrapper = styled.header`
             }
           }
 
+          ul.secondaryNavList:before {
+            content: '';
+            position: absolute;
+            height: 4px;
+            top: -4px;
+            width: 100%;
+            background-color: ${({ theme }) => theme.colors.header.bground.default};
+          }
+
           ul.secondaryNavList {
             display: none;
             flex-direction: column;
             position: absolute;
             margin: 0;
             padding: ${({ theme }) => theme.padding['1/2']} 0;
+            border: 1px solid ${({ theme }) => theme.colors.header.bground[800]};
+            border-top: none;
             border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
               ${({ theme }) => theme.borderRadius.default};
             top: ${({ theme }) => theme.header.height};
-            margin-top: -4px;
+            margin-top: 0px;
             z-index: 10000;
             background-color: ${({ theme }) => theme.colors.header.bground.default};
             box-shadow: ${({ theme }) => theme.boxShadow.md} !important;

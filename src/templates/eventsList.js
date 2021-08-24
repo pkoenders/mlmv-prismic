@@ -21,7 +21,7 @@ const EventsPageList = ({ data }) => {
     <Layout currentLang={currentLang} primaryNav={primaryNav}>
       <SeoZone currentLang={currentLang} seoZone={document.data.body1} />
       <SliceZone sliceZone={document.data.body} />
-      <EventsList pageIntro={pageIntro} dataList={dataList} />
+      <EventsList currentLang={currentLang} pageIntro={pageIntro} dataList={dataList} />
     </Layout>
   )
 }
@@ -115,6 +115,7 @@ export const query = graphql`
                       location
                       # start_date_time(formatString: "LLLL")
                       start_date_time
+                      end_date_time
                     }
                   }
                 }

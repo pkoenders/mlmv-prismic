@@ -1,16 +1,15 @@
 import React from 'react'
+
+// Helpers
+import i18n from '/config/i18n'
+
 import styled from 'styled-components'
 
 const Input = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 ${({ theme }) => theme.margin.default} 0 0;
-  width: 158%;
-
-  @media (max-width: ${({ theme }) => theme.screens.sm}) {
-    margin: 0;
-    width: 100%;
-  }
+  margin: 0;
+  width: 100%;
 
   label {
     width: 100%;
@@ -51,7 +50,7 @@ const Reset = styled.button.attrs((props) => ({
   opacity: 0.5;
 `
 
-const Search = ({ handleSearchChange, queryLength, resetFilters }) => {
+const Search = ({ currentLang, handleSearchChange, queryLength, resetFilters }) => {
   function resetSearch(e) {
     e.target.parentNode.querySelector('input').focus()
     resetFilters(e)
@@ -63,7 +62,7 @@ const Search = ({ handleSearchChange, queryLength, resetFilters }) => {
           type="search"
           name="search"
           aria-label="Search"
-          placeholder="Type to filter results..."
+          placeholder={`${i18n[currentLang].searchPlacholder}`}
           onChange={handleSearchChange}
         />
         <i className="material-icons-round" aria-hidden="true">

@@ -23,7 +23,7 @@ const SupportersList = ({ data }) => {
     <Layout currentLang={currentLang} primaryNav={primaryNav}>
       <SeoZone currentLang={currentLang} seoZone={document.data.body1} />
       <SliceZone sliceZone={document.data.body} />
-      <PeerSupportersList pageIntro={pageIntro} dataList={dataList} />
+      <PeerSupportersList currentLang={currentLang} pageIntro={pageIntro} dataList={dataList} />
     </Layout>
   )
 }

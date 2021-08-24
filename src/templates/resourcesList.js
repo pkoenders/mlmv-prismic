@@ -23,7 +23,7 @@ const ResourcesPageList = ({ data }) => {
     <Layout currentLang={currentLang} primaryNav={primaryNav}>
       <SeoZone currentLang={currentLang} seoZone={document.data.body1} />
       <SliceZone sliceZone={document.data.body} />
-      <ResourcesList pageIntro={pageIntro} dataList={dataList} />
+      <ResourcesList currentLang={currentLang} pageIntro={pageIntro} dataList={dataList} />
     </Layout>
   )
 }

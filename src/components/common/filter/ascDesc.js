@@ -10,7 +10,6 @@ const AscDescBtnWrapper = styled.button.attrs((props) => ({
   align-items: center;
   cursor: pointer;
   padding: ${({ theme }) => theme.padding['1/4']};
-  margin-left: ${({ theme }) => theme.margin['1/4']};
   user-select: none;
   background-color: ${({ theme }) => theme.colors.page.bground.default};
   border: 1px solid ${({ theme }) => theme.colors.card[300]};

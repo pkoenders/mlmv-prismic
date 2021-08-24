@@ -44,30 +44,36 @@ const SupportersHeader = styled.div`
       padding: 0;
       margin: 0;
       color: ${({ theme }) => theme.colors.page[700]};
-      .passed {
-        display: flex;
-        flex-direction: row;
-        grid-gap: inherit;
-        margin: 0;
-      }
-      p,
-      a {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 0;
-        width: fit-content;
 
-        i {
-          /* margin-top:1px; */
-          color: inherit;
-          margin-right: ${({ theme }) => theme.margin['1/4']};
+      span,
+      span.passed {
+        margin: 0;
+        flex-wrap: wrap;
+        grid-column-gap: ${({ theme }) => theme.margin.default};
+        grid-row-gap: ${({ theme }) => theme.margin['1/4']};
+        p,
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-bottom: 0;
+          width: fit-content;
+          white-space: nowrap;
+
+          i {
+            /* margin-top:1px; */
+            color: inherit;
+            margin-right: ${({ theme }) => theme.margin['1/4']};
+          }
         }
-        .srike {
-          padding: 0;
-          margin: 0 ${({ theme }) => theme.margin['1/4']} 0 0;
-          text-decoration: line-through;
-          opacity: 0.5;
+      }
+      span.passed {
+        p {
+          .prev {
+            text-decoration: line-through;
+            opacity: 0.5;
+            margin: 0 ${({ theme }) => theme.margin['1/4']} 0 0;
+          }
         }
       }
     }
@@ -97,7 +103,6 @@ const SupportersBody = styled.div`
     p {
       margin: 0;
       padding-bottom: ${({ theme }) => theme.padding.default};
-      line-height: 1;
       span {
         display: inline-flex;
         align-items: center;
@@ -107,8 +112,9 @@ const SupportersBody = styled.div`
     }
 
     & .title {
-      padding: ${({ theme }) => theme.padding['1/8']} 0 0 ${({ theme }) => theme.padding['1/2']};
+      padding: 0 0 0 ${({ theme }) => theme.padding['1/2']};
       margin-bottom: 0;
+      line-height: inherit;
     }
   }
 `
@@ -121,12 +127,37 @@ const EventItem = ({ currentLang, itemData }) => {
   const location = validateString(eventItem.location)
 
   var currentDate = new Date()
+
+  moment.locale(currentLang.slice(0, -3))
   currentDate.setDate(currentDate.getDate() - 2)
   const today = moment(currentDate).format()
-  const start_date = eventItem.start_date_time
+  var start_date = eventItem.start_date_time
+  const end_date = eventItem.end_date_time
 
-  const date = moment(start_date).format('LL')
+  var date = moment(start_date).format('LL')
+  // date = moment.locale('es')
+
   const time = moment(start_date).format('LT')
+  const endTime = moment(end_date).format('MMMM DD, LT')
+
+  if (end_date) {
+    var diff = moment.duration(moment(end_date).diff(moment(start_date)))
+    var days = parseInt(diff.asDays()) //84
+    var hours = parseInt(diff.asHours()) //2039 hours, but it gives total hours in given miliseconds which is not expacted.
+    hours = hours - days * 24 // 23 hours
+    var minutes = parseInt(diff.asMinutes()) //122360 minutes,but it gives total minutes in given miliseconds which is not expacted.
+    minutes = minutes - (days * 24 * 60 + hours * 60) //20 minutes.
+    var duration = ''
+    if (days > 0) {
+      duration = duration + ' ' + days + ' Days'
+    }
+    if (hours > 0) {
+      duration = duration + ' ' + hours + ' Hours'
+    }
+    if (minutes > 0) {
+      duration = duration + ' ' + minutes + ' Minutes'
+    }
+  }
 
   return (
     // Set content width - xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'full'
@@ -139,7 +170,7 @@ const EventItem = ({ currentLang, itemData }) => {
             {eventType === 'Event' && (
               <span className="dateLocation">
                 {today < start_date && (
-                  <span className="passed">
+                  <span>
                     {date && (
                       <p>
                         <i className="material-icons-round" aria-hidden="true">
@@ -153,31 +184,56 @@ const EventItem = ({ currentLang, itemData }) => {
                         <i className="material-icons-round" aria-hidden="true">
                           schedule
                         </i>
-                        {time}
+                        {i18n[currentLang].starts}: {time}
+                      </p>
+                    )}
+
+                    {end_date > start_date && (
+                      <p>
+                        <i className="material-icons-round" aria-hidden="true">
+                          access_time_filled
+                        </i>
+                        {i18n[currentLang].ends}: {endTime}
+                      </p>
+                    )}
+                    {duration && (
+                      <p>
+                        <i className="material-icons-round" aria-hidden="true">
+                          timelapse
+                        </i>
+                        {i18n[currentLang].duration}: {duration}
+                      </p>
+                    )}
+
+                    {location && (
+                      <p>
+                        <i className="material-icons-round" aria-hidden="true">
+                          place
+                        </i>
+                        {location}
                       </p>
                     )}
                   </span>
                 )}
-
                 {today > start_date && (
-                  <p>
-                    <i className="material-icons-round" aria-hidden="true">
-                      event_busy
-                    </i>
-                    <span className="srike">{date}</span>Previous event
-                  </p>
-                )}
-
-                {location && (
-                  <p>
-                    <i className="material-icons-round" aria-hidden="true">
-                      place
-                    </i>
-                    {location}
-                  </p>
+                  <span className="passed">
+                    <p>
+                      <i className="material-icons-round" aria-hidden="true">
+                        event_busy
+                      </i>
+                      <span className="prev">{date}</span> {i18n[currentLang].previousEvent}
+                    </p>
+                    <p>
+                      <i className="material-icons-round" aria-hidden="true">
+                        place
+                      </i>
+                      {location}
+                    </p>
+                  </span>
                 )}
               </span>
             )}
+
             {eventType === 'News item' && date && (
               <span className="dateLocation">
                 <p>{date}</p>

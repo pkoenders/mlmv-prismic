@@ -110,7 +110,7 @@ export const defaultTheme = {
     },
 
     primary: {
-      default: '#51primicpb5e0',
+      default: '#51b5e0',
       100: '#EDF7FB',
       200: '#DCF0F8',
       300: '#CAE8F5',
@@ -141,6 +141,7 @@ export const defaultTheme = {
       1300: '#9c5638',
     },
 
+    // Usually a invert of the header bground colors
     tertiary: {
       default: '#CEE007',
       100: '#FAFBE6',

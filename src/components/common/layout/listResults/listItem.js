@@ -58,12 +58,19 @@ const ListItem = styled.li`
         margin-left:auto;
         background-color: ${({ theme }) => theme.colors.card[200]};
         border-left: 1px solid ${({ theme }) => theme.colors.card[300]};
+        span{
+          display: flex;
+          flex-direction: column;
+          grid-gap: inherit;
+        }
+
         .passed {
           display: flex;
+         
           flex-direction: inherit;
           grid-gap: inherit;
           p{
-           
+             align-items: center;
             flex-wrap: wrap-reverse;
           }
         }

@@ -34,12 +34,16 @@ const ListItem = styled.li`
 
     .content {  
         width:100%;
+        display:flex;
+        grid-gap: ${({ theme }) => theme.margin['1/4']};
+        p{
+          margin-bottom:0;
+        }
         p:first-of-type {
         width:100%;
         font-size: 103%;
         font-weight: 600;
         align-content: space-between;
-        margin-bottom: ${({ theme }) => theme.margin['1/4']};
         i {
           color: inherit;
           margin-left: auto;
@@ -51,7 +55,8 @@ const ListItem = styled.li`
         min-width:33.3%;
         max-width:33.3%;
         height:100%;
-        grid-gap: ${({ theme }) => theme.margin['1/2']};
+        grid-column-gap: ${({ theme }) => theme.margin['1/2']};
+        grid-row-gap: ${({ theme }) => theme.margin['1/4']};
         @media (max-width: ${({ theme }) => theme.screens.sm}) {
             min-width:100%;
         }

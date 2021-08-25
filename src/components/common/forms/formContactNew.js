@@ -64,6 +64,9 @@ const ContactNew = ({ currentLang, location, formData }) => {
     // Get all field data from the form
     let formData = new FormData(e.target)
 
+    // Convert to a query string
+    let queryString = new URLSearchParams(formData).toString()
+
     function serialize(data) {
       let obj = {}
       for (let [key, value] of data) {
@@ -90,6 +93,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
       body: encode({
         'form-name': e.target.getAttribute('form'),
         ...formObj,
+        ...queryString,
       }),
     })
       .then((res) => {

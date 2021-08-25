@@ -5,11 +5,6 @@ const RadioBtn = ({ label, input, radioId, meta }) => {
   const { dirty, invalid } = meta
   const hasValue = !!dirty && !invalid
 
-  const { name } = input
-  const { dirty, error, touched, invalid } = meta
-  const hasError = invalid && !!touched
-  const hasValue = !!dirty && !invalid
-
   return (
     <label htmlFor={radioId} className={`${hasValue ? 'touched' : ''}`}>
       <span>{label}</span>

@@ -151,6 +151,7 @@ export const query = graphql`
                     body {
                       ## Button
                       ... on PrismicFormsDataBodyButton {
+                        id
                         slice_type
                         primary {
                           button_type
@@ -162,6 +163,7 @@ export const query = graphql`
 
                       ## Text area
                       ... on PrismicFormsDataBodyTextAreaInput {
+                        id
                         slice_type
                         primary {
                           required
@@ -173,6 +175,7 @@ export const query = graphql`
 
                       ## Text input
                       ... on PrismicFormsDataBodyTextInput {
+                        id
                         slice_type
                         primary {
                           required
@@ -185,6 +188,7 @@ export const query = graphql`
 
                       ## Checkbox
                       ... on PrismicFormsDataBodyCheckbox {
+                        id
                         slice_type
                         primary {
                           title {
@@ -218,6 +222,7 @@ export const query = graphql`
 
                       ## Select list
                       ... on PrismicFormsDataBodySelectList {
+                        id
                         items {
                           item {
                             text

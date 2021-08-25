@@ -228,7 +228,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                     {/* Add select list */}
                     {formDataFields[index].slice_type === 'select_list' && (
                       <>
-                        <label>
+                        <label htmlFor={formDataFields[index].primary.title.text}>
                           {formDataFields[index].primary.title.text}
 
                           <span className="select">

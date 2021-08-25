@@ -56,13 +56,13 @@ const ContactNew = ({ currentLang, location, formData }) => {
     // const formDataAlt = Object.fromEntries(new FormData(e.target).value)
 
     const data = new FormData(e.target)
-    const formData = Object.fromEntries(data.entries())
+    // const formData = Object.fromEntries(data.entries())
 
     // Get the form
     let form = document.querySelector('form')
 
     // Get all field data from the form
-    let newData = new FormData(form)
+    let newData = new FormData(e.target)
 
     function serialize(data) {
       let obj = {}
@@ -88,6 +88,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
+        formObj,
         ...formObj,
 
         // ...formDataAlt,

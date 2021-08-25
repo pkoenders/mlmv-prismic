@@ -138,6 +138,7 @@ const Quotes = ({ slice }) => {
   const sectionWidth = getContentWidth(slice.primary.width)
   // Set default contrast color class
   const setContrast = 'light'
+
   // Set the bgColor class
   var bgColor = getBgColor(slice.primary.background_color)
   const bGroundTint = getColorTint(slice.primary.background_tint)

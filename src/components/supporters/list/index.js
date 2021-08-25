@@ -20,17 +20,6 @@ import SearchInput from '/src/components/common/filter/searchInput'
 import SearchTitle from '/src/components/common/filter/searchTitle'
 import NoResults from '/src/components/common/filter/noResults'
 
-import styled from 'styled-components'
-
-const List = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  grid-gap: ${({ theme }) => theme.margin.default};
-`
-
 const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
   // A little loDash for sorting assistance
   var _ = require('lodash')
@@ -40,7 +29,6 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
   var [allPosts, setAllPosts] = useState(dataList.items)
   var [queryValue, setQueryValue] = useState('')
   var [queryLength, setQueryLength] = useState(0)
-  var [filterNode, setFilterNode] = useState('') // Path for sort filter
   const [ascDesc, setAscDescSort] = useState(true) // false for Acs. true for Desc
 
   // Toggle sort order - Asc / Desc
@@ -79,7 +67,7 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
       sortLabel.innerText = e.target.innerText
 
       // Add the node to be sorted to the node path
-      setFilterNode((filterNode = e.target.getAttribute('data-nodepath')))
+      const filterNode = e.target.getAttribute('data-nodepath')
 
       // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value?page=1&tab=votes#tab-top
       // Sort the node with lodash
@@ -106,7 +94,8 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
       }
       // console.log(ascDesc)
     },
-    [allPosts, ascDesc, filterNode]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [allPosts, ascDesc]
   )
 
   // Close the sort list from window click

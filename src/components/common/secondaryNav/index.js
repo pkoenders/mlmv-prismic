@@ -90,12 +90,13 @@ const SecondaryNav = ({ currentLang, next, nextTitle, previous, previousTitle })
     <SecondaryNavWrapper className="secondaryNav">
       <nav aria-label="Navigate to previous page or next page" role="navigation">
         {/* <Link aria-label="Back" to="../"> */}
-        <a href="#" onClick={() => window.history.back()} aria-label="Back">
+
+        <button onClick={() => window.history.back()} aria-label="Back">
           <i className={'material-icons-round'} aria-hidden="true">
             arrow_back
           </i>
           {i18n[currentLang].back}
-        </a>
+        </button>
 
         <span className="alignRight">
           {previous && previous.lang === currentLang && (

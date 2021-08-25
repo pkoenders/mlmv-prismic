@@ -43,7 +43,7 @@ const SupportersHeader = styled.div`
       grid-gap: ${({ theme }) => theme.padding.default};
       padding: 0;
       margin: 0;
-      color: ${({ theme }) => theme.colors.page[700]};
+      color: ${({ theme }) => theme.colors.page[600]};
 
       span,
       span.passed {
@@ -97,23 +97,14 @@ const SupportersBody = styled.div`
   }
   & .contact {
     width: 33%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: ${({ theme }) => theme.margin.default};
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       width: 100%;
     }
-    p {
-      margin: 0;
-      padding-bottom: ${({ theme }) => theme.padding.default};
-      span {
-        display: inline-flex;
-        align-items: center;
-        grid-gap: ${({ theme }) => theme.margin['1/4']};
-        margin-right: ${({ theme }) => theme.margin['1/2']};
-      }
-    }
 
     & .title {
-      padding: 0 0 0 ${({ theme }) => theme.padding['1/2']};
-      margin-bottom: 0;
       line-height: inherit;
     }
   }

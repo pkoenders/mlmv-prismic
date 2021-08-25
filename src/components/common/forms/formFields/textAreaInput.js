@@ -1,14 +1,19 @@
 import React from 'react'
 
-const TextAreaInput = ({ label, input, type, meta }) => {
+const TextAreaInput = ({ label, input, type, meta, required }) => {
   const { name } = input
-  const { dirty, invalid } = meta
+  const { dirty, error, touched, invalid } = meta
+  const hasError = invalid && !!touched
   const hasValue = !!dirty && !invalid
-  // const hasValue = !!dirty && !!touched
 
   return (
-    <label htmlFor={name} className={hasValue ? 'touched' : undefined}>
+    <label
+      htmlFor={name}
+      className={hasError ? 'error' : undefined || hasValue ? 'touched' : undefined}
+    >
       {label}
+      {required && !hasValue && <span className="required">Required</span>}
+      {hasError && <span className="error">{error}</span>}
       <span className={'textArea'}>
         <textarea id={name} type={type} rows="5" placeholder={'Enter your ' + label} {...input} />
         {hasValue && (

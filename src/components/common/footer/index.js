@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import Brand from '../brand/'
 import ScrollToTop from './scrollToTop/'
 import i18n from '../../../../config/i18n'
-// import linkResolver from '../../../utils/linkResolver'
 
 import styled from 'styled-components'
 
@@ -51,17 +50,17 @@ const FooterWrapper = styled.footer`
   }
 `
 const Footer = ({ currentLang, currentPrefix }) => {
-  const data = useStaticQuery(graphql`
-    query FooterQuery {
-      site {
-        siteMetadata {
-          title
-          author
-          year
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query FooterQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //         author
+  //         year
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <FooterWrapper>

@@ -18,7 +18,7 @@ module.exports = {
   flags: {
     // PRESERVE_FILE_DOWNLOAD_CACHE: true,
     // FAST_DEV: true,
-    // DEV_SSR: true,
+    DEV_SSR: false,
   },
 
   plugins: [

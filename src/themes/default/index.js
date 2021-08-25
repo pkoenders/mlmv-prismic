@@ -27,6 +27,7 @@ export const defaultTheme = {
 
   colors: {
     alert: {
+      tomato: '#FF6347',
       l1: {
         default: '#5FAF77',
         1100: '#559d6b',

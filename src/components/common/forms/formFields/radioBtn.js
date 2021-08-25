@@ -11,11 +11,6 @@ const RadioBtn = ({ label, input, fieldName, meta }) => {
     <label htmlFor={name} className={`${hasValue ? 'touched' : ''}`}>
       <span>{label}</span>
       <input type="radio" id={name} name={fieldName} value={name} {...input} />
-      {/* {hasValue && (
-          <i className={'material-icons-round'} aria-hidden="true">
-            check_circle
-          </i>
-        )} */}
     </label>
   )
 }

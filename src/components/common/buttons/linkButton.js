@@ -18,7 +18,7 @@ const BtnWrapper = styled.span`
     display: flex;
     align-self: center;
     align-items: center;
-
+    grid-gap: ${({ theme }) => theme.padding['1/4']};
     cursor: pointer;
     user-select: none;
     width: fit-content;
@@ -41,9 +41,9 @@ const BtnWrapper = styled.span`
     /* transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1); */
     transition: ${({ theme }) => theme.transition.linear.quick};
 
-    i {
-      margin-left: ${({ theme }) => theme.padding['1/4']} !important;
-    }
+    /* i {
+      /* margin-left: ${({ theme }) => theme.padding['1/4']} !important; */
+    } */
   }
   .btn:hover {
     box-shadow: ${({ theme }) => theme.boxShadow.lg};
@@ -198,13 +198,16 @@ const BtnWrapper = styled.span`
     }
   }
 `
-const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick }) => {
+const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick, icon }) => {
   // console.log(buttonLink)
 
   return (
     <BtnWrapper>
       {buttonType.link_type === 'Document' && (
         <Link to={linkResolver(buttonType)} className={'btn ' + buttonStyle}>
+          <i className="material-icons-round" aria-hidden="true">
+            {icon}
+          </i>
           {buttonLabel}
           {buttonStyle === 'link' && (
             <i className="material-icons-round" aria-hidden="true">
@@ -221,6 +224,9 @@ const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick 
           target={buttonType.target === '_blank' && '_blank'}
           className={'btn ' + buttonStyle}
         >
+          <i className="material-icons-round" aria-hidden="true">
+            {icon}
+          </i>
           {buttonLabel}
           {buttonStyle === 'link' && (
             <i className="material-icons-round" aria-hidden="true">
@@ -232,6 +238,9 @@ const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick 
 
       {buttonType.link_type === 'Media' && (
         <a href={buttonType.url} className={'btn ' + buttonStyle}>
+          <i className="material-icons-round" aria-hidden="true">
+            {icon}
+          </i>
           {buttonLabel}
           {buttonStyle === 'link' && (
             <i className="material-icons-round" aria-hidden="true">
@@ -243,6 +252,9 @@ const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick 
 
       {buttonType === 'Static' && (
         <a href={staticLink} className={'btn ' + buttonStyle}>
+          <i className="material-icons-round" aria-hidden="true">
+            {icon}
+          </i>
           {buttonLabel}
           {buttonStyle === 'link' && (
             <i className="material-icons-round" aria-hidden="true">
@@ -252,8 +264,20 @@ const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick 
         </a>
       )}
 
+      {buttonType === 'submit' && (
+        <button onClick={onClick} type={buttonType} className={'btn ' + buttonStyle}>
+          <i className="material-icons-round" aria-hidden="true">
+            {icon}
+          </i>
+          {buttonLabel}
+        </button>
+      )}
+
       {buttonType === 'button' && (
         <button onClick={onClick} type={buttonType} className={'btn ' + buttonStyle}>
+          <i className="material-icons-round" aria-hidden="true">
+            {icon}
+          </i>
           {buttonLabel}
           {buttonStyle === 'link' && (
             <i className="material-icons-round" aria-hidden="true">

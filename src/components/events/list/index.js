@@ -40,8 +40,15 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
   var [allPosts, setAllPosts] = useState(dataList.items)
   var [queryValue, setQueryValue] = useState('')
   var [queryLength, setQueryLength] = useState(0)
-  var [filterNode, setFilterNode] = useState('') // Path for sort filter
   const [ascDesc, setAscDescSort] = useState(true) // false for Acs. true for Desc
+
+  // Input filter:
+  const emptyQuery = ''
+
+  const [state, setState] = useState({
+    filteredData: [''],
+    query: emptyQuery,
+  })
 
   // Toggle sort order - Asc / Desc
   const sortAscDescClick = useCallback(
@@ -79,7 +86,7 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
       sortLabel.innerText = e.target.innerText
 
       // Add the node to be sorted to the node path
-      setFilterNode((filterNode = e.target.getAttribute('data-nodepath')))
+      const filterNode = e.target.getAttribute('data-nodepath')
 
       // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value?page=1&tab=votes#tab-top
       // Sort the node with lodash
@@ -90,7 +97,7 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
       // Has the user entered search txt?
       if (queryLength > 0) {
         // If there is search txt, we get the 'filteredData' array
-        sortPosts = _.cloneDeep([...filteredData]) // Use deep to ensure state updates?
+        sortPosts = _.cloneDeep(filteredData) // Use deep to ensure state updates?
         sortPosts = _.sortBy(filteredData, filterNode)
         ascDesc === false && sortPosts.reverse()
         // Update the states of 'allposts' and 'filteredData'
@@ -106,9 +113,9 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
       }
       // console.log(ascDesc)
     },
-    [allPosts, ascDesc, filterNode]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [allPosts, ascDesc]
   )
-
   // Close the sort list from window click
   if (typeof window !== 'undefined') {
     window.addEventListener('click', function () {
@@ -179,14 +186,6 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
     setQueryValue(0)
     setQueryLength(0)
   }
-
-  // Input filter:
-  const emptyQuery = ''
-
-  const [state, setState] = useState({
-    filteredData: [''],
-    query: emptyQuery,
-  })
 
   const handleSearchChange = (event) => {
     //console.log(event.target.value)

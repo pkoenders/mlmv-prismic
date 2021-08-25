@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
+
+// Helpers
 import { isRequired, isValidEmail } from './validators'
 import { Form, Field } from 'react-final-form'
+import { linkResolver } from '/src/utils/linkResolver'
+import { RichText } from 'prismic-reactjs'
+import { getColor, validateString } from '/src/utils/helpers'
+
+// Form elements
+import FormWrapper from './formWrapper'
 import TextInput from './formFields/textInput'
 import CheckBox from './formFields/checkBox'
 import RadioBtn from './formFields/radioBtn'
 import SelectList from './formFields/selectList'
 import TextAreaInput from './formFields/textAreaInput'
-import BtnSubmit from './formFields/buttonSubmit'
 import SubmitSuccess from './formFields/submitSuccess'
 import SubmittError from './formFields/submitError'
-import { linkResolver } from '/src/utils/linkResolver'
-import { RichText } from 'prismic-reactjs'
-import { getColor, validateString } from '/src/utils/helpers'
 
-import './index.scss'
+// Layout
+import Button from '/src/components/common/buttons/linkButton'
 
 const encode = (data) => {
   return Object.keys(data)
@@ -61,6 +66,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         ...formData,
+
         // ...formDataAlt,
 
         //'form-name': e.target.getAttribute('name'),
@@ -107,142 +113,104 @@ const ContactNew = ({ currentLang, location, formData }) => {
         {formTitle && <p className="titleText">{formTitle}</p>}
         {formDecription && <RichText render={formDecription} linkResolver={linkResolver} />}
       </div>
-      <Form onSubmit={onSubmit}>
-        {({ values, invalid }) => (
-          <form
-            className="form"
-            name="ContactForm"
-            // noValidate
-            method="post"
-            data-netlify="true"
-            onSubmit={handleSubmit}
-          >
-            <input type="hidden" name="form-name" value="ContactForm" />
-            <input type="hidden" name="location" value={pathName} />
+      <FormWrapper>
+        <Form onSubmit={onSubmit}>
+          {({ values, invalid }) => (
+            <form
+              className="form"
+              name="ContactForm"
+              // noValidate
+              method="post"
+              data-netlify="true"
+              onSubmit={handleSubmit}
+            >
+              <input type="hidden" name="form-name" value="ContactForm" />
+              <input type="hidden" name="location" value={pathName} />
 
-            {/* Add text input */}
-            {formDataFields.map((primary, index) => {
-              return (
-                <>
-                  {formDataFields[index].slice_type === 'text_input' && (
-                    <Field
-                      key={`form-field-${index}`}
-                      name={formDataFields[index].primary.field_name.text
-                        .replace(/\s/g, '')
-                        .toLowerCase()}
-                      label={formDataFields[index].primary.field_name.text}
-                      type={formDataFields[index].primary.field_type.toLowerCase()}
-                      component={TextInput}
-                      validate={
-                        formDataFields[index].primary.required === true
-                          ? formDataFields[index].primary.field_type.toLowerCase() === 'email'
-                            ? isValidEmail
-                            : isRequired
-                          : ''
-                      }
-                    />
-                  )}
+              {/* Add text input */}
+              {formDataFields.map((primary, index) => {
+                return (
+                  <>
+                    {formDataFields[index].slice_type === 'text_input' && (
+                      <Field
+                        key={`form-field-${index}`}
+                        name={formDataFields[index].primary.field_name.text
+                          .replace(/\s/g, '')
+                          .toLowerCase()}
+                        label={formDataFields[index].primary.field_name.text}
+                        type={formDataFields[index].primary.field_type.toLowerCase()}
+                        component={TextInput}
+                        validate={
+                          formDataFields[index].primary.required === true
+                            ? formDataFields[index].primary.field_type.toLowerCase() === 'email'
+                              ? isValidEmail
+                              : isRequired
+                            : ''
+                        }
+                      />
+                    )}
 
-                  {/* Add check box */}
-                  {formDataFields[index].slice_type === 'checkbox' && (
-                    <span
-                      className={
-                        'checkBoxes ' + `${formDataFields[index].primary.align}`.toLowerCase()
-                      }
-                    >
-                      <p>{formDataFields[index].primary.title.text}</p>
-                      {formDataFields[index].items.map((checkBoxItem, indexOf) => {
-                        return (
-                          <Field
-                            key={`form-field-${indexOf}`}
-                            name={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
-                            label={checkBoxItem.item.text}
-                            // checkStatus={checkBoxItem.checked}
-                            component={CheckBox}
-                            validate={
-                              formDataFields[index].primary.required === true ? isRequired : ''
-                            }
-                          />
-                        )
-                      })}
-                    </span>
-                  )}
+                    {/* Add check box */}
+                    {formDataFields[index].slice_type === 'checkbox' && (
+                      <span
+                        className={
+                          'checkBoxes ' + `${formDataFields[index].primary.align}`.toLowerCase()
+                        }
+                      >
+                        {/* <p>{formDataFields[index].primary.title.text}</p> */}
+                        {formDataFields[index].items.map((checkBoxItem, indexOf) => {
+                          return (
+                            <Field
+                              key={`form-field-${indexOf}`}
+                              name={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
+                              label={checkBoxItem.item.text}
+                              // checkStatus={checkBoxItem.checked}
+                              component={CheckBox}
+                              validate={
+                                formDataFields[index].primary.required === true ? isRequired : ''
+                              }
+                            />
+                          )
+                        })}
+                      </span>
+                    )}
 
-                  {/* Add radio button */}
-                  {formDataFields[index].slice_type === 'radio_button' && (
-                    <span
-                      className={
-                        'radioBtns ' + `${formDataFields[index].primary.align}`.toLowerCase()
-                      }
-                    >
-                      <p>{formDataFields[index].primary.title.text}</p>
-                      {formDataFields[index].items.map((checkBoxItem, indexOf) => {
-                        return (
-                          <Field
-                            key={`form-field-${indexOf}`}
-                            fieldName={formDataFields[index].primary.title.text
-                              .replace(/\s/g, '')
-                              .toLowerCase()}
-                            name={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
-                            label={checkBoxItem.item.text}
-                            // defaultChecked={checkBoxItem.default_checked}
-                            component={RadioBtn}
-                            validate={
-                              formDataFields[index].primary.required === true ? isRequired : ''
-                            }
-                          />
-                        )
-                      })}
-                    </span>
-                  )}
+                    {/* Add radio button */}
+                    {formDataFields[index].slice_type === 'radio_button' && (
+                      <span
+                        className={
+                          'radioBtns ' + `${formDataFields[index].primary.align}`.toLowerCase()
+                        }
+                      >
+                        <p>{formDataFields[index].primary.title.text}</p>
+                        {formDataFields[index].items.map((checkBoxItem, indexOf) => {
+                          return (
+                            <Field
+                              key={`form-field-${indexOf}`}
+                              fieldName={formDataFields[index].primary.title.text
+                                .replace(/\s/g, '')
+                                .toLowerCase()}
+                              name={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
+                              label={checkBoxItem.item.text}
+                              // defaultChecked={checkBoxItem.default_checked}
+                              component={RadioBtn}
+                              validate={
+                                formDataFields[index].primary.required === true ? isRequired : ''
+                              }
+                            />
+                          )
+                        })}
+                      </span>
+                    )}
 
-                  {/* Add select list */}
-                  {formDataFields[index].slice_type === 'select_list' && (
-                    <>
-                      <label>
-                        {formDataFields[index].primary.title.text}
-
-                        <span className="select">
-                          <i class="material-icons-round" aria-hidden="true">
-                            expand_more
-                          </i>
-                          <select
-                            // type="select"
-                            id={formDataFields[index].primary.title.text}
-                            name={formDataFields[index].primary.title.text}
-                          >
-                            {formDataFields[index].items.map((listItem, indexOf) => {
-                              return (
-                                <Field
-                                  key={`form-field-${indexOf}`}
-                                  fieldName={formDataFields[index].primary.title.text
-                                    .replace(/\s/g, '')
-                                    .toLowerCase()}
-                                  name={listItem.item.text.replace(/\s/g, '').toLowerCase()}
-                                  label={listItem.item.text}
-                                  // defaultChecked={checkBoxItem.default_checked}
-                                  component={SelectList}
-                                  validate={
-                                    formDataFields[index].primary.required === true
-                                      ? isRequired
-                                      : ''
-                                  }
-                                />
-                              )
-                            })}
-                          </select>
-                        </span>
-                      </label>
-                    </>
-                  )}
-
-                  {/* {formDataFields[index].slice_type === 'select_list' && (
+                    {/* Add select list */}
+                    {formDataFields[index].slice_type === 'select_list' && (
                       <>
                         <label>
                           {formDataFields[index].primary.title.text}
 
                           <span className="select">
-                            <i class="material-icons-round" aria-hidden="true">
+                            <i className="material-icons-round" aria-hidden="true">
                               expand_more
                             </i>
                             <select
@@ -273,51 +241,48 @@ const ContactNew = ({ currentLang, location, formData }) => {
                           </span>
                         </label>
                       </>
-                    )} */}
+                    )}
 
-                  {/* Add text area input */}
-                  {formDataFields[index].slice_type === 'text_area_input' && (
-                    <Field
-                      key={`form-field-${index}`}
-                      name={formDataFields[index].primary.field_name.text
-                        .replace(/\s/g, '')
-                        .toLowerCase()}
-                      label={formDataFields[index].primary.field_name.text}
-                      component={TextAreaInput}
-                      validate={formDataFields[index].primary.required === true ? isRequired : ''}
-                    />
-                  )}
-
-                  {/* Add submit button */}
-                  {formDataFields[index].slice_type === 'button' && (
-                    <div key={`form-btn-${index}`} className={'submitForm'}>
-                      {invalid && (
-                        <p>
-                          <i className="material-icons-round" aria-hidden="true">
-                            warning_amber
-                          </i>
-                          Please ensure that the required form fields are completed
-                        </p>
-                      )}
-                      <BtnSubmit
-                        name="submit"
-                        label={formDataFields[index].primary.button_name.text}
-                        style={formDataFields[index].primary.button_type}
-                        invalid={invalid}
+                    {/* Add text area input */}
+                    {formDataFields[index].slice_type === 'text_area_input' && (
+                      <Field
+                        key={`form-field-${index}`}
+                        name={formDataFields[index].primary.field_name.text
+                          .replace(/\s/g, '')
+                          .toLowerCase()}
+                        label={formDataFields[index].primary.field_name.text}
+                        component={TextAreaInput}
+                        validate={formDataFields[index].primary.required === true ? isRequired : ''}
                       />
-                    </div>
-                  )}
-                </>
-              )
-            })}
+                    )}
 
-            {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
-          </form>
-        )}
-      </Form>
+                    {/* Add submit button */}
+                    {formDataFields[index].slice_type === 'button' && (
+                      <div key={`form-btn-${index}`} className={'submitForm'}>
+                        {invalid && (
+                          <p>Please ensure that the required form fields are completed</p>
+                        )}
 
-      {errorMessage && <SubmittError resetForm={resetForm} />}
-      {successMessage && <SubmitSuccess resetForm={resetForm} />}
+                        <Button
+                          buttonLabel={'Submit'}
+                          buttonType={'submit'}
+                          buttonStyle={'primary'}
+                          icon={'send'}
+                        />
+                      </div>
+                    )}
+                  </>
+                )
+              })}
+
+              {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+            </form>
+          )}
+        </Form>
+
+        {errorMessage && <SubmittError resetForm={resetForm} />}
+        {successMessage && <SubmitSuccess resetForm={resetForm} />}
+      </FormWrapper>
     </div>
   )
 }

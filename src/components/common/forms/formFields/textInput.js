@@ -1,11 +1,14 @@
 import React from 'react'
 
-const TextInput = ({ label, input, type, required, meta }) => {
+const TextInput = ({ label, input, type, meta }) => {
   const { name } = input
   // const { delay, active, pristine, dirty, error, touched, children, invalid } = meta
   const { dirty, error, touched, invalid } = meta
   const hasError = invalid && !!touched
   const hasValue = !!dirty && !invalid
+  const required = invalid
+
+  // console.log(validate)
 
   return (
     <label
@@ -13,7 +16,8 @@ const TextInput = ({ label, input, type, required, meta }) => {
       className={hasError ? 'error' : undefined || hasValue ? 'touched' : undefined}
     >
       {label}
-      {hasError && <span>{error}</span>}
+      {required && !hasValue && <span className="required">Required</span>}
+      {hasError && <span className="error">{error}</span>}
       <span>
         <input
           type={type}

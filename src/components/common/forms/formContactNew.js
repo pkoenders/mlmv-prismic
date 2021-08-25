@@ -59,7 +59,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
     const formData = Object.fromEntries(data.entries())
     // formData.topics = data.getAll('topics')
 
-    // console.log(formData)
+    console.log(formData)
 
     fetch(`${currentLang}/${pathName}`, {
       method: 'POST',
@@ -187,6 +187,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                           return (
                             <Field
                               key={`form-field-${indexOf}`}
+                              radioId={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
                               fieldName={formDataFields[index].primary.title.text
                                 .replace(/\s/g, '')
                                 .toLowerCase()}

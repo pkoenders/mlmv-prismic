@@ -11,6 +11,11 @@ const Input = styled.div`
   margin: 0;
   width: 100%;
 
+  [type='search']::-webkit-search-cancel-button,
+  [type='search']::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
   label {
     width: 100%;
     display: flex;
@@ -18,6 +23,8 @@ const Input = styled.div`
     position: relative;
 
     input {
+      font-size: inherit;
+      width: 100%;
       padding: ${({ theme }) => theme.padding['1/4']} 0 ${({ theme }) => theme.padding['1/4']}
         ${({ theme }) => theme.padding['2xl']};
       border: 1px solid ${({ theme }) => theme.colors.card[300]};

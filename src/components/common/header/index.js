@@ -511,25 +511,6 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     const clickBrand = document.querySelector('.brand')
 
     var prevScrollpos = window.pageYOffset
-    // var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-
-    //
-    // Set menu mode (Mobile or Desktop)
-    // viewportWidth >= 768 ? setDesktopNav() : setMobileNav()
-    // 'load, resize, orientationchange'.split(', ').forEach(function (e) {
-    //   window.addEventListener(e, () => {
-    //     viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-    //     viewportWidth >= 768 ? setDesktopNav() : setMobileNav()
-    //   })
-    // })
-
-    // function setDesktopNav() {
-    //   headerNav.classList.add('desktop')
-    //   closeHamburgerNav(headerNav)
-    // }
-    // function setMobileNav() {
-    //   headerNav.classList.remove('desktop')
-    // }
 
     //
     // Toggle mobile menu

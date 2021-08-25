@@ -91,8 +91,9 @@ const ContactNew = ({ currentLang, location, formData }) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
+        'form-name': e.target.getAttribute('name'),
+        // ...name,
         ...formObj,
-        ...queryString,
       }),
     })
       .then((res) => {
@@ -131,7 +132,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
         {formDecription && <RichText render={formDecription} linkResolver={linkResolver} />}
       </div>
       <FormWrapper>
-        <Form onSubmit={onSubmit}>
+        <Form data-netlify="true" method="post" name="ContactForm" onSubmit={onSubmit}>
           {({ values, invalid }) => (
             <form
               className="form"
@@ -144,10 +145,10 @@ const ContactNew = ({ currentLang, location, formData }) => {
               <input type="hidden" name="form-name" value="ContactForm" />
               <input type="hidden" name="location" value={pathName} />
 
-              {/* Add text input */}
               {formDataFields.map((primary, index) => {
                 return (
                   <>
+                    {/* Add text input */}
                     {formDataFields[index].slice_type === 'text_input' && (
                       <Field
                         key={

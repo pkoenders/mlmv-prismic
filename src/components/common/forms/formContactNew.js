@@ -82,11 +82,11 @@ const ContactNew = ({ currentLang, location, formData }) => {
     // Convert to an object
     let formObj = serialize(formData)
 
-    // console.log(formObj)
+    console.log(formObj)
 
     fetch(`${currentLang}/${pathName}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: { 'Content-Type': 'multipart/form-data' },
       body: encode({
         'form-name': e.target.getAttribute('form'),
         ...formObj,
@@ -94,7 +94,6 @@ const ContactNew = ({ currentLang, location, formData }) => {
     })
       .then((res) => {
         if (res) {
-          // console.log('Success!')
           setSuccessMsg(true)
           document.querySelector('.form').classList.add('hide')
         }

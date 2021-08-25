@@ -57,15 +57,38 @@ const ContactNew = ({ currentLang, location, formData }) => {
 
     const data = new FormData(e.target)
     const formData = Object.fromEntries(data.entries())
-    // formData.topics = data.getAll('topics')
 
-    console.log(formData)
+    // Get the form
+    let form = document.querySelector('form')
+
+    // Get all field data from the form
+    let newData = new FormData(form)
+
+    function serialize(data) {
+      let obj = {}
+      for (let [key, value] of data) {
+        if (obj[key] !== undefined) {
+          if (!Array.isArray(obj[key])) {
+            obj[key] = [obj[key]]
+          }
+          obj[key].push(value)
+        } else {
+          obj[key] = value
+        }
+      }
+      return obj
+    }
+
+    // Convert to an object
+    let formObj = serialize(newData)
+
+    console.log(formObj)
 
     fetch(`${currentLang}/${pathName}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        ...formData,
+        ...formObj,
 
         // ...formDataAlt,
 

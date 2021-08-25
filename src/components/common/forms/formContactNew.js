@@ -82,7 +82,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
     // Convert to an object
     let formObj = serialize(formData)
 
-    console.log(formObj)
+    // console.log(formObj)
 
     fetch(`${currentLang}/${pathName}`, {
       method: 'POST',

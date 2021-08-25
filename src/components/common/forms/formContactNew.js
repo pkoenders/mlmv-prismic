@@ -157,7 +157,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                           'checkBoxes ' + `${formDataFields[index].primary.align}`.toLowerCase()
                         }
                       >
-                        {/* <p>{formDataFields[index].primary.title.text}</p> */}
+                        <p>{formDataFields[index].primary.title.text}</p>
                         {formDataFields[index].items.map((checkBoxItem, indexOf) => {
                           return (
                             <Field
@@ -190,7 +190,9 @@ const ContactNew = ({ currentLang, location, formData }) => {
                               fieldName={formDataFields[index].primary.title.text
                                 .replace(/\s/g, '')
                                 .toLowerCase()}
-                              name={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
+                              name={formDataFields[index].primary.title.text
+                                .replace(/\s/g, '')
+                                .toLowerCase()}
                               label={checkBoxItem.item.text}
                               // defaultChecked={checkBoxItem.default_checked}
                               component={RadioBtn}

@@ -142,7 +142,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
               onSubmit={handleSubmit}
             >
               <input type="hidden" name="form-name" value="ContactForm" />
-              <input type="hidden" name="location" value={pathName} />
+              <input type="hidden" name="location" value={currentLang + pathName} />
 
               {formDataFields.map((primary, index) => {
                 return (
@@ -169,7 +169,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
 
                     {/* Add check box */}
                     {formDataFields[index].slice_type === 'checkbox' && (
-                      <span
+                      <div
                         key={formDataFields[index].id}
                         className={
                           'checkBoxes ' + `${formDataFields[index].primary.align}`.toLowerCase()
@@ -190,12 +190,12 @@ const ContactNew = ({ currentLang, location, formData }) => {
                             />
                           )
                         })}
-                      </span>
+                      </div>
                     )}
 
                     {/* Add radio button */}
                     {formDataFields[index].slice_type === 'radio_button' && (
-                      <span
+                      <div
                         key={formDataFields[index].id}
                         className={
                           'radioBtns ' + `${formDataFields[index].primary.align}`.toLowerCase()
@@ -222,11 +222,11 @@ const ContactNew = ({ currentLang, location, formData }) => {
                             />
                           )
                         })}
-                      </span>
+                      </div>
                     )}
 
                     {/* Add select list */}
-                    {/* {formDataFields[index].slice_type === 'select_list' && (
+                    {formDataFields[index].slice_type === 'select_list' && (
                       <label
                         key={formDataFields[index].id}
                         htmlFor={formDataFields[index].primary.title.text}
@@ -263,7 +263,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                           </select>
                         </span>
                       </label>
-                    )} */}
+                    )}
 
                     {/* Add text area input */}
                     {formDataFields[index].slice_type === 'text_area_input' && (

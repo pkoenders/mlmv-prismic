@@ -85,7 +85,7 @@ const FormWraper = styled.div`
     width: fit-content !important;
     display: flex;
     align-items: center;
-    margin-right: 100%;
+    /* margin-right: 100%; */
     i {
       font-size: 26px;
       pointer-events: none;
@@ -167,7 +167,7 @@ const FormWraper = styled.div`
     }
 
     fieldset {
-      flex-direction: column;
+      flex-direction: row;
     }
 
     .checkBoxes,

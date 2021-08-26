@@ -172,7 +172,9 @@ const ContactNew = ({ formData }) => {
                           'checkBoxes ' + `${formDataFields[index].primary.align}`.toLowerCase()
                         }
                       >
-                        <legend>{formDataFields[index].primary.title.text}</legend>
+                        <legend name={formDataFields[index].primary.title.text}>
+                          {formDataFields[index].primary.title.text}
+                        </legend>
                         {formDataFields[index].items.map((chekbox) => {
                           return (
                             <Field
@@ -218,11 +220,13 @@ const ContactNew = ({ formData }) => {
 
                     {/* Add select list */}
                     {formDataFields[index].slice_type === 'select_list' && (
-                      <label
-                        key={formDataFields[index].id}
-                        htmlFor={formDataFields[index].primary.title.text}
-                      >
-                        {formDataFields[index].primary.title.text}
+                      <fieldset>
+                        <label
+                          key={formDataFields[index].id}
+                          htmlFor={formDataFields[index].primary.title.text}
+                        >
+                          {formDataFields[index].primary.title.text}
+                        </label>
                         <span className="select">
                           <i className="material-icons-round" aria-hidden="true">
                             expand_more
@@ -247,7 +251,7 @@ const ContactNew = ({ formData }) => {
                             })}
                           </select>
                         </span>
-                      </label>
+                      </fieldset>
                     )}
 
                     {/* Add text area input */}

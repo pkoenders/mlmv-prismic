@@ -200,7 +200,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                     )}
 
                     {/* Add radio button */}
-                    {formDataFields[index].slice_type === 'radio_button' && (
+                    {/* {formDataFields[index].slice_type === 'radio_button' && (
                       <div
                         key={formDataFields[index].id}
                         className={
@@ -227,7 +227,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                           )
                         })}
                       </div>
-                    )}
+                    )} */}
 
                     {/* Add select list */}
                     {formDataFields[index].slice_type === 'select_list' && (

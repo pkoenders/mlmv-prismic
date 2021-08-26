@@ -10,12 +10,6 @@ const FormWraper = styled.div`
     }
   }
 
-  /* [type='checkbox'],
-  [type='radio'] {
-    box-sizing: border-box;
-    padding: 0;
-  } */
-
   [type='number']::-webkit-inner-spin-button,
   [type='number']::-webkit-outer-spin-button {
     height: auto;
@@ -285,7 +279,7 @@ const FormWraper = styled.div`
 
   // Checkbox / Radio custom styles
 
-  /* input[type='checkbox'],
+  input[type='checkbox'],
   input[type='radio'] {
     margin-top: -1px;
     appearance: none;
@@ -437,8 +431,7 @@ const FormWraper = styled.div`
     &:checked {
       --s: 0.5;
     }
-  } */
+  }
 }
 `
-
 export default FormWraper

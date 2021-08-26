@@ -55,8 +55,8 @@ const ContactNew = ({ formData }) => {
     // const formData = Object.fromEntries(new FormData(e.target).entries())
     // const formDataAlt = Object.fromEntries(new FormData(e.target).value)
 
-    // const data = new FormData(e.target)
-    // const formData = Object.fromEntries(data.entries())
+    const data = new FormData(e.target)
+    const formDataEntries = Object.fromEntries(data.entries())
 
     // Get the form
     // let form = document.querySelector('form')
@@ -92,7 +92,8 @@ const ContactNew = ({ formData }) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         // 'form-name': e.target.getAttribute('name'),
-        ...formObj,
+        // ...formObj,
+        ...formDataEntries,
       }),
     })
       .then((res) => {
@@ -166,8 +167,7 @@ const ContactNew = ({ formData }) => {
                         }
                       />
                     )}
-
-                    {/* Add check box */}
+                    Add check box
                     {formDataFields[index].slice_type === 'checkbox' && (
                       <div
                         key={formDataFields[index].id}
@@ -192,7 +192,6 @@ const ContactNew = ({ formData }) => {
                         })}
                       </div>
                     )}
-
                     {/* Add radio button */}
                     {formDataFields[index].slice_type === 'radio_button' && (
                       <div
@@ -219,7 +218,6 @@ const ContactNew = ({ formData }) => {
                         })}
                       </div>
                     )}
-
                     {/* Add select list */}
                     {formDataFields[index].slice_type === 'select_list' && (
                       <label
@@ -253,7 +251,6 @@ const ContactNew = ({ formData }) => {
                         </span>
                       </label>
                     )}
-
                     {/* Add text area input */}
                     {formDataFields[index].slice_type === 'text_area_input' && (
                       <Field
@@ -266,7 +263,6 @@ const ContactNew = ({ formData }) => {
                         validate={formDataFields[index].primary.required === true ? isRequired : ''}
                       />
                     )}
-
                     {/* Add submit button */}
                     {formDataFields[index].slice_type === 'button' && (
                       <div key={formDataFields[index].id} className={'submitForm'}>

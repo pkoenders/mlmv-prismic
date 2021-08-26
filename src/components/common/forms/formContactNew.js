@@ -90,10 +90,10 @@ const ContactNew = ({ currentLang, location, formData }) => {
     fetch(`/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode(
+      body: encode({
         // 'form-name': e.target.getAttribute('name'),
-        [...formObj]
-      ),
+        ...formObj,
+      }),
     })
       .then((res) => {
         if (res) {

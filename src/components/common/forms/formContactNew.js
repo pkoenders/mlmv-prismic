@@ -90,7 +90,8 @@ const ContactNew = ({ formData }) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        ...formObj
+        ...formObj,
+      }),
     })
       .then((res) => {
         if (res) {

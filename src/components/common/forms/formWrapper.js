@@ -285,11 +285,10 @@ const FormWraper = styled.div`
 
   // Checkbox / Radio custom styles
 
-  input[type='checkbox'],
+  /* input[type='checkbox'],
   input[type='radio'] {
     margin-top: -1px;
     appearance: none;
-    // Set up some color
     --active: ${({ theme }) => theme.colors.primary.default};
     --active-inner: #fff;
     --border: ${({ theme }) => theme.colors.grey[200]};
@@ -298,10 +297,6 @@ const FormWraper = styled.div`
     --disabled-inner: ${({ theme }) => theme.colors.grey[100]};
 
     display: flex;
-    /* height: ${({ theme }) => theme.padding.default};
-    width: ${({ theme }) => theme.padding.default};
-    min-width: ${({ theme }) => theme.padding.default}; */
-
     height: 28px;
     width: 28px;
     min-width: 28px;
@@ -442,7 +437,7 @@ const FormWraper = styled.div`
     &:checked {
       --s: 0.5;
     }
-  }
+  } */
 }
 `
 

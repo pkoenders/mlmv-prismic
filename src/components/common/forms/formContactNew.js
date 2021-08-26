@@ -26,7 +26,7 @@ const encode = (data) => {
     .join('&')
 }
 
-const ContactNew = ({ currentLang, location, formData }) => {
+const ContactNew = ({ formData }) => {
   // const formTitle = slice.primary.select_form.document.data.form_title.text
   // const formDecription = slice.primary.select_form.document.data.from_content.raw
   // const formDataFields = slice.primary.select_form.document.data.body
@@ -104,7 +104,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
 
       .catch((error) => setErrorMsg(true))
 
-    e.preventDefault()
+    // e.preventDefault()
   }
 
   const resetForm = () => {
@@ -126,10 +126,12 @@ const ContactNew = ({ currentLang, location, formData }) => {
         backgroundColor: bGgroundColor,
       }}
     >
-      <div className="titleArea">
-        {formTitle && <p className="titleText">{formTitle}</p>}
-        {formDecription && <RichText render={formDecription} linkResolver={linkResolver} />}
-      </div>
+      {(formTitle || formDecription) && (
+        <div className="titleArea">
+          {formTitle && <p className="titleText">{formTitle}</p>}
+          {formDecription && <RichText render={formDecription} linkResolver={linkResolver} />}
+        </div>
+      )}
       <FormWrapper>
         <Form onSubmit={onSubmit}>
           {({ values, invalid }) => (
@@ -142,7 +144,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
               onSubmit={handleSubmit}
             >
               <input type="hidden" name="form-name" value="ContactForm" />
-              <input type="hidden" name="location" value={currentLang + pathName} />
+              <input type="hidden" name="location" value={pathName} />
 
               {formDataFields.map((primary, index) => {
                 return (
@@ -151,9 +153,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                     {formDataFields[index].slice_type === 'text_input' && (
                       <Field
                         key={formDataFields[index].id}
-                        name={formDataFields[index].primary.field_name.text
-                          .replace(/\s/g, '')
-                          .toLowerCase()}
+                        name={formDataFields[index].primary.field_name.text}
                         label={formDataFields[index].primary.field_name.text}
                         type={formDataFields[index].primary.field_type.toLowerCase()}
                         component={TextInput}
@@ -179,14 +179,8 @@ const ContactNew = ({ currentLang, location, formData }) => {
                         {formDataFields[index].items.map((chekbox) => {
                           return (
                             <Field
-                              key={
-                                formDataFields[index].id +
-                                chekbox.item.text.replace(/\s/g, '').toLowerCase()
-                              }
-                              fieldId={
-                                formDataFields[index].id +
-                                chekbox.item.text.replace(/\s/g, '').toLowerCase()
-                              }
+                              key={formDataFields[index].id + chekbox.item.text}
+                              fieldId={formDataFields[index].id + chekbox.item.text}
                               name={chekbox.item.text}
                               label={chekbox.item.text}
                               component={CheckBox}
@@ -213,10 +207,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                             <Field
                               key={formDataFields[index].id + radioBtn.item.text}
                               name={formDataFields[index].primary.title.text}
-                              fieldId={
-                                formDataFields[index].id +
-                                radioBtn.item.text.replace(/\s/g, '').toLowerCase()
-                              }
+                              fieldId={formDataFields[index].id + radioBtn.item.text}
                               fieldName={radioBtn.item.text}
                               label={radioBtn.item.text}
                               component={RadioBtn}

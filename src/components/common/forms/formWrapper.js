@@ -173,7 +173,7 @@ const FormWraper = styled.div`
       align-items: flex-start;
       flex-direction: row;
       flex-wrap: wrap;
-      grid-row-gap: ${({ theme }) => theme.padding['1/4']};
+      grid-row-gap: ${({ theme }) => theme.padding['1/2']};
       grid-column-gap: ${({ theme }) => theme.padding.default};
       p {
         width: 100%;
@@ -287,7 +287,7 @@ const FormWraper = styled.div`
 
   input[type='checkbox'],
   input[type='radio'] {
-    margin-top: 1.5px;
+    margin-top: -1px;
     appearance: none;
     // Set up some color
     --active: ${({ theme }) => theme.colors.primary.default};

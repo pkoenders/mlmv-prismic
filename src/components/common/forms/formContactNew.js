@@ -91,7 +91,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'form-name': e.target.getAttribute('name'),
+        // 'form-name': e.target.getAttribute('name'),
         ...formObj,
       }),
     })
@@ -150,11 +150,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                     {/* Add text input */}
                     {formDataFields[index].slice_type === 'text_input' && (
                       <Field
-                        key={
-                          formDataFields[index].primary.field_name.text +
-                          formDataFields[index].id +
-                          index
-                        }
+                        key={formDataFields[index].id}
                         name={formDataFields[index].primary.field_name.text
                           .replace(/\s/g, '')
                           .toLowerCase()}
@@ -174,6 +170,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                     {/* Add check box */}
                     {formDataFields[index].slice_type === 'checkbox' && (
                       <span
+                        key={formDataFields[index].id}
                         className={
                           'checkBoxes ' + `${formDataFields[index].primary.align}`.toLowerCase()
                         }
@@ -182,7 +179,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                         {formDataFields[index].items.map((checkBoxItem, indexOf) => {
                           return (
                             <Field
-                              key={checkBoxItem.item.text + formDataFields[index].id + indexOf}
+                              key={'checkBox' + [indexOf]}
                               name={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
                               label={checkBoxItem.item.text}
                               // checkStatus={checkBoxItem.checked}
@@ -199,6 +196,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                     {/* Add radio button */}
                     {formDataFields[index].slice_type === 'radio_button' && (
                       <span
+                        key={formDataFields[index].id}
                         className={
                           'radioBtns ' + `${formDataFields[index].primary.align}`.toLowerCase()
                         }
@@ -207,7 +205,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                         {formDataFields[index].items.map((checkBoxItem, indexOf) => {
                           return (
                             <Field
-                              key={checkBoxItem.item.text + formDataFields[index].id + indexOf}
+                              key={'radioBtn' + [indexOf]}
                               radioId={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
                               fieldName={formDataFields[index].primary.title.text
                                 .replace(/\s/g, '')
@@ -229,54 +227,48 @@ const ContactNew = ({ currentLang, location, formData }) => {
 
                     {/* Add select list */}
                     {formDataFields[index].slice_type === 'select_list' && (
-                      <>
-                        <label htmlFor={formDataFields[index].primary.title.text}>
-                          {formDataFields[index].primary.title.text}
-
-                          <span className="select">
-                            <i className="material-icons-round" aria-hidden="true">
-                              expand_more
-                            </i>
-                            <select
-                              // type="select"
-                              id={formDataFields[index].primary.title.text}
-                              name={formDataFields[index].primary.title.text}
-                            >
-                              {formDataFields[index].items.map((listItem, indexOf) => {
-                                return (
-                                  <Field
-                                    key={
-                                      formDataFields[index].primary.title.text +
-                                      formDataFields[index].id +
-                                      indexOf
-                                    }
-                                    fieldName={formDataFields[index].primary.title.text
-                                      .replace(/\s/g, '')
-                                      .toLowerCase()}
-                                    name={listItem.item.text.replace(/\s/g, '').toLowerCase()}
-                                    label={listItem.item.text}
-                                    // defaultChecked={checkBoxItem.default_checked}
-                                    component={SelectList}
-                                    validate={
-                                      formDataFields[index].primary.required === true
-                                        ? isRequired
-                                        : ''
-                                    }
-                                  />
-                                )
-                              })}
-                            </select>
-                          </span>
-                        </label>
-                      </>
+                      <label
+                        key={formDataFields[index].id}
+                        htmlFor={formDataFields[index].primary.title.text}
+                      >
+                        {formDataFields[index].primary.title.text}
+                        <span className="select">
+                          <i className="material-icons-round" aria-hidden="true">
+                            expand_more
+                          </i>
+                          <select
+                            // type="select"
+                            id={formDataFields[index].primary.title.text}
+                            name={formDataFields[index].primary.title.text}
+                          >
+                            {formDataFields[index].items.map((listItem, indexOf) => {
+                              return (
+                                <Field
+                                  key={'select' + [indexOf]}
+                                  fieldName={formDataFields[index].primary.title.text
+                                    .replace(/\s/g, '')
+                                    .toLowerCase()}
+                                  name={listItem.item.text.replace(/\s/g, '').toLowerCase()}
+                                  label={listItem.item.text}
+                                  // defaultChecked={checkBoxItem.default_checked}
+                                  component={SelectList}
+                                  validate={
+                                    formDataFields[index].primary.required === true
+                                      ? isRequired
+                                      : ''
+                                  }
+                                />
+                              )
+                            })}
+                          </select>
+                        </span>
+                      </label>
                     )}
 
                     {/* Add text area input */}
                     {formDataFields[index].slice_type === 'text_area_input' && (
                       <Field
-                        key={
-                          formDataFields[index].primary.field_name.text + formDataFields[index].id
-                        }
+                        key={formDataFields[index].id}
                         name={formDataFields[index].primary.field_name.text
                           .replace(/\s/g, '')
                           .toLowerCase()}
@@ -288,7 +280,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
 
                     {/* Add submit button */}
                     {formDataFields[index].slice_type === 'button' && (
-                      <div key={'submitBtn' + formDataFields[index].id} className={'submitForm'}>
+                      <div key={formDataFields[index].id} className={'submitForm'}>
                         {invalid && (
                           <p>Please ensure that the required form fields are completed</p>
                         )}
@@ -309,7 +301,6 @@ const ContactNew = ({ currentLang, location, formData }) => {
             </form>
           )}
         </Form>
-
         {errorMessage && <SubmittError resetForm={resetForm} />}
         {successMessage && <SubmitSuccess resetForm={resetForm} />}
       </FormWrapper>

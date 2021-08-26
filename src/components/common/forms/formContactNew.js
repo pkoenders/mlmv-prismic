@@ -55,8 +55,8 @@ const ContactNew = ({ formData }) => {
     // const formData = Object.fromEntries(new FormData(e.target).entries())
     // const formDataAlt = Object.fromEntries(new FormData(e.target).value)
 
-    const data = new FormData(e.target)
-    const formDataEntries = Object.fromEntries(data.entries())
+    // const data = new FormData(e.target)
+    // const formDataEntries = Object.fromEntries(data.entries())
 
     // Get the form
     // let form = document.querySelector('form')
@@ -89,7 +89,8 @@ const ContactNew = ({ formData }) => {
     fetch(`/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString(),
+      body: encode({
+        ...formObj
     })
       .then((res) => {
         if (res) {
@@ -213,8 +214,9 @@ const ContactNew = ({ formData }) => {
                         })}
                       </fieldset>
                     )}
+
                     {/* Add select list */}
-                    {formDataFields[index].slice_type === 'select_list' && (
+                    {/* {formDataFields[index].slice_type === 'select_list' && (
                       <label
                         key={formDataFields[index].id}
                         htmlFor={formDataFields[index].primary.title.text}
@@ -245,7 +247,8 @@ const ContactNew = ({ formData }) => {
                           </select>
                         </fieldset>
                       </label>
-                    )}
+                    )} */}
+
                     {/* Add text area input */}
                     {formDataFields[index].slice_type === 'text_area_input' && (
                       <Field

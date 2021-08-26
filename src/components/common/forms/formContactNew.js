@@ -65,7 +65,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
     let formData = new FormData(e.target)
 
     // Convert to a query string
-    let queryString = new URLSearchParams(formData).toString()
+    // let queryString = new URLSearchParams(formData).toString()
 
     function serialize(data) {
       let obj = {}

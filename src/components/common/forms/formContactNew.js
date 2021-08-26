@@ -55,8 +55,8 @@ const ContactNew = ({ formData }) => {
     // const formData = Object.fromEntries(new FormData(e.target).entries())
     // const formDataAlt = Object.fromEntries(new FormData(e.target).value)
 
-    const mydata = new FormData(e.target)
-    const formDataEntries = Object.fromEntries(mydata.entries())
+    const data = new FormData(e.target)
+    const formDataEntries = Object.fromEntries(data.entries())
 
     // Get the form
     // let form = document.querySelector('form')

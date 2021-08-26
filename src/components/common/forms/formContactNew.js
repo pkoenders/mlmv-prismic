@@ -164,13 +164,13 @@ const ContactNew = ({ formData }) => {
                     )}
                     {/* Add check box */}
                     {formDataFields[index].slice_type === 'checkbox' && (
-                      <div
+                      <fieldset
                         key={formDataFields[index].id}
                         className={
                           'checkBoxes ' + `${formDataFields[index].primary.align}`.toLowerCase()
                         }
                       >
-                        <p>{formDataFields[index].primary.title.text}</p>
+                        <legend>{formDataFields[index].primary.title.text}</legend>
                         {formDataFields[index].items.map((chekbox) => {
                           return (
                             <Field
@@ -185,17 +185,17 @@ const ContactNew = ({ formData }) => {
                             />
                           )
                         })}
-                      </div>
+                      </fieldset>
                     )}
                     {/* Add radio button */}
                     {formDataFields[index].slice_type === 'radio_button' && (
-                      <div
+                      <fieldset
                         key={formDataFields[index].id}
                         className={
                           'radioBtns ' + `${formDataFields[index].primary.align}`.toLowerCase()
                         }
                       >
-                        <p>{formDataFields[index].primary.title.text}</p>
+                        <legend>{formDataFields[index].primary.title.text}</legend>
                         {formDataFields[index].items.map((radioBtn) => {
                           return (
                             <Field
@@ -211,7 +211,7 @@ const ContactNew = ({ formData }) => {
                             />
                           )
                         })}
-                      </div>
+                      </fieldset>
                     )}
                     {/* Add select list */}
                     {formDataFields[index].slice_type === 'select_list' && (
@@ -220,7 +220,7 @@ const ContactNew = ({ formData }) => {
                         htmlFor={formDataFields[index].primary.title.text}
                       >
                         {formDataFields[index].primary.title.text}
-                        <span className="select">
+                        <fieldset className="select">
                           <i className="material-icons-round" aria-hidden="true">
                             expand_more
                           </i>
@@ -243,7 +243,7 @@ const ContactNew = ({ formData }) => {
                               )
                             })}
                           </select>
-                        </span>
+                        </fieldset>
                       </label>
                     )}
                     {/* Add text area input */}

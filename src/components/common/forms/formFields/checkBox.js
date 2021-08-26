@@ -6,7 +6,7 @@ const CheckBox = ({ label, input, meta }) => {
   const hasValue = !!dirty && !invalid
   return (
     <label htmlFor={name} className={`${hasValue ? 'touched' : ''}`}>
-      <span>{label}</span>
+      {label}
       <input type="checkbox" id={name} name={name} value={name} />
     </label>
   )

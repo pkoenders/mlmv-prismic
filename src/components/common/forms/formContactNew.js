@@ -89,7 +89,7 @@ const ContactNew = ({ formData }) => {
     fetch(`/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: [...formDataEntries],
+      body: new URLSearchParams(formData).toString(),
     })
       .then((res) => {
         if (res) {

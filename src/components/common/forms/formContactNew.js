@@ -114,11 +114,11 @@ const ContactNew = ({ currentLang, location, formData }) => {
     document.querySelector('.form').reset()
   }
 
-  const onSubmit = async (values) => {
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-    await sleep(300)
-    window.alert(JSON.stringify(values, 0, 2))
-  }
+  // const onSubmit = async (values) => {
+  //   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+  //   await sleep(300)
+  //   window.alert(JSON.stringify(values, 0, 2))
+  // }
 
   return (
     <div
@@ -132,7 +132,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
         {formDecription && <RichText render={formDecription} linkResolver={linkResolver} />}
       </div>
       <FormWrapper>
-        <Form data-netlify="true" method="post" name="ContactForm" onSubmit={onSubmit}>
+        <Form data-netlify="true" method="post" name="ContactForm" onSubmit={handleSubmit}>
           {({ values, invalid }) => (
             <form
               className="form"

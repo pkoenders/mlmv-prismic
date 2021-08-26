@@ -8,7 +8,7 @@ const RadioBtn = ({ label, input, meta, fieldId }) => {
   return (
     <label className={`${hasValue ? 'touched' : ''}`}>
       {label}
-      <input type="radio" id={fieldId} name={name} value={label} />
+      <input type="radio" name={name} value={label} />
     </label>
   )
 }

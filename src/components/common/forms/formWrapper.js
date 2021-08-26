@@ -116,11 +116,15 @@ const FormWraper = styled.div`
     grid-gap: ${({ theme }) => theme.padding.default};
 
     label,
-    p {
+    p,
+    legend {
       text-indent: ${({ theme }) => theme.padding['1/4']};
     }
 
-    label {
+
+    label,
+    fieldset,
+    legend {
       /* font-weight: 500; */
       position: relative;
       display: inherit;
@@ -145,6 +149,7 @@ const FormWraper = styled.div`
         color: inherit;
         opacity: 0.54;
       }
+      
 
       span:last-of-type {
         display: flex;
@@ -161,6 +166,10 @@ const FormWraper = styled.div`
       }
     }
 
+    fieldset {
+      flex-direction: column;
+    }
+
     .checkBoxes,
     .radioBtns {
       display: flex;
@@ -169,8 +178,8 @@ const FormWraper = styled.div`
       flex-wrap: wrap;
       grid-row-gap: ${({ theme }) => theme.padding['1/2']};
       grid-column-gap: ${({ theme }) => theme.padding.default};
-      p {
-        width: 100%;
+      legend {
+        margin-bottom: ${({ theme }) => theme.margin['1/8']};
       }
 
       label {

@@ -92,7 +92,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode(
         // 'form-name': e.target.getAttribute('name'),
-        ...formObj
+        [...formObj]
       ),
     })
       .then((res) => {

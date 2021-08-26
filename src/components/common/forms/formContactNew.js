@@ -202,19 +202,17 @@ const ContactNew = ({ currentLang, location, formData }) => {
                         }
                       >
                         <p>{formDataFields[index].primary.title.text}</p>
-                        {formDataFields[index].items.map((checkBoxItem, indexOf) => {
+                        {formDataFields[index].items.map((radioBtn) => {
                           return (
                             <Field
-                              key={'radioBtn' + [indexOf]}
-                              radioId={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
-                              fieldName={formDataFields[index].primary.title.text
-                                .replace(/\s/g, '')
-                                .toLowerCase()}
-                              name={formDataFields[index].primary.title.text
-                                .replace(/\s/g, '')
-                                .toLowerCase()}
-                              label={checkBoxItem.item.text}
-                              // defaultChecked={checkBoxItem.default_checked}
+                              key={formDataFields[index].id + radioBtn.item.text}
+                              radioId={
+                                formDataFields[index].id +
+                                radioBtn.item.text.replace(/\s/g, '').toLowerCase()
+                              }
+                              fieldName={radioBtn.item.text}
+                              name={formDataFields[index].primary.title.text}
+                              label={radioBtn.item.text}
                               component={RadioBtn}
                               validate={
                                 formDataFields[index].primary.required === true ? isRequired : ''

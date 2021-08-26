@@ -8,7 +8,7 @@ const RadioBtn = ({ label, input, radioId, meta }) => {
   return (
     <label htmlFor={radioId} className={`${hasValue ? 'touched' : ''}`}>
       {label}
-      <input type="radio" id={radioId} name={name} value={radioId} />
+      <input type="radio" id={radioId} name={name} value={label} />
     </label>
   )
 }

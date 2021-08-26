@@ -1,13 +1,13 @@
 import React from 'react'
 
-const CheckBox = ({ label, input, meta }) => {
+const CheckBox = ({ label, input, meta, fieldId }) => {
   const { name } = input
   const { dirty, invalid } = meta
   const hasValue = !!dirty && !invalid
   return (
-    <label htmlFor={name} className={`${hasValue ? 'touched' : ''}`}>
+    <label htmlFor={fieldId} className={`${hasValue ? 'touched' : ''}`}>
       {label}
-      <input type="checkbox" id={name} name={name} value={name} />
+      <input type="checkbox" id={fieldId} name={fieldId} value={name} />
     </label>
   )
 }

@@ -176,13 +176,19 @@ const ContactNew = ({ currentLang, location, formData }) => {
                         }
                       >
                         <p>{formDataFields[index].primary.title.text}</p>
-                        {formDataFields[index].items.map((checkBoxItem, indexOf) => {
+                        {formDataFields[index].items.map((chekbox) => {
                           return (
                             <Field
-                              key={'checkBox' + [indexOf]}
-                              name={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
-                              label={checkBoxItem.item.text}
-                              // checkStatus={checkBoxItem.checked}
+                              key={
+                                formDataFields[index].id +
+                                chekbox.item.text.replace(/\s/g, '').toLowerCase()
+                              }
+                              fieldId={
+                                formDataFields[index].id +
+                                chekbox.item.text.replace(/\s/g, '').toLowerCase()
+                              }
+                              name={chekbox.item.text}
+                              label={chekbox.item.text}
                               component={CheckBox}
                               validate={
                                 formDataFields[index].primary.required === true ? isRequired : ''
@@ -206,12 +212,12 @@ const ContactNew = ({ currentLang, location, formData }) => {
                           return (
                             <Field
                               key={formDataFields[index].id + radioBtn.item.text}
-                              radioId={
+                              name={formDataFields[index].primary.title.text}
+                              fieldId={
                                 formDataFields[index].id +
                                 radioBtn.item.text.replace(/\s/g, '').toLowerCase()
                               }
                               fieldName={radioBtn.item.text}
-                              name={formDataFields[index].primary.title.text}
                               label={radioBtn.item.text}
                               component={RadioBtn}
                               validate={
@@ -235,20 +241,14 @@ const ContactNew = ({ currentLang, location, formData }) => {
                             expand_more
                           </i>
                           <select
-                            // type="select"
                             id={formDataFields[index].primary.title.text}
                             name={formDataFields[index].primary.title.text}
                           >
-                            {formDataFields[index].items.map((listItem, indexOf) => {
+                            {formDataFields[index].items.map((listItem) => {
                               return (
                                 <Field
-                                  key={'select' + [indexOf]}
-                                  fieldName={formDataFields[index].primary.title.text
-                                    .replace(/\s/g, '')
-                                    .toLowerCase()}
-                                  name={listItem.item.text.replace(/\s/g, '').toLowerCase()}
+                                  name={formDataFields[index].primary.title.text}
                                   label={listItem.item.text}
-                                  // defaultChecked={checkBoxItem.default_checked}
                                   component={SelectList}
                                   validate={
                                     formDataFields[index].primary.required === true

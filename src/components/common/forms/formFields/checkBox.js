@@ -7,7 +7,7 @@ const CheckBox = ({ label, input, meta, fieldId }) => {
   return (
     <label htmlFor={fieldId} className={`${hasValue ? 'touched' : ''}`}>
       {label}
-      <input type="checkbox" id={fieldId} name={fieldId} value={name} />
+      <input type="checkbox" id={fieldId} name={label} value="True" />
     </label>
   )
 }

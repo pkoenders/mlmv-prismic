@@ -66,7 +66,6 @@ const ContactNew = ({ formData }) => {
 
     // Convert to a query string
     // let queryString = new URLSearchParams(formData).toString()
-
     function serialize(data) {
       let obj = {}
       for (let [key, value] of data) {
@@ -167,7 +166,7 @@ const ContactNew = ({ formData }) => {
                         }
                       />
                     )}
-                    Add check box
+                    {/* Add check box */}
                     {formDataFields[index].slice_type === 'checkbox' && (
                       <div
                         key={formDataFields[index].id}

@@ -55,8 +55,8 @@ const ContactNew = ({ formData }) => {
     // const formData = Object.fromEntries(new FormData(e.target).entries())
     // const formDataAlt = Object.fromEntries(new FormData(e.target).value)
 
-    // const data = new FormData(e.target)
-    // const formDataEntries = Object.fromEntries(data.entries())
+    const mydata = new FormData(e.target)
+    const formDataEntries = Object.fromEntries(mydata.entries())
 
     // Get the form
     // let form = document.querySelector('form')
@@ -90,7 +90,7 @@ const ContactNew = ({ formData }) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        ...formObj,
+        ...formDataEntries,
       }),
     })
       .then((res) => {

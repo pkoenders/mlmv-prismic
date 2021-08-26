@@ -226,7 +226,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                     )}
 
                     {/* Add select list */}
-                    {formDataFields[index].slice_type === 'select_list' && (
+                    {/* {formDataFields[index].slice_type === 'select_list' && (
                       <label
                         key={formDataFields[index].id}
                         htmlFor={formDataFields[index].primary.title.text}
@@ -263,7 +263,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                           </select>
                         </span>
                       </label>
-                    )}
+                    )} */}
 
                     {/* Add text area input */}
                     {formDataFields[index].slice_type === 'text_area_input' && (

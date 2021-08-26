@@ -83,7 +83,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
     }
 
     // Convert to an object
-    let formObj = serialize(formData)
+    const formObj = serialize(formData)
 
     console.log(formObj)
 
@@ -92,7 +92,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         // 'form-name': e.target.getAttribute('name'),
-        'form-data': formObj,
+        ...formObj,
       }),
     })
       .then((res) => {

@@ -87,12 +87,11 @@ const ContactNew = ({ currentLang, location, formData }) => {
 
     console.log(formObj)
 
-    fetch(`${currentLang}/${pathName}`, {
+    fetch(`/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': e.target.getAttribute('name'),
-        // ...name,
         ...formObj,
       }),
     })
@@ -152,7 +151,9 @@ const ContactNew = ({ currentLang, location, formData }) => {
                     {formDataFields[index].slice_type === 'text_input' && (
                       <Field
                         key={
-                          formDataFields[index].primary.field_name.text + formDataFields[index].id
+                          formDataFields[index].primary.field_name.text +
+                          formDataFields[index].id +
+                          index
                         }
                         name={formDataFields[index].primary.field_name.text
                           .replace(/\s/g, '')
@@ -206,7 +207,7 @@ const ContactNew = ({ currentLang, location, formData }) => {
                         {formDataFields[index].items.map((checkBoxItem, indexOf) => {
                           return (
                             <Field
-                              key={'radioBtn' + formDataFields[index].id + indexOf}
+                              key={checkBoxItem.item.text + formDataFields[index].id + indexOf}
                               radioId={checkBoxItem.item.text.replace(/\s/g, '').toLowerCase()}
                               fieldName={formDataFields[index].primary.title.text
                                 .replace(/\s/g, '')
@@ -244,7 +245,11 @@ const ContactNew = ({ currentLang, location, formData }) => {
                               {formDataFields[index].items.map((listItem, indexOf) => {
                                 return (
                                   <Field
-                                    key={'selectList' + formDataFields[index].id + indexOf}
+                                    key={
+                                      formDataFields[index].primary.title.text +
+                                      formDataFields[index].id +
+                                      indexOf
+                                    }
                                     fieldName={formDataFields[index].primary.title.text
                                       .replace(/\s/g, '')
                                       .toLowerCase()}
@@ -269,7 +274,9 @@ const ContactNew = ({ currentLang, location, formData }) => {
                     {/* Add text area input */}
                     {formDataFields[index].slice_type === 'text_area_input' && (
                       <Field
-                        key={'textArea' + formDataFields[index].id}
+                        key={
+                          formDataFields[index].primary.field_name.text + formDataFields[index].id
+                        }
                         name={formDataFields[index].primary.field_name.text
                           .replace(/\s/g, '')
                           .toLowerCase()}

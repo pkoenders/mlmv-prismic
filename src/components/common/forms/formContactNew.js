@@ -217,13 +217,13 @@ const ContactNew = ({ formData }) => {
                     )}
 
                     {/* Add select list */}
-                    {/* {formDataFields[index].slice_type === 'select_list' && (
+                    {formDataFields[index].slice_type === 'select_list' && (
                       <label
                         key={formDataFields[index].id}
                         htmlFor={formDataFields[index].primary.title.text}
                       >
                         {formDataFields[index].primary.title.text}
-                        <fieldset className="select">
+                        <span className="select">
                           <i className="material-icons-round" aria-hidden="true">
                             expand_more
                           </i>
@@ -246,9 +246,9 @@ const ContactNew = ({ formData }) => {
                               )
                             })}
                           </select>
-                        </fieldset>
+                        </span>
                       </label>
-                    )} */}
+                    )}
 
                     {/* Add text area input */}
                     {formDataFields[index].slice_type === 'text_area_input' && (

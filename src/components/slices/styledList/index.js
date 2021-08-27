@@ -17,6 +17,9 @@ import {
   getStyle,
 } from '/src/utils/helpers'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const List = styled.section`
@@ -52,6 +55,12 @@ const List = styled.section`
         box-shadow: ${({ theme }) => theme.boxShadow.md};
         background-color: ${({ theme }) => theme.colors.grey[300]};
         border: 1px solid ${({ theme }) => theme.colors.grey[400]};
+      }
+
+      span.uncheck {
+        i {
+          opacity: 0.25;
+        }
       }
     }
   }
@@ -148,10 +157,6 @@ const List = styled.section`
           font-weight: 600;
           font-size: ${({ theme }) => theme.fontSize['3xl']};
         }
-
-        i.uncheck {
-          opacity: 0.25;
-        }
       }
     }
   }
@@ -161,10 +166,6 @@ const List = styled.section`
         span {
           i {
             color: ${({ theme }) => theme.colors.grey[100]};
-          }
-
-          i.uncheck {
-            opacity: 0.25;
           }
         }
       }
@@ -249,17 +250,17 @@ const StyledList = ({ slice }) => {
                       {listStyle === 'disc' && <span></span>}
                       {listStyle === 'square' && <span></span>}
                       {listStyle === 'checked' && (
-                        <span>
+                        <>
                           {slice.items[index].uncheck !== true ? (
-                            <i className="material-icons-round" aria-hidden="true">
-                              check
-                            </i>
+                            <span>
+                              <IconMaterial icon={'check'} />
+                            </span>
                           ) : (
-                            <i className="material-icons-round uncheck" aria-hidden="true">
-                              close
-                            </i>
+                            <span className="uncheck">
+                              <IconMaterial icon={'close'} />
+                            </span>
                           )}
-                        </span>
+                        </>
                       )}
                       <RichText render={slice.items[index].item.raw} linkResolver={linkResolver} />
                     </>

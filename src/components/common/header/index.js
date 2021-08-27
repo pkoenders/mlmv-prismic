@@ -3,8 +3,12 @@ import React, { useEffect } from 'react'
 // Helpers
 import { Link } from 'gatsby'
 import i18n from '/config/i18n'
-
 import linkResolver from '/src/utils/linkResolver'
+
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
+// Layout
 import Brand from '../brand/'
 import LocaleSwitcher from './localeSwitcher/'
 
@@ -620,12 +624,6 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
             //console.log(navItem.link)
             return (
               <li key={`main-nav-${index}`}>
-                {/* {navItem.primary.link.uid === 'index' && (
-                  <Link to={linkResolver(navItem.primary.link)} activeClassName="activeNavItem">
-                    {navItem.primary.label.text}
-                  </Link>
-                )} */}
-
                 {navItem.primary.link.uid ? (
                   <Link
                     to={linkResolver(navItem.primary.link)}
@@ -647,10 +645,7 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
                     // onKeyDown={handleToggleSecondaryNav}
                   >
                     {navItem.primary.label.text}
-
-                    <i className="material-icons-round" aria-hidden="true">
-                      expand_more
-                    </i>
+                    <IconMaterial icon={'expand_more'} />
                   </button>
                 )}
 
@@ -666,9 +661,7 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
                               // getProps={isPartiallyActive}
                             >
                               {subNavItem.sub_nav_link_label.text}
-                              <i className="material-icons-round" aria-hidden="true">
-                                chevron_right
-                              </i>
+                              <IconMaterial icon={'chevron_right'} />
                             </Link>
                           </li>
                         )
@@ -685,9 +678,7 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
           <li className="closeMenu hide">
             <button>
               {i18n[currentLang].close}
-              <i className="material-icons-round" aria-hidden="true">
-                clear
-              </i>
+              <IconMaterial icon={'clear'} />
             </button>
           </li>
         </ul>

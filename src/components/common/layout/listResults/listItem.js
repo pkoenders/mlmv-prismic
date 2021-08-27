@@ -22,12 +22,12 @@ const ListItem = styled.li`
     transform: translateY(0px);
     transition: ${({ theme }) => theme.transition.easeOut.default};
 
-    > span {
+    > div {
         display: inline-flex;
         flex-direction: column;
         padding: ${({ theme }) => theme.padding['1/2']};
         color: inherit;
-        p, a {
+        time, address, p, a {
         display:flex;
         }
     }
@@ -36,14 +36,15 @@ const ListItem = styled.li`
         width:100%;
         display:flex;
         grid-gap: ${({ theme }) => theme.margin['1/4']};
-        p{
+        p {
           margin-bottom:0;
         }
-        p:first-of-type {
-        width:100%;
-        font-size: 103%;
-        font-weight: 600;
-        align-content: space-between;
+        > div {
+          display: inherit;
+          width:100%;
+          font-size: 103%;
+          font-weight: 600;
+          align-content: space-between;
         i {
           color: inherit;
           margin-left: auto;
@@ -55,53 +56,50 @@ const ListItem = styled.li`
         min-width:33.3%;
         max-width:33.3%;
         height:100%;
-        grid-column-gap: ${({ theme }) => theme.margin['1/2']};
-        grid-row-gap: ${({ theme }) => theme.margin['1/4']};
+        grid-column-gap: ${({ theme }) => theme.margin['1/4']};
+        grid-row-gap: ${({ theme }) => theme.margin['1/2']};
         @media (max-width: ${({ theme }) => theme.screens.sm}) {
             min-width:100%;
         }
         margin-left:auto;
         background-color: ${({ theme }) => theme.colors.card[200]};
         border-left: 1px solid ${({ theme }) => theme.colors.card[300]};
-        span{
+        > div{
           display: flex;
           flex-direction: column;
           grid-gap: inherit;
         }
 
-        .passed {
-          display: flex;
-         
-          flex-direction: inherit;
-          grid-gap: inherit;
-          p{
-             align-items: center;
-            flex-wrap: wrap-reverse;
-          }
-        }
-        p,a {
+        
+        time,
+        address,
+        .passed,
+        a {
             color: ${({ theme }) => theme.colors.page.default};
             align-items: flex-start;
-            margin-bottom:0;
-            width:fit-content;
+            flex-direction: row;
+            grid-gap: ${({ theme }) => theme.margin['1/4']};
+            width: fit-content;
             i {
-                /* margin-top:1px; */
                 color: inherit;
-                margin-right: ${({ theme }) => theme.margin['1/4']};
             }
             .srike {
-              padding: 0;
-              margin-right:${({ theme }) => theme.margin['1/4']};
-              text-decoration:line-through;
+              text-decoration: line-through;
+            
               opacity: .5;
             }
+        }
+        .passed {
+          grid-row-gap: 0;
+          flex-wrap: wrap-reverse;
+          i {
+            align-self: center;
+          }
         }
 
          a {
             color: ${({ theme }) => theme.colors.primary.default};
             border-bottom: 1px solid transparent;
-          
-           
         }
 
         a:hover {

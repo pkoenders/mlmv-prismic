@@ -9,8 +9,11 @@ import { validateString } from '/src/utils/helpers'
 
 // Layout
 import Section from '/src/components/common/layout/pageLayout/'
-import SupporterForm from '/src/components/common/forms/formContactNew'
+import SupporterForm from '/src/components/common/forms/formContact'
 import Tags from '/src/components/common/filter/tags'
+
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
 
 import styled from 'styled-components'
 
@@ -27,13 +30,13 @@ const SupportersHeader = styled.div`
   border-bottom: 4px solid ${({ theme }) => theme.colors.page[300]};
 
   & .intro {
-    width: 66%;
+    width: 60%;
     padding-bottom: ${({ theme }) => theme.padding['1/4']};
 
     padding-right: ${({ theme }) => theme.padding.default};
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       padding-right: 0;
-      width: 100%;
+      width: 60%;
     }
     span {
       display: flex;
@@ -49,11 +52,12 @@ const SupportersHeader = styled.div`
     }
   }
   & .tags {
-    width: 33%;
+    width: 40%;
     @media (max-width: ${({ theme }) => theme.screens.sm}) {
       width: 100%;
     }
     display: flex;
+    align-self: flex-end;
   }
 `
 
@@ -64,7 +68,7 @@ const SupportersBody = styled.div`
   }
   grid-gap: ${({ theme }) => theme.padding.default};
   & .content {
-    width: 66%;
+    width: 60%;
     padding-right: ${({ theme }) => theme.padding.default};
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       padding-right: 0;
@@ -73,26 +77,27 @@ const SupportersBody = styled.div`
     font-size: 110%;
   }
   & .contact {
-    width: 33%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: ${({ theme }) => theme.padding['1/2']};
+    width: 40%;
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       width: 100%;
     }
-    p {
-      margin: 0;
-      padding-bottom: ${({ theme }) => theme.padding.default};
-      line-height: 1;
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      grid-row-gap: ${({ theme }) => theme.padding['1/4']};
+      grid-column-gap: ${({ theme }) => theme.padding['1/2']};
+      text-indent: ${({ theme }) => theme.padding['1/4']};
       span {
         display: inline-flex;
         align-items: center;
+        white-space: nowrap;
         grid-gap: ${({ theme }) => theme.margin['1/4']};
-        margin-right: ${({ theme }) => theme.margin['1/2']};
       }
-    }
-
-    & .title {
-      padding: ${({ theme }) => theme.padding.default} 0 0 ${({ theme }) => theme.padding['1/2']};
-      border-top: 1px solid ${({ theme }) => theme.colors.header.bground[300]};
-      margin-bottom: 0;
     }
   }
 `
@@ -134,33 +139,27 @@ const supportersItem = ({ currentLang, itemData }) => {
             {mainContent && <RichText render={mainContent} linkResolver={linkResolver} />}
           </div>
           <div className="contact">
-            <p>
-              {gender && (
+            <div>
+              {firstName && (
                 <span>
-                  <i className="material-icons-round" aria-hidden="true">
-                    face
-                  </i>
-                  {gender}
+                  <IconMaterial icon={'mail'} />
+                  {i18n[currentLang].contact} {firstName}
                 </span>
               )}
-
               {location && (
                 <span>
-                  <i className="material-icons-round" aria-hidden="true">
-                    person_pin_circle
-                  </i>
-                  {/* {i18n[currentLang].covers}  */}
+                  <IconMaterial icon={'person_pin_circle'} />
                   {location}
                 </span>
               )}
-            </p>
-            {firstName && (
-              <p className="title">
-                <strong>
-                  {i18n[currentLang].contact} {firstName}
-                </strong>
-              </p>
-            )}
+              {gender && (
+                <span>
+                  <IconMaterial icon={'face'} />
+                  {gender}
+                </span>
+              )}
+            </div>
+
             <SupporterForm formData={itemData.data} />
           </div>
         </SupportersBody>

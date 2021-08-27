@@ -5,6 +5,9 @@ import { Link } from 'gatsby'
 import moment from 'moment'
 import i18n from '/config/i18n'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 // Layout
 import ListItem from '../../common/layout/listResults/listItem'
 import Tags from '../../common/filter/tags'
@@ -55,81 +58,65 @@ const PeerSupportersItem = ({ currentLang, thisItem, showTags }) => {
       {item.uid && (
         <ListItem className={'item show'}>
           <Link to={`${item.uid}`} className="card">
-            <span className="content">
+            <div className="content">
               {title && (
-                <p>
+                <div>
                   {title}
-                  <i className="material-icons-round" aria-hidden="true">
-                    arrow_forward
-                  </i>
-                </p>
+                  <IconMaterial icon={'arrow_forward'} />
+                </div>
               )}
-              {eventType === 'News item' && date && <p className="newsDate">{date}</p>}
+              {eventType === 'News item' && date && <time>{date}</time>}
               {intro && <p>{intro}</p>}
-            </span>
+            </div>
 
             {eventType === 'Event' && (
-              <span className="details">
+              <div className="details">
                 {today < start_date && (
-                  <span>
+                  <>
                     {date && (
-                      <p>
-                        <i className="material-icons-round" aria-hidden="true">
-                          event
-                        </i>
+                      <time aria-label="Date">
+                        <IconMaterial icon={'event'} />
                         {date}
-                      </p>
+                      </time>
                     )}
                     {time && (
-                      <p>
-                        <i className="material-icons-round" aria-hidden="true">
-                          schedule
-                        </i>
+                      <time aria-label={`${i18n[currentLang].starts}`}>
+                        <IconMaterial icon={'schedule'} />
                         {i18n[currentLang].starts}: {time}
-                      </p>
+                      </time>
                     )}
                     {end_date > start_date && (
-                      <p>
-                        <i className="material-icons-round" aria-hidden="true">
-                          access_time_filled
-                        </i>
+                      <time aria-label={`${i18n[currentLang].ends}`}>
+                        <IconMaterial icon={'access_time_filled'} />
                         {i18n[currentLang].ends}: {endTime}
-                      </p>
+                      </time>
                     )}
                     {duration && (
-                      <p>
-                        <i className="material-icons-round" aria-hidden="true">
-                          timelapse
-                        </i>
+                      <time aria-label={`${i18n[currentLang].duration}`}>
+                        <IconMaterial icon={'timelapse'} />
                         {i18n[currentLang].duration}: {duration}
-                      </p>
+                      </time>
                     )}
-                  </span>
+                  </>
                 )}
 
                 {today > start_date && (
-                  <span className="passed">
-                    <p>
-                      <i className="material-icons-round" aria-hidden="true">
-                        event_busy
-                      </i>
-                      <span className="srike">{date}</span>
-                      {i18n[currentLang].previousEvent}
-                    </p>
-                  </span>
+                  <time className="passed" aria-label={i18n[currentLang].previousEvent}>
+                    <IconMaterial icon={'event_busy'} />
+                    <span className="srike">{date}</span>
+                    {i18n[currentLang].previousEvent}
+                  </time>
                 )}
 
                 {location && (
-                  <p>
-                    <i className="material-icons-round" aria-hidden="true">
-                      place
-                    </i>
+                  <address aria-label="Loaction">
+                    <IconMaterial icon={'place'} />
                     {location}
-                  </p>
+                  </address>
                 )}
 
                 {showTags === true && tagData.length > 0 && <Tags tagData={tagData} />}
-              </span>
+              </div>
             )}
 
             {eventType === 'News item' && showTags === true && tagData.length > 0 && (

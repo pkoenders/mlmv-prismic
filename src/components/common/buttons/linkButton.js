@@ -4,6 +4,9 @@ import React from 'react'
 import { Link } from 'gatsby'
 import linkResolver from '../../../utils/linkResolver'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const BtnWrapper = styled.span`
@@ -279,11 +282,7 @@ const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick,
             {icon}
           </i>
           {buttonLabel}
-          {buttonStyle === 'link' && (
-            <i className="material-icons-round" aria-hidden="true">
-              arrow_forward
-            </i>
-          )}
+          {buttonStyle === 'link' && <IconMaterial icon={'arrow_forward'} />}
         </button>
       )}
     </BtnWrapper>

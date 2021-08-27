@@ -9,6 +9,9 @@ import { gsap, Power3 } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { resizeAllGridItems } from '/src/utils/helpers'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const Item = styled.li`
@@ -235,17 +238,13 @@ const PeerSupportersItem = ({ thisItem, animateScroll }) => {
               {firstName && (
                 <p>
                   {fullName}
-                  <i className="material-icons-round" aria-hidden="true">
-                    arrow_forward
-                  </i>
+                  <IconMaterial icon={'arrow_forward'} />
                 </p>
               )}
               {intro && <p>{intro}</p>}
               {location && (
                 <p>
-                  <i className="material-icons-round" aria-hidden="true">
-                    person_pin_circle
-                  </i>
+                  <IconMaterial icon={'person_pin_circle'} />
                   {location}
                 </p>
               )}

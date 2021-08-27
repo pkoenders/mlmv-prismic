@@ -31,6 +31,10 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
   var [queryLength, setQueryLength] = useState(0)
   const [ascDesc, setAscDescSort] = useState(true) // false for Acs. true for Desc
 
+  // Set the intial sort
+  var sortInitalListList = _.sortBy(dataList.items, 'item.document.data.title.text')
+  sourceList = sortInitalListList
+
   // Toggle sort order - Asc / Desc
   const sortAscDescClick = useCallback(
     (e) => {

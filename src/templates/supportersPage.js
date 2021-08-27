@@ -181,6 +181,7 @@ export const query = graphql`
                     body {
                       ## Button
                       ... on PrismicFormsDataBodyButton {
+                        id
                         slice_type
                         primary {
                           button_type
@@ -192,6 +193,7 @@ export const query = graphql`
 
                       ## Text area
                       ... on PrismicFormsDataBodyTextAreaInput {
+                        id
                         slice_type
                         primary {
                           required
@@ -203,6 +205,7 @@ export const query = graphql`
 
                       ## Text input
                       ... on PrismicFormsDataBodyTextInput {
+                        id
                         slice_type
                         primary {
                           required
@@ -213,13 +216,28 @@ export const query = graphql`
                         }
                       }
 
+                      ## Rich text area
+                      ... on PrismicFormsDataBodyRichText {
+                        id
+                        slice_type
+                        primary {
+                          align_with_input
+                          text {
+                            text
+                            raw
+                          }
+                        }
+                      }
+
                       ## Checkbox
                       ... on PrismicFormsDataBodyCheckbox {
+                        id
                         slice_type
                         primary {
                           title {
                             text
                           }
+                          required
                           align
                         }
                         items {
@@ -242,12 +260,14 @@ export const query = graphql`
                           title {
                             text
                           }
+                          required
                           align
                         }
                       }
 
                       ## Select list
                       ... on PrismicFormsDataBodySelectList {
+                        id
                         items {
                           item {
                             text
@@ -257,6 +277,7 @@ export const query = graphql`
                           title {
                             text
                           }
+                          required
                         }
                         slice_type
                       }
@@ -265,6 +286,7 @@ export const query = graphql`
                 }
               }
             }
+            ## End forms
 
             #Page data - ends
 

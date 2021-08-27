@@ -8,6 +8,9 @@ import linkResolver from '../../../utils/linkResolver'
 import { getImgFormat } from '/src/utils/helpers'
 import { validateString } from '/src/utils/helpers'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const CardItemWrapper = styled.div`
@@ -119,9 +122,7 @@ const CardItem = ({ cardItem, index }) => {
           {linkLabel && (
             <p className="link">
               {linkLabel}
-              <i className="material-icons-round" aria-hidden="true">
-                arrow_forward
-              </i>
+              <IconMaterial icon={'arrow_forward'} />
             </p>
           )}
         </span>

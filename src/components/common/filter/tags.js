@@ -9,7 +9,7 @@ const Tags = styled.div`
     justify-content: left;
     align-items: center;
     grid-gap: ${({ theme }) => theme.margin['1/4']};
-    align-self: flex-end;
+    align-self: flex-start;
     margin: 0;
     li {
       margin: 0px;

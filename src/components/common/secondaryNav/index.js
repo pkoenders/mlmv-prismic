@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'gatsby'
 import i18n from '../../../../config/i18n'
 import linkResolver from '../../../utils/linkResolver'
+
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const SecondaryNavWrapper = styled.section`
@@ -92,19 +96,14 @@ const SecondaryNav = ({ currentLang, next, nextTitle, previous, previousTitle })
         {/* <Link aria-label="Back" to="../"> */}
 
         <button onClick={() => window.history.back()} aria-label="Back">
-          <i className={'material-icons-round'} aria-hidden="true">
-            arrow_back
-          </i>
+          <IconMaterial icon={'arrow_back'} />
           {i18n[currentLang].back}
         </button>
 
         <span className="alignRight">
           {previous && previous.lang === currentLang && (
             <Link aria-label={previousTitle} to={linkResolver(previous)}>
-              <i className="material-icons-round left" aria-hidden="true">
-                chevron_left
-              </i>
-              {/* {i18n[currentLang].previousTitle} */}
+              <IconMaterial icon={'chevron_left'} />
               {previousTitle}
             </Link>
           )}
@@ -112,9 +111,7 @@ const SecondaryNav = ({ currentLang, next, nextTitle, previous, previousTitle })
           {next && next.lang === currentLang && (
             <Link aria-label={nextTitle} to={linkResolver(next)}>
               {nextTitle}
-              <i className="material-icons-round" aria-hidden="true">
-                chevron_right
-              </i>
+              <IconMaterial icon={'chevron_right'} />
             </Link>
           )}
         </span>

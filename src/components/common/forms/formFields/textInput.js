@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 const TextInput = ({ label, input, type, meta }) => {
   const { name } = input
   // const { delay, active, pristine, dirty, error, touched, children, invalid } = meta
@@ -26,11 +29,7 @@ const TextInput = ({ label, input, type, meta }) => {
           placeholder={'Enter your ' + label}
           {...input}
         />
-        {hasValue && (
-          <i className="material-icons-round" aria-hidden="true">
-            check_circle
-          </i>
-        )}
+        {hasValue && <IconMaterial icon={'check_circle'} />}
       </span>
     </label>
   )

@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
+
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const Switcher = styled.div`
@@ -99,28 +103,18 @@ const LocalSwitcher = ({ currentLang, currentPath }) => {
   return (
     <Switcher className="localeSwitcher" data-name="locale-switcher">
       <SwitcherBtn className="localeBtn" aria-label="Language selector" name="Language selector">
-        <i className="material-icons-round" aria-hidden="true">
-          language
-        </i>
+        <IconMaterial icon={'language'} />
       </SwitcherBtn>
       <ListLocales>
         <li>
           <Link hrefLang="en-nz" to={`/${currentPath}`}>
-            {currentLang === 'en-nz' && (
-              <i className="material-icons-round" aria-hidden="true">
-                check
-              </i>
-            )}
+            {currentLang === 'en-nz' && <IconMaterial icon={'check'} />}
             English
           </Link>
         </li>
         <li>
           <Link hrefLang="mi-nz" to={`/mi/${currentPath}`}>
-            {currentLang === 'mi-nz' && (
-              <i className="material-icons-round" aria-hidden="true">
-                check
-              </i>
-            )}
+            {currentLang === 'mi-nz' && <IconMaterial icon={'check'} />}
             Te Reo - Māori
           </Link>
         </li>

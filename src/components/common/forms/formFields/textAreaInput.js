@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 const TextAreaInput = ({ label, input, type, meta, required }) => {
   const { name } = input
   const { dirty, error, touched, invalid } = meta
@@ -14,13 +17,9 @@ const TextAreaInput = ({ label, input, type, meta, required }) => {
       {label}
       {required && !hasValue && <span className="required">Required</span>}
       {hasError && <span className="error">{error}</span>}
-      <span className={'textArea'}>
+      <span className="textArea">
         <textarea id={name} type={type} rows="5" placeholder={'Enter your ' + label} {...input} />
-        {hasValue && (
-          <i className={'material-icons-round'} aria-hidden="true">
-            check_circle
-          </i>
-        )}
+        {hasValue && <IconMaterial icon={'check_circle'} />}
       </span>
     </label>
   )

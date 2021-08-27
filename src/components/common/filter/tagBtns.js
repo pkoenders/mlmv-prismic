@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const ListTagBtnsWrapper = styled.div`
@@ -71,11 +74,6 @@ const ListTagBtnsWrapper = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.transparent};
   }
 `
-
-const ToggleTagsBtn = styled.button.attrs((props) => ({
-  type: props.type || 'button',
-  'aria-label': 'Toggle for more tags input',
-}))``
 
 const ResetTagsBtn = styled.button.attrs((props) => ({
   type: props.type || 'button',
@@ -238,13 +236,12 @@ const ListTagBtns = ({ resetFilterBtns, tagList, resetCards, resetSearchQuery })
         )}
 
         {moreBtns === true && (
-          <ToggleTagsBtn
+          <IconMaterial
+            icon={'unfold_more'}
+            type={'button'}
             onClick={toggleMoreTagBtns}
-            className="material-icons-round"
-            aria-hidden="true"
-          >
-            unfold_more
-          </ToggleTagsBtn>
+            ariaLabel={'Toggle for more tags'}
+          />
         )}
       </div>
 

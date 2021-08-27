@@ -8,9 +8,12 @@ import linkResolver from '../../../utils/linkResolver'
 import { validateString } from '/src/utils/helpers'
 import moment from 'moment'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 // Layout
 import Section from '/src/components/common/layout/pageLayout/'
-import EventForm from '../../common/forms/formContactNew'
+import EventForm from '../../common/forms/formContact'
 
 import styled from 'styled-components'
 
@@ -51,7 +54,9 @@ const SupportersHeader = styled.div`
         flex-wrap: wrap;
         grid-column-gap: ${({ theme }) => theme.margin.default};
         grid-row-gap: ${({ theme }) => theme.margin['1/4']};
-        p,
+
+        time,
+        address,
         a {
           display: flex;
           flex-direction: row;
@@ -59,16 +64,16 @@ const SupportersHeader = styled.div`
           margin-bottom: 0;
           width: fit-content;
           white-space: nowrap;
+          grid-gap: ${({ theme }) => theme.margin['1/4']};
 
           i {
-            /* margin-top:1px; */
             color: inherit;
-            margin-right: ${({ theme }) => theme.margin['1/4']};
           }
         }
       }
       span.passed {
-        p {
+        time,
+        address {
           .prev {
             text-decoration: line-through;
             opacity: 0.5;
@@ -87,7 +92,7 @@ const SupportersBody = styled.div`
   }
   grid-gap: ${({ theme }) => theme.padding.default};
   & .content {
-    width: 66%;
+    width: 60%;
     padding-right: ${({ theme }) => theme.padding.default};
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       padding-right: 0;
@@ -96,16 +101,27 @@ const SupportersBody = styled.div`
     font-size: 110%;
   }
   & .contact {
-    width: 33%;
     display: flex;
     flex-direction: column;
-    grid-gap: ${({ theme }) => theme.margin.default};
+    grid-gap: ${({ theme }) => theme.padding['1/2']};
+    width: 40%;
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       width: 100%;
     }
-
-    & .title {
-      line-height: inherit;
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      grid-row-gap: ${({ theme }) => theme.padding['1/4']};
+      grid-column-gap: ${({ theme }) => theme.padding['1/2']};
+      text-indent: ${({ theme }) => theme.padding['1/4']};
+      span {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+        grid-gap: ${({ theme }) => theme.margin['1/4']};
+      }
     }
   }
 `
@@ -163,63 +179,49 @@ const EventItem = ({ currentLang, itemData }) => {
                 {today < start_date && (
                   <span>
                     {date && (
-                      <p>
-                        <i className="material-icons-round" aria-hidden="true">
-                          event
-                        </i>
+                      <time aria-label="Date">
+                        <IconMaterial icon={'event'} />
                         {date}
-                      </p>
+                      </time>
                     )}
                     {time && (
-                      <p>
-                        <i className="material-icons-round" aria-hidden="true">
-                          schedule
-                        </i>
+                      <time aria-label="Start time">
+                        <IconMaterial icon={'schedule'} />
                         {i18n[currentLang].starts}: {time}
-                      </p>
+                      </time>
                     )}
 
                     {end_date > start_date && (
-                      <p>
-                        <i className="material-icons-round" aria-hidden="true">
-                          access_time_filled
-                        </i>
+                      <time aria-label="End time">
+                        <IconMaterial icon={'access_time_filled'} />
                         {i18n[currentLang].ends}: {endTime}
-                      </p>
+                      </time>
                     )}
                     {duration && (
-                      <p>
-                        <i className="material-icons-round" aria-hidden="true">
-                          timelapse
-                        </i>
+                      <time aria-label="Duration">
+                        <IconMaterial icon={'timelapse'} />
                         {i18n[currentLang].duration}: {duration}
-                      </p>
+                      </time>
                     )}
 
                     {location && (
-                      <p>
-                        <i className="material-icons-round" aria-hidden="true">
-                          place
-                        </i>
+                      <address aria-label="Location">
+                        <IconMaterial icon={'place'} />
                         {location}
-                      </p>
+                      </address>
                     )}
                   </span>
                 )}
                 {today > start_date && (
                   <span className="passed">
-                    <p>
-                      <i className="material-icons-round" aria-hidden="true">
-                        event_busy
-                      </i>
+                    <time aria-label="Previous event">
+                      <IconMaterial icon={'event_busy'} />
                       <span className="prev">{date}</span> {i18n[currentLang].previousEvent}
-                    </p>
-                    <p>
-                      <i className="material-icons-round" aria-hidden="true">
-                        place
-                      </i>
+                    </time>
+                    <address aria-label="Location">
+                      <IconMaterial icon={'place'} />
                       {location}
-                    </p>
+                    </address>
                   </span>
                 )}
               </span>
@@ -227,7 +229,7 @@ const EventItem = ({ currentLang, itemData }) => {
 
             {eventType === 'News item' && date && (
               <span className="dateLocation">
-                <p>{date}</p>
+                <time>{date}</time>
               </span>
             )}
           </div>
@@ -239,9 +241,12 @@ const EventItem = ({ currentLang, itemData }) => {
           </div>
           {today < start_date && eventType === 'Event' && (
             <div className="contact">
-              <p className="title">
-                <strong>{i18n[currentLang].attendingEvent}</strong>
-              </p>
+              <div>
+                <span>
+                  <IconMaterial icon={'event_available'} />
+                  {i18n[currentLang].attendingEvent}
+                </span>
+              </div>
 
               <EventForm formData={itemData.data} />
             </div>

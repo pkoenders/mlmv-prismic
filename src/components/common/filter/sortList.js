@@ -3,6 +3,9 @@ import React from 'react'
 // Helpers
 import i18n from '/config/i18n'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 // Filter componetent styles
 import AscDesc from './ascDesc'
 
@@ -134,9 +137,7 @@ const Sort = ({ currentLang, items, toggleSortListClick, sortItemClick, sortAscD
       <div>
         <SortSelect onClick={toggleSortListClick}>
           <span>{items[0].title}</span>
-          <i className="material-icons-round" aria-hidden="true">
-            expand_more
-          </i>
+          <IconMaterial icon={'expand_more'} />
         </SortSelect>
 
         <div>

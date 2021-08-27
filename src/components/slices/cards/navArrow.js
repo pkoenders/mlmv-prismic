@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const ArrowBtn = styled.button.attrs((props) => ({
@@ -25,7 +28,6 @@ const ArrowBtn = styled.button.attrs((props) => ({
   }
 
   i {
-    font-size: 36px;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.primary.default};
   }
@@ -42,9 +44,7 @@ const NavArrow = (props) => {
           className={direction + ' ' + disabeld}
           aria-label="Slide to next item"
         >
-          <i className="material-icons-round" aria-hidden="true">
-            arrow_forward_ios
-          </i>
+          <IconMaterial icon={'arrow_forward_ios'} size={36} />
         </ArrowBtn>
       )}
 
@@ -54,9 +54,7 @@ const NavArrow = (props) => {
           className={direction + ' ' + disabeld}
           aria-label="Slide to previous item"
         >
-          <i className="material-icons-round" aria-hidden="true">
-            arrow_back_ios
-          </i>
+          <IconMaterial icon={'arrow_back_ios'} size={36} />
         </ArrowBtn>
       )}
     </>

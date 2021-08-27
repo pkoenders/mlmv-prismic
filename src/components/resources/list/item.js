@@ -6,6 +6,9 @@ import { RichText } from 'prismic-reactjs'
 import linkResolver from '/src/utils/linkResolver'
 import { validateString } from '/src/utils/helpers'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 // Layout
 import ListItem from '/src/components/common/layout/listResults/listItem'
 import Tags from '/src/components/common/filter/tags'
@@ -26,50 +29,42 @@ const RescourcesItem = ({ resourceItem, id, showTags }) => {
       {item.uid && (
         <ListItem id={id} className={'item show'}>
           <div className="card">
-            <span className="content">
-              {title && <p>{title}</p>}
-              {/* {intro && <P>{intro}</P>} */}
+            <div className="content">
+              {title && <div>{title}</div>}
               {intro && <RichText render={intro} linkResolver={linkResolver} />}
-            </span>
-            <span className="details">
+            </div>
+            <div className="details">
               {internalLink && (
-                <p>
-                  <i className="material-icons-round" aria-hidden="true">
-                    arrow_forward
-                  </i>
+                <address>
+                  <IconMaterial icon={'arrow_forward'} />
                   {internalLink}
                   <Link to={internalLink}>externalLink</Link>
-                </p>
+                </address>
               )}
 
               {externalLink && (
                 <a href={externalLink} target="_blank" rel="noreferrer">
-                  <i className="material-icons-round" aria-hidden="true">
-                    open_in_new
-                  </i>
+                  <IconMaterial icon={'open_in_new'} />
                   {externalLink}
                 </a>
               )}
+
               {phone && (
                 <a href={`tel:${phone}`}>
-                  <i className="material-icons-round" aria-hidden="true">
-                    call
-                  </i>
+                  <IconMaterial icon={'call'} />
                   {phone}
                 </a>
               )}
 
               {location && (
-                <p>
-                  <i className="material-icons-round" aria-hidden="true">
-                    place
-                  </i>
+                <address>
+                  <IconMaterial icon={'place'} />
                   {location}
-                </p>
+                </address>
               )}
 
               {showTags === true && tagData.length > 0 && <Tags tagData={tagData} />}
-            </span>
+            </div>
           </div>
         </ListItem>
       )}

@@ -1,7 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Button = styled.button`
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
+const Button = styled.button.attrs((props) => ({
+  type: props.type || 'button',
+  'aria-label': 'Scroll to top',
+}))`
   cursor: pointer;
   margin: ${({ theme }) => theme.margin['1/2']} auto;
   background-color: transparent;
@@ -36,9 +42,7 @@ const ScrollToTop = () => {
 
   return (
     <Button onClick={scrollTop} aria-label="Go to the top of the page">
-      <i className={' material-icons-round'} aria-hidden="true">
-        arrow_upward
-      </i>
+      <IconMaterial icon={'arrow_upward'} />
     </Button>
   )
 }

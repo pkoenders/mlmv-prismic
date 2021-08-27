@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const CLoseWrapper = styled.button.attrs((props) => ({
@@ -14,9 +17,7 @@ const CLoseWrapper = styled.button.attrs((props) => ({
 const Close = ({ onClick }) => {
   return (
     <CLoseWrapper onClick={onClick}>
-      <i className="material-icons-round" aria-hidden="true">
-        close
-      </i>
+      <IconMaterial icon={'close'} />
     </CLoseWrapper>
   )
 }

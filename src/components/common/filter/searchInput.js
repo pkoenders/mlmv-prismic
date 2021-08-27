@@ -3,6 +3,9 @@ import React from 'react'
 // Helpers
 import i18n from '/config/i18n'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const Input = styled.div`
@@ -31,7 +34,7 @@ const Input = styled.div`
       border-radius: 999rem;
     }
 
-    i {
+    > i {
       user-select: none;
       position: absolute;
       left: ${({ theme }) => theme.padding['1/2']};
@@ -55,6 +58,13 @@ const Reset = styled.button.attrs((props) => ({
   user-select: none;
   right: ${({ theme }) => theme.margin['1/2']};
   opacity: 0.5;
+
+  i {
+    pointer-events: none;
+    position: relative;
+    display: flex;
+    align-self: center;
+  }
 `
 
 const Search = ({ currentLang, handleSearchChange, queryLength, resetFilters }) => {
@@ -72,12 +82,10 @@ const Search = ({ currentLang, handleSearchChange, queryLength, resetFilters }) 
           placeholder={`${i18n[currentLang].searchPlacholder}`}
           onChange={handleSearchChange}
         />
-        <i className="material-icons-round" aria-hidden="true">
-          search
-        </i>
+        <IconMaterial icon={'search'} />
         {queryLength > 0 && (
-          <Reset onClick={resetSearch} className="material-icons-round" aria-hidden="true">
-            close
+          <Reset onClick={resetSearch}>
+            <IconMaterial icon={'close'} />
           </Reset>
         )}
       </label>

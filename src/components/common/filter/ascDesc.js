@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
 import styled from 'styled-components'
 
 const AscDescBtnWrapper = styled.button.attrs((props) => ({
@@ -32,9 +35,7 @@ const AscDescBtnWrapper = styled.button.attrs((props) => ({
 const AscDesc = ({ onClick }) => {
   return (
     <AscDescBtnWrapper onClick={onClick} className="order">
-      <i className="material-icons-round" aria-hidden="true">
-        filter_list
-      </i>
+      <IconMaterial icon={'filter_list'} />
     </AscDescBtnWrapper>
   )
 }

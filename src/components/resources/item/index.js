@@ -11,7 +11,7 @@ import moment from 'moment'
 
 // Layout
 import Section from '/src/components/common/layout/pageLayout/'
-import EventForm from '../../common/forms/formContactNew'
+import EventForm from '../../common/forms/formContact'
 
 import styled from 'styled-components'
 

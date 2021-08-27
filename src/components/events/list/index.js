@@ -4,7 +4,7 @@ import React, { useState, useCallback } from 'react'
 import moment from 'moment'
 import i18n from '/config/i18n'
 
-// Layout
+// Icons
 import Section from '/src/components/common/layout/pageLayout/'
 import PageTitle from '/src/components/common/layout/listResults/listPageTitle'
 import ListWrapper from '/src/components/common/layout/listResults/listWrapper'
@@ -41,6 +41,10 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
   var [queryValue, setQueryValue] = useState('')
   var [queryLength, setQueryLength] = useState(0)
   const [ascDesc, setAscDescSort] = useState(true) // false for Acs. true for Desc
+
+  // Set the intial sort
+  var sortInitalListList = _.sortBy(dataList.items, 'item.document.data.start_date_time').reverse()
+  sourceList = sortInitalListList
 
   // Input filter:
   const emptyQuery = ''

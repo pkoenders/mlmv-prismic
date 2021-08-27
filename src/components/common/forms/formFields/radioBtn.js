@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RadioBtn = ({ label, input, meta, fieldId }) => {
+const RadioBtn = ({ label, input, meta, fieldId, onClick }) => {
   const { name } = input
   const { dirty, invalid } = meta
   const hasValue = !!dirty && !invalid
@@ -8,7 +8,13 @@ const RadioBtn = ({ label, input, meta, fieldId }) => {
   return (
     <label className={`${hasValue ? 'touched' : ''}`}>
       {label}
-      <input type="radio" id={fieldId} name={name.replace(/\s/g, '').toLowerCase()} value={label} />
+      <input
+        type="radio"
+        id={fieldId}
+        name={name.replace(/\s/g, '').toLowerCase()}
+        value={label}
+        onClick={onClick}
+      />
     </label>
   )
 }

@@ -186,6 +186,19 @@ export const query = graphql`
                         }
                       }
 
+                      ## Rich text area
+                      ... on PrismicFormsDataBodyRichText {
+                        id
+                        slice_type
+                        primary {
+                          align_with_input
+                          text {
+                            text
+                            raw
+                          }
+                        }
+                      }
+
                       ## Checkbox
                       ... on PrismicFormsDataBodyCheckbox {
                         id
@@ -194,6 +207,7 @@ export const query = graphql`
                           title {
                             text
                           }
+                          required
                           align
                         }
                         items {
@@ -216,6 +230,7 @@ export const query = graphql`
                           title {
                             text
                           }
+                          required
                           align
                         }
                       }
@@ -232,6 +247,7 @@ export const query = graphql`
                           title {
                             text
                           }
+                          required
                         }
                         slice_type
                       }

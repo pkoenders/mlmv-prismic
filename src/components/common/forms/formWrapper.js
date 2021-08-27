@@ -121,7 +121,6 @@ const FormWraper = styled.div`
       text-indent: ${({ theme }) => theme.padding['1/4']};
     }
 
-
     label,
     fieldset,
     legend {
@@ -139,15 +138,15 @@ const FormWraper = styled.div`
         font-size: 80%;
         letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
         font-weight: normal;
-        line-height: initial;
-        width: fit-content;
-        color: ${({ theme }) => theme.colors.alert.tomato};
+        line-height: inherit;
+        margin-top: 2px;
+        width: fit-content !important;
+        color: ${({ theme }) => theme.colors.page[500]};
         display: inline-flex;
         text-transform: uppercase;
       }
-      span.required {
-        color: inherit;
-        opacity: 0.54;
+      .error {
+        color: ${({ theme }) => theme.colors.alert.tomato};
       }
       
 
@@ -166,8 +165,24 @@ const FormWraper = styled.div`
       }
     }
 
+    div.richText.above{
+       padding-top: ${({ theme }) => theme.padding['1/4']};
+      margin-top: -${({ theme }) => theme.margin.default};
+    }
+    div.richText.below{
+      padding-bottom: ${({ theme }) => theme.padding['1/4']};
+      margin-bottom: -${({ theme }) => theme.margin.default};
+    }
+
     fieldset {
       flex-direction: row;
+      legend {
+        display: flex;
+        flex-direction: row; 
+        .none {
+          display: none;
+        }
+      }
     }
 
     .checkBoxes,

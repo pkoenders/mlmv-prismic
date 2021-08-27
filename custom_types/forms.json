@@ -123,6 +123,13 @@
                   "label": "Align",
                   "placeholder": "Horizontal (Default)"
                 }
+              },
+              "required": {
+                "type": "Boolean",
+                "config": {
+                  "default_value": false,
+                  "label": "Required"
+                }
               }
             },
             "repeat": {
@@ -155,6 +162,13 @@
                   "label": "Align",
                   "placeholder": "Horizontal (Default)"
                 }
+              },
+              "required": {
+                "type": "Boolean",
+                "config": {
+                  "default_value": false,
+                  "label": "Required"
+                }
               }
             },
             "repeat": {
@@ -163,6 +177,13 @@
                 "config": {
                   "single": "heading2",
                   "label": "Item"
+                }
+              },
+              "required": {
+                "type": "Boolean",
+                "config": {
+                  "default_value": false,
+                  "label": "required"
                 }
               }
             }
@@ -180,6 +201,13 @@
                   "label": "Title",
                   "placeholder": "Name of field"
                 }
+              },
+              "required": {
+                "type": "Boolean",
+                "config": {
+                  "default_value": false,
+                  "label": "Required"
+                }
               }
             },
             "repeat": {
@@ -191,6 +219,32 @@
                 }
               }
             }
+          },
+          "rich_text": {
+            "type": "Slice",
+            "fieldset": "Rich text",
+            "description": "Rich text",
+            "icon": "format_color_text",
+            "display": "list",
+            "non-repeat": {
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink,image,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "text"
+                }
+              },
+              "align_with_input": {
+                "type": "Select",
+                "config": {
+                  "options": ["False", "Below", "Above"],
+                  "default_value": "False",
+                  "label": "Align with input"
+                }
+              }
+            },
+            "repeat": {}
           }
         }
       }

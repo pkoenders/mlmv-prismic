@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
 // Helpers
 import { isRequired, isValidEmail } from './validators'
 import { Form, Field } from 'react-final-form'
-import { linkResolver } from '/src/utils/linkResolver'
+import linkResolver from '../../../utils/linkResolver'
 import { RichText } from 'prismic-reactjs'
 import { getColor, validateString } from '/src/utils/helpers'
 
@@ -27,6 +27,7 @@ const encode = (data) => {
 }
 
 const ContactNew = ({ formData }) => {
+  const [requiredFieldSet, setRequiredFieldSet] = useState(true)
   // const formTitle = slice.primary.select_form.document.data.form_title.text
   // const formDecription = slice.primary.select_form.document.data.from_content.raw
   // const formDataFields = slice.primary.select_form.document.data.body
@@ -50,10 +51,14 @@ const ContactNew = ({ formData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log(e.target.elements)
-    // const formData = Object.fromEntries(new FormData(e.target).entries())
-    // const formData = Object.fromEntries(new FormData(e.target).entries())
-    // const formDataAlt = Object.fromEntries(new FormData(e.target).value)
+    setRequiredFieldSet(true)
+    const legends = [...document.querySelectorAll('.fieldSetRequired')]
+    for (const legend of legends) {
+      if (legend.classList.contains('isRequired')) {
+        legend.classList.add('error')
+        return
+      }
+    }
 
     const data = new FormData(e.target)
     const formDataEntries = Object.fromEntries(data.entries())
@@ -62,29 +67,29 @@ const ContactNew = ({ formData }) => {
     // let form = document.querySelector('form')
 
     // Get all field data from the form
-    let formData = new FormData(e.target)
+    // let formData = new FormData(e.target)
 
     // Convert to a query string
     // let queryString = new URLSearchParams(formData).toString()
-    function serialize(data) {
-      let obj = {}
-      for (let [key, value] of data) {
-        if (obj[key] !== undefined) {
-          if (!Array.isArray(obj[key])) {
-            obj[key] = [obj[key]]
-          }
-          obj[key].push(value)
-        } else {
-          obj[key] = value
-        }
-      }
-      return obj
-    }
+    // function serialize(data) {
+    //   let obj = {}
+    //   for (let [key, value] of data) {
+    //     if (obj[key] !== undefined) {
+    //       if (!Array.isArray(obj[key])) {
+    //         obj[key] = [obj[key]]
+    //       }
+    //       obj[key].push(value)
+    //     } else {
+    //       obj[key] = value
+    //     }
+    //   }
+    //   return obj
+    // }
 
-    // Convert to an object
-    const formObj = serialize(formData)
+    // // Convert to an object
+    // const formObj = serialize(formData)
 
-    console.log(formObj)
+    // console.log(formObj)
 
     fetch(`/`, {
       method: 'POST',
@@ -101,12 +106,17 @@ const ContactNew = ({ formData }) => {
       })
 
       .catch((error) => setErrorMsg(true))
-
-    // e.preventDefault()
   }
 
   const resetForm = () => {
     setSuccessMsg(false)
+    setRequiredFieldSet(true)
+    const legends = [...document.querySelectorAll('.fieldSetRequired')]
+    for (const legend of legends) {
+      legend.classList.add('isRequired')
+      legend.classList.remove('error')
+    }
+
     document.querySelector('.form').classList.remove('hide')
     document.querySelector('.form').reset()
   }
@@ -116,6 +126,39 @@ const ContactNew = ({ formData }) => {
     await sleep(300)
     window.alert(JSON.stringify(values, 0, 2))
   }
+
+  const toggleFieldSet = useCallback((e) => {
+    if (e.target.closest('fieldset').classList.contains('requiredSet')) {
+      removeError()
+      if (e.target.checked === false) {
+        addError()
+      }
+
+      const allCheckbox = [
+        ...e.target.closest('fieldset').querySelectorAll("input[type='checkbox']"),
+      ]
+      for (const checkBox of allCheckbox) {
+        if (checkBox.checked === true) {
+          removeError()
+        }
+      }
+      setRequiredFieldSet(false)
+    }
+
+    function removeError() {
+      e.target
+        .closest('fieldset')
+        .querySelector('.fieldSetRequired')
+        .classList.remove('isRequired', 'error')
+    }
+
+    function addError() {
+      e.target
+        .closest('fieldset')
+        .querySelector('.fieldSetRequired')
+        .classList.add('isRequired', 'error')
+    }
+  }, [])
 
   return (
     <div
@@ -147,6 +190,23 @@ const ContactNew = ({ formData }) => {
               {formDataFields.map((primary, index) => {
                 return (
                   <>
+                    {/* Add rich text */}
+                    {formDataFields[index].slice_type === 'rich_text' && (
+                      <div
+                        key={formDataFields[index].id}
+                        className={
+                          'richText ' + formDataFields[index].primary.align_with_input.toLowerCase()
+                        }
+                      >
+                        {formDataFields[index].primary.text.text && (
+                          <RichText
+                            render={formDataFields[index].primary.text.raw}
+                            linkResolver={linkResolver}
+                          />
+                        )}
+                      </div>
+                    )}
+
                     {/* Add text input */}
                     {formDataFields[index].slice_type === 'text_input' && (
                       <Field
@@ -164,17 +224,24 @@ const ContactNew = ({ formData }) => {
                         }
                       />
                     )}
+
                     {/* Add check box */}
                     {formDataFields[index].slice_type === 'checkbox' && (
                       <fieldset
                         key={formDataFields[index].id}
                         className={
-                          'checkBoxes ' + `${formDataFields[index].primary.align}`.toLowerCase()
+                          'checkBoxes ' +
+                          `${formDataFields[index].primary.align}`.toLowerCase() +
+                          `${formDataFields[index].primary.required === true && ' requiredSet'}`
                         }
                       >
                         <legend name={formDataFields[index].primary.title.text}>
                           {formDataFields[index].primary.title.text}
+                          {formDataFields[index].primary.required === true && (
+                            <span className="fieldSetRequired isRequired required">Required</span>
+                          )}
                         </legend>
+
                         {formDataFields[index].items.map((chekbox) => {
                           return (
                             <Field
@@ -183,9 +250,7 @@ const ContactNew = ({ formData }) => {
                               name={chekbox.item.text}
                               label={chekbox.item.text}
                               component={CheckBox}
-                              validate={
-                                formDataFields[index].primary.required === true ? isRequired : ''
-                              }
+                              onClick={toggleFieldSet}
                             />
                           )
                         })}
@@ -196,10 +261,17 @@ const ContactNew = ({ formData }) => {
                       <fieldset
                         key={formDataFields[index].id}
                         className={
-                          'radioBtns ' + `${formDataFields[index].primary.align}`.toLowerCase()
+                          'radioBtns ' +
+                          `${formDataFields[index].primary.align}`.toLowerCase() +
+                          `${formDataFields[index].primary.required === true && ' requiredSet'}`
                         }
                       >
-                        <legend>{formDataFields[index].primary.title.text}</legend>
+                        <legend>
+                          {formDataFields[index].primary.title.text}
+                          {formDataFields[index].primary.required === true && (
+                            <span className="fieldSetRequired isRequired required">Required</span>
+                          )}
+                        </legend>
                         {formDataFields[index].items.map((radioBtn) => {
                           return (
                             <Field
@@ -209,9 +281,7 @@ const ContactNew = ({ formData }) => {
                               fieldName={radioBtn.item.text}
                               label={radioBtn.item.text}
                               component={RadioBtn}
-                              validate={
-                                formDataFields[index].primary.required === true ? isRequired : ''
-                              }
+                              onClick={toggleFieldSet}
                             />
                           )
                         })}
@@ -220,20 +290,26 @@ const ContactNew = ({ formData }) => {
 
                     {/* Add select list */}
                     {formDataFields[index].slice_type === 'select_list' && (
-                      <fieldset>
-                        <label
-                          key={formDataFields[index].id}
-                          htmlFor={formDataFields[index].primary.title.text}
-                        >
+                      <fieldset
+                        key={formDataFields[index].id}
+                        className={`${
+                          formDataFields[index].primary.required === true && 'requiredSet'
+                        }`}
+                      >
+                        <label htmlFor={formDataFields[index].primary.title.text}>
                           {formDataFields[index].primary.title.text}
+                          {formDataFields[index].primary.required === true && (
+                            <span className="fieldSetRequired isRequired required">Required</span>
+                          )}
                         </label>
-                        <span className="select">
+                        <div className="select">
                           <i className="material-icons-round" aria-hidden="true">
                             expand_more
                           </i>
                           <select
                             id={formDataFields[index].primary.title.text}
                             name={formDataFields[index].primary.title.text}
+                            onClick={toggleFieldSet}
                           >
                             {formDataFields[index].items.map((listItem) => {
                               return (
@@ -241,16 +317,12 @@ const ContactNew = ({ formData }) => {
                                   name={formDataFields[index].primary.title.text}
                                   label={listItem.item.text}
                                   component={SelectList}
-                                  validate={
-                                    formDataFields[index].primary.required === true
-                                      ? isRequired
-                                      : ''
-                                  }
+                                  onClick={toggleFieldSet}
                                 />
                               )
                             })}
                           </select>
-                        </span>
+                        </div>
                       </fieldset>
                     )}
 
@@ -269,7 +341,7 @@ const ContactNew = ({ formData }) => {
                     {/* Add submit button */}
                     {formDataFields[index].slice_type === 'button' && (
                       <div key={formDataFields[index].id} className={'submitForm'}>
-                        {invalid && (
+                        {(invalid || requiredFieldSet === true) && (
                           <p>Please ensure that the required form fields are completed</p>
                         )}
 

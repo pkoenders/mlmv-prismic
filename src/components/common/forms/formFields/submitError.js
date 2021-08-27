@@ -10,6 +10,7 @@ const Error = styled.div`
   display: flex;
   flex-direction: column;
   grid-gap: ${({ theme }) => theme.margin['1/2']};
+  margin: ${({ theme }) => theme.margin.default} 0;
   p:first-of-type {
     font-size: 133%;
     font-weight: 500;

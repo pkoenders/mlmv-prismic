@@ -9,94 +9,19 @@ import { gsap, Power3 } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { resizeAllGridItems } from '/src/utils/helpers'
 
+// Layout
+import CardWrapper from '/src/components/common/layout/listResults/cardWrapper'
+import CardContent from '/src/components/common/layout/listResults/cardContent'
+
 // Icons
 import IconMaterial from '/src/components/common/icons/material'
 
 import styled from 'styled-components'
 
-const Item = styled.li`
+const CardItem = styled.li`
   display: none;
-
-  a.card {
-    overflow: hidden;
-    color: ${({ theme }) => theme.colors.textColor};
+  a {
     text-decoration: none;
-    display: block;
-    background-color: ${({ theme }) => theme.colors.card[100]};
-    border: 1px solid ${({ theme }) => theme.colors.card[300]};
-    border-radius: ${({ theme }) => theme.borderRadius.default};
-    z-index: 10;
-
-    height: max-content !important;
-    transform: translateY(0px);
-    transition: ${({ theme }) => theme.transition.easeOut.default};
-
-    .imageWrapper {
-      position: relative;
-      img {
-        transition: ${({ theme }) => theme.transition.easeOut.default};
-        aspect-ratio: 16/9;
-        transform: scale(1);
-        object-position: center top !important;
-      }
-    }
-
-    span {
-      display: flex;
-      flex-direction: column;
-      grid-gap: ${({ theme }) => theme.padding['1/4']};
-      border-top: 1px solid ${({ theme }) => theme.colors.card[300]};
-      color: inherit;
-      padding: ${({ theme }) => theme.padding['1/2']};
-
-      p:first-of-type {
-        font-size: 103%;
-        font-weight: 600;
-        align-content: space-between;
-        /* margin-bottom: ${({ theme }) => theme.margin['1/4']}; */
-
-        i {
-          color: inherit;
-          margin: 0 0 0 auto;
-        }
-      }
-      p {
-        display: flex;
-        align-items: center;
-        margin: 0;
-        i {
-          color: inherit;
-          margin-right: ${({ theme }) => theme.margin['1/4']};
-        }
-      }
-
-      p:last-of-type {
-        margin-bottom: ${({ theme }) => theme.margin['1/4']};
-      }
-    }
-  }
-
-  &:hover {
-    a.card {
-      box-shadow: ${({ theme }) => theme.boxShadow.lg};
-      text-decoration: none;
-      border-color: ${({ theme }) => theme.colors.primary[400]};
-      .imageWrapper {
-        img {
-          transform: scale(1.033);
-          object-position: center top;
-        }
-      }
-
-      span {
-        text-decoration: none;
-        p {
-          i {
-            color: ${({ theme }) => theme.colors.primary.default};
-          }
-        }
-      }
-    }
   }
 
   &.show,
@@ -105,7 +30,6 @@ const Item = styled.li`
     height: fit-content;
   }
 `
-
 const PeerSupportersItem = ({ thisItem, animateScroll }) => {
   // const _ = require('lodash')
 
@@ -223,35 +147,39 @@ const PeerSupportersItem = ({ thisItem, animateScroll }) => {
   return (
     <>
       {item.uid && (
-        <Item className={'item show'} ref={gridItem}>
+        <CardItem className={'item show'} ref={gridItem}>
           <Link to={linkResolver(item)} className="card">
-            {content.image && (
-              <div className="imageWrapper">
-                <GatsbyImage
-                  image={content.image.localFile.childImageSharp.gatsbyImageData}
-                  alt={content.image.alt ? content.image.alt : content.title.text}
-                />
-              </div>
-            )}
+            <CardWrapper>
+              <CardContent>
+                {content.image && (
+                  <div className="imageWrapper">
+                    <GatsbyImage
+                      image={content.image.localFile.childImageSharp.gatsbyImageData}
+                      alt={content.image.alt ? content.image.alt : content.title.text}
+                    />
+                  </div>
+                )}
 
-            <span ref={innerTxt}>
-              {firstName && (
-                <p>
-                  {fullName}
-                  <IconMaterial icon={'arrow_forward'} />
-                </p>
-              )}
-              {intro && <p>{intro}</p>}
-              {location && (
-                <p>
-                  <IconMaterial icon={'person_pin_circle'} />
-                  {location}
-                </p>
-              )}
-              {tagData && <Tags tagData={tagData} />}
-            </span>
+                <div className="content" ref={innerTxt}>
+                  {firstName && (
+                    <div className="title">
+                      {fullName}
+                      <IconMaterial icon={'arrow_forward'} />
+                    </div>
+                  )}
+                  {intro && <p>{intro}</p>}
+                  {location && (
+                    <p>
+                      <IconMaterial icon={'person_pin_circle'} />
+                      {location}
+                    </p>
+                  )}
+                  {tagData && <Tags tagData={tagData} />}
+                </div>
+              </CardContent>
+            </CardWrapper>
           </Link>
-        </Item>
+        </CardItem>
       )}
     </>
   )

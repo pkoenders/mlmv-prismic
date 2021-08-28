@@ -27,7 +27,7 @@ const SupportersHeader = styled.div`
   }
   margin: ${({ theme }) => theme.padding['4xl']} auto ${({ theme }) => theme.padding.default} auto;
   padding-bottom: ${({ theme }) => theme.padding['1/2']};
-  border-bottom: 4px solid ${({ theme }) => theme.colors.page[300]};
+  border-bottom: 4px solid ${({ theme }) => theme.colors.secondary[300]};
 
   & .intro {
     width: 60%;
@@ -46,7 +46,7 @@ const SupportersHeader = styled.div`
         width: 75px !important;
         height: 75px !important;
         border-radius: 50%;
-        border: 1px solid #fff;
+        border: 1px solid ${({ theme }) => theme.colors.secondary[600]};
         margin-right: ${({ theme }) => theme.margin['1/2']};
       }
     }
@@ -93,10 +93,14 @@ const SupportersBody = styled.div`
       grid-column-gap: ${({ theme }) => theme.padding['1/2']};
       text-indent: ${({ theme }) => theme.padding['1/4']};
       span {
+        font-weight: 500;
         display: inline-flex;
         align-items: center;
         white-space: nowrap;
         grid-gap: ${({ theme }) => theme.margin['1/4']};
+        i {
+          color: ${({ theme }) => theme.colors.secondary.default};
+        }
       }
     }
   }

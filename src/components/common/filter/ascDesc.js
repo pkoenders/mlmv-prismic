@@ -16,6 +16,8 @@ const AscDescBtnWrapper = styled.button.attrs((props) => ({
   user-select: none;
   background-color: ${({ theme }) => theme.colors.page.bground.default};
   border: 1px solid ${({ theme }) => theme.colors.card[300]};
+  border: 1px solid ${({ theme }) => theme.colors.primary[600]};
+  border: 1px solid ${({ theme }) => theme.colors.tertiary[600]};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
 
   i {

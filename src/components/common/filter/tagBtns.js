@@ -16,7 +16,6 @@ const ListTagBtnsWrapper = styled.div`
     button {
       cursor: pointer;
       user-select: none;
-      /* padding: 0 ${({ theme }) => theme.padding['1/8']}; */
       padding: 0;
       &:hover {
         color: ${({ theme }) => theme.colors.primary.default};
@@ -55,23 +54,36 @@ const ListTagBtnsWrapper = styled.div`
     cursor: pointer;
     padding: ${({ theme }) => theme.padding['1/8']} ${({ theme }) => theme.padding['1/2']};
     white-space: nowrap;
-    margin: 0;
     color: ${({ theme }) => theme.colors.textColor};
     background-color: ${({ theme }) => theme.colors.white};
     border: 1px solid ${({ theme }) => theme.colors.grey[400]};
-    border-radius: 999em;
-    box-shadow: none;
+    border: 1px solid ${({ theme }) => theme.colors.primary[600]};
+    border-radius: ${({ theme }) => theme.borderRadius.sm};
+    /* box-shadow: none; */
+    /* box-shadow: ${({ theme }) => theme.boxShadow.default}; */
+
+    background-color: ${({ theme }) => theme.colors.secondary[100]};
+    background-color: #fff;
+    border: 1px solid ${({ theme }) => theme.colors.tertiary[400]};
+    color: ${({ theme }) => theme.colors.page.default};
   }
 
   .tagButton:hover {
-    color: ${({ theme }) => theme.colors.primary.default};
-    border: 1px solid ${({ theme }) => theme.colors.primary.default};
+    color: ${({ theme }) => theme.colors.page.default};
+    background-color: ${({ theme }) => theme.colors.primary[200]};
+    background-color: #fff;
+    border: 1px solid ${({ theme }) => theme.colors.secondary[800]};
   }
 
   .tagButton.isActive {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.page.default};
+    color: #fff;
     background-color: ${({ theme }) => theme.colors.primary.default};
-    border: 1px solid ${({ theme }) => theme.colors.transparent};
+    border: 1px solid ${({ theme }) => theme.colors.primary[1100]};
+
+    color: ${({ theme }) => theme.colors.page.default};
+    background-color: ${({ theme }) => theme.colors.secondary[200]};
+    border: 1px solid ${({ theme }) => theme.colors.secondary[800]};
   }
 `
 

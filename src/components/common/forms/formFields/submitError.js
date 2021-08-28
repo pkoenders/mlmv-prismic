@@ -7,10 +7,10 @@ import IconSubmitError from '/src/images/svg/icon-contact-error.inline.svg'
 import styled from 'styled-components'
 
 const Error = styled.div`
-  display: flex;
-  flex-direction: column;
-  grid-gap: ${({ theme }) => theme.margin['1/2']};
-  margin: ${({ theme }) => theme.margin.default} 0;
+  flex-direction: row;
+  grid-row-gap: ${({ theme }) => theme.padding['1/2']} !important;
+  grid-column-gap: ${({ theme }) => theme.padding['1/4']} !important;
+  margin: ${({ theme }) => theme.margin.default} ${({ theme }) => theme.padding['1/4']};
   p:first-of-type {
     font-size: 133%;
     font-weight: 500;
@@ -19,10 +19,10 @@ const Error = styled.div`
 
   svg {
     margin: 0;
-    width: 64px;
+    width: ${({ theme }) => theme.padding['1xl']};
     height: auto;
-    // opacity: 0.6;
-    color: ${({ theme }) => theme.colors.grey[400]};
+    /* color: ${({ theme }) => theme.colors.grey[400]}; */
+    color: ${({ theme }) => theme.colors.alert.tomato};
   }
 
   span {
@@ -36,14 +36,13 @@ const Error = styled.div`
 const SubmitError = ({ resetForm }) => {
   return (
     <Error className={'formSuccess'}>
-      <p>Sorry, there has been an error</p>
       <IconSubmitError aria-hidden="true" />
+      <p>Sorry, there has been an error</p>
       <p>Could you please try and complete the form again.</p>
-
       <Button
         buttonLabel={'Reset form'}
         buttonType={'button'}
-        buttonStyle={'secondary'}
+        buttonStyle={'black'}
         onClick={resetForm}
         icon={'refresh'}
       />

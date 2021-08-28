@@ -12,7 +12,7 @@ const ArrowBtn = styled.button.attrs((props) => ({
   align-items: center;
   cursor: pointer;
   user-select: none;
-  background-color: #ffffff80 !important;
+  background-color: #ffffffa8 !important;
   padding: ${({ theme }) => theme.padding['1/2']} ${({ theme }) => theme.padding['1/4']};
   position: absolute;
   align-self: center;
@@ -28,8 +28,8 @@ const ArrowBtn = styled.button.attrs((props) => ({
   }
 
   i {
-    font-weight: 700;
-    color: ${({ theme }) => theme.colors.primary.default};
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.page.default};
   }
 `
 const NavArrow = (props) => {

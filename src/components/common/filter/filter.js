@@ -11,6 +11,9 @@ const FilterWrapper = styled.div`
   padding: ${({ theme }) => theme.padding['1/2']} ${({ theme }) => theme.padding.default};
   background-color: ${({ theme }) => theme.colors.card[100]};
   border: 1px solid ${({ theme }) => theme.colors.card[300]};
+
+  background-color: ${({ theme }) => theme.colors.tertiary[100]};
+  border: 2px solid ${({ theme }) => theme.colors.tertiary[300]};
   border-radius: ${({ theme }) => theme.borderRadius.default};
   // background-color: ${({ theme }) => theme.colors.primary[100]};
 

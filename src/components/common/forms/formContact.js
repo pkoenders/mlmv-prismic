@@ -304,26 +304,27 @@ const ContactNew = ({ formData }) => {
                           {formDataFields[index].primary.required === true && (
                             <span className="fieldSetRequired isRequired required">Required</span>
                           )}
+
+                          <div className="select">
+                            <IconMaterial icon={'expand_more'} />
+                            <select
+                              id={formDataFields[index].primary.title.text}
+                              name={formDataFields[index].primary.title.text}
+                              onClick={toggleFieldSet}
+                            >
+                              {formDataFields[index].items.map((listItem) => {
+                                return (
+                                  <Field
+                                    name={formDataFields[index].primary.title.text}
+                                    label={listItem.item.text}
+                                    component={SelectList}
+                                    onClick={toggleFieldSet}
+                                  />
+                                )
+                              })}
+                            </select>
+                          </div>
                         </label>
-                        <div className="select">
-                          <IconMaterial icon={'expand_more'} />
-                          <select
-                            id={formDataFields[index].primary.title.text}
-                            name={formDataFields[index].primary.title.text}
-                            onClick={toggleFieldSet}
-                          >
-                            {formDataFields[index].items.map((listItem) => {
-                              return (
-                                <Field
-                                  name={formDataFields[index].primary.title.text}
-                                  label={listItem.item.text}
-                                  component={SelectList}
-                                  onClick={toggleFieldSet}
-                                />
-                              )
-                            })}
-                          </select>
-                        </div>
                       </fieldset>
                     )}
 

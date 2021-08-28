@@ -10,6 +10,8 @@ import IconMaterial from '/src/components/common/icons/material'
 
 // Layout
 import ListItem from '../../common/layout/listResults/listItem'
+import CardWrapper from '/src/components/common/layout/listResults/cardWrapper'
+import CardContent from '/src/components/common/layout/listResults/cardContent'
 import Tags from '../../common/filter/tags'
 
 const PeerSupportersItem = ({ currentLang, thisItem, showTags }) => {
@@ -58,72 +60,76 @@ const PeerSupportersItem = ({ currentLang, thisItem, showTags }) => {
       {item.uid && (
         <ListItem className={'item show'}>
           <Link to={`${item.uid}`} className="card">
-            <div className="content">
-              {title && (
-                <div>
-                  {title}
-                  <IconMaterial icon={'arrow_forward'} />
+            <CardWrapper>
+              <CardContent>
+                <div className="content">
+                  {title && (
+                    <div className="title">
+                      {title}
+                      <IconMaterial icon={'arrow_forward'} />
+                    </div>
+                  )}
+                  {eventType === 'News item' && date && <time>{date}</time>}
+                  {intro && <p>{intro}</p>}
                 </div>
-              )}
-              {eventType === 'News item' && date && <time>{date}</time>}
-              {intro && <p>{intro}</p>}
-            </div>
 
-            {eventType === 'Event' && (
-              <div className="details">
-                {today < start_date && (
-                  <>
-                    {date && (
-                      <time aria-label="Date">
-                        <IconMaterial icon={'event'} />
-                        {date}
+                {eventType === 'Event' && (
+                  <div className="details">
+                    {today < start_date && (
+                      <>
+                        {date && (
+                          <time aria-label="Date">
+                            <IconMaterial icon={'event'} />
+                            {date}
+                          </time>
+                        )}
+                        {time && (
+                          <time aria-label={`${i18n[currentLang].starts}`}>
+                            <IconMaterial icon={'schedule'} />
+                            {i18n[currentLang].starts}: {time}
+                          </time>
+                        )}
+                        {end_date > start_date && (
+                          <time aria-label={`${i18n[currentLang].ends}`}>
+                            <IconMaterial icon={'access_time_filled'} />
+                            {i18n[currentLang].ends}: {endTime}
+                          </time>
+                        )}
+                        {duration && (
+                          <time aria-label={`${i18n[currentLang].duration}`}>
+                            <IconMaterial icon={'timelapse'} />
+                            {i18n[currentLang].duration}: {duration}
+                          </time>
+                        )}
+                      </>
+                    )}
+
+                    {today > start_date && (
+                      <time className="passed" aria-label={i18n[currentLang].previousEvent}>
+                        <IconMaterial icon={'event_busy'} />
+                        <span className="srike">{date}</span>
+                        {i18n[currentLang].previousEvent}
                       </time>
                     )}
-                    {time && (
-                      <time aria-label={`${i18n[currentLang].starts}`}>
-                        <IconMaterial icon={'schedule'} />
-                        {i18n[currentLang].starts}: {time}
-                      </time>
+
+                    {location && (
+                      <address aria-label="Loaction">
+                        <IconMaterial icon={'place'} />
+                        {location}
+                      </address>
                     )}
-                    {end_date > start_date && (
-                      <time aria-label={`${i18n[currentLang].ends}`}>
-                        <IconMaterial icon={'access_time_filled'} />
-                        {i18n[currentLang].ends}: {endTime}
-                      </time>
-                    )}
-                    {duration && (
-                      <time aria-label={`${i18n[currentLang].duration}`}>
-                        <IconMaterial icon={'timelapse'} />
-                        {i18n[currentLang].duration}: {duration}
-                      </time>
-                    )}
-                  </>
+
+                    {showTags === true && tagData.length > 0 && <Tags tagData={tagData} />}
+                  </div>
                 )}
 
-                {today > start_date && (
-                  <time className="passed" aria-label={i18n[currentLang].previousEvent}>
-                    <IconMaterial icon={'event_busy'} />
-                    <span className="srike">{date}</span>
-                    {i18n[currentLang].previousEvent}
-                  </time>
+                {eventType === 'News item' && showTags === true && tagData.length > 0 && (
+                  <span className="details">
+                    <Tags tagData={tagData} />
+                  </span>
                 )}
-
-                {location && (
-                  <address aria-label="Loaction">
-                    <IconMaterial icon={'place'} />
-                    {location}
-                  </address>
-                )}
-
-                {showTags === true && tagData.length > 0 && <Tags tagData={tagData} />}
-              </div>
-            )}
-
-            {eventType === 'News item' && showTags === true && tagData.length > 0 && (
-              <span className="details">
-                <Tags tagData={tagData} />
-              </span>
-            )}
+              </CardContent>
+            </CardWrapper>
           </Link>
         </ListItem>
       )}

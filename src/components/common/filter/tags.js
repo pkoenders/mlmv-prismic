@@ -12,19 +12,32 @@ const Tags = styled.div`
     align-self: flex-start;
     margin: 0;
     li {
-      margin: 0px;
+      font-size: 82%;
+      line-height: initial;
+      text-transform: uppercase;
       letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-      width: fit-content;
-      padding: ${({ theme }) => theme.spacing[1]} ${({ theme }) => theme.spacing[2]};
-      background-color: ${({ theme }) => theme.colors.card[300]};
+      padding: ${({ theme }) => theme.padding['1/8']} ${({ theme }) => theme.padding['1/4']};
       white-space: nowrap;
-      font-size: 90%;
-      // text-transform: uppercase;
+
+      /* background-color: ${({ theme }) => theme.colors.card[300]}; */
+      background-color: ${({ theme }) => theme.colors.secondary[200]};
+      border: 1px solid ${({ theme }) => theme.colors.secondary[400]};
+      color: ${({ theme }) => theme.colors.page.default};
+      white-space: nowrap;
+      text-transform: uppercase;
       border-radius: ${({ theme }) => theme.borderRadius.sm};
     }
     li.isActive {
-      color: ${({ theme }) => theme.colors.white};
+      /* color: ${({ theme }) => theme.colors.white};
+      background-color: ${({ theme }) => theme.colors.primary.default}; */
+      color: ${({ theme }) => theme.colors.page.default};
+      background-color: ${({ theme }) => theme.colors.tertiary.default};
+      background-color: ${({ theme }) => theme.colors.secondary[600]};
+      border: 1px solid ${({ theme }) => theme.colors.secondary[800]};
+      /* 
+      color: #fff;
       background-color: ${({ theme }) => theme.colors.primary.default};
+      border: 1px solid ${({ theme }) => theme.colors.primary[1100]}; */
     }
   }
 `

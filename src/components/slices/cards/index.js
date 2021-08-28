@@ -86,35 +86,14 @@ const CardsWrapper = styled.section`
 
   // Masonry layout
   .masonry-grid {
-    // margin-bottom: ${({ theme }) => theme.margin.default};
     .cardItem {
-      box-shadow: ${({ theme }) => theme.boxShadow.default};
-      background-color: transparent;
-      transition: ${({ theme }) => theme.transition.easeOut.default};
-
+      overflow: visible;
       a {
-        /* overflow: visible; */
-        border: 1px solid ${({ theme }) => theme.colors.grey[100]};
-        background-color: #fff;
-        overflow: hidden;
-
-        border-radius: ${({ theme }) => theme.borderRadius.default};
-        .description {
-          padding: ${({ theme }) => theme.padding['1/2']};
-          text-align: left;
-
-          .link {
-            margin: ${({ theme }) => theme.margin['1/2']} auto 0 0;
-          }
+        text-decoration: none;
+        > div {
+          background-color: #fff;
         }
       }
-      a:hover {
-        /* border: 1px solid ${({ theme }) => theme.colors.primary.default}; */
-        border-color: ${({ theme }) => theme.colors.primary[400]};
-      }
-    }
-    .cardItem:hover {
-      box-shadow: ${({ theme }) => theme.boxShadow.lg};
     }
   }
 
@@ -145,27 +124,59 @@ const CardsWrapper = styled.section`
       cursor: col-resize;
 
       a {
+        text-decoration: none;
         overflow: hidden;
-        border: none;
-        .image {
+        display: flex;
+        flex-direction: column;
+        grid-gap: ${({ theme }) => theme.padding['1/2']};
+        > div {
+          background-color: transparent;
+          border: none;
+        }
+        .imageWrapper {
           border-radius: ${({ theme }) => theme.borderRadius.default};
         }
 
-        .description {
+        .content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          grid-gap: ${({ theme }) => theme.padding['1/4']};
+          border-top: none;
+          .title,
+          p {
+            justify-content: inherit;
+          }
           .link {
-            padding: 0 ${({ theme }) => theme.padding['1/4']};
+            text-transform: uppercase;
+            position: relative;
+            display: flex;
+            grid-gap: ${({ theme }) => theme.padding['1/4']};
+            margin: 0 auto;
+            align-items: center;
+            white-space: nowrap;
+            width: fit-content;
+            padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding['1/2']};
+            color: ${({ theme }) => theme.colors.page.default};
+            background-color: #ffffffa8;
+            border-radius: ${({ theme }) => theme.borderRadius.default};
+            box-shadow: ${({ theme }) => theme.boxShadow.default};
+            i {
+              position: inherit;
+              transition: ${({ theme }) => theme.transition.easeIn.default};
+              right: 0px;
+            }
           }
         }
       }
       a:hover {
-        .image {
-          transform: none !important;
-          transform: scale(1) !important;
-        }
-
-        .description {
+        .content {
           .link {
-            border-bottom: 1px solid ${({ theme }) => theme.colors.primary.default};
+            i {
+              color: inherit;
+              transition: ${({ theme }) => theme.transition.easeOut.default};
+              right: -${({ theme }) => theme.padding['1/8']};
+            }
           }
         }
       }
@@ -177,12 +188,10 @@ const CardsWrapper = styled.section`
       .prev,
       .next {
         i {
-          color: ${({ theme }) => theme.colors.primary.default};
+          color: ${({ theme }) => theme.colors.page.default};
         }
       }
-      .image {
-        /* border: 1px solid ${({ theme }) => theme.colors.grey[800]}; */
-      }
+
       .nav {
         .item {
           background-color: ${({ theme }) => theme.colors.page[100]};
@@ -194,22 +203,8 @@ const CardsWrapper = styled.section`
         }
       }
 
-      .description {
+      .content {
         color: ${({ theme }) => theme.colors.page[100]};
-      }
-
-      a.link {
-        p.link {
-          color: ${({ theme }) => theme.colors.page[100]};
-          i {
-            color: inherit;
-          }
-        }
-      }
-      a.link:hover {
-        p.link {
-          border-color: ${({ theme }) => theme.colors.page[100]};
-        }
       }
     }
   }
@@ -355,14 +350,26 @@ const Cards = ({ slice }) => {
             columnClassName="masonry-grid_column"
           >
             {slice.items.map((cardItem, index) => {
-              return <CardItem cardItem={cardItem} key={slice.id + index} />
+              return (
+                <CardItem
+                  cardItem={cardItem}
+                  key={slice.id + index}
+                  presentationType={presentationType}
+                />
+              )
             })}
           </Masonry>
         ) : (
           <div className="carousel">
             <div ref={sliderRef} className="keen-slider">
               {slice.items.map((cardItem, index) => {
-                return <CardItem cardItem={cardItem} key={slice.id + index} />
+                return (
+                  <CardItem
+                    cardItem={cardItem}
+                    key={slice.id + index}
+                    presentationType={presentationType}
+                  />
+                )
               })}
 
               {slider && (

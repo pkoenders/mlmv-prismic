@@ -44,9 +44,10 @@ const BtnWrapper = styled.span`
     /* transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1); */
     transition: ${({ theme }) => theme.transition.linear.quick};
 
-    /* i {
+    i {
       /* margin-left: ${({ theme }) => theme.padding['1/4']} !important; */
-    } */
+      color: #fff !important;
+    }
   }
   .btn:hover {
     box-shadow: ${({ theme }) => theme.boxShadow.lg};
@@ -71,7 +72,7 @@ const BtnWrapper = styled.span`
   }
   .btn.black {
     color: ${({ theme }) => theme.colors.grey[100]};
-    background-color: ${({ theme }) => theme.colors.grey.default};
+    background-color: ${({ theme }) => theme.colors.grey[1100]};
     border: 1px solid ${({ theme }) => theme.colors.grey[1200]};
   }
 

@@ -36,15 +36,14 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
   var _ = require('lodash')
 
   // Set up some states
-  var [sourceList, setSourceList] = useState(dataList.items)
+  // And set the intial sort by date
+  var [sourceList, setSourceList] = useState(
+    _.sortBy(dataList.items, 'item.document.data.start_date_time').reverse()
+  )
   var [allPosts, setAllPosts] = useState(dataList.items)
   var [queryValue, setQueryValue] = useState('')
   var [queryLength, setQueryLength] = useState(0)
   const [ascDesc, setAscDescSort] = useState(true) // false for Acs. true for Desc
-
-  // Set the intial sort
-  var sortInitalListList = _.sortBy(dataList.items, 'item.document.data.start_date_time').reverse()
-  sourceList = sortInitalListList
 
   // Input filter:
   const emptyQuery = ''

@@ -26,7 +26,7 @@ const SupportersHeader = styled.div`
   }
   margin: ${({ theme }) => theme.padding['4xl']} auto ${({ theme }) => theme.padding.default} auto;
   // padding-bottom: ${({ theme }) => theme.padding.default};
-  border-bottom: 4px solid ${({ theme }) => theme.colors.page[300]};
+  border-bottom: 4px solid ${({ theme }) => theme.colors.secondary[300]};
 
   & .intro {
     width: 100%;
@@ -46,7 +46,7 @@ const SupportersHeader = styled.div`
       grid-gap: ${({ theme }) => theme.padding.default};
       padding: 0;
       margin: 0;
-      color: ${({ theme }) => theme.colors.page[600]};
+      color: ${({ theme }) => theme.colors.page[700]};
 
       span,
       span.passed {
@@ -67,7 +67,7 @@ const SupportersHeader = styled.div`
           grid-gap: ${({ theme }) => theme.margin['1/4']};
 
           i {
-            color: inherit;
+            color: ${({ theme }) => theme.colors.secondary.default};
           }
         }
       }
@@ -76,8 +76,7 @@ const SupportersHeader = styled.div`
         address {
           .prev {
             text-decoration: line-through;
-            opacity: 0.5;
-            margin: 0 ${({ theme }) => theme.margin['1/4']} 0 0;
+            opacity: 0.66;
           }
         }
       }
@@ -120,7 +119,11 @@ const SupportersBody = styled.div`
         display: inline-flex;
         align-items: center;
         white-space: nowrap;
+        font-weight: 500;
         grid-gap: ${({ theme }) => theme.margin['1/4']};
+        i {
+          color: ${({ theme }) => theme.colors.secondary.default};
+        }
       }
     }
   }

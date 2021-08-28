@@ -11,6 +11,8 @@ import IconMaterial from '/src/components/common/icons/material'
 
 // Layout
 import ListItem from '/src/components/common/layout/listResults/listItem'
+import CardWrapper from '/src/components/common/layout/listResults/cardWrapper'
+import CardContent from '/src/components/common/layout/listResults/cardContent'
 import Tags from '/src/components/common/filter/tags'
 
 const RescourcesItem = ({ resourceItem, id, showTags }) => {
@@ -29,42 +31,46 @@ const RescourcesItem = ({ resourceItem, id, showTags }) => {
       {item.uid && (
         <ListItem id={id} className={'item show'}>
           <div className="card">
-            <div className="content">
-              {title && <div>{title}</div>}
-              {intro && <RichText render={intro} linkResolver={linkResolver} />}
-            </div>
-            <div className="details">
-              {internalLink && (
-                <address>
-                  <IconMaterial icon={'arrow_forward'} />
-                  {internalLink}
-                  <Link to={internalLink}>externalLink</Link>
-                </address>
-              )}
+            <CardWrapper>
+              <CardContent>
+                <div className="content">
+                  {title && <div className="title">{title}</div>}
+                  {intro && <RichText render={intro} linkResolver={linkResolver} />}
+                </div>
+                <div className="details">
+                  {internalLink && (
+                    <address>
+                      <IconMaterial icon={'arrow_forward'} />
+                      {internalLink}
+                      <Link to={internalLink}>externalLink</Link>
+                    </address>
+                  )}
 
-              {externalLink && (
-                <a href={externalLink} target="_blank" rel="noreferrer">
-                  <IconMaterial icon={'open_in_new'} />
-                  {externalLink}
-                </a>
-              )}
+                  {externalLink && (
+                    <a href={externalLink} target="_blank" rel="noreferrer">
+                      <IconMaterial icon={'open_in_new'} />
+                      {externalLink}
+                    </a>
+                  )}
 
-              {phone && (
-                <a href={`tel:${phone}`}>
-                  <IconMaterial icon={'call'} />
-                  {phone}
-                </a>
-              )}
+                  {phone && (
+                    <a href={`tel:${phone}`}>
+                      <IconMaterial icon={'call'} />
+                      {phone}
+                    </a>
+                  )}
 
-              {location && (
-                <address>
-                  <IconMaterial icon={'place'} />
-                  {location}
-                </address>
-              )}
+                  {location && (
+                    <address>
+                      <IconMaterial icon={'place'} />
+                      {location}
+                    </address>
+                  )}
 
-              {showTags === true && tagData.length > 0 && <Tags tagData={tagData} />}
-            </div>
+                  {showTags === true && tagData.length > 0 && <Tags tagData={tagData} />}
+                </div>
+              </CardContent>
+            </CardWrapper>
           </div>
         </ListItem>
       )}

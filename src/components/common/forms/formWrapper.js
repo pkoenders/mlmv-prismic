@@ -85,7 +85,8 @@ const FormWraper = styled.div`
     width: fit-content !important;
     display: flex;
     align-items: center;
-    /* margin-right: 100%; */
+    flex-direction: row;
+    margin-right: 100%;
     i {
       font-size: 26px;
       pointer-events: none;
@@ -123,8 +124,9 @@ const FormWraper = styled.div`
 
     label,
     fieldset,
-    legend {
-      /* font-weight: 500; */
+    legend,
+    .submitForm {
+      font-weight: 500;
       position: relative;
       display: inherit;
       flex-direction: row;
@@ -200,6 +202,7 @@ const FormWraper = styled.div`
       }
 
       label {
+        font-weight: initial;
         cursor: pointer;
         display: flex;
         flex-direction: row-reverse;
@@ -250,24 +253,16 @@ const FormWraper = styled.div`
     }
 
     .submitForm {
-      display: flex;
-      flex-direction: row;
       grid-gap: ${({ theme }) => theme.padding['1/2']};
       margin-top: -${({ theme }) => theme.margin['1/2']};
       padding-top: ${({ theme }) => theme.padding['1/2']};
       border-top: 1px solid ${({ theme }) => theme.colors.grey[200]};
       .requiredCheck {
         text-indent: 0;
-
-        /* margin-left: ${({ theme }) => theme.margin['1/8']}; */
       }
 
       span {
         margin: 0 100% 0 0;
-        /* button {
-          display: flex;
-          align-items: center;
-        } */
 
         button:disabled,
         button[disabled] {

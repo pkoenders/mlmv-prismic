@@ -8,6 +8,7 @@ import Section from '/src/components/common/layout/pageLayout/'
 import PageTitle from '/src/components/common/layout/listResults/listPageTitle'
 import ListWrapper from '/src/components/common/layout/listResults/listWrapper'
 import ListGrid from '/src/components/common/layout/listResults/listGrid'
+// import ItemWrapper from './itemWrapper'
 import GridItem from './item'
 
 // Filter componetent styles
@@ -25,15 +26,14 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
   var _ = require('lodash')
 
   // Set up some states
-  var [sourceList, setSourceList] = useState(dataList.items)
+  // And set the intial sort by title
+  var [sourceList, setSourceList] = useState(
+    _.sortBy(dataList.items, 'item.document.data.title.text')
+  )
   var [allPosts, setAllPosts] = useState(dataList.items)
   var [queryValue, setQueryValue] = useState('')
   var [queryLength, setQueryLength] = useState(0)
   const [ascDesc, setAscDescSort] = useState(true) // false for Acs. true for Desc
-
-  // Set the intial sort
-  var sortInitalListList = _.sortBy(dataList.items, 'item.document.data.title.text')
-  sourceList = sortInitalListList
 
   // Toggle sort order - Asc / Desc
   const sortAscDescClick = useCallback(

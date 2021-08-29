@@ -151,14 +151,19 @@ const Text = ({ slice }) => {
   // Validate text
   const content = slice.primary.content
 
-  // Validate Button
-  const btnLink = slice.primary.button_link
-  const btnLabel = validateString(slice.primary.button_label)
-  const btnStyle = getStyle(slice.primary.button_style)
-  const btnSecondaryLink = slice.primary.secondary_button_link
-  const btnSecondaryLabel = validateString(slice.primary.secondary_button_label)
-  const btnSecondaryStyle = getStyle(slice.primary.secondary_button_style)
-  const btnAlign = getPostionAlign(slice.primary.button_alignment)
+  // Validate primary button
+  const primaryButtonLabel = validateString(slice.primary.button_label)
+  const primaryButtonLink = slice.primary.button_link.raw
+  const primaryButtonStyle = getStyle(slice.primary.button_style)
+  const primaryButtonIcon = slice.primary.button_icon
+  const primaryButtonIconAlign = getPostionAlign(slice.primary.button_icon_align)
+
+  // Validate secondary button label
+  const secondaryButtonLabel = validateString(slice.primary.secondary_button_label)
+  const secondaryButtonLink = slice.primary.secondary_button_link.raw
+  const secondaryButtonStyle = getStyle(slice.primary.secondary_button_style)
+  const secondaryButtonIcon = slice.primary.secondary_button_icon
+  const secondaryButtonIconAlign = getPostionAlign(slice.primary.secondary_button_icon_align)
 
   return (
     <TextBlock
@@ -183,21 +188,27 @@ const Text = ({ slice }) => {
           </div>
         )}
 
-        {(btnLabel || btnSecondaryLabel) && (
-          <span className={'cta ' + btnAlign}>
-            {btnLabel && (
+        {(primaryButtonLabel || secondaryButtonLabel) && (
+          <span className="cta">
+            {/* Primary Button */}
+            {primaryButtonLabel && (
               <Button
-                buttonLabel={btnLabel}
-                buttonType={btnLink.raw}
-                buttonStyle={[btnStyle + ' ' + btnAlign]}
+                buttonLabel={primaryButtonLabel}
+                buttonType={primaryButtonLink}
+                buttonStyle={primaryButtonStyle}
+                buttonIcon={primaryButtonIcon}
+                buttonIconAlign={primaryButtonIconAlign}
               />
             )}
 
-            {btnSecondaryLabel && (
+            {/* Secondary Button */}
+            {secondaryButtonLabel && (
               <Button
-                buttonLabel={btnSecondaryLabel}
-                buttonType={btnSecondaryLink.raw}
-                buttonStyle={btnSecondaryStyle}
+                buttonLabel={secondaryButtonLabel}
+                buttonType={secondaryButtonLink}
+                buttonStyle={secondaryButtonStyle}
+                buttonIcon={secondaryButtonIcon}
+                buttonIconAlign={secondaryButtonIconAlign}
               />
             )}
           </span>

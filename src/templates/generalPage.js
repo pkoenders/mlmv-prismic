@@ -104,17 +104,23 @@ export const query = graphql`
               button_label
               button_link {
                 raw
+                uid
                 type
                 lang
               }
               button_style
+              button_icon
+              button_icon_align
               secondary_button_label
               secondary_button_link {
                 raw
+                uid
                 type
                 lang
               }
               secondary_button_style
+              secondary_button_icon
+              secondary_button_icon_align
               align_content
               vertical_align_content
               width
@@ -165,25 +171,26 @@ export const query = graphql`
                 text
                 raw
               }
-
+              button_label
               button_link {
                 raw
                 uid
                 type
                 lang
               }
-              button_label
               button_style
-
+              button_icon
+              button_icon_align
+              secondary_button_label
               secondary_button_link {
                 raw
                 uid
                 type
                 lang
               }
-              secondary_button_label
               secondary_button_style
-
+              secondary_button_icon
+              secondary_button_icon_align
               button_alignment
             }
           }
@@ -277,7 +284,6 @@ export const query = graphql`
                 text
                 raw
               }
-              button_style
               button_label
               button_link {
                 raw
@@ -285,8 +291,9 @@ export const query = graphql`
                 type
                 lang
               }
-
-              secondary_button_style
+              button_style
+              button_icon
+              button_icon_align
               secondary_button_label
               secondary_button_link {
                 raw
@@ -294,7 +301,9 @@ export const query = graphql`
                 type
                 lang
               }
-
+              secondary_button_style
+              secondary_button_icon
+              secondary_button_icon_align
               font_size
               align_content
               width
@@ -399,19 +408,23 @@ export const query = graphql`
                             user_can_close
                             button_label
                             button_link {
-                              type
                               raw
                               uid
+                              type
                               lang
                             }
+                            button_icon
+                            button_icon_align
                             secondary_button_label
                             secondary_button_link {
-                              type
                               raw
                               uid
+                              type
                               lang
                             }
                             secondary_button_style
+                            secondary_button_icon
+                            secondary_button_icon_align
                           }
                         }
                         ## End Alert

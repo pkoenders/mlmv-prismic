@@ -72,7 +72,7 @@ const HeaderWrapper = styled.header`
 
     a.brand {
       @media (max-width: ${({ theme }) => theme.screens.sm}) {
-        right: 56px;
+        right: 64px;
         left: auto;
       }
     }
@@ -289,35 +289,42 @@ const HeaderWrapper = styled.header`
 
           button.secondaryNavBtn.isActive {
             font-weight: normal;
+            background-color: ${({ theme }) => theme.colors.header.bground[800]};
             i {
               transform: rotate(180deg);
             }
           }
+          button.secondaryNavBtn.isActive:after {
+            display: none;
+          }
 
-          ul.secondaryNavList:before {
+          /* ul.secondaryNavList:before {
             content: '';
             position: absolute;
             height: 4px;
             top: -4px;
             width: 100%;
             background-color: ${({ theme }) => theme.colors.header.bground.default};
-          }
+            background-color: inherit;
+          } */
 
           ul.secondaryNavList {
             display: none;
+            z-index: 100;
             flex-direction: column;
             position: absolute;
             margin: 0;
             padding: ${({ theme }) => theme.padding['1/2']} 0;
             top: ${({ theme }) => theme.header.height};
             z-index: 10000;
-            background-color: ${({ theme }) => theme.colors.header.bground.default};
+            background-color: ${({ theme }) => theme.colors.header.bground[800]};
 
-            border: 1px solid ${({ theme }) => theme.colors.header.bground[800]};
-            border-top: none;
+            /* border: 1px solid ${({ theme }) => theme.colors.header.bground[800]}; */
+            /* border-right: none;
+            border-top: none; */
             border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
               ${({ theme }) => theme.borderRadius.default};
-            box-shadow: ${({ theme }) => theme.boxShadow.md} !important;
+            box-shadow: ${({ theme }) => theme.boxShadow.lg} !important;
 
             li {
               padding: ${({ theme }) => theme.padding['1/8']} ${({ theme }) => theme.padding['1/2']};
@@ -339,6 +346,7 @@ const HeaderWrapper = styled.header`
               a:hover,
               a.activeNavItem {
                 background-color: ${({ theme }) => theme.colors.primary.default};
+                border: none;
                 i {
                   display: none;
                 }
@@ -513,6 +521,17 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     const toggleHamburger = document.querySelector('.hamburger')
     const closeHamburger = document.querySelector('.closeMenu')
     const clickBrand = document.querySelector('.brand')
+
+    // Set nav on resize
+    'load, resize, orientationchange'.split(', ').forEach(function (e) {
+      window.addEventListener(e, () => {
+        var viewportWidth = Math.max(
+          document.documentElement.clientWidth || 0,
+          window.innerWidth || 0
+        )
+        viewportWidth >= 768 && closeHamburgerNav()
+      })
+    })
 
     var prevScrollpos = window.pageYOffset
 

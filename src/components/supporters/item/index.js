@@ -26,33 +26,33 @@ const SupportersHeader = styled.div`
     grid-gap: ${({ theme }) => theme.padding['1/2']};
   }
   margin: ${({ theme }) => theme.padding['4xl']} auto ${({ theme }) => theme.padding.default} auto;
-  padding-bottom: ${({ theme }) => theme.padding['1/2']};
   border-bottom: 4px solid ${({ theme }) => theme.colors.secondary[300]};
 
   & .intro {
     width: 60%;
-    padding-bottom: ${({ theme }) => theme.padding['1/4']};
-
-    padding-right: ${({ theme }) => theme.padding.default};
+    display: flex;
+    flex-direction: column;
+    grid-gap: ${({ theme }) => theme.padding['1/2']};
+    margin-bottom: ${({ theme }) => theme.margin['1/4']};
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       padding-right: 0;
-      width: 60%;
+      width: 100%;
     }
     span {
       display: flex;
       align-items: center;
-      margin-bottom: ${({ theme }) => theme.margin['1/2']};
       img {
         width: 75px !important;
         height: 75px !important;
         border-radius: 50%;
-        border: 1px solid ${({ theme }) => theme.colors.secondary[600]};
+        border: 2px solid ${({ theme }) => theme.colors.secondary[400]};
         margin-right: ${({ theme }) => theme.margin['1/2']};
       }
     }
   }
   & .tags {
     width: 40%;
+    margin-bottom: ${({ theme }) => theme.margin['1/2']};
     @media (max-width: ${({ theme }) => theme.screens.sm}) {
       width: 100%;
     }

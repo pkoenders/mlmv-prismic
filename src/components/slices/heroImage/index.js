@@ -16,6 +16,7 @@ import {
   getColor,
   getHexToRGB,
   getStyle,
+  getPostionAlign,
   getGradientDirection,
   getBGroundPosition,
 } from '/src/utils/helpers'
@@ -207,11 +208,15 @@ const FullWidthImage = ({ slice }) => {
   const primaryButtonLabel = validateString(slice.primary.button_label)
   const primaryButtonLink = slice.primary.button_link.raw
   const primaryButtonStyle = getStyle(slice.primary.button_style)
+  const primaryButtonIcon = slice.primary.button_icon
+  const primaryButtonIconAlign = getPostionAlign(slice.primary.button_icon_align)
 
   // Validate secondary button label
   const secondaryButtonLabel = validateString(slice.primary.secondary_button_label)
   const secondaryButtonLink = slice.primary.secondary_button_link.raw
   const secondaryButtonStyle = getStyle(slice.primary.secondary_button_style)
+  const secondaryButtonIcon = slice.primary.secondary_button_icon
+  const secondaryButtonIconAlign = getPostionAlign(slice.primary.secondary_button_icon_align)
 
   // console.log(secondaryButtonLink.raw.link_type)
 
@@ -273,6 +278,8 @@ const FullWidthImage = ({ slice }) => {
                     buttonLabel={primaryButtonLabel}
                     buttonType={primaryButtonLink}
                     buttonStyle={primaryButtonStyle}
+                    buttonIcon={primaryButtonIcon}
+                    buttonIconAlign={primaryButtonIconAlign}
                   />
                 )}
 
@@ -282,6 +289,8 @@ const FullWidthImage = ({ slice }) => {
                     buttonLabel={secondaryButtonLabel}
                     buttonType={secondaryButtonLink}
                     buttonStyle={secondaryButtonStyle}
+                    buttonIcon={secondaryButtonIcon}
+                    buttonIconAlign={secondaryButtonIconAlign}
                   />
                 )}
               </span>

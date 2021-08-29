@@ -11,13 +11,18 @@ const ListTagBtnsWrapper = styled.div`
     align-self: center;
     display: flex;
     grid-gap: 0;
+    top: ${({ theme }) => theme.padding['1/4']};
     top: ${({ theme }) => theme.padding['1/2']};
     right: ${({ theme }) => theme.padding['1/4']};
     button {
+      background-color: #fff;
+      padding: 0 2px;
       cursor: pointer;
       user-select: none;
-      padding: 0;
+      border: 1px solid ${({ theme }) => theme.colors.tertiary[600]};
+      border-radius: ${({ theme }) => theme.borderRadius.sm};
       &:hover {
+        border: 1px solid ${({ theme }) => theme.colors.primary.default};
         color: ${({ theme }) => theme.colors.primary.default};
       }
     }
@@ -37,7 +42,7 @@ const ListTagBtnsWrapper = styled.div`
       grid-gap: ${({ theme }) => theme.padding['1/4']};
       justify-content: center;
       height: min-content;
-      margin: 0 24px;
+      margin: 0 ${({ theme }) => theme.padding.default};
     }
   }
 
@@ -91,6 +96,8 @@ const ResetTagsBtn = styled.button.attrs((props) => ({
   type: props.type || 'button',
   'aria-label': 'Reset tags',
 }))`
+  border: none !important;
+  background-color: transparent !important;
   position: relative;
   @keyframes rotation {
     from {
@@ -98,7 +105,7 @@ const ResetTagsBtn = styled.button.attrs((props) => ({
       transform: scale(1.25);
     }
     to {
-      transform: rotate(-180deg);
+      transform: rotate(180deg);
       opacity: 0;
     }
   }

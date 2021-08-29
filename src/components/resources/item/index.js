@@ -28,8 +28,11 @@ const SupportersHeader = styled.div`
 
   & .intro {
     width: 100%;
-    padding-bottom: ${({ theme }) => theme.padding['1/4']};
-    padding-right: ${({ theme }) => theme.padding.default};
+    display: flex;
+    flex-direction: column;
+    grid-gap: ${({ theme }) => theme.padding['1/2']};
+    margin-bottom: ${({ theme }) => theme.margin['1/4']};
+
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       padding-right: 0;
       width: 100%;

@@ -36,7 +36,7 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
   var _ = require('lodash')
 
   // Set up some states
-  // And set the intial sort by date
+  // And set the intial sort by date in reverse to show latest at top of list
   var [sourceList, setSourceList] = useState(
     _.sortBy(dataList.items, 'item.document.data.start_date_time').reverse()
   )
@@ -91,6 +91,9 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
       // Add the node to be sorted to the node path
       const filterNode = e.target.getAttribute('data-nodepath')
 
+      // If filter by date, we srt a flag to reverse order to show latested at top of list
+      const filterDate = filterNode.includes('date')
+
       // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value?page=1&tab=votes#tab-top
       // Sort the node with lodash
       // First create an enpty array to hold a cloned list
@@ -103,6 +106,8 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
         sortPosts = _.cloneDeep(filteredData) // Use deep to ensure state updates?
         sortPosts = _.sortBy(filteredData, filterNode)
         ascDesc === false && sortPosts.reverse()
+        filterDate === true && sortPosts.reverse()
+
         // Update the states of 'allposts' and 'filteredData'
         setAllPosts(sortPosts)
         setState({ filteredData: sortPosts })
@@ -111,6 +116,7 @@ const EventsList = ({ currentLang, pageIntro, dataList }) => {
         sortPosts = _.cloneDeep([...dataList.items])
         sortPosts = _.sortBy(dataList.items, filterNode)
         ascDesc === false && sortPosts.reverse()
+        filterDate === true && sortPosts.reverse()
         setSourceList(sortPosts)
         setAllPosts(sortPosts)
       }

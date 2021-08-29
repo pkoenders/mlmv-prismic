@@ -19,6 +19,7 @@ const BtnWrapper = styled.span`
 
   .btn {
     display: flex;
+    flex-direction: row;
     align-self: center;
     align-items: center;
     grid-gap: ${({ theme }) => theme.padding['1/4']};
@@ -27,6 +28,7 @@ const BtnWrapper = styled.span`
     width: fit-content;
     margin: 0 auto;
     padding: 12px ${({ theme }) => theme.padding.default};
+    padding: 10px 24px;
     font-size: $font-size;
     text-align: center;
     text-transform: uppercase;
@@ -35,7 +37,7 @@ const BtnWrapper = styled.span`
     font-family: inherit;
     line-height: inherit;
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-    color: #fff;
+    color: #ffffff;
     background-color: ${({ theme }) => theme.colors.primary.default};
     border: 1px solid ${({ theme }) => theme.colors.primary[1100]};
     border-radius: ${({ theme }) => theme.borderRadius.default};
@@ -45,9 +47,12 @@ const BtnWrapper = styled.span`
     transition: ${({ theme }) => theme.transition.linear.quick};
 
     i {
-      /* margin-left: ${({ theme }) => theme.padding['1/4']} !important; */
-      color: #fff !important;
+      color: inherit;
     }
+  }
+
+  .btn.right {
+    flex-direction: row-reverse;
   }
   .btn:hover {
     box-shadow: ${({ theme }) => theme.boxShadow.lg};
@@ -55,25 +60,40 @@ const BtnWrapper = styled.span`
   .btn.primary {
     background-color: ${({ theme }) => theme.colors.primary.default};
     border: 1px solid ${({ theme }) => theme.colors.primary[1100]};
+    i {
+      color: inherit;
+    }
   }
   .btn.secondary {
     background-color: ${({ theme }) => theme.colors.secondary.default};
     border: 1px solid ${({ theme }) => theme.colors.secondary[1200]};
+    i {
+      color: inherit;
+    }
   }
   .btn.tertiary {
     color: ${({ theme }) => theme.colors.grey.default};
     background-color: ${({ theme }) => theme.colors.tertiary.default};
     border: 1px solid ${({ theme }) => theme.colors.tertiary[1100]};
+    i {
+      color: inherit;
+    }
   }
   .btn.white {
     color: ${({ theme }) => theme.colors.grey.default};
     background-color: ${({ theme }) => theme.colors.grey[100]};
     border: 1px solid ${({ theme }) => theme.colors.tertiary[200]};
+    i {
+      color: inherit;
+    }
   }
   .btn.black {
     color: ${({ theme }) => theme.colors.grey[100]};
     background-color: ${({ theme }) => theme.colors.grey[1100]};
     border: 1px solid ${({ theme }) => theme.colors.grey[1200]};
+    i {
+      color: inherit;
+    }
   }
 
   .btn.link {
@@ -85,6 +105,9 @@ const BtnWrapper = styled.span`
     border-bottom: 1px solid transparent;
     border-radius: 0;
     box-shadow: none;
+    i {
+      color: inherit;
+    }
   }
   .btn.link:hover {
     border-bottom: 1px solid ${({ theme }) => theme.colors.grey.default};
@@ -94,6 +117,9 @@ const BtnWrapper = styled.span`
   .heroImage & {
     .btn.link {
       color: ${({ theme }) => theme.colors.grey[100]} !important;
+      i {
+        color: inherit;
+      }
     }
     .btn.link:hover {
       border-bottom: 1px solid ${({ theme }) => theme.colors.grey[100]};
@@ -105,6 +131,9 @@ const BtnWrapper = styled.span`
     background-color: transparent;
     /* background-color: #ffffff1a; */
     border: 1px solid ${({ theme }) => theme.colors.grey[100]};
+    i {
+      color: inherit;
+    }
   }
 
   .light & {
@@ -112,6 +141,9 @@ const BtnWrapper = styled.span`
       color: ${({ theme }) => theme.colors.grey.default};
       background-color: transparent;
       border: 1px solid ${({ theme }) => theme.colors.grey[100]};
+      i {
+        color: inherit;
+      }
     }
   }
 
@@ -120,6 +152,9 @@ const BtnWrapper = styled.span`
     color: ${({ theme }) => theme.colors.tertiary.default};
     background-color: ${({ theme }) => theme.colors.tertiary[100]};
     border: 1px solid ${({ theme }) => theme.colors.tertiary[700]};
+    i {
+      color: inherit;
+    }
   }
 
   // Alert btns
@@ -134,6 +169,9 @@ const BtnWrapper = styled.span`
       color: #fff;
       background-color: ${({ theme }) => theme.colors.alert.l1[1200]};
       border: 1px solid ${({ theme }) => theme.colors.alert.l1[1300]};
+      i {
+        color: inherit;
+      }
     }
 
     .btn.link {
@@ -147,29 +185,43 @@ const BtnWrapper = styled.span`
     }
     .btn.link:hover {
       border-bottom: 1px solid ${({ theme }) => theme.colors.grey[100]};
+      i {
+        color: inherit;
+      }
     }
 
     .btn.white {
       color: ${({ theme }) => theme.colors.grey.default};
       background-color: ${({ theme }) => theme.colors.grey[100]};
       border: 1px solid ${({ theme }) => theme.colors.grey[200]};
+      i {
+        color: inherit;
+      }
     }
     .btn.black {
       color: ${({ theme }) => theme.colors.grey[100]};
       background-color: ${({ theme }) => theme.colors.grey.default};
       border: 1px solid ${({ theme }) => theme.colors.grey[1200]};
+      i {
+        color: inherit;
+      }
     }
     .btn.transparent {
       color: ${({ theme }) => theme.colors.grey[100]};
       background-color: transparent;
-      /* background-color: #ffffff1a; */
       border: 1px solid ${({ theme }) => theme.colors.grey[100]};
+      i {
+        color: inherit;
+      }
     }
   }
   .alertLevel-2 & {
     .btn {
       background-color: ${({ theme }) => theme.colors.alert.l2[1200]};
       border: 1px solid ${({ theme }) => theme.colors.alert.l2[1300]};
+      i {
+        color: inherit;
+      }
     }
   }
   .alertLevel-3 & {
@@ -177,9 +229,15 @@ const BtnWrapper = styled.span`
       color: ${({ theme }) => theme.colors.grey.default};
       background-color: ${({ theme }) => theme.colors.alert.l3[1200]};
       border: 1px solid ${({ theme }) => theme.colors.alert.l3[1300]};
+      i {
+        color: inherit;
+      }
     }
     .btn.link {
       color: ${({ theme }) => theme.colors.grey.default};
+      i {
+        color: inherit;
+      }
     }
     .btn.link:hover {
       border-bottom: 1px solid ${({ theme }) => theme.colors.grey.default};
@@ -187,6 +245,9 @@ const BtnWrapper = styled.span`
     .btn.transparent {
       color: ${({ theme }) => theme.colors.grey.default};
       border: 1px solid ${({ theme }) => theme.colors.grey.default};
+      i {
+        color: inherit;
+      }
     }
   }
   .alertLevel-4 & {
@@ -202,22 +263,40 @@ const BtnWrapper = styled.span`
     }
   }
 `
-const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick, icon }) => {
+const LinkButton = ({
+  buttonLabel,
+  buttonType,
+  staticLink,
+  buttonStyle,
+  onClick,
+  buttonIcon,
+  buttonIconAlign,
+}) => {
   // console.log(buttonLink)
+
+  var btnStyle = ''
+  var btnIcon = null
+  var btnIconAlign = ''
+
+  if (buttonStyle !== undefined) {
+    btnStyle = ' ' + buttonStyle
+  }
+
+  if (buttonIcon !== undefined || buttonIcon !== null) {
+    btnIcon = buttonIcon
+  }
+
+  if (buttonIconAlign !== undefined) {
+    btnIconAlign = ' ' + buttonIconAlign
+  }
 
   return (
     <BtnWrapper>
       {buttonType.link_type === 'Document' && (
-        <Link to={linkResolver(buttonType)} className={'btn ' + buttonStyle}>
-          <i className="material-icons-round" aria-hidden="true">
-            {icon}
-          </i>
+        // <Link to={linkResolver(buttonType)} className={btn   + btnStyle + ' ' + iconAlign}></Link>
+        <Link to={linkResolver(buttonType)} className={'btn' + btnStyle + btnIconAlign}>
+          {btnIcon !== null && <IconMaterial icon={btnIcon} />}
           {buttonLabel}
-          {buttonStyle === 'link' && (
-            <i className="material-icons-round" aria-hidden="true">
-              arrow_forward
-            </i>
-          )}
         </Link>
       )}
 
@@ -226,64 +305,38 @@ const LinkButton = ({ buttonLabel, buttonType, staticLink, buttonStyle, onClick,
           href={buttonType.url}
           rel={buttonType.target === '_blank' && 'noreferrer'}
           target={buttonType.target === '_blank' && '_blank'}
-          className={'btn ' + buttonStyle}
+          className={'btn' + btnStyle + btnIconAlign}
         >
-          <i className="material-icons-round" aria-hidden="true">
-            {icon}
-          </i>
+          {btnIcon !== null && <IconMaterial icon={btnIcon} />}
           {buttonLabel}
-          {buttonStyle === 'link' && (
-            <i className="material-icons-round" aria-hidden="true">
-              arrow_forward
-            </i>
-          )}
         </a>
       )}
 
       {buttonType.link_type === 'Media' && (
-        <a href={buttonType.url} className={'btn ' + buttonStyle}>
-          <i className="material-icons-round" aria-hidden="true">
-            {icon}
-          </i>
+        <a href={buttonType.url} className={'btn' + btnStyle + btnIconAlign}>
+          {btnIcon !== null && <IconMaterial icon={btnIcon} />}
           {buttonLabel}
-          {buttonStyle === 'link' && (
-            <i className="material-icons-round" aria-hidden="true">
-              arrow_forward
-            </i>
-          )}
         </a>
       )}
 
       {buttonType === 'Static' && (
-        <a href={staticLink} className={'btn ' + buttonStyle}>
-          <i className="material-icons-round" aria-hidden="true">
-            {icon}
-          </i>
+        <a href={staticLink} className={'btn' + btnStyle + btnIconAlign}>
+          {btnIcon !== null && <IconMaterial icon={btnIcon} />}
           {buttonLabel}
-          {buttonStyle === 'link' && (
-            <i className="material-icons-round" aria-hidden="true">
-              arrow_forward
-            </i>
-          )}
         </a>
       )}
 
       {buttonType === 'submit' && (
-        <button onClick={onClick} type={buttonType} className={'btn ' + buttonStyle}>
-          <i className="material-icons-round" aria-hidden="true">
-            {icon}
-          </i>
+        <button onClick={onClick} type={buttonType} className={'btn' + btnStyle + btnIconAlign}>
+          {btnIcon !== null && <IconMaterial icon={btnIcon} />}
           {buttonLabel}
         </button>
       )}
 
       {buttonType === 'button' && (
-        <button onClick={onClick} type={buttonType} className={'btn ' + buttonStyle}>
-          <i className="material-icons-round" aria-hidden="true">
-            {icon}
-          </i>
+        <button onClick={onClick} type={buttonType} className={'btn' + btnStyle + btnIconAlign}>
+          {btnIcon !== null && <IconMaterial icon={btnIcon} />}
           {buttonLabel}
-          {buttonStyle === 'link' && <IconMaterial icon={'arrow_forward'} />}
         </button>
       )}
     </BtnWrapper>

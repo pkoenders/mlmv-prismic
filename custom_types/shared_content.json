@@ -257,7 +257,8 @@
               "button_link": {
                 "type": "Link",
                 "config": {
-                  "label": "Add a button",
+                  "label": "Button link",
+                  "placeholder": "Button link",
                   "select": null,
                   "allowTargetBlank": true
                 }
@@ -265,7 +266,23 @@
               "button_label": {
                 "type": "Text",
                 "config": {
-                  "label": "Button text"
+                  "label": "Button label",
+                  "placeholder": "Button label"
+                }
+              },
+              "button_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Button icon",
+                  "placeholder": "Optional - Choose from Google Material Icons"
+                }
+              },
+              "button_icon_align": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Button icon align"
                 }
               },
               "secondary_button_link": {
@@ -290,7 +307,22 @@
                   "options": ["Link", "White", "Black", "Transparent"],
                   "default_value": "Link",
                   "label": "Secondary button Style",
-                  "placeholder": "Select a style (Default is Link)"
+                  "placeholder": "Select a style (Default is Secondary)"
+                }
+              },
+              "secondary_button_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Secondary button icon",
+                  "placeholder": "Optional - Choose from Google Material Icons"
+                }
+              },
+              "secondary_button_icon_align": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Secondary button icon align"
                 }
               }
             },

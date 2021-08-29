@@ -353,7 +353,8 @@ const ContactNew = ({ formData }) => {
                           buttonLabel={'Submit'}
                           buttonType={'submit'}
                           buttonStyle={'primary'}
-                          icon={'send'}
+                          buttonIcon={'send'}
+                          buttonIconAlign={'right'}
                         />
                       </div>
                     )}

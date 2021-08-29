@@ -267,14 +267,19 @@ const ImageHighlight = ({ slice }) => {
   // Validate content
   const content = validateString(slice.primary.content.raw)
 
-  // Validate buttons
-  const btnLabel = validateString(slice.primary.button_label)
-  const btnLink = slice.primary.button_link.raw
-  const btnStyle = getStyle(slice.primary.button_style)
+  // Validate primary button
+  const primaryButtonLabel = validateString(slice.primary.button_label)
+  const primaryButtonLink = slice.primary.button_link.raw
+  const primaryButtonStyle = getStyle(slice.primary.button_style)
+  const primaryButtonIcon = slice.primary.button_icon
+  const primaryButtonIconAlign = getPostionAlign(slice.primary.button_icon_align)
 
-  const btnSecondaryLabel = validateString(slice.primary.secondary_button_label)
-  const btnSecondaryLink = slice.primary.secondary_button_link.raw
-  const btnSecondaryStyle = getStyle(slice.primary.secondary_button_style)
+  // Validate secondary button label
+  const secondaryButtonLabel = validateString(slice.primary.secondary_button_label)
+  const secondaryButtonLink = slice.primary.secondary_button_link.raw
+  const secondaryButtonStyle = getStyle(slice.primary.secondary_button_style)
+  const secondaryButtonIcon = slice.primary.secondary_button_icon
+  const secondaryButtonIconAlign = getPostionAlign(slice.primary.secondary_button_icon_align)
 
   // Horizontal align content - left, center, right (To do: top, bottom?)
   const alignContent = getPostionAlign(slice.primary.align_content)
@@ -335,11 +340,18 @@ const ImageHighlight = ({ slice }) => {
         var alertLevel = mediaContent.data.body[0].primary.level
         var alertExpiry = mediaContent.data.body[0].primary.expiry_date
         var alertClose = mediaContent.data.body[0].primary.user_can_close
+
         var alertBtnLabel = mediaContent.data.body[0].primary.button_label
         var alertBtnLink = mediaContent.data.body[0].primary.button_link
+        var alertBtnIcon = mediaContent.data.body[0].primary.button_icon
+        var alertBtnIconAlign = mediaContent.data.body[0].primary.button_icon_align
+
         var alertBtnSecondaryLabel = mediaContent.data.body[0].primary.secondary_button_label
         var alertBtnSecondaryLink = mediaContent.data.body[0].primary.secondary_button_link
         var alertBtnSecondaryStyle = mediaContent.data.body[0].primary.secondary_button_style
+        var alertBtnSecondaryIcon = mediaContent.data.body[0].primary.secondary_button_icon
+        var alertBtnSecondaryIconAlign =
+          mediaContent.data.body[0].primary.secondary_button_icon_align
       }
     } while (i < mediaContent.data.body.length)
   }
@@ -410,7 +422,7 @@ const ImageHighlight = ({ slice }) => {
       }}
     >
       <div>
-        {(content || btnLabel || btnSecondaryLabel) && (
+        {(content || primaryButtonLabel || secondaryButtonLabel) && (
           <div
             className={'content txt-' + alignContent}
             style={{
@@ -420,17 +432,27 @@ const ImageHighlight = ({ slice }) => {
           >
             {content && <RichText render={content} linkResolver={linkResolver} />}
 
-            {(btnLabel || btnSecondaryLabel) && (
+            {(primaryButtonLabel || secondaryButtonLabel) && (
               <span className="cta">
-                {btnLabel && (
-                  <Button buttonLabel={btnLabel} buttonType={btnLink} buttonStyle={btnStyle} />
+                {/* Primary Button */}
+                {primaryButtonLabel && (
+                  <Button
+                    buttonLabel={primaryButtonLabel}
+                    buttonType={primaryButtonLink}
+                    buttonStyle={primaryButtonStyle}
+                    buttonIcon={primaryButtonIcon}
+                    buttonIconAlign={primaryButtonIconAlign}
+                  />
                 )}
 
-                {btnSecondaryLabel && (
+                {/* Secondary Button */}
+                {secondaryButtonLabel && (
                   <Button
-                    buttonLabel={btnSecondaryLabel}
-                    buttonType={btnSecondaryLink}
-                    buttonStyle={btnSecondaryStyle}
+                    buttonLabel={secondaryButtonLabel}
+                    buttonType={secondaryButtonLink}
+                    buttonStyle={secondaryButtonStyle}
+                    buttonIcon={secondaryButtonIcon}
+                    buttonIconAlign={secondaryButtonIconAlign}
                   />
                 )}
               </span>
@@ -481,9 +503,13 @@ const ImageHighlight = ({ slice }) => {
               alertClose={alertClose}
               alertBtnLabel={alertBtnLabel}
               alertBtnLink={alertBtnLink}
+              alertBtnIcon={alertBtnIcon}
+              alertBtnIconAlign={alertBtnIconAlign}
               alertBtnSecondaryLabel={alertBtnSecondaryLabel}
               alertBtnSecondaryLink={alertBtnSecondaryLink}
               alertBtnSecondaryStyle={alertBtnSecondaryStyle}
+              alertBtnSecondaryIcon={alertBtnSecondaryIcon}
+              alertBtnSecondaryIconAlign={alertBtnSecondaryIconAlign}
             />
           )}
         </div>

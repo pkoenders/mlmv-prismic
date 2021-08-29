@@ -30,6 +30,8 @@ const PeerSupportersItem = ({ currentLang, thisItem, showTags }) => {
   const start_date = content.start_date_time
   const end_date = content.end_date_time
 
+  // console.log('end_date = ' + end_date)
+
   const date = moment(start_date).format('LL')
   const time = moment(start_date).format('LT')
   const endTime = moment(end_date).format('MMMM DD, LT')

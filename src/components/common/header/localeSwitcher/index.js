@@ -36,7 +36,12 @@ const SwitcherBtn = styled.button.attrs((props) => ({
   display: flex;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.header.bground[900]};
+  border: 1px solid transparent;
   border-radius: ${({ theme }) => theme.borderRadius.sm};
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.header.bground[700]};
+  }
 `
 const ListLocales = styled.ul`
   position: absolute;
@@ -48,12 +53,18 @@ const ListLocales = styled.ul`
   width: auto;
   color: ${({ theme }) => theme.colors.header.default};
   background-color: ${({ theme }) => theme.colors.header.bground.default};
+  /* background-color: ${({ theme }) => theme.colors.header.bground[900]}; */
 
-  border: 1px solid ${({ theme }) => theme.colors.header.bground[800]};
-  border-top: none;
+  /* border: 1px solid ${({ theme }) => theme.colors.header.bground[800]};
+  border-top: none; */
   border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
     ${({ theme }) => theme.borderRadius.default};
-  box-shadow: ${({ theme }) => theme.boxShadow.md} !important;
+  box-shadow: ${({ theme }) => theme.boxShadow.md};
+
+  @media (max-width: ${({ theme }) => theme.screens.sm}) {
+    border: none;
+    box-shadow: none;
+  }
 
   li {
     display: flex;

@@ -160,7 +160,7 @@ const FormWraper = styled.div`
         line-height: inherit;
         margin-top: 2px;
         width: fit-content !important;
-        color: ${({ theme }) => theme.colors.page[600]};
+        color: ${({ theme }) => theme.colors.page[400]};
         display: inline-flex;
         text-transform: uppercase;
       }
@@ -259,6 +259,7 @@ const FormWraper = styled.div`
       border-top: 1px solid ${({ theme }) => theme.colors.grey[200]};
       .requiredCheck {
         text-indent: 0;
+        margin: 0;
       }
 
       span {
@@ -277,25 +278,6 @@ const FormWraper = styled.div`
     .formSuccess.hide,
     .formError.hide {
       display: none;
-    }
-
-    .formSuccess,
-    .formError {
-      /* display: flex;
-    flex-direction: column;
-    text-align: center;
-
-    svg {
-      margin: ${({ theme }) => theme.margin.default} auto;
-      width: 96px;
-      height: auto;
-      // opacity: 0.6;
-      color: ${({ theme }) => theme.colors.alert.l1.default};
-    }
-
-    .buttonPrimary {
-      margin: ${({ theme }) => theme.margin.default} auto;
-    } */
     }
 
     // Checkbox / Radio custom styles

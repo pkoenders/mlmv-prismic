@@ -45,7 +45,8 @@ const SubmitSuccess = ({ resetForm }) => {
         buttonType={'button'}
         buttonStyle={'primary'}
         onClick={resetForm}
-        icon={'refresh'}
+        buttonIcon={'refresh'}
+        buttonIconAlign={'left'}
       />
     </Success>
   )

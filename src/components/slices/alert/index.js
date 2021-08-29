@@ -20,27 +20,40 @@ const AlertWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.alert.l1.default};
   border-top: 1px solid #ffffff54;
 
-  .cta {
-    margin-bottom: ${({ theme }) => theme.margin['1/2']};
-    .btn {
-      margin-bottom: 0;
+  div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    grid-gap: ${({ theme }) => theme.padding['1/4']};
+    p {
+      margin: 0;
     }
-  }
 
-  &.left {
-    text-align: left;
-  }
-  &.center {
-    text-align: center;
     .cta {
-      align-items: center;
-      margin: 0 auto;
+      margin-bottom: ${({ theme }) => theme.margin['1/2']};
+      span {
+        margin-top: ${({ theme }) => theme.margin['1/2']};
+        .btn {
+          margin: 0;
+        }
+      }
     }
-  }
-  &.right {
-    text-align: right;
-    .cta {
-      margin: 0 0 0 auto;
+
+    &.left {
+      text-align: left;
+    }
+    &.center {
+      text-align: center;
+      .cta {
+        align-items: center;
+        margin: 0 auto;
+      }
+    }
+    &.right {
+      text-align: right;
+      .cta {
+        margin: 0 0 0 auto;
+      }
     }
   }
 
@@ -101,9 +114,13 @@ const Alert = ({
   alertClose,
   alertBtnLabel,
   alertBtnLink,
+  alertBtnIcon,
+  alertBtnIconAlign,
   alertBtnSecondaryLabel,
   alertBtnSecondaryLink,
   alertBtnSecondaryStyle,
+  alertBtnSecondaryIcon,
+  alertBtnSecondaryIconAlign,
 }) => {
   // Validate
   const content = alertContent
@@ -142,11 +159,21 @@ const Alert = ({
         return 'alertLevel-1'
     }
   }
+
+  // validate btns
   const btnLabel = validateString(alertBtnLabel)
   const btnLink = alertBtnLink
+  const btnIcon = alertBtnIcon
+  const btnIconAlign = getPostionAlign(alertBtnIconAlign)
+
   const btnSecondaryLabel = validateString(alertBtnSecondaryLabel)
   const btnSecondaryLink = alertBtnSecondaryLink
   const btnSecondaryStyle = getStyle(alertBtnSecondaryStyle)
+  const btnSecondaryIcon = alertBtnSecondaryIcon
+  const btnSecondaryIconAlign = getPostionAlign(alertBtnSecondaryIconAlign)
+
+  console.log('btnSecondaryIcon = ' + btnSecondaryIcon)
+  console.log('btnSecondaryIconAlign = ' + btnSecondaryIconAlign)
 
   function closeAlert(e) {
     e.target.closest('.alert').remove()
@@ -176,12 +203,21 @@ const Alert = ({
 
               {(btnLabel || btnSecondaryLabel) && (
                 <span className={'cta ' + align}>
-                  {btnLabel && <Button buttonLabel={btnLabel} buttonType={btnLink.raw} />}
+                  {btnLabel && (
+                    <Button
+                      buttonLabel={btnLabel}
+                      buttonType={btnLink.raw}
+                      buttonIcon={btnIcon}
+                      buttonIconAlign={btnIconAlign}
+                    />
+                  )}
                   {btnSecondaryLabel && (
                     <Button
                       buttonLabel={btnSecondaryLabel}
                       buttonType={btnSecondaryLink.raw}
                       buttonStyle={btnSecondaryStyle}
+                      buttonIcon={btnSecondaryIcon}
+                      buttonIconAlign={btnSecondaryIconAlign}
                     />
                   )}
                 </span>

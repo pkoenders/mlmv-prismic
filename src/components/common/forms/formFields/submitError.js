@@ -44,7 +44,8 @@ const SubmitError = ({ resetForm }) => {
         buttonType={'button'}
         buttonStyle={'black'}
         onClick={resetForm}
-        icon={'refresh'}
+        buttonIcon={'refresh'}
+        buttonIconAlign={'left'}
       />
     </Error>
   )

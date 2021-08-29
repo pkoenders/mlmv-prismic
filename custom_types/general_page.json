@@ -82,7 +82,8 @@
               "button_link": {
                 "type": "Link",
                 "config": {
-                  "label": "Add a button",
+                  "label": "Button link",
+                  "placeholder": "Button link",
                   "select": null,
                   "allowTargetBlank": true
                 }
@@ -90,7 +91,8 @@
               "button_label": {
                 "type": "Text",
                 "config": {
-                  "label": "Button text"
+                  "label": "Button label",
+                  "placeholder": "Button label"
                 }
               },
               "button_style": {
@@ -107,7 +109,22 @@
                   ],
                   "default_value": "Primary",
                   "label": "Button style",
-                  "placeholder": "Please select (Default is Primary)"
+                  "placeholder": "Select a style (Default is Primary)"
+                }
+              },
+              "button_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Button icon",
+                  "placeholder": "Optional - Choose from Google Material Icons"
+                }
+              },
+              "button_icon_align": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Button icon align"
                 }
               },
               "secondary_button_link": {
@@ -141,6 +158,21 @@
                   "default_value": "Secondary",
                   "label": "Secondary button Style",
                   "placeholder": "Select a style (Default is Secondary)"
+                }
+              },
+              "secondary_button_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Secondary button icon",
+                  "placeholder": "Optional - Choose from Google Material Icons"
+                }
+              },
+              "secondary_button_icon_align": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Secondary button icon align"
                 }
               },
               "button_alignment": {
@@ -496,16 +528,16 @@
                 "type": "Text",
                 "config": {
                   "label": "Button label",
-                  "placeholder": "Add a label"
+                  "placeholder": "Button label"
                 }
               },
               "button_link": {
                 "type": "Link",
                 "config": {
-                  "select": "document",
-                  "customtypes": ["page", "gallery_page", "gallery_item", "homepage"],
                   "label": "Button link",
-                  "placeholder": "Optional link"
+                  "placeholder": "Button link",
+                  "select": null,
+                  "allowTargetBlank": true
                 }
               },
               "button_style": {
@@ -522,7 +554,22 @@
                   ],
                   "default_value": "Primary",
                   "label": "Button style",
-                  "placeholder": "Please select (Default is Primary)"
+                  "placeholder": "Select a style (Default is Primary)"
+                }
+              },
+              "button_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Button icon",
+                  "placeholder": "Optional - Choose from Google Material Icons"
+                }
+              },
+              "button_icon_align": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Button icon align"
                 }
               },
               "secondary_button_link": {
@@ -556,6 +603,21 @@
                   "default_value": "Secondary",
                   "label": "Secondary button Style",
                   "placeholder": "Select a style (Default is Secondary)"
+                }
+              },
+              "secondary_button_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Secondary button icon",
+                  "placeholder": "Optional - Choose from Google Material Icons"
+                }
+              },
+              "secondary_button_icon_align": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Secondary button icon align"
                 }
               },
               "font_size": {
@@ -844,6 +906,21 @@
                   "placeholder": "Select a style (Default is Primary)"
                 }
               },
+              "button_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Button icon",
+                  "placeholder": "Optional - Choose from Google Material Icons"
+                }
+              },
+              "button_icon_align": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Button icon align"
+                }
+              },
               "secondary_button_link": {
                 "type": "Link",
                 "config": {
@@ -875,6 +952,21 @@
                   "default_value": "Secondary",
                   "label": "Secondary button Style",
                   "placeholder": "Select a style (Default is Secondary)"
+                }
+              },
+              "secondary_button_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Secondary button icon",
+                  "placeholder": "Optional - Choose from Google Material Icons"
+                }
+              },
+              "secondary_button_icon_align": {
+                "type": "Select",
+                "config": {
+                  "options": ["Left", "Right"],
+                  "default_value": "Left",
+                  "label": "Secondary button icon align"
                 }
               },
               "align_content": {

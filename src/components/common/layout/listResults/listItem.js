@@ -34,8 +34,7 @@ const ListItem = styled.li`
           height: auto;
         }
         time {
-          /* color: ${({ theme }) => theme.colors.page[700]}; */
-          opacity: 0.66;
+          color: ${({ theme }) => theme.colors.page[500]};
         }
       }
 
@@ -68,7 +67,7 @@ const ListItem = styled.li`
           }
           .srike {
             text-decoration: line-through;
-            opacity: 0.66;
+            color: ${({ theme }) => theme.colors.page[400]};
           }
         }
         .passed {

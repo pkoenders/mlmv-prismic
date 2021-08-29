@@ -32,11 +32,18 @@ import { screenSize } from '/src/themes/globalStyles'
 import styled from 'styled-components'
 
 const CardsWrapper = styled.section`
+  @media (max-width: ${({ theme }) => theme.screens.sm}) {
+    padding-top: 0px !important;
+    padding-bottom: 32px !important;
+  }
   .title {
     width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: ${({ theme }) => theme.padding.default};
+    @media (max-width: ${({ theme }) => theme.screens.sm}) {
+      margin: ${({ theme }) => theme.padding.default} 0;
+    }
   }
   .title.left {
     text-align: left;
@@ -138,6 +145,9 @@ const CardsWrapper = styled.section`
         .imageWrapper {
           border-radius: ${({ theme }) => theme.borderRadius.default};
           border: none;
+          @media (max-width: ${({ theme }) => theme.screens.sm}) {
+            border-radius: 0px;
+          }
         }
 
         .content {
@@ -158,7 +168,9 @@ const CardsWrapper = styled.section`
             align-items: center;
             white-space: nowrap;
             width: fit-content;
-            padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding['1/2']};
+            /* padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) =>
+  theme.padding['1/2']}; */
+            padding: 8px 18px;
             color: ${({ theme }) => theme.colors.page.default};
             background-color: #ffffffa8;
             /* border: 1px solid ${({ theme }) => theme.colors.page[400]}; */
@@ -194,6 +206,21 @@ const CardsWrapper = styled.section`
     }
   }
 
+  &.light {
+    .carousel {
+      .nav {
+        .item {
+          background-color: #fff};
+        }
+
+        .item:hover,
+        .item.active {
+          background-color: ${({ theme }) => theme.colors.page.default};
+        }
+      }
+    }
+  }
+
   &.dark {
     .carousel {
       .prev,
@@ -205,12 +232,12 @@ const CardsWrapper = styled.section`
 
       .nav {
         .item {
-          background-color: ${({ theme }) => theme.colors.page[100]};
+          background-color: ${({ theme }) => theme.colors.page.default};
         }
 
         .item:hover,
         .item.active {
-          background-color: ${({ theme }) => theme.colors.primary.default};
+          background-color: #fff;
         }
       }
 

@@ -9,7 +9,6 @@ import { getImgFormat } from '/src/utils/helpers'
 import { validateString } from '/src/utils/helpers'
 
 // Layout
-import CardWrapper from '/src/components/common/layout/listResults/cardWrapper'
 import CardContent from '/src/components/common/layout/listResults/cardContent'
 
 // Icons
@@ -28,34 +27,30 @@ const Card = ({ cardItem, presentationType }) => {
   return (
     <div className="cardItem keen-slider__slide">
       <Link to={linkResolver(link)} className={'link'}>
-        <CardWrapper>
-          <CardContent>
-            {image && (
-              <GatsbyImage
-                className={'imageWrapper landscape ' + imgFormat}
-                image={image.localFile.childImageSharp.gatsbyImageData}
-                alt={
-                  image.alt ? image.alt : 'Sorry, no image description is available at this time'
-                }
-              />
+        <CardContent>
+          {image && (
+            <GatsbyImage
+              className={'imageWrapper landscape ' + imgFormat}
+              image={image.localFile.childImageSharp.gatsbyImageData}
+              alt={image.alt ? image.alt : 'Sorry, no image description is available at this time'}
+            />
+          )}
+          <div className="content">
+            {title && (
+              <div className="title">
+                {title}
+                {presentationType === 'gallery' && <IconMaterial icon={'arrow_forward'} />}
+              </div>
             )}
-            <div className="content">
-              {title && (
-                <div className="title">
-                  {title}
-                  {presentationType === 'gallery' && <IconMaterial icon={'arrow_forward'} />}
-                </div>
-              )}
-              {content.text && <RichText render={content.raw} />}
-              {linkLabel && presentationType === 'carousel' && (
-                <span className="link">
-                  {linkLabel}
-                  <IconMaterial icon={'arrow_forward'} />
-                </span>
-              )}
-            </div>
-          </CardContent>
-        </CardWrapper>
+            {content.text && <RichText render={content.raw} />}
+            {linkLabel && presentationType === 'carousel' && (
+              <span className="link">
+                {linkLabel}
+                <IconMaterial icon={'arrow_forward'} />
+              </span>
+            )}
+          </div>
+        </CardContent>
       </Link>
     </div>
   )

@@ -25,15 +25,18 @@ const Switcher = styled.div`
     }
   }
 `
-const SwitcherBtn = styled.button`
-  border: none;
-  background-color: transparent;
+const SwitcherBtn = styled.button.attrs((props) => ({
+  type: props.type || 'button',
+  'aria-label': 'Select a language',
+}))`
   color: ${({ theme }) => theme.colors.header.default};
-  padding: 0px;
+  padding: ${({ theme }) => theme.padding['1/8']};
   cursor: pointer;
   justify-content: center;
   display: flex;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.header.bground[900]};
+  border-radius: ${({ theme }) => theme.borderRadius.sm};
 `
 const ListLocales = styled.ul`
   position: absolute;
@@ -45,6 +48,13 @@ const ListLocales = styled.ul`
   width: auto;
   color: ${({ theme }) => theme.colors.header.default};
   background-color: ${({ theme }) => theme.colors.header.bground.default};
+
+  border: 1px solid ${({ theme }) => theme.colors.header.bground[800]};
+  border-top: none;
+  border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
+    ${({ theme }) => theme.borderRadius.default};
+  box-shadow: ${({ theme }) => theme.boxShadow.md} !important;
+
   li {
     display: flex;
     a {
@@ -103,19 +113,19 @@ const LocalSwitcher = ({ currentLang, currentPath }) => {
   return (
     <Switcher className="localeSwitcher" data-name="locale-switcher">
       <SwitcherBtn className="localeBtn" aria-label="Language selector" name="Language selector">
-        <IconMaterial icon={'language'} />
+        <IconMaterial icon={'translate'} />
       </SwitcherBtn>
       <ListLocales>
         <li>
           <Link hrefLang="en-nz" to={`/${currentPath}`}>
             {currentLang === 'en-nz' && <IconMaterial icon={'check'} />}
-            English
+            English - NZ
           </Link>
         </li>
         <li>
           <Link hrefLang="mi-nz" to={`/mi/${currentPath}`}>
             {currentLang === 'mi-nz' && <IconMaterial icon={'check'} />}
-            Te Reo - Māori
+            Te reo - Māori
           </Link>
         </li>
       </ListLocales>

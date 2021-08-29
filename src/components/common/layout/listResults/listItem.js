@@ -8,7 +8,7 @@ const ListItem = styled.li`
     width: 100%;
     text-decoration: none;
 
-    div > div {
+    div {
       display: flex;
       flex-direction: row;
       width: 100%;

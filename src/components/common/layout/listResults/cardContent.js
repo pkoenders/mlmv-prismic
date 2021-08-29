@@ -1,12 +1,32 @@
 import styled from 'styled-components'
 
 const CardContent = styled.div`
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: ${({ theme }) => theme.colors.textColor};
+  background-color: ${({ theme }) => theme.colors.card[100]};
+  border: 2px solid ${({ theme }) => theme.colors.card[300]};
+  border-radius: ${({ theme }) => theme.borderRadius.default};
+  transition: ${({ theme }) => theme.transition.easeOut.default};
+
+  @media (max-width: ${({ theme }) => theme.screens.sm}) {
+    flex-direction: column;
+  }
+
+  &:hover {
+    text-decoration: none;
+    border-color: ${({ theme }) => theme.colors.primary[600]};
+    box-shadow: ${({ theme }) => theme.boxShadow.lg};
+  }
+
   .imageWrapper {
     position: relative;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.card[300]};
     img {
       transition: ${({ theme }) => theme.transition.easeIn.default};
       aspect-ratio: 16/9;
-      /* transform: scale(1); */
       transform: scale(1.033);
       object-position: center top !important;
     }
@@ -16,7 +36,6 @@ const CardContent = styled.div`
     display: flex;
     flex-direction: column;
     grid-gap: ${({ theme }) => theme.padding['1/4']};
-    border-top: 1px solid ${({ theme }) => theme.colors.card[300]};
     color: ${({ theme }) => theme.colors.page.default};
     padding: ${({ theme }) => theme.padding['1/2']};
 

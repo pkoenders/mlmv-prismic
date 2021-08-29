@@ -10,7 +10,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { resizeAllGridItems } from '/src/utils/helpers'
 
 // Layout
-import CardWrapper from '/src/components/common/layout/listResults/cardWrapper'
 import CardContent from '/src/components/common/layout/listResults/cardContent'
 
 // Icons
@@ -149,35 +148,33 @@ const PeerSupportersItem = ({ thisItem, animateScroll }) => {
       {item.uid && (
         <CardItem className={'item show'} ref={gridItem}>
           <Link to={linkResolver(item)} className="card">
-            <CardWrapper>
-              <CardContent>
-                {content.image && (
-                  <div className="imageWrapper">
-                    <GatsbyImage
-                      image={content.image.localFile.childImageSharp.gatsbyImageData}
-                      alt={content.image.alt ? content.image.alt : content.title.text}
-                    />
+            <CardContent>
+              {content.image && (
+                <div className="imageWrapper">
+                  <GatsbyImage
+                    image={content.image.localFile.childImageSharp.gatsbyImageData}
+                    alt={content.image.alt ? content.image.alt : content.title.text}
+                  />
+                </div>
+              )}
+
+              <div className="content" ref={innerTxt}>
+                {firstName && (
+                  <div className="title">
+                    {fullName}
+                    <IconMaterial icon={'arrow_forward'} />
                   </div>
                 )}
-
-                <div className="content" ref={innerTxt}>
-                  {firstName && (
-                    <div className="title">
-                      {fullName}
-                      <IconMaterial icon={'arrow_forward'} />
-                    </div>
-                  )}
-                  {intro && <p>{intro}</p>}
-                  {location && (
-                    <p>
-                      <IconMaterial icon={'person_pin_circle'} />
-                      {location}
-                    </p>
-                  )}
-                  {tagData && <Tags tagData={tagData} />}
-                </div>
-              </CardContent>
-            </CardWrapper>
+                {intro && <p>{intro}</p>}
+                {location && (
+                  <p>
+                    <IconMaterial icon={'person_pin_circle'} />
+                    {location}
+                  </p>
+                )}
+                {tagData && <Tags tagData={tagData} />}
+              </div>
+            </CardContent>
           </Link>
         </CardItem>
       )}

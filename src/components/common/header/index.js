@@ -309,14 +309,14 @@ const HeaderWrapper = styled.header`
             position: absolute;
             margin: 0;
             padding: ${({ theme }) => theme.padding['1/2']} 0;
+            top: ${({ theme }) => theme.header.height};
+            z-index: 10000;
+            background-color: ${({ theme }) => theme.colors.header.bground.default};
+
             border: 1px solid ${({ theme }) => theme.colors.header.bground[800]};
             border-top: none;
             border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
               ${({ theme }) => theme.borderRadius.default};
-            top: ${({ theme }) => theme.header.height};
-            margin-top: 0px;
-            z-index: 10000;
-            background-color: ${({ theme }) => theme.colors.header.bground.default};
             box-shadow: ${({ theme }) => theme.boxShadow.md} !important;
 
             li {

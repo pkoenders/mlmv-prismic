@@ -132,9 +132,12 @@ const CardsWrapper = styled.section`
         > div {
           background-color: transparent;
           border: none;
+          box-shadow: none;
+          overflow: visible;
         }
         .imageWrapper {
           border-radius: ${({ theme }) => theme.borderRadius.default};
+          border: none;
         }
 
         .content {
@@ -142,7 +145,6 @@ const CardsWrapper = styled.section`
           flex-direction: column;
           justify-content: center;
           grid-gap: ${({ theme }) => theme.padding['1/4']};
-          border-top: none;
           .title,
           p {
             justify-content: inherit;
@@ -159,6 +161,7 @@ const CardsWrapper = styled.section`
             padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding['1/2']};
             color: ${({ theme }) => theme.colors.page.default};
             background-color: #ffffffa8;
+            /* border: 1px solid ${({ theme }) => theme.colors.page[400]}; */
             border-radius: ${({ theme }) => theme.borderRadius.default};
             box-shadow: ${({ theme }) => theme.boxShadow.default};
             i {
@@ -170,8 +173,16 @@ const CardsWrapper = styled.section`
         }
       }
       a:hover {
+        /* overflow: visible; */
+        > div {
+          /* box-shadow: none; */
+        }
+        .imageWrapper {
+          box-shadow: ${({ theme }) => theme.boxShadow.lg};
+        }
         .content {
           .link {
+            box-shadow: ${({ theme }) => theme.boxShadow.lg};
             i {
               color: inherit;
               transition: ${({ theme }) => theme.transition.easeOut.default};

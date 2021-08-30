@@ -11,6 +11,7 @@ const AscDescBtnWrapper = styled.button.attrs((props) => ({
 }))`
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   padding: ${({ theme }) => theme.padding['1/4']};
   user-select: none;

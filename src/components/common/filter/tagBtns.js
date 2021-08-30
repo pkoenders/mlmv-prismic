@@ -8,19 +8,30 @@ import styled from 'styled-components'
 const ListTagBtnsWrapper = styled.div`
   .utils {
     position: absolute;
-    align-self: center;
+    align-items: center;
     display: flex;
-    grid-gap: 0;
-    top: ${({ theme }) => theme.padding['1/4']};
+    flex-direction: row;
+    grid-gap: ${({ theme }) => theme.padding['1/16']};
     top: ${({ theme }) => theme.padding['1/2']};
     right: ${({ theme }) => theme.padding['1/4']};
     button {
-      background-color: #fff;
-      padding: 0 2px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 25px;
+      width: 25px;
+      min-width: 25px;
+      font-size: 20px;
+      /* aspect-ratio: 1; */
+      padding: 0;
       cursor: pointer;
       user-select: none;
+      background-color: #fff;
       border: 1px solid ${({ theme }) => theme.colors.tertiary[600]};
-      border-radius: ${({ theme }) => theme.borderRadius.sm};
+      /* border-radius: ${({ theme }) => theme.borderRadius.sm}; */
+      border-radius: 999rem;
       &:hover {
         border: 1px solid ${({ theme }) => theme.colors.primary.default};
         color: ${({ theme }) => theme.colors.primary.default};
@@ -96,8 +107,8 @@ const ResetTagsBtn = styled.button.attrs((props) => ({
   type: props.type || 'button',
   'aria-label': 'Reset tags',
 }))`
-  border: none !important;
-  background-color: transparent !important;
+  /* border: none !important; */
+  /* background-color: transparent !important; */
   position: relative;
   @keyframes rotation {
     from {

@@ -5,7 +5,14 @@ import { isRequired, isValidEmail } from './validators'
 import { Form, Field } from 'react-final-form'
 import linkResolver from '../../../utils/linkResolver'
 import { RichText } from 'prismic-reactjs'
-import { getColor, validateString } from '/src/utils/helpers'
+import {
+  getContentWidth,
+  getBgColor,
+  getColorTint,
+  validateString,
+  getAutoSpacing,
+  getManualSpacing,
+} from '/src/utils/helpers'
 
 // Form elements
 import FormWrapper from './formWrapper'
@@ -29,28 +36,57 @@ const encode = (data) => {
     .join('&')
 }
 
-const ContactNew = ({ formData }) => {
-  const [requiredFieldSet, setRequiredFieldSet] = useState(true)
-  // const formTitle = slice.primary.select_form.document.data.form_title.text
-  // const formDecription = slice.primary.select_form.document.data.from_content.raw
-  // const formDataFields = slice.primary.select_form.document.data.body
+const ContactNew = ({ formData, slice }) => {
+  // If form is a slice from a page, set up the layout
+  if (formData === undefined) {
+    // Set up the section with an id and some classes and styles
+    // Add a page ID to reference
+    var sectionID = slice.id
+    // Leading content
+    var sectionIntro = slice.primary.content
+    // Set the content width class
+    var sectionWidth = getContentWidth(slice.primary.width)
+    // Set the bgColor class
+    var bgColor = getBgColor(slice.primary.background_color)
+    const bGroundTint = getColorTint(slice.primary.background_tint)
+    bgColor = 'background-' + bgColor + '-' + bGroundTint
+    // Set the vertical padding - inline style
+    const defaultPadding = getAutoSpacing(slice.primary.default_padding)
+    var vPaddingTop = getManualSpacing(slice.primary.v_padding_top)
+    var vPaddingBottom = getManualSpacing(slice.primary.v_padding_bottom)
+    if (vPaddingTop === null) {
+      vPaddingTop = defaultPadding + 'px'
+    }
+    if (vPaddingBottom === null) {
+      vPaddingBottom = defaultPadding + 'px'
+    }
+  }
 
-  // Validate title
-  const formTitle = validateString(formData.select_form.document.data.form_title.text)
-  // Validate description
-  const formDecription = validateString(formData.select_form.document.data.from_content.raw)
+  const [requiredFieldSet, setRequiredFieldSet] = useState(true)
+  const [errorMessage, setErrorMsg] = useState(false)
+  const [successMessage, setSuccessMsg] = useState(false)
+
+  // Form come from from a slice like Homepage or General page?
+  var allFormData = []
+  if (formData === undefined) {
+    allFormData = slice.primary
+  }
+  // Or other templates calling the form from outside a slice
+  if (slice === undefined) {
+    allFormData = formData
+  }
+
+  // Validate form title
+  const formTitle = validateString(allFormData.select_form.document.data.form_title.text)
+  // Validate form description
+  const formDecription = validateString(allFormData.select_form.document.data.from_content.raw)
   // Form data
-  const formDataFields = formData.select_form.document.data.body
-  // Get colour
-  var bGgroundColor = getColor(formData.background_color)
+  const formDataFields = allFormData.select_form.document.data.body
 
   var pathName = ''
   if (typeof window !== 'undefined') {
     pathName = window.location.pathname
   }
-
-  const [errorMessage, setErrorMsg] = useState(false)
-  const [successMessage, setSuccessMsg] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -164,19 +200,29 @@ const ContactNew = ({ formData }) => {
   }, [])
 
   return (
-    <div
-      className="formArea"
+    // Set up ID and styles if from is from a slice
+    <section
+      id={formData === undefined && sectionID}
+      className={formData === undefined && `section-layout form ${sectionWidth} ${bgColor}`}
       style={{
-        backgroundColor: bGgroundColor,
+        paddingTop: vPaddingTop,
+        paddingBottom: vPaddingBottom,
       }}
     >
-      {(formTitle || formDecription) && (
-        <div className="titleArea">
-          {formTitle && <p className="titleText">{formTitle}</p>}
-          {formDecription && <RichText render={formDecription} linkResolver={linkResolver} />}
-        </div>
-      )}
       <FormWrapper>
+        {sectionIntro && (
+          <div className="titleArea">
+            <RichText render={sectionIntro.raw} linkResolver={linkResolver} />
+          </div>
+        )}
+
+        {(formTitle || formDecription) && (
+          <div className="titleArea">
+            {formTitle && <p className="titleText">{formTitle}</p>}
+            {formDecription && <RichText render={formDecription} linkResolver={linkResolver} />}
+          </div>
+        )}
+
         <Form onSubmit={onSubmit}>
           {({ values, invalid }) => (
             <form
@@ -369,7 +415,7 @@ const ContactNew = ({ formData }) => {
         {errorMessage && <SubmittError resetForm={resetForm} />}
         {successMessage && <SubmitSuccess resetForm={resetForm} />}
       </FormWrapper>
-    </div>
+    </section>
   )
 }
 

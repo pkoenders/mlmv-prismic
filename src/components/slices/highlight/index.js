@@ -33,6 +33,7 @@ import {
 } from '/src/utils/helpers'
 
 import styled from 'styled-components'
+// import { Form } from 'react-final-form'
 
 const Highlight = styled.section`
   display: flex;
@@ -301,7 +302,9 @@ const ImageHighlight = ({ slice }) => {
     var mediaContent = slice.primary.add_media.document
     var mediaContentObj = ''
     var mediaType = ''
+
     let i = 0
+
     do {
       mediaType += mediaContent.data.body[i].slice_type
       i++
@@ -311,6 +314,7 @@ const ImageHighlight = ({ slice }) => {
           mediaContent.data.body[0].primary.image.localFile.childImageSharp.gatsbyImageData
         mediaType = 'Image'
       }
+
       if (mediaType === 'embedded_cloud_media') {
         mediaContentObj = mediaContent.data.body[0].primary.media
         mediaType = 'Embedded cloud'

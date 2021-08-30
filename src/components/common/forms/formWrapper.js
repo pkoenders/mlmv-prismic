@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 
 const FormWraper = styled.div`
-  .formArea {
-    .titleArea {
-      margin: 0 ${({ theme }) => theme.margin.default} ${({ theme }) => theme.margin.default};
-      p {
-        text-align: left;
-      }
+  .titleArea {
+    margin: 0 ${({ theme }) => theme.margin['1/4']} ${({ theme }) => theme.margin['1/2']};
+    p {
+      text-align: left;
+      margin-bottom: 0;
     }
   }
 

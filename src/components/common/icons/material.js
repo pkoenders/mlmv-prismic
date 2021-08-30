@@ -4,6 +4,12 @@ import styled from 'styled-components'
 
 const MaterialIcon = styled.i`
   /* Matrial icons. */
+  display: flex;
+
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
   .material-icons.md-18,
   .material-icons-round.md-18 {
     font-size: 18px;

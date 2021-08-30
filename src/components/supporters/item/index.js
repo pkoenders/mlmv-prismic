@@ -49,6 +49,36 @@ const SupportersHeader = styled.div`
         margin-right: ${({ theme }) => theme.margin['1/2']};
       }
     }
+
+    .location {
+      grid-gap: ${({ theme }) => theme.padding.default};
+      padding: 0;
+      margin: 0;
+      color: ${({ theme }) => theme.colors.page[700]};
+
+      span {
+        margin: 0;
+        flex-wrap: wrap;
+        grid-column-gap: ${({ theme }) => theme.margin.default};
+        grid-row-gap: ${({ theme }) => theme.margin['1/4']};
+
+        time,
+        address,
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-bottom: 0;
+          width: fit-content;
+          white-space: nowrap;
+          grid-gap: ${({ theme }) => theme.margin['1/4']};
+
+          i {
+            color: ${({ theme }) => theme.colors.secondary.default};
+          }
+        }
+      }
+    }
   }
   & .tags {
     width: 40%;
@@ -92,7 +122,7 @@ const SupportersBody = styled.div`
       grid-row-gap: ${({ theme }) => theme.padding['1/4']};
       grid-column-gap: ${({ theme }) => theme.padding['1/2']};
       text-indent: ${({ theme }) => theme.padding['1/4']};
-      span {
+      address {
         font-weight: 500;
         display: inline-flex;
         align-items: center;
@@ -134,6 +164,22 @@ const supportersItem = ({ currentLang, itemData }) => {
               {firstName && <h1>{fullName}</h1>}
             </span>
             {introText && <p className="date">{introText}</p>}
+            <div className="location">
+              <span>
+                {location && (
+                  <address aria-label="Location">
+                    <IconMaterial icon={'person_pin_circle'} />
+                    {location}
+                  </address>
+                )}
+                {gender && (
+                  <address aria-label="Gender">
+                    <IconMaterial icon={'face'} />
+                    {gender}
+                  </address>
+                )}
+              </span>
+            </div>
           </div>
           <Tags tagData={tagData} />
         </SupportersHeader>
@@ -145,22 +191,10 @@ const supportersItem = ({ currentLang, itemData }) => {
           <div className="contact">
             <div>
               {firstName && (
-                <span>
+                <address>
                   <IconMaterial icon={'mail'} />
                   {i18n[currentLang].contact} {firstName}
-                </span>
-              )}
-              {location && (
-                <span>
-                  <IconMaterial icon={'person_pin_circle'} />
-                  {location}
-                </span>
-              )}
-              {gender && (
-                <span>
-                  <IconMaterial icon={'face'} />
-                  {gender}
-                </span>
+                </address>
               )}
             </div>
 

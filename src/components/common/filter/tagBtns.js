@@ -11,7 +11,7 @@ const ListTagBtnsWrapper = styled.div`
     align-items: center;
     display: flex;
     flex-direction: row;
-    grid-gap: ${({ theme }) => theme.padding['1/16']};
+    grid-gap: ${({ theme }) => theme.padding['1/8']};
     top: ${({ theme }) => theme.padding['1/2']};
     right: ${({ theme }) => theme.padding['1/4']};
     button {
@@ -20,12 +20,9 @@ const ListTagBtnsWrapper = styled.div`
       align-items: center;
       justify-content: center;
       text-align: center;
-      height: 25px;
-      width: 25px;
-      min-width: 25px;
       font-size: 20px;
-      /* aspect-ratio: 1; */
-      padding: 0;
+      aspect-ratio: 1;
+      padding: 2px;
       cursor: pointer;
       user-select: none;
       background-color: #fff;

@@ -266,6 +266,10 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .section-layout.form {
+    padding: 0 ${({ theme }) => theme.padding['1/2']};
+  }
+
   // Bground color options
   // Default
   // Grey 

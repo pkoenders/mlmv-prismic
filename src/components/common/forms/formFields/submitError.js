@@ -7,7 +7,7 @@ import IconSubmitError from '/src/images/svg/icon-contact-error.inline.svg'
 import styled from 'styled-components'
 
 const Error = styled.div`
-  flex-direction: row;
+  flex-direction: column;
   grid-row-gap: ${({ theme }) => theme.padding['1/2']} !important;
   grid-column-gap: ${({ theme }) => theme.padding['1/4']} !important;
   margin: ${({ theme }) => theme.margin.default} ${({ theme }) => theme.padding['1/4']};

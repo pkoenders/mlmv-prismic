@@ -322,6 +322,8 @@ export const query = graphql`
 
               add_media {
                 document {
+                  ##
+                  ## Shared content
                   ... on PrismicSharedContent {
                     data {
                       body {
@@ -445,9 +447,20 @@ export const query = graphql`
             id
             slice_type
             primary {
+              content {
+                raw
+                text
+              }
+              width
+              default_padding
+              v_padding_top
+              v_padding_bottom
               background_color
+              background_tint
               select_form {
                 document {
+                  ##
+                  ## Form
                   ... on PrismicForms {
                     data {
                       form_title {
@@ -456,11 +469,10 @@ export const query = graphql`
                       from_content {
                         raw
                       }
-
                       body {
-                        ##
                         ## Button
                         ... on PrismicFormsDataBodyButton {
+                          id
                           slice_type
                           primary {
                             button_type
@@ -470,9 +482,9 @@ export const query = graphql`
                           }
                         }
 
-                        ##
                         ## Text area
                         ... on PrismicFormsDataBodyTextAreaInput {
+                          id
                           slice_type
                           primary {
                             required
@@ -482,9 +494,9 @@ export const query = graphql`
                           }
                         }
 
-                        ##
                         ## Text input
                         ... on PrismicFormsDataBodyTextInput {
+                          id
                           slice_type
                           primary {
                             required
@@ -494,9 +506,77 @@ export const query = graphql`
                             }
                           }
                         }
+
+                        ## Rich text area
+                        ... on PrismicFormsDataBodyRichText {
+                          id
+                          slice_type
+                          primary {
+                            align_with_input
+                            text {
+                              text
+                              raw
+                            }
+                          }
+                        }
+
+                        ## Checkbox
+                        ... on PrismicFormsDataBodyCheckbox {
+                          id
+                          slice_type
+                          primary {
+                            title {
+                              text
+                            }
+                            required
+                            align
+                          }
+                          items {
+                            item {
+                              text
+                            }
+                          }
+                        }
+
+                        ## Radio buttons
+                        ... on PrismicFormsDataBodyRadioButton {
+                          id
+                          slice_type
+                          items {
+                            item {
+                              text
+                            }
+                          }
+                          primary {
+                            title {
+                              text
+                            }
+                            required
+                            align
+                          }
+                        }
+
+                        ## Select list
+                        ... on PrismicFormsDataBodySelectList {
+                          id
+                          items {
+                            item {
+                              text
+                            }
+                          }
+                          primary {
+                            title {
+                              text
+                            }
+                            required
+                          }
+                          slice_type
+                        }
                       }
                     }
                   }
+                  ##
+                  ## End form
                 }
               }
             }

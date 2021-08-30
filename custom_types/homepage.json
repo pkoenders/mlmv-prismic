@@ -708,7 +708,7 @@
                 "type": "Link",
                 "config": {
                   "select": "document",
-                  "customtypes": ["shared_content"],
+                  "customtypes": ["shared_content", "forms"],
                   "label": "Add media",
                   "placeholder": "Add a shared media item"
                 }

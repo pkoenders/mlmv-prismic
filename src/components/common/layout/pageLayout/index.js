@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Section = styled.section`
+  // Section - For other templates that are not Homepage and General page
   display: block;
   margin-top: ${({ theme }) => theme.header.height};
-  padding: ${({ theme }) => theme.padding.default} 0;
+  padding: ${({ theme }) => theme.padding.default} 0 ${({ theme }) => theme.padding['2xl']};
 
   > div {
     max-width: ${({ theme }) => theme.screens.xl};

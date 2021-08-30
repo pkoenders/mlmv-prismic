@@ -26,6 +26,7 @@ const BtnWrapper = styled.span`
     cursor: pointer;
     user-select: none;
     width: fit-content;
+    white-space: nowrap;
     margin: 0 auto;
     padding: 12px ${({ theme }) => theme.padding.default};
     padding: 10px 24px;

@@ -396,7 +396,7 @@ const ContactNew = ({ formData, slice }) => {
                         )}
 
                         <Button
-                          buttonLabel={'Submit'}
+                          buttonLabel={formDataFields[index].primary.button_name.text}
                           buttonType={'submit'}
                           buttonStyle={'primary'}
                           buttonIcon={'send'}

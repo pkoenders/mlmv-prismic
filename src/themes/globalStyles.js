@@ -216,10 +216,11 @@ export const GlobalStyles = createGlobalStyle`
     margin-bottom: 0;
   }
 
-  // Section widths
+  // Section - Slice widths for Homepage and General page
   .section-layout {
     > div {
       margin: 0 auto;
+      padding-bottom: ${({ theme }) => theme.padding['1/2']};
         }
   }
 

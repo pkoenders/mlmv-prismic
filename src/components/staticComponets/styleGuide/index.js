@@ -28,6 +28,18 @@ const StyleGuide = styled.section`
     padding: ${({ theme }) => theme.padding['1/2']} 0};
   }
 
+  .typographyStyles {
+    display: flex;
+      flex-direction: column;
+      grid-gap: ${({ theme }) => theme.padding['1/4']};
+      h1,h2,h3,h4,h5,p {
+        margin: 0;
+      }
+      p:last-of-type {
+        margin-bottom: ${({ theme }) => theme.padding['1/2']};
+      }
+  }
+
   .cta {
     .allBtns{
       display: flex;
@@ -139,14 +151,16 @@ const Styleguide = () => {
             style, copy and pass in the icon CSS name as a paramater. Eg; 'Contact Page will be
             'contact_page'.{' '}
           </p>
-          <h1>Heading 1 - slab 'Rokkitt, serif'</h1>
-          <h2>Heading 2 - slab 'Rokkitt, serif'</h2>
-          <h3>Heading 3 - sans 'Roboto, sans-serif'</h3>
-          <h4>Heading 4 - sans 'Roboto, sans-serif'</h4>
-          <h5>Heading 5 - sans 'Roboto, sans-serif'</h5>
-          <p>Paragraph - sans 'Roboto, sans-serif'</p>
-          <p className="serif">Serif - '"Bodoni Moda", serif'</p>
-          <p className="mono">Mono - 'Menlo', 'Monaco'</p>
+          <div className="typographyStyles">
+            <h1>Heading 1 - slab 'Rokkitt, serif'</h1>
+            <h2>Heading 2 - slab 'Rokkitt, serif'</h2>
+            <h3>Heading 3 - sans 'Roboto, sans-serif'</h3>
+            <h4>Heading 4 - sans 'Roboto, sans-serif'</h4>
+            <h5>Heading 5 - sans 'Roboto, sans-serif'</h5>
+            <p>Paragraph - sans 'Roboto, sans-serif'</p>
+            <p className="serif">Serif - '"Bodoni Moda", serif'</p>
+            <p className="mono">Mono - 'Menlo', 'Monaco'</p>
+          </div>
         </div>
 
         <div className="section cta">
@@ -159,7 +173,9 @@ const Styleguide = () => {
               <li>staticLink - A link an external page</li>
               <li>buttonStyle - Primary, Secondary, Tertiary, Black, White, Link or Transparent</li>
               <li>onClick - Call a Function or Const</li>
+              <li>buttonDisabled - Disable the button</li>
               <li>buttonIcon - Material Icon, eg 'contact_page</li>
+              <li>buttonIcon - Align 'left' or 'right'</li>
               <li>buttonIcon - Align 'left' or 'right'</li>
             </ul>
             <div className="allBtns">

@@ -28,15 +28,14 @@ const BtnWrapper = styled.span`
     width: fit-content;
     white-space: nowrap;
     margin: 0 auto;
-    padding: 12px ${({ theme }) => theme.padding.default};
-    padding: 10px 24px;
-    font-size: $font-size;
+    padding: 16px ${({ theme }) => theme.padding.default};
+    padding: 12px 24px;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none !important;
     font-weight: 500;
     font-family: inherit;
-    line-height: inherit;
+    line-height: initial;
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
     color: #ffffff;
     background-color: ${({ theme }) => theme.colors.primary.default};
@@ -48,6 +47,7 @@ const BtnWrapper = styled.span`
     transition: ${({ theme }) => theme.transition.linear.quick};
 
     i {
+      line-height: 0;
       color: inherit;
     }
   }
@@ -83,7 +83,7 @@ const BtnWrapper = styled.span`
   .btn.white {
     color: ${({ theme }) => theme.colors.grey.default};
     background-color: ${({ theme }) => theme.colors.grey[100]};
-    border: 1px solid ${({ theme }) => theme.colors.tertiary[200]};
+    border: 1px solid ${({ theme }) => theme.colors.grey[200]};
     i {
       color: inherit;
     }

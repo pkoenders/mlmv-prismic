@@ -280,11 +280,9 @@ export const GlobalStyles = createGlobalStyle`
   }
    //
   // Page
-  .background-page-default {
-    background-color: ${({ theme }) => theme.colors.page.default}; 
-  }
+
   .background-page-100 {
-    background-color: ${({ theme }) => theme.colors.page[100]}; 
+    background-color: ${({ theme }) => theme.colors.page.bground.default}; 
   }
   .background-page-200 {
     background-color: ${({ theme }) => theme.colors.page[200]}; 
@@ -634,27 +632,4 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.alert.l5[1300]}; 
   }
 
-
-
-
-
-
-  .background-footer-bground-400 {
-    background-color: ${({ theme }) => theme.colors.footer.bground[400]}; 
-  }
-  .background-footer-bground-500 {
-    background-color: ${({ theme }) => theme.colors.footer.bground[500]}; 
-  }
-  .background-footer-bground-600 {
-    background-color: ${({ theme }) => theme.colors.footer.bground[600]}; 
-  }
-  .background-footer-bground-700 {
-    background-color: ${({ theme }) => theme.colors.footer.bground[700]}; 
-  }
-  .background-footer-bground-800 {
-    background-color: ${({ theme }) => theme.colors.footer.bground[800]}; 
-  }
-  .background-footer-bground-900 {
-    background-color: ${({ theme }) => theme.colors.footer.bground[900]}; 
-  }
 `

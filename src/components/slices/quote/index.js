@@ -89,7 +89,7 @@ const QuoteWrapper = styled.section`
         width: fit-content;
         color: ${({ theme }) => theme.colors.page.default};
         background-color: #fff;
-        padding: ${({ theme }) => theme.padding.default} ${({ theme }) => theme.padding['2xl']};
+        padding: ${({ theme }) => theme.padding['1/2']} ${({ theme }) => theme.padding['2xl']};
         border-radius: ${({ theme }) => theme.borderRadius.default};
         box-shadow: ${({ theme }) => theme.boxShadow.default};
       }

@@ -278,10 +278,44 @@ export const GlobalStyles = createGlobalStyle`
   [class*=" background-page"]{
     background-color: ${({ theme }) => theme.colors.page.bground.default}; 
   }
+   //
+  // Page
+  .background-page-default {
+    background-color: ${({ theme }) => theme.colors.page.default}; 
+  }
+  .background-page-100 {
+    background-color: ${({ theme }) => theme.colors.page[100]}; 
+  }
+  .background-page-200 {
+    background-color: ${({ theme }) => theme.colors.page[200]}; 
+  }
+  .background-page-300 {
+    background-color: ${({ theme }) => theme.colors.page[300]}; 
+  }
+  .background-page-400 {
+    background-color: ${({ theme }) => theme.colors.page[400]}; 
+  }
+  .background-page-500 {
+    background-color: ${({ theme }) => theme.colors.page[500]}; 
+  }
+  .background-page-600 {
+    background-color: ${({ theme }) => theme.colors.page[600]}; 
+  }
+  .background-page-700 {
+    background-color: ${({ theme }) => theme.colors.page[700]}; 
+  }
+  .background-page-800 {
+    background-color: ${({ theme }) => theme.colors.page[800]}; 
+  }
+  .background-page-900 {
+    background-color: ${({ theme }) => theme.colors.page[900]}; 
+  }
+  //
   // Primary
   .background-primary-default {
     background-color: ${({ theme }) => theme.colors.primary.default}; 
   }
+
   .background-primary-100 {
     background-color: ${({ theme }) => theme.colors.primary[100]}; 
   }
@@ -309,6 +343,16 @@ export const GlobalStyles = createGlobalStyle`
   .background-primary-900 {
     background-color: ${({ theme }) => theme.colors.primary[900]}; 
   }
+  .background-primary-1100 {
+    background-color: ${({ theme }) => theme.colors.primary[1100]}; 
+  }
+  .background-primary-1200 {
+    background-color: ${({ theme }) => theme.colors.primary[1200]}; 
+  }
+  .background-primary-1300 {
+    background-color: ${({ theme }) => theme.colors.primary[1300]}; 
+  }
+  //
   // Secondary
   .background-secondary-default {
     background-color: ${({ theme }) => theme.colors.secondary.default}; 
@@ -340,6 +384,16 @@ export const GlobalStyles = createGlobalStyle`
   .background-secondary-900 {
     background-color: ${({ theme }) => theme.colors.secondary[900]}; 
   }
+  .background-secondary-1100 {
+    background-color: ${({ theme }) => theme.colors.secondary[1100]}; 
+  }
+  .background-secondary-1200 {
+    background-color: ${({ theme }) => theme.colors.secondary[1200]}; 
+  }
+  .background-secondary-1300 {
+    background-color: ${({ theme }) => theme.colors.secondary[1300]}; 
+  }
+  //
   // Tertiary
   .background-tertiary-default {
     background-color: ${({ theme }) => theme.colors.tertiary.default}; 
@@ -371,8 +425,20 @@ export const GlobalStyles = createGlobalStyle`
   .background-tertiary-900 {
     background-color: ${({ theme }) => theme.colors.tertiary[900]}; 
   }
+  .background-tertiary-1100 {
+    background-color: ${({ theme }) => theme.colors.tertiary[1100]}; 
+  }
+  .background-tertiary-1200 {
+    background-color: ${({ theme }) => theme.colors.tertiary[1200]}; 
+  }
+  .background-tertiary-1300 {
+    background-color: ${({ theme }) => theme.colors.tertiary[1300]}; 
+  }
+  //
   // Grey 
-  .background-grey-default,
+  .background-grey-default{
+    background-color: ${({ theme }) => theme.colors.grey.default}; 
+  }
   .background-grey-100 {
     background-color: ${({ theme }) => theme.colors.grey[100]}; 
   }
@@ -399,5 +465,196 @@ export const GlobalStyles = createGlobalStyle`
   }
   .background-grey-900 {
     background-color: ${({ theme }) => theme.colors.grey[900]}; 
+  }
+  //
+  // Cards 
+  .background-card-default{
+    background-color: ${({ theme }) => theme.colors.card.default}; 
+  }
+  .background-card-100 {
+    background-color: ${({ theme }) => theme.colors.card[100]}; 
+  }
+  .background-card-200 {
+    background-color: ${({ theme }) => theme.colors.card[200]}; 
+  }
+  .background-card-300 {
+    background-color: ${({ theme }) => theme.colors.card[300]}; 
+  }
+  .background-card-400 {
+    background-color: ${({ theme }) => theme.colors.card[400]}; 
+  }
+  .background-card-500 {
+    background-color: ${({ theme }) => theme.colors.card[500]}; 
+  }
+  .background-card-600 {
+    background-color: ${({ theme }) => theme.colors.card[600]}; 
+  }
+  .background-card-700 {
+    background-color: ${({ theme }) => theme.colors.card[700]}; 
+  }
+  .background-card-800 {
+    background-color: ${({ theme }) => theme.colors.card[800]}; 
+  }
+  .background-card-900 {
+    background-color: ${({ theme }) => theme.colors.card[900]}; 
+  }
+  //
+  // Header 
+  .background-header-bground-default{
+    background-color: ${({ theme }) => theme.colors.header.bground.default}; 
+  }
+  .background-header-bground-100 {
+    background-color: ${({ theme }) => theme.colors.header.bground[100]}; 
+  }
+  .background-header-bground-200 {
+    background-color: ${({ theme }) => theme.colors.header.bground[200]}; 
+  }
+  .background-header-bground-300 {
+    background-color: ${({ theme }) => theme.colors.header.bground[300]}; 
+  }
+  .background-header-bground-400 {
+    background-color: ${({ theme }) => theme.colors.header.bground[400]}; 
+  }
+  .background-header-bground-500 {
+    background-color: ${({ theme }) => theme.colors.header.bground[500]}; 
+  }
+  .background-header-bground-600 {
+    background-color: ${({ theme }) => theme.colors.header.bground[600]}; 
+  }
+  .background-header-bground-700 {
+    background-color: ${({ theme }) => theme.colors.header.bground[700]}; 
+  }
+  .background-header-bground-800 {
+    background-color: ${({ theme }) => theme.colors.header.bground[800]}; 
+  }
+  .background-header-bground-900 {
+    background-color: ${({ theme }) => theme.colors.header.bground[900]}; 
+  }
+   //
+  // Footer 
+  .background-footer-bground-default{
+    background-color: ${({ theme }) => theme.colors.footer.bground.default}; 
+  }
+  .background-footer-bground-100 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[100]}; 
+  }
+  .background-footer-bground-200 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[200]}; 
+  }
+  .background-footer-bground-300 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[300]}; 
+  }
+  .background-footer-bground-400 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[400]}; 
+  }
+  .background-footer-bground-500 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[500]}; 
+  }
+  .background-footer-bground-600 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[600]}; 
+  }
+  .background-footer-bground-700 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[700]}; 
+  }
+  .background-footer-bground-800 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[800]}; 
+  }
+  .background-footer-bground-900 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[900]}; 
+  }
+  //
+  // Alerts 
+  // Tomato
+  .background-alert-tomato{
+    background-color: ${({ theme }) => theme.colors.alert.tomato}; 
+  }
+  // Level 1
+  .background-alert-l1-default{
+    background-color: ${({ theme }) => theme.colors.alert.l1.default}; 
+  }
+  .background-alert-l1-1100 {
+    background-color: ${({ theme }) => theme.colors.alert.l1[1100]}; 
+  }
+  .background-alert-l1-1200 {
+    background-color: ${({ theme }) => theme.colors.alert.l1[1200]}; 
+  }
+  .background-alert-l1-1300 {
+    background-color: ${({ theme }) => theme.colors.alert.l1[1300]}; 
+  }
+  // Level 2
+  .background-alert-l2-default{
+    background-color: ${({ theme }) => theme.colors.alert.l2.default}; 
+  }
+  .background-alert-l2-1100 {
+    background-color: ${({ theme }) => theme.colors.alert.l2[1100]}; 
+  }
+  .background-alert-l2-1200 {
+    background-color: ${({ theme }) => theme.colors.alert.l2[1200]}; 
+  }
+  .background-alert-l2-1300 {
+    background-color: ${({ theme }) => theme.colors.alert.l2[1300]}; 
+  }
+  // Level 3
+  .background-alert-l3-default{
+    background-color: ${({ theme }) => theme.colors.alert.l3.default}; 
+  }
+  .background-alert-l3-1100 {
+    background-color: ${({ theme }) => theme.colors.alert.l3[1100]}; 
+  }
+  .background-alert-l3-1200 {
+    background-color: ${({ theme }) => theme.colors.alert.l3[1200]}; 
+  }
+  .background-alert-l3-1300 {
+    background-color: ${({ theme }) => theme.colors.alert.l3[1300]}; 
+  }
+  // Level 4
+  .background-alert-l4-default{
+    background-color: ${({ theme }) => theme.colors.alert.l4.default}; 
+  }
+  .background-alert-l4-1100 {
+    background-color: ${({ theme }) => theme.colors.alert.l4[1100]}; 
+  }
+  .background-alert-l4-1200 {
+    background-color: ${({ theme }) => theme.colors.alert.l4[1200]}; 
+  }
+  .background-alert-l4-1300 {
+    background-color: ${({ theme }) => theme.colors.alert.l4[1300]}; 
+  }
+  // Level 1
+  .background-alert-l5-default{
+    background-color: ${({ theme }) => theme.colors.alert.l5.default}; 
+  }
+  .background-alert-l5-1100 {
+    background-color: ${({ theme }) => theme.colors.alert.l5[1100]}; 
+  }
+  .background-alert-l5-1200 {
+    background-color: ${({ theme }) => theme.colors.alert.l5[1200]}; 
+  }
+  .background-alert-l5-1300 {
+    background-color: ${({ theme }) => theme.colors.alert.l5[1300]}; 
+  }
+
+
+
+
+
+
+  .background-footer-bground-400 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[400]}; 
+  }
+  .background-footer-bground-500 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[500]}; 
+  }
+  .background-footer-bground-600 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[600]}; 
+  }
+  .background-footer-bground-700 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[700]}; 
+  }
+  .background-footer-bground-800 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[800]}; 
+  }
+  .background-footer-bground-900 {
+    background-color: ${({ theme }) => theme.colors.footer.bground[900]}; 
   }
 `

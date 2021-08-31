@@ -286,6 +286,11 @@ const LinkButton = ({
   if (buttonIcon !== undefined || buttonIcon !== null) {
     btnIcon = buttonIcon
   }
+  if (buttonIcon === undefined || buttonIcon === null) {
+    btnIcon = null
+  }
+
+  // console.log(btnIcon)
 
   if (buttonIconAlign !== undefined) {
     btnIconAlign = ' ' + buttonIconAlign

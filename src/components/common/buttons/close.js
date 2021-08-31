@@ -14,10 +14,10 @@ const CLoseWrapper = styled.button.attrs((props) => ({
   cursor: pointer;
   user-select: none;
 `
-const Close = ({ onClick }) => {
+const Close = ({ onClick, label }) => {
   return (
     <CLoseWrapper onClick={onClick}>
-      <IconMaterial icon={'close'} />
+      {label && label} <IconMaterial icon={'close'} />
     </CLoseWrapper>
   )
 }

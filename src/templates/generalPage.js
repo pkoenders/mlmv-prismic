@@ -440,9 +440,11 @@ export const query = graphql`
             id
             slice_type
           }
+          ##
+          ## End media higlight
 
           ##
-          ## Forms
+          ## Form select
           ... on PrismicGeneralPageDataBodyForm {
             id
             slice_type
@@ -581,6 +583,8 @@ export const query = graphql`
               }
             }
           }
+          ##
+          ## End form select
 
           ##
           ## Styled list

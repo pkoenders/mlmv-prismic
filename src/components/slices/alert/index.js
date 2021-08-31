@@ -24,13 +24,15 @@ const AlertWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+
     grid-gap: ${({ theme }) => theme.padding['1/4']};
     p {
       margin: 0;
     }
 
     .cta {
-      margin-bottom: ${({ theme }) => theme.margin['1/2']};
+      margin-bottom: 0px;
+      /* margin-bottom: ${({ theme }) => theme.margin['1/2']}; */
       span {
         margin-top: ${({ theme }) => theme.margin['1/2']};
         .btn {
@@ -60,48 +62,69 @@ const AlertWrapper = styled.div`
   &.alertLevel-1 {
     background-color: ${({ theme }) => theme.colors.alert.l1.default};
     button {
-      color: ${({ theme }) => theme.colors.alert.l1.default};
+      i {
+        color: ${({ theme }) => theme.colors.alert.l1.default};
+      }
     }
   }
   &.alertLevel-2 {
     background-color: ${({ theme }) => theme.colors.alert.l2.default};
     button {
-      color: ${({ theme }) => theme.colors.alert.l2.default};
+      i {
+        color: ${({ theme }) => theme.colors.alert.l2.default};
+      }
     }
   }
   &.alertLevel-3 {
     color: ${({ theme }) => theme.colors.grey.default};
     background-color: ${({ theme }) => theme.colors.alert.l3.default};
     button {
-      color: ${({ theme }) => theme.colors.alert.l3.default};
-      background-color: ${({ theme }) => theme.colors.page.default};
+      i {
+        color: ${({ theme }) => theme.colors.alert.l3.default};
+        background-color: ${({ theme }) => theme.colors.page.default};
+      }
     }
   }
   &.alertLevel-4 {
     background-color: ${({ theme }) => theme.colors.alert.l4.default};
     button {
-      color: ${({ theme }) => theme.colors.alert.l4.default};
+      i {
+        color: ${({ theme }) => theme.colors.alert.l4.default};
+      }
     }
   }
   &.alertLevel-5 {
     background-color: ${({ theme }) => theme.colors.alert.l5.default};
     button {
-      color: ${({ theme }) => theme.colors.alert.l5.default};
+      i {
+        color: ${({ theme }) => theme.colors.alert.l5.default};
+      }
     }
   }
 
   button {
     position: absolute;
-    color: ${({ theme }) => theme.colors.alert.l1.default};
-    background-color: #fff;
-    padding: 0;
-    border-radius: ${({ theme }) => theme.borderRadius.sm};
+    display: flex;
+    flex-direction: row;
+    grid-gap: ${({ theme }) => theme.padding['1/8']};
     top: ${({ theme }) => theme.padding['1/2']};
     right: ${({ theme }) => theme.padding['1/2']};
+    text-transform: uppercase;
+    font-size: 80%;
+
+    i {
+      color: ${({ theme }) => theme.colors.alert.l1.default};
+      background-color: #fff;
+      /* padding: 0; */
+      /* font-size: 20px; */
+      border-radius: ${({ theme }) => theme.borderRadius.sm};
+    }
   }
 
   & .canClose {
-    padding-right: ${({ theme }) => theme.padding['2xl']};
+    /* padding-right: ${({ theme }) => theme.padding['4xl']}; */
+    padding: 0px;
+    padding-right: 96px;
   }
 `
 const Alert = ({
@@ -172,8 +195,8 @@ const Alert = ({
   const btnSecondaryIcon = alertBtnSecondaryIcon
   const btnSecondaryIconAlign = getPostionAlign(alertBtnSecondaryIconAlign)
 
-  console.log('btnSecondaryIcon = ' + btnSecondaryIcon)
-  console.log('btnSecondaryIconAlign = ' + btnSecondaryIconAlign)
+  // console.log('btnSecondaryIcon = ' + btnSecondaryIcon)
+  // console.log('btnSecondaryIconAlign = ' + btnSecondaryIconAlign)
 
   function closeAlert(e) {
     e.target.closest('.alert').remove()
@@ -195,7 +218,7 @@ const Alert = ({
           id={alertID}
           className={'alert section-layout ' + width + ' ' + align + ' ' + alertLev}
         >
-          {close === true && <Close onClick={closeAlert} />}
+          {close === true && <Close onClick={closeAlert} label={'Close'} />}
 
           {(content.text || btnLabel) && (
             <div className={close === true ? 'canClose' : ''}>

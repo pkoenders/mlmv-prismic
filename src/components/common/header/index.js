@@ -610,7 +610,7 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
       aria-label="Main heading"
     >
       <a class="skipLink" href="#main">
-        Skip to content
+        Skip navigation
       </a>
 
       <nav className="headerNav" aria-label="Main navigation" role="navigation">

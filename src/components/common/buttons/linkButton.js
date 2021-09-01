@@ -267,7 +267,7 @@ const BtnWrapper = styled.span`
 const LinkButton = ({
   buttonLabel,
   buttonType,
-  staticLink,
+  buttonLink,
   buttonStyle,
   onClick,
   buttonIcon,
@@ -326,7 +326,7 @@ const LinkButton = ({
       )}
 
       {buttonType === 'Static' && (
-        <a href={staticLink} className={'btn' + btnStyle + btnIconAlign}>
+        <a href={buttonLink} className={'btn' + btnStyle + btnIconAlign}>
           {btnIcon !== null && <IconMaterial icon={btnIcon} />}
           {buttonLabel}
         </a>

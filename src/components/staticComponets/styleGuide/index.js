@@ -169,21 +169,29 @@ const Styleguide = () => {
             <br />A button can accept the following parameters:
             <ul>
               <li>buttonLabel - The label for the button</li>
-              <li>buttonType - Document, Web, Media, Static, submit, button</li>
-              <li>staticLink - A link an external page</li>
-              <li>buttonStyle - Primary, Secondary, Tertiary, Black, White, Link or Transparent</li>
-              <li>onClick - Call a Function or Const</li>
+              <li>
+                buttonType - CMS passing data for a Document, Web, Media, submit and button. Use
+                Static for no CMS data
+              </li>
+              <li>buttonLink - A link that is passed for a Static button type</li>
+              <li>buttonStyle - Primary, Secondary, Tertiary, Black, White, Transparent or Link</li>
+              <li>onClick - Call a JavaScript Function or Const</li>
               <li>buttonDisabled - Disable the button</li>
               <li>buttonIcon - Material Icon, eg 'contact_page</li>
-              <li>buttonIcon - Align 'left' or 'right'</li>
-              <li>buttonIcon - Align 'left' or 'right'</li>
+              <li>buttonIconAlign - Align 'left' or 'right'</li>
             </ul>
             <div className="allBtns">
               <div className="btnGroup">
-                <Button buttonLabel={'Primary'} buttonType={'Static'} buttonStyle={'primary'} />
+                <Button
+                  buttonLabel={'Primary'}
+                  buttonType={'Static'}
+                  buttonLink={'/'}
+                  buttonStyle={'primary'}
+                />
                 <Button
                   buttonLabel={'Icon left'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'primary'}
                   buttonIcon={'thumb_up'}
                   buttonIconAlign={'left'}
@@ -191,16 +199,23 @@ const Styleguide = () => {
                 <Button
                   buttonLabel={'Icon right'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'primary'}
                   buttonIcon={'thumb_down'}
                   buttonIconAlign={'right'}
                 />
               </div>
               <div className="btnGroup">
-                <Button buttonLabel={'Secondary'} buttonType={'Static'} buttonStyle={'secondary'} />
+                <Button
+                  buttonLabel={'Secondary'}
+                  buttonType={'Static'}
+                  buttonLink={'/'}
+                  buttonStyle={'secondary'}
+                />
                 <Button
                   buttonLabel={'Icon left'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'secondary'}
                   buttonIcon={'favorite'}
                   buttonIconAlign={'left'}
@@ -208,16 +223,23 @@ const Styleguide = () => {
                 <Button
                   buttonLabel={'Icon right'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'secondary'}
                   buttonIcon={'heart_broken'}
                   buttonIconAlign={'right'}
                 />
               </div>
               <div className="btnGroup">
-                <Button buttonLabel={'Tertiary'} buttonType={'Static'} buttonStyle={'tertiary'} />
+                <Button
+                  buttonLabel={'Tertiary'}
+                  buttonType={'Static'}
+                  buttonLink={'/'}
+                  buttonStyle={'tertiary'}
+                />
                 <Button
                   buttonLabel={'Icon left'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'tertiary'}
                   buttonIcon={'trending_up'}
                   buttonIconAlign={'left'}
@@ -225,16 +247,23 @@ const Styleguide = () => {
                 <Button
                   buttonLabel={'Icon right'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'tertiary'}
                   buttonIcon={'savings'}
                   buttonIconAlign={'right'}
                 />
               </div>
               <div className="btnGroup">
-                <Button buttonLabel={'Black'} buttonType={'Static'} buttonStyle={'black'} />
+                <Button
+                  buttonLabel={'Black'}
+                  buttonType={'Static'}
+                  buttonLink={'/'}
+                  buttonStyle={'black'}
+                />
                 <Button
                   buttonLabel={'Icon left'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'black'}
                   buttonIcon={'lock_open'}
                   buttonIconAlign={'left'}
@@ -242,16 +271,23 @@ const Styleguide = () => {
                 <Button
                   buttonLabel={'Icon right'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'black'}
                   buttonIcon={'https'}
                   buttonIconAlign={'right'}
                 />
               </div>
               <div className="btnGroup">
-                <Button buttonLabel={'White'} buttonType={'Static'} buttonStyle={'white'} />
+                <Button
+                  buttonLabel={'White'}
+                  buttonType={'Static'}
+                  buttonLink={'/'}
+                  buttonStyle={'white'}
+                />
                 <Button
                   buttonLabel={'Icon left'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'white'}
                   buttonIcon={'vertical_split'}
                   buttonIconAlign={'left'}
@@ -259,6 +295,7 @@ const Styleguide = () => {
                 <Button
                   buttonLabel={'Icon right'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'white'}
                   buttonIcon={'horizontal_split'}
                   buttonIconAlign={'right'}
@@ -268,11 +305,13 @@ const Styleguide = () => {
                 <Button
                   buttonLabel={'Transparent'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'transparent'}
                 />
                 <Button
                   buttonLabel={'Icon left'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'transparent'}
                   buttonIcon={'text_rotation_angleup'}
                   buttonIconAlign={'left'}
@@ -280,16 +319,23 @@ const Styleguide = () => {
                 <Button
                   buttonLabel={'Icon right'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'transparent'}
                   buttonIcon={'text_rotation_angledown'}
                   buttonIconAlign={'right'}
                 />
               </div>
               <div className="btnGroup">
-                <Button buttonLabel={'Link'} buttonType={'Static'} buttonStyle={'link'} />
+                <Button
+                  buttonLabel={'Link'}
+                  buttonType={'Static'}
+                  buttonLink={'/'}
+                  buttonStyle={'link'}
+                />
                 <Button
                   buttonLabel={'Icon left'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'link'}
                   buttonIcon={'arrow_back'}
                   buttonIconAlign={'left'}
@@ -297,6 +343,7 @@ const Styleguide = () => {
                 <Button
                   buttonLabel={'Icon right'}
                   buttonType={'Static'}
+                  buttonLink={'/'}
                   buttonStyle={'link'}
                   buttonIcon={'arrow_forward'}
                   buttonIconAlign={'right'}

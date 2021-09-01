@@ -32,6 +32,8 @@ import { screenSize } from '/src/themes/globalStyles'
 import styled from 'styled-components'
 
 const CardsWrapper = styled.section`
+    padding: 0 ${({ theme }) => theme.padding['1/2']};
+
   @media (max-width: ${({ theme }) => theme.screens.sm}) {
     padding-top: 0px !important;
     padding-bottom: 32px !important;
@@ -56,7 +58,7 @@ const CardsWrapper = styled.section`
   }
 
   .masonry-grid {
-    padding: 0 ${({ theme }) => theme.padding['1/2']};
+    /* padding: 0 ${({ theme }) => theme.padding['1/2']}; */
     display: flex;
     grid-gap: ${({ theme }) => theme.padding.default};
     @media (max-width: ${({ theme }) => theme.screens.sm}) {
@@ -91,26 +93,69 @@ const CardsWrapper = styled.section`
     }
   }
 
-  // Masonry layout
-  .masonry-grid {
-    .cardItem {
-      overflow: visible;
-      display: flex;
-      a {
-        text-decoration: none;
-        > div {
-          background-color: #fff;
+  // Gallery layout
+  .cardItem.gallery {
+    overflow: visible;
+    display: flex;
+    a {
+      width: 100%;
+      text-decoration: none;
+      > div {
+        background-color: #fff;
+      }
+    }
+  }
+  
+
+  // Profile layout
+  .cardItem.profile {
+    overflow: visible;
+    display: flex;
+    a {
+      width: 100%;
+      text-decoration: none;
+      > div {
+          overflow: visible;
+          grid-gap: ${({ theme }) => theme.padding['1/2']};
+          padding: ${({ theme }) => theme.padding.default} 0;
+        }
+        .imageWrapper {
+          aspect-ratio: 1;
+          width: 128px;
+          border-radius: 999rem;
+          /* border: 1px solid ${({ theme }) => theme.colors.secondary.default}; */
+          border: 1px solid ${({ theme }) => theme.colors.secondary[400]};
+          margin: 0 auto;
+          box-shadow: ${({ theme }) => theme.boxShadow.lg};
+
+        }
+
+        .content {
+           width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          grid-gap: ${({ theme }) => theme.padding['1/4']};
+          .title,
+          p {
+            justify-content: inherit;
+          }
         }
       }
     }
   }
 
-  // Carousel layout
+  // Carousel layout keen_slider {
+  .keen-slider{
+    margin: 0 -16px;
+  }
+
   .carousel {
     position: relative;
      .cardItem {
-      overflow: visible !important;
+      overflow: visible !important; 
     }
+
     .nav {
       display: flex;
       margin: ${({ theme }) => theme.margin['1/2']} auto 0;
@@ -135,6 +180,7 @@ const CardsWrapper = styled.section`
       cursor: col-resize;
 
       a {
+        width: 100%;
         text-decoration: none;
         overflow: hidden;
         display: flex;
@@ -172,12 +218,9 @@ const CardsWrapper = styled.section`
             align-items: center;
             white-space: nowrap;
             width: fit-content;
-            /* padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) =>
-  theme.padding['1/2']}; */
             padding: 8px 18px;
             color: ${({ theme }) => theme.colors.page.default};
             background-color: #ffffffa8;
-            /* border: 1px solid ${({ theme }) => theme.colors.page[400]}; */
             border-radius: ${({ theme }) => theme.borderRadius.default};
             box-shadow: ${({ theme }) => theme.boxShadow.default};
             i {
@@ -331,7 +374,7 @@ const Cards = ({ slice }) => {
     //default: columnCount,
     [screenSize.xs]: 1,
     [screenSize.sm]: 2,
-    // [screenSize.md]: columnCount,
+    [screenSize.md]: 2,
     // [screenSize.lg]: columnCount,
     // [screenSize.xl]: columnCount,
     // [screenSize.xxl]: 3,
@@ -385,7 +428,7 @@ const Cards = ({ slice }) => {
           </span>
         )}
 
-        {presentationType === 'gallery' ? (
+        {presentationType === 'gallery' && (
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="masonry-grid"
@@ -401,7 +444,27 @@ const Cards = ({ slice }) => {
               )
             })}
           </Masonry>
-        ) : (
+        )}
+
+        {presentationType === 'profile' && (
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="masonry-grid"
+            columnClassName="masonry-grid_column"
+          >
+            {slice.items.map((cardItem, index) => {
+              return (
+                <CardItem
+                  cardItem={cardItem}
+                  key={slice.id + index}
+                  presentationType={presentationType}
+                />
+              )
+            })}
+          </Masonry>
+        )}
+
+        {presentationType === 'carousel' && (
           <div className="carousel">
             <div ref={sliderRef} className="keen-slider">
               {slider && (

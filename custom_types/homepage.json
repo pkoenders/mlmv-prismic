@@ -387,7 +387,7 @@
               "presentation_type": {
                 "type": "Select",
                 "config": {
-                  "options": ["Gallery", "Carousel"],
+                  "options": ["Gallery", "Carousel", "Profile"],
                   "label": "Present as",
                   "placeholder": "Please select"
                 }

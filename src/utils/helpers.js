@@ -79,6 +79,9 @@ export function getPresentationType(presentAs) {
     case 'Carousel':
       return 'carousel'
 
+    case 'Profile':
+      return 'profile'
+
     default:
       return 'gallery'
   }

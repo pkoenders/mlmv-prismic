@@ -49,7 +49,7 @@ const ListTagBtnsWrapper = styled.div`
       flex-wrap: wrap;
       grid-gap: ${({ theme }) => theme.padding['1/4']};
       justify-content: center;
-      height: min-content;
+      /* height: min-content; */
       margin: 0 ${({ theme }) => theme.padding.default};
     }
   }

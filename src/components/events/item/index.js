@@ -159,14 +159,23 @@ const EventItem = ({ currentLang, itemData }) => {
     var minutes = parseInt(diff.asMinutes()) //122360 minutes,but it gives total minutes in given miliseconds which is not expacted.
     minutes = minutes - (days * 24 * 60 + hours * 60) //20 minutes.
     var duration = ''
-    if (days > 0) {
-      duration = duration + ' ' + days + ' Days'
+    if (days === 1) {
+      duration = duration + ' ' + days + ` ${i18n[currentLang].day}`
     }
-    if (hours > 0) {
-      duration = duration + ' ' + hours + ' Hours'
+    if (days > 1) {
+      duration = duration + ' ' + days + ` ${i18n[currentLang].days}`
     }
-    if (minutes > 0) {
-      duration = duration + ' ' + minutes + ' Minutes'
+    if (hours === 1) {
+      duration = duration + ' ' + hours + ` ${i18n[currentLang].hour}`
+    }
+    if (hours > 1) {
+      duration = duration + ' ' + hours + ` ${i18n[currentLang].hours}`
+    }
+    if (minutes === 1) {
+      duration = duration + ' ' + minutes + ` ${i18n[currentLang].minute}`
+    }
+    if (minutes > 1) {
+      duration = duration + ' ' + minutes + ` ${i18n[currentLang].minutes}`
     }
   }
 

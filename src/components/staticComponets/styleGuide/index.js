@@ -135,7 +135,7 @@ const Styleguide = () => {
         <h1>Style guide</h1>
         <p>
           This style guide is a reference for key design elements of the website. This includes its
-          color scheme, typography, spacing, icons, imagery, and the visual language. It is
+          colour scheme, typography, spacing, icons, imagery, and the visual language. It is
           reccommended to include new and updated styles on this page.
         </p>
         <div className="section">
@@ -299,7 +299,7 @@ const Styleguide = () => {
                   buttonType={'Static'}
                   buttonStyle={'link'}
                   buttonIcon={'arrow_forward'}
-                  buttonIconAlign={'link'}
+                  buttonIconAlign={'right'}
                 />
               </div>
             </div>

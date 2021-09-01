@@ -168,7 +168,7 @@ module.exports = {
         theme_color: `#253240`,
         lang: `en-nz`,
         display: `standalone`,
-        icon: `static/brand.svg`, // This path is relative to the root of the site.
+        icon: `static/favicon.svg`, // This path is relative to the root of the site.
         icon_options: {
           purpose: `any maskable`,
         },

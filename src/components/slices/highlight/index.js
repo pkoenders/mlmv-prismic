@@ -80,7 +80,7 @@ const Highlight = styled.section`
 
         @media (max-width: ${({ theme }) => theme.screens.sm}) {
           flex-direction: column;
-          margin-top: ${({ theme }) => theme.margin.default};
+          margin-top: ${({ theme }) => theme.margin['1/2']};
           span {
             margin: 0;
           }

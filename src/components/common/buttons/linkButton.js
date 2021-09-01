@@ -165,7 +165,7 @@ const BtnWrapper = styled.span`
   .alertLevel-4 &,
   .alertLevel-5 & {
     .btn {
-      padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding.default};
+      /* padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding.default}; */
       margin: 0 auto ${({ theme }) => theme.margin['1/2']} 0;
       color: #fff;
       background-color: ${({ theme }) => theme.colors.alert.l1[1200]};

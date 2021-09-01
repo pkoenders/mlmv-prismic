@@ -117,7 +117,7 @@ const CardsWrapper = styled.section`
       > div {
           overflow: visible;
           grid-gap: ${({ theme }) => theme.padding['1/2']};
-          padding: ${({ theme }) => theme.padding.default} 0;
+          padding-top: ${({ theme }) => theme.padding.default};
         }
         .imageWrapper {
           aspect-ratio: 1;

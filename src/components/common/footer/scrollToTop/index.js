@@ -35,6 +35,7 @@ const Button = styled.button.attrs((props) => ({
 const ScrollToTop = () => {
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.location.href = '#main'
   }
   // if (typeof window !== 'undefined') {
   //     window.addEventListener('scroll', checkScrollTop)

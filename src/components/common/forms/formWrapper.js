@@ -297,7 +297,7 @@ const FormWraper = styled.div`
       width: 28px;
       min-width: 28px;
 
-      outline: none;
+      /* outline: none; */
       cursor: pointer;
       border: 1px solid var(--bc, var(--border));
       background: var(--b, var(--background));

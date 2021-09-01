@@ -55,6 +55,19 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: underline;
   }
 
+  a:focus {
+    outline: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible{
+    outline: 2px solid ${({ theme }) => theme.colors.focusVisible} !important; 
+  }
+
+  a:-moz-focusring {
+    outline: 2px solid ${({ theme }) => theme.colors.focusVisible} !important; 
+  }
+
   h1 {
     font-size: ${({ theme }) => theme.fontSize['5xl']};
     font-family: ${({ theme }) => theme.font.slab};

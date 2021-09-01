@@ -95,6 +95,7 @@ const CardsWrapper = styled.section`
   .masonry-grid {
     .cardItem {
       overflow: visible;
+      display: flex;
       a {
         text-decoration: none;
         > div {
@@ -107,6 +108,9 @@ const CardsWrapper = styled.section`
   // Carousel layout
   .carousel {
     position: relative;
+     .cardItem {
+      overflow: visible !important;
+    }
     .nav {
       display: flex;
       margin: ${({ theme }) => theme.margin['1/2']} auto 0;
@@ -400,16 +404,6 @@ const Cards = ({ slice }) => {
         ) : (
           <div className="carousel">
             <div ref={sliderRef} className="keen-slider">
-              {slice.items.map((cardItem, index) => {
-                return (
-                  <CardItem
-                    cardItem={cardItem}
-                    key={slice.id + index}
-                    presentationType={presentationType}
-                  />
-                )
-              })}
-
               {slider && (
                 <>
                   <NavArrow
@@ -424,6 +418,16 @@ const Cards = ({ slice }) => {
                   />
                 </>
               )}
+
+              {slice.items.map((cardItem, index) => {
+                return (
+                  <CardItem
+                    cardItem={cardItem}
+                    key={slice.id + index}
+                    presentationType={presentationType}
+                  />
+                )
+              })}
             </div>
             {slider && (
               <div className="nav">

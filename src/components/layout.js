@@ -97,7 +97,9 @@ const Layout = ({ children, currentLang, primaryNav }) => {
       />
 
       <div className="layoutInner">
-        <main className={i18n.allPrefix.includes(pathName) ? 'index' : ''}>{children}</main>
+        <main id="main" className={i18n.allPrefix.includes(pathName) ? 'index' : ''}>
+          {children}
+        </main>
       </div>
       <Footer currentLang={currentLang} currentPrefix={currentPrefix} />
     </LayoutWrapper>

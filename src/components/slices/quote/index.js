@@ -82,6 +82,9 @@ const QuoteWrapper = styled.section`
     flex-direction: column;
     grid-gap: ${({ theme }) => theme.padding.default};
     li {
+      display: inherit;
+      flex-direction: inherit;
+      grid-gap: ${({ theme }) => theme.padding['1/8']};
       blockquote {
         position: relative;
         display: flex;
@@ -115,9 +118,7 @@ const QuoteWrapper = styled.section`
         right: ${({ theme }) => theme.margin['1/2']};
       }
       .label {
-        margin-top: ${({ theme }) => theme.margin[`1/4`]};
         font-weight: 300;
-        /* font-style: italic; */
       }
     }
   }

@@ -162,10 +162,6 @@ export const defaultTheme = {
       1300: '#909C04',
     },
 
-    error: '#ff6347',
-
-    textColor: '#2d3748',
-
     page: {
       default: '#151a1e',
       100: '#e7e8e8',
@@ -189,6 +185,9 @@ export const defaultTheme = {
     transparent: 'transparent',
     black: '#000',
     white: '#fff',
+    // focusVisible: '#9ecaed',
+    focusVisible: '#005FCC',
+
     grey: {
       default: '#323335',
       100: '#EAEAEA',

@@ -48,7 +48,7 @@ const ListLocales = styled.ul`
   display: none;
   top: ${({ theme }) => theme.header.height};
   right: 0px;
-  padding: 0 ${({ theme }) => theme.padding['1/2']} ${({ theme }) => theme.padding['1/4']};
+  padding: 0 0 ${({ theme }) => theme.padding['1/4']};
   list-style: none;
   width: auto;
   color: ${({ theme }) => theme.colors.header.default};
@@ -75,7 +75,7 @@ const ListLocales = styled.ul`
       text-align: right;
       white-space: nowrap;
       color: inherit;
-      padding: ${({ theme }) => theme.padding['1/4']} 0;
+      padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding['1/2']};
       width: fit-content;
       margin-left: auto;
       i {

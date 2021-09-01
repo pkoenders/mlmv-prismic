@@ -17,6 +17,26 @@ import '/src/styles/hamburger.scss'
 import styled from 'styled-components'
 
 const HeaderWrapper = styled.header`
+  .skipLink {
+    margin: 0 auto;
+    position: absolute;
+    white-space: nowrap;
+    display: flex;
+    width: fit-content;
+    align-self: center;
+    z-index: 10000;
+    text-transform: uppercase;
+    transform: translateY(-100%);
+    padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding.default};
+    color: ${({ theme }) => theme.colors.page[100]};
+    background: ${({ theme }) => theme.colors.header.bground[800]};
+    border-radius: ${({ theme }) => theme.borderRadius.sm};
+    box-shadow: ${({ theme }) => theme.boxShadow.lg} !important;
+  }
+  .skipLink:focus {
+    transform: translateY(8px);
+  }
+
   .slide {
     will-change: transform;
     transition: transform 0.75s;
@@ -25,6 +45,8 @@ const HeaderWrapper = styled.header`
 
   z-index: 9999;
   position: fixed;
+  display: flex;
+  flex-direction: column;
   left: 0;
   right: 0;
   top: 0;
@@ -38,6 +60,7 @@ const HeaderWrapper = styled.header`
     min-width: 130px;
     height: inherit;
     display: flex;
+    width: 100%;
     flex-direction: row;
     align-content: center;
     justify-content: space-between;
@@ -76,18 +99,6 @@ const HeaderWrapper = styled.header`
         left: auto;
       }
     }
-
-    a:focus {
-      outline: none;
-    }
-
-    /* a:focus-visible {
-      @include focusVisibleForDark;
-    } */
-
-    /* a:-moz-focusring {
-      @include focusVisibleForDark;
-    } */
 
     button.hamburger {
       order: 0;
@@ -275,11 +286,13 @@ const HeaderWrapper = styled.header`
         li {
           display: flex;
           align-items: center;
-          position: relative;
 
           button.secondaryNavBtn {
             display: flex;
             align-items: center;
+            font-weight: normal;
+            position: relative;
+            z-index: 2000;
             i {
               margin-left: ${({ theme }) => theme.margin['1/4']};
               margin-right: -${({ theme }) => theme.margin['1/4']};
@@ -288,7 +301,6 @@ const HeaderWrapper = styled.header`
           }
 
           button.secondaryNavBtn.isActive {
-            font-weight: normal;
             background-color: ${({ theme }) => theme.colors.header.bground[800]};
             i {
               transform: rotate(180deg);
@@ -298,37 +310,20 @@ const HeaderWrapper = styled.header`
             display: none;
           }
 
-          /* ul.secondaryNavList:before {
-            content: '';
-            position: absolute;
-            height: 4px;
-            top: -4px;
-            width: 100%;
-            background-color: ${({ theme }) => theme.colors.header.bground.default};
-            background-color: inherit;
-          } */
-
           ul.secondaryNavList {
             display: none;
-            z-index: 100;
             flex-direction: column;
             position: absolute;
             margin: 0;
             padding: ${({ theme }) => theme.padding['1/2']} 0;
             top: ${({ theme }) => theme.header.height};
-            z-index: 10000;
             background-color: ${({ theme }) => theme.colors.header.bground[800]};
-
-            /* border: 1px solid ${({ theme }) => theme.colors.header.bground[800]}; */
-            /* border-right: none;
-            border-top: none; */
             border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
               ${({ theme }) => theme.borderRadius.default};
             box-shadow: ${({ theme }) => theme.boxShadow.lg} !important;
 
             li {
               padding: ${({ theme }) => theme.padding['1/8']} ${({ theme }) => theme.padding['1/2']};
-              position: relative;
               a {
                 white-space: nowrap;
                 padding: ${({ theme }) => theme.padding['1/8']}
@@ -614,6 +609,10 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
       }
       aria-label="Main heading"
     >
+      <a class="skipLink" href="#main">
+        Skip to content
+      </a>
+
       <nav className="headerNav" aria-label="Main navigation" role="navigation">
         <button
           className="hamburger hamburger--squeeze"

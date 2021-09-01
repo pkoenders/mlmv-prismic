@@ -17,6 +17,7 @@ const ArrowBtn = styled.button.attrs((props) => ({
   position: absolute;
   align-self: center;
   height: auto;
+  z-index: 100;
 
   &.prev {
     left: 0px;

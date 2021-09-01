@@ -509,9 +509,10 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     }
 
     // Handle navigation functionality
+
+    const skipLink = document.querySelector('.skipLink')
     const headerNavWrapper = document.querySelector('.headerNavWrapper')
     const secondaryNav = document.querySelector('.secondaryNav')
-
     const headerNav = document.querySelector('.headerNav')
     const toggleHamburger = document.querySelector('.hamburger')
     const closeHamburger = document.querySelector('.closeMenu')
@@ -537,6 +538,10 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     })
 
     closeHamburger.addEventListener('click', function () {
+      closeHamburgerNav()
+    })
+
+    skipLink.addEventListener('click', function () {
       closeHamburgerNav()
     })
 

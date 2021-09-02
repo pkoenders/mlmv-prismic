@@ -100,7 +100,6 @@ const Material = ({ icon, size, style, type, onClick, ariaLabel }) => {
       {type === 'button' && (
         <MaterialIconButton
           className={`material-icons${style} md-${size}`}
-          aria-hidden="true"
           aria-label={ariaLabel}
           onClick={onClick}
         >

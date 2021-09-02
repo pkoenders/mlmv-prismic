@@ -107,14 +107,18 @@ const ResetTagsBtn = styled.button.attrs((props) => ({
   /* border: none !important; */
   /* background-color: transparent !important; */
   position: relative;
-  @keyframes rotation {
-    from {
-      transform: rotate(0deg);
-      transform: scale(1.25);
-    }
-    to {
-      transform: rotate(180deg);
-      opacity: 0;
+  i {
+    font-size: 20px;
+    pointer-events: none;
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+        transform: scale(1.25);
+      }
+      to {
+        transform: rotate(180deg);
+        opacity: 0;
+      }
     }
   }
   &.rotate {
@@ -257,8 +261,8 @@ const ListTagBtns = ({ resetFilterBtns, tagList, resetCards, resetSearchQuery })
     <ListTagBtnsWrapper>
       <div className="utils">
         {tagBtnsReset === true && (
-          <ResetTagsBtn onClick={hideTagReset} className="material-icons-round" aria-hidden="true">
-            loop
+          <ResetTagsBtn onClick={hideTagReset}>
+            <IconMaterial icon={'loop'} ariaLabel={'Reset tags'} />
           </ResetTagsBtn>
         )}
 

@@ -1,35 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="483" height="425" viewBox="0 0 483 425">
-  <defs>
-    <filter id="brand-mlmv.inline-a" width="106.6%" height="105.8%" x="-3.3%" y="-2.9%" filterUnits="objectBoundingBox">
-      <feOffset dx="1" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
-      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
-      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
-      <feMerge>
-        <feMergeNode in="shadowMatrixOuter1"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <polygon id="brand-mlmv.inline-c" points="400 248.215 400 417 475 417 475 29"/>
-    <filter id="brand-mlmv.inline-b" width="118.7%" height="103.6%" x="-8%" y="-1.3%" filterUnits="objectBoundingBox">
-      <feOffset dx="1" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
-      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
-      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
-    </filter>
-    <polygon id="brand-mlmv.inline-e" points="0 417 75 417 75 254.843 0 35"/>
-    <filter id="brand-mlmv.inline-d" width="118.7%" height="103.7%" x="-8%" y="-1.3%" filterUnits="objectBoundingBox">
-      <feOffset dx="1" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
-      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
-      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
-    </filter>
-  </defs>
-  <g fill="none" fill-rule="evenodd" transform="translate(3 2)">
-    <g filter="url(#brand-mlmv.inline-a)" transform="translate(56)">
-      <polygon fill="#E07C51" points="0 0 109.257 317 147 207.491 75.487 0"/>
-      <polygon fill="#CEE007" points="285.691 0 143 417 218.309 417 361 0"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="718px" height="718px" viewBox="0 0 718 718" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 20</title>
+    <defs>
+        <filter x="-3.3%" y="-2.9%" width="106.6%" height="105.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="1" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <polygon id="path-2" points="400 248.215196 400 417 475 417 475 29"></polygon>
+        <filter x="-8.0%" y="-1.3%" width="118.7%" height="103.6%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="1" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-4" points="0 417 75 417 75 254.842582 0 35"></polygon>
+        <filter x="-8.0%" y="-1.3%" width="118.7%" height="103.7%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="1" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-20">
+            <circle id="Oval" cx="359" cy="359" r="359"></circle>
+            <g id="Group-5-Copy-7" transform="translate(122.000000, 151.000000)">
+                <g id="Group-18" filter="url(#filter-1)" transform="translate(56.000000, 0.000000)">
+                    <polygon id="Fill-1" fill="#E07C51" points="0 0 109.257267 317 147 207.490585 75.4874529 0"></polygon>
+                    <polygon id="Fill-4" fill="#CEE007" points="285.690909 0 143 417 218.309091 417 361 0"></polygon>
+                </g>
+                <g id="Fill-2">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="#51B5E0" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+                <g id="Fill-3">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                    <use fill="#51B5E0" fill-rule="evenodd" xlink:href="#path-4"></use>
+                </g>
+            </g>
+        </g>
     </g>
-    <use fill="#000" filter="url(#brand-mlmv.inline-b)" xlink:href="#brand-mlmv.inline-c"/>
-    <use fill="#51B5E0" xlink:href="#brand-mlmv.inline-c"/>
-    <use fill="#000" filter="url(#brand-mlmv.inline-d)" xlink:href="#brand-mlmv.inline-e"/>
-    <use fill="#51B5E0" xlink:href="#brand-mlmv.inline-e"/>
-  </g>
 </svg>

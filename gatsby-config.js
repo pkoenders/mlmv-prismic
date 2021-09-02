@@ -164,11 +164,11 @@ module.exports = {
         description: `Connecting the disables community to Peer Supporters | My Life My Voice`,
         short_name: `MLMV`,
         start_url: `/`,
-        background_color: `#253240`,
-        theme_color: `#253240`,
+        background_color: `#091b38`,
+        theme_color: `#091b38`,
         lang: `en-nz`,
         display: `standalone`,
-        icon: `static/favicon.svg`, // This path is relative to the root of the site.
+        icon: `static/manifest.svg`, // This path is relative to the root of the site.
         icon_options: {
           purpose: `any maskable`,
         },

@@ -19,6 +19,11 @@ const Input = styled.div`
     -webkit-appearance: none;
   }
 
+  input:focus-visible {
+    /* outline: 1px solid ${({ theme }) => theme.colors.focusVisible} !important; */
+    outline: none !important;
+  }
+
   label {
     width: 100%;
     display: flex;

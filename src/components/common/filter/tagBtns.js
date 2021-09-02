@@ -155,7 +155,6 @@ const ListTagBtns = ({ resetFilterBtns, tagList, resetCards, resetSearchQuery })
 
     //  var activeFilterBtns = document.getElementsByClassName('tagButton isActive')
     var allCards = document.getElementsByClassName('item')
-    // var activeFilterBtns = document.getElementsByClassName('tagButton isActive')
 
     for (var i = 0; i < allCards.length; ++i) {
       // Check tag list for each card

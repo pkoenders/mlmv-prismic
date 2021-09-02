@@ -42,6 +42,13 @@ const FormWraper = styled.div`
     font: inherit;
   }
 
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    border: 1px solid ${({ theme }) => theme.colors.primary.default} !important;
+    outline: none !important;
+  }
+
   [type='color'],
   [type='date'],
   [type='email'],

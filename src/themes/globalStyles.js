@@ -19,7 +19,10 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     box-sizing: border-box; 
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
+    /* scroll-behavior: initial; */
+    /* scroll-behavior: auto; */
+    scroll-behavior: initial;
     font-family: ${({ theme }) => theme.font.sans};
     font-size: ${({ theme }) => theme.fontSize.base};
     color: ${({ theme }) => theme.colors.page.default};

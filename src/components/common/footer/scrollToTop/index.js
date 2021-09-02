@@ -32,8 +32,16 @@ const Button = styled.button.attrs((props) => ({
     }
   }
 `
-const ScrollToTop = () => {
-  const scrollTop = () => {
+const ScrollToTop = (e) => {
+  // e.preventDefault()
+
+  const scrollTop = (e) => {
+    // let target = document.querySelector('#main')
+    // target.scrollIntoView({
+    //   behavior: 'smooth',
+    //   block: 'start',
+    // })
+
     window.scrollTo({ top: 0, behavior: 'smooth' })
     window.location.href = '#main'
   }

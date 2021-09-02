@@ -17,24 +17,39 @@ import '/src/styles/hamburger.scss'
 import styled from 'styled-components'
 
 const HeaderWrapper = styled.header`
-  .skipLink {
-    margin: 0 auto;
+  .skipNav {
     position: absolute;
-    white-space: nowrap;
+    top: -100%;
+    /* transform: translateY(-100%); */
+    left: 0px;
+    right: 0px;
     display: flex;
-    width: fit-content;
-    align-self: center;
+    height: 60px;
+    background-color: ${({ theme }) => theme.colors.header.bground[50]};
     z-index: 10000;
-    text-transform: uppercase;
-    transform: translateY(-100%);
-    padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding.default};
-    color: ${({ theme }) => theme.colors.page[100]};
-    background: ${({ theme }) => theme.colors.header.bground[800]};
-    border-radius: ${({ theme }) => theme.borderRadius.sm};
-    box-shadow: ${({ theme }) => theme.boxShadow.lg} !important;
+
+    .skipLink {
+      margin: 0 auto;
+      white-space: nowrap;
+      display: inherit;
+      width: fit-content;
+      align-self: center;
+      text-transform: uppercase;
+      padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding.default};
+
+      color: ${({ theme }) => theme.colors.header.bground[800]};
+      background-color: ${({ theme }) => theme.colors.page[100]};
+
+      border-radius: ${({ theme }) => theme.borderRadius.sm};
+      box-shadow: ${({ theme }) => theme.boxShadow.lg} !important;
+    }
+    .skipLink:focus {
+    }
   }
-  .skipLink:focus {
-    transform: translateY(8px);
+  .skipNav:focus-within {
+    top: 0px;
+    .skipLink:focus {
+    }
   }
 
   .slide {
@@ -614,9 +629,11 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
       }
       aria-label="Main heading"
     >
-      <a class="skipLink" href="#main">
-        Skip navigation
-      </a>
+      <div className="skipNav">
+        <a className="skipLink" href="#main">
+          Skip navigation
+        </a>
+      </div>
 
       <nav className="headerNav" aria-label="Main navigation" role="navigation">
         <button

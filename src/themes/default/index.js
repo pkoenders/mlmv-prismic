@@ -99,6 +99,7 @@ export const defaultTheme = {
       },
       bground: {
         default: '#091b38',
+        50: '#091b38BF',
         100: '#E6E8EB',
         200: '#cdd1d7',
         300: '#B5BAC3',

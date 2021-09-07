@@ -19,7 +19,7 @@ const Card = ({ cardItem, presentationType }) => {
   var imgFormat = getImgFormat(cardItem.format)
   // Validate content
   const link = cardItem.link
-  console.log(link)
+  // console.log(link)
   const image = cardItem.image
   const title = validateString(cardItem.title)
   const content = cardItem.description
@@ -31,7 +31,7 @@ const Card = ({ cardItem, presentationType }) => {
         presentationType === `carousel` ? `keen-slider__slide` : ''
       }`}
     >
-      <Link to={link.uid !== null && linkResolver(link)} className={'link'}>
+      <Link to={link.uid !== null ? linkResolver(link) : `./#null`} className="link">
         <CardContent>
           {image && (
             <GatsbyImage

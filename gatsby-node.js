@@ -86,7 +86,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
 
-        supportersPage: allPrismicPeerSupporters {
+        supportersPage: allPrismicPeerSupporters(sort: { order: [ASC], fields: [lang] }) {
           edges {
             next {
               uid

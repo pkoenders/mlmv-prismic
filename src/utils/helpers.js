@@ -445,6 +445,9 @@ export function getListStyle(style) {
     case 'Checked':
       return 'checked'
 
+    // case 'Ordered':
+    //   return 'ordered'
+
     default:
       return 'disc'
   }

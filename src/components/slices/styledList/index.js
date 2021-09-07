@@ -33,9 +33,9 @@ const List = styled.section`
     grid-gap: ${({ theme }) => theme.padding.default};
     li {
       display: flex;
+      flex-direction: row;
+      grid-gap: ${({ theme }) => theme.padding.default};
       align-items: center;
-      width: 100%;
-
       font-size: ${({ theme }) => theme.fontSize.lg};
       p {
         margin-bottom: 0;
@@ -44,7 +44,6 @@ const List = styled.section`
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: ${({ theme }) => theme.margin.default};
         font-weight: 700;
         aspect-ratio: 1/1;
         text-align: center;
@@ -59,7 +58,7 @@ const List = styled.section`
 
       span.uncheck {
         i {
-          opacity: 0.25;
+          opacity: 0.33;
         }
       }
     }
@@ -120,8 +119,11 @@ const List = styled.section`
     li {
       span {
         border-radius: ${({ theme }) => theme.borderRadius.sm};
-        height: ${({ theme }) => theme.padding['1xl']};
-        width: ${({ theme }) => theme.padding['1xl']};
+        height: ${({ theme }) => theme.padding.default};
+        width: ${({ theme }) => theme.padding.default};
+        i {
+          display: none;
+        }
       }
     }
   }
@@ -131,6 +133,9 @@ const List = styled.section`
       span {
         height: ${({ theme }) => theme.padding['1/2']};
         width: ${({ theme }) => theme.padding['1/2']};
+        i {
+          display: none;
+        }
       }
     }
   }
@@ -140,6 +145,9 @@ const List = styled.section`
         border-radius: ${({ theme }) => theme.borderRadius.sm};
         height: ${({ theme }) => theme.padding['1/2']};
         width: ${({ theme }) => theme.padding['1/2']};
+        i {
+          display: none;
+        }
       }
     }
   }
@@ -227,7 +235,7 @@ const StyledList = ({ slice }) => {
   return (
     <List
       id={sectionID}
-      className={'section-layout ' + sectionWidth + ' ' + forGroundColor + ' ' + bgColor}
+      className={`section-layout ${sectionWidth} ${forGroundColor} ${bgColor}`}
       style={{
         paddingTop: vPaddingTop,
         paddingBottom: vPaddingBottom,
@@ -241,33 +249,38 @@ const StyledList = ({ slice }) => {
           }}
         >
           {slice.items.length > 0 && (
-            <ul className={listTheme + ' ' + listStyle}>
-              {slice.items.map((node, index) => (
-                <li key={slice.id + index}>
-                  {slice.items[index].item.raw && (
-                    <>
-                      {listStyle === 'numbered' && <span>{index + 1}</span>}
-                      {listStyle === 'disc' && <span></span>}
-                      {listStyle === 'square' && <span></span>}
-                      {listStyle === 'checked' && (
-                        <>
-                          {slice.items[index].uncheck !== true ? (
-                            <span>
-                              <IconMaterial icon={'check'} />
-                            </span>
-                          ) : (
-                            <span className="uncheck">
-                              <IconMaterial icon={'close'} />
-                            </span>
-                          )}
-                        </>
-                      )}
-                      <RichText render={slice.items[index].item.raw} linkResolver={linkResolver} />
-                    </>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <>
+              <ul className={`${listTheme} ${listStyle}`}>
+                {slice.items.map((node, index) => (
+                  <li key={slice.id + index}>
+                    {slice.items[index].item.raw && (
+                      <>
+                        {listStyle === 'numbered' && <span>{index + 1}</span>}
+                        {listStyle === 'disc' && <span></span>}
+                        {listStyle === 'square' && <span></span>}
+                        {listStyle === 'checked' && (
+                          <>
+                            {slice.items[index].uncheck !== true ? (
+                              <span>
+                                <IconMaterial icon={'check'} />
+                              </span>
+                            ) : (
+                              <span className="uncheck">
+                                <IconMaterial icon={'close'} />
+                              </span>
+                            )}
+                          </>
+                        )}
+                        <RichText
+                          render={slice.items[index].item.raw}
+                          linkResolver={linkResolver}
+                        />
+                      </>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
         </div>
       </div>

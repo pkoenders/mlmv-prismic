@@ -171,6 +171,7 @@ export const query = graphql`
                 text
                 raw
               }
+              button_alignment
               button_label
               button_link {
                 raw
@@ -205,7 +206,7 @@ export const query = graphql`
                 text
                 raw
               }
-              align
+              width
               default_padding
               v_padding_top
               v_padding_bottom
@@ -262,13 +263,13 @@ export const query = graphql`
                 localFile {
                   childImageSharp {
                     gatsbyImageData(
-                      aspectRatio: 1.777777
+                      ## aspectRatio: 1.777777
                       quality: 80
                       width: 564
                       layout: CONSTRAINED
                       formats: [AUTO, WEBP, AVIF]
                       placeholder: BLURRED
-                      transformOptions: { cropFocus: NORTH }
+                      transformOptions: { cropFocus: ATTENTION }
                     )
                   }
                 }
@@ -465,7 +466,7 @@ export const query = graphql`
                   ## Form
                   ... on PrismicForms {
                     data {
-                      form_title {
+                      form_name {
                         text
                       }
                       from_content {
@@ -599,6 +600,7 @@ export const query = graphql`
               }
             }
             primary {
+              width
               list_type
               font_size
               default_padding

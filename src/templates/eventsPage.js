@@ -142,7 +142,7 @@ export const query = graphql`
               document {
                 ... on PrismicForms {
                   data {
-                    form_title {
+                    form_name {
                       text
                     }
                     from_content {

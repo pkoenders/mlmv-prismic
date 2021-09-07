@@ -210,7 +210,7 @@ export const defaultTheme = {
     sans: 'Roboto, sans-serif',
     slab: 'Rokkitt, serif',
     mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
-    serif: '"Bodoni Moda", serif',
+    serif: 'Merriweather, serif',
   },
 
   fontSize: {

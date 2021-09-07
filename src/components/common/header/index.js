@@ -311,7 +311,7 @@ const HeaderWrapper = styled.header`
             i {
               margin-left: ${({ theme }) => theme.margin['1/4']};
               margin-right: -${({ theme }) => theme.margin['1/4']};
-              color: ${({ theme }) => theme.colors.primary[800]};
+              color: ${({ theme }) => theme.colors.primary.default};
             }
           }
 
@@ -504,7 +504,6 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
   }
 
   function handleCloseSecondaryNav(menuItem) {
-    // console.log('click!')
     var secondaryNavBtn = document.querySelectorAll('.secondaryNavBtn')
     var secondaryNavList = document.querySelectorAll('.secondaryNavList')
     if (window.innerWidth > 768) {
@@ -522,8 +521,6 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     if (typeof window !== 'undefined') {
       pathName = window.location.pathname
     }
-
-    // Handle navigation functionality
 
     const skipLink = document.querySelector('.skipLink')
     const headerNavWrapper = document.querySelector('.headerNavWrapper')
@@ -545,7 +542,6 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     })
 
     var prevScrollpos = window.pageYOffset
-
     //
     // Toggle mobile menu
     toggleHamburger.addEventListener('click', function () {
@@ -565,7 +561,6 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     })
 
     function openHamburgerNav() {
-      //console.log('open')
       headerNav.classList.add('open', 'fillBground')
       toggleHamburger.classList.add('is-active')
       toggleHamburger.setAttribute('aria-expanded', 'true')
@@ -574,8 +569,6 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     }
 
     function closeHamburgerNav() {
-      //console.log('close')
-
       var secondaryNavBtn = document.querySelectorAll('.secondaryNavBtn')
       var secondaryNavList = document.querySelectorAll('.secondaryNavList')
       for (var i = 0; i < secondaryNavBtn.length; ++i) {
@@ -593,7 +586,6 @@ const Header = ({ currentLang, currentPrefix, currentPath, primaryNav }) => {
     //
     // Handle slide/scroll effect of menu
     document.addEventListener('scroll', function () {
-      // console.log('scroll')
       var currentScrollPos = window.pageYOffset
       if (prevScrollpos >= currentScrollPos) {
         headerNavWrapper.classList.remove('slide')

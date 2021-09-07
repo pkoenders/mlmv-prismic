@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { RichText } from 'prismic-reactjs'
 import linkResolver from '../../../utils/linkResolver'
 import {
-  getPostionAlign,
   getContentWidth,
   getAutoSpacing,
   getManualSpacing,
@@ -13,6 +12,9 @@ import {
   rgb2hex,
   getContrast,
 } from '/src/utils/helpers'
+
+// Icons
+// import IconMaterial from '/src/components/common/icons/material'
 
 import styled from 'styled-components'
 
@@ -25,54 +27,6 @@ const QuoteWrapper = styled.section`
     flex-direction: column;
     margin-bottom: ${({ theme }) => theme.margin.default};
   }
-  .title.left {
-    text-align: left;
-  }
-  .title.center {
-    text-align: center;
-  }
-  .title.right {
-    text-align: right;
-  }
-
-  ul,
-  ul.left {
-    li {
-      blockquote {
-        margin: 0 0;
-      }
-      .label {
-        text-align: left;
-        margin-left: ${({ theme }) => theme.margin['1/2']};
-      }
-    }
-  }
-
-  ul.center {
-    li {
-      text-align: center;
-      blockquote {
-        margin: 0 auto;
-        text-align: center;
-      }
-      .label {
-        text-align: center;
-        margin-left: 0;
-      }
-    }
-  }
-
-  ul.right {
-    li {
-      blockquote {
-        margin: 0 0 0 auto;
-      }
-      .label {
-        text-align: right;
-        margin-right: ${({ theme }) => theme.margin['1/2']};
-      }
-    }
-  }
 
   ul {
     list-style: none;
@@ -84,42 +38,7 @@ const QuoteWrapper = styled.section`
     li {
       display: inherit;
       flex-direction: inherit;
-      grid-gap: ${({ theme }) => theme.padding['1/8']};
-      blockquote {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: fit-content;
-        color: ${({ theme }) => theme.colors.page.default};
-        background-color: #fff;
-        padding: ${({ theme }) => theme.padding['1/2']} ${({ theme }) => theme.padding['2xl']};
-        border-radius: ${({ theme }) => theme.borderRadius.default};
-        box-shadow: ${({ theme }) => theme.boxShadow.default};
-      }
-
-      blockquote:before,
-      blockquote:after {
-        color: ${({ theme }) => theme.colors.primary[700]};
-        /* color: #fff; */
-        font-family: ${({ theme }) => theme.font.serif};
-        font-size: ${({ theme }) => theme.fontSize['5xl']};
-        line-height: 0;
-        display: inline-flex;
-        position: absolute;
-      }
-      blockquote:before {
-        content: '“';
-        top: ${({ theme }) => theme.margin.default};
-        left: ${({ theme }) => theme.margin['1/2']};
-      }
-      blockquote:after {
-        content: '”';
-        bottom: ${({ theme }) => theme.margin['1/4']};
-        right: ${({ theme }) => theme.margin['1/2']};
-      }
-      .label {
-        font-weight: 300;
-      }
+      grid-gap: ${({ theme }) => theme.padding.default};
     }
   }
 
@@ -129,6 +48,53 @@ const QuoteWrapper = styled.section`
       color: ${({ theme }) => theme.colors.grey.default};
     }
   }
+`
+
+const BlockQuote = styled.blockquote`
+
+  width: fit-content;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  grid-gap: ${({ theme }) => theme.padding['1/4']};
+  align-items: flex-start;
+  margin: 0 auto 0 0;
+  border-left: 4px solid ${({ theme }) => theme.colors.tertiary.default};
+  padding: ${({ theme }) => theme.padding.default};
+
+  p {
+    font-family: ${({ theme }) => theme.font.serif};
+    font-style: italic;
+    font-size:  100%;
+  }
+
+  span,
+  a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: ${({ theme }) => theme.padding['1/4']};
+    font-family: ${({ theme }) => theme.font.sans};
+    font-style: initial;
+    font-size: initial;
+    text-decoration: none;
+  }
+  span {
+      font-weight: 500;
+  }
+
+ > i {
+    align-self: center;
+    position: absolute;
+    color: ${({ theme }) => theme.colors.page.default};
+    background-color: ${({ theme }) => theme.colors.tertiary.default};
+    font-size: 28px;
+    left:-16px;
+    transform: scaleX(-1);
+    border-radius: 999rem;
+  }
+
+}
 `
 
 const Quotes = ({ slice }) => {
@@ -173,12 +139,11 @@ const Quotes = ({ slice }) => {
 
   // Content
   const title = slice.primary.title
-  const align = getPostionAlign(slice.primary.align)
 
   return (
     <QuoteWrapper
       id={sectionID}
-      className={'section-layout ' + sectionWidth + ' ' + forGroundColor + ' ' + bgColor}
+      className={`section-layout ${sectionWidth} ${forGroundColor} ${bgColor}`}
       style={{
         paddingTop: vPaddingTop,
         paddingBottom: vPaddingBottom,
@@ -186,24 +151,26 @@ const Quotes = ({ slice }) => {
     >
       <div>
         {title.text && (
-          <span className={'title ' + align}>
+          <span className="title">
             <RichText render={title.raw} linkResolver={linkResolver} />
           </span>
         )}
 
         {slice.items.length > 0 && (
-          <ul className={align}>
+          <ul>
             {slice.items.map(
               (node, index) =>
                 slice.items[index].active === true && (
                   <li key={slice.id + index}>
                     {slice.items[index].content.raw && (
                       <>
-                        <blockquote>
-                          {/* {slice.items[index].content.text} */}
+                        <BlockQuote>
+                          {/* <IconMaterial icon={'format_quote'} />{' '} */}
                           <RichText render={slice.items[index].content.raw} />
-                        </blockquote>
-                        <p className="label">{slice.items[index].title}</p>
+                          {slice.items[index].title !== undefined && (
+                            <span>{slice.items[index].title}</span>
+                          )}
+                        </BlockQuote>
                       </>
                     )}
                   </li>

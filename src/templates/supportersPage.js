@@ -13,28 +13,23 @@ const SupportersPage = ({ data, pageContext }) => {
   const { next, previous } = pageContext
 
   // Validate and create Next title
-  var nextTitle
-  if (!next) {
-    nextTitle = null
-  } else {
+  var nextTitle = null
+  // console.log(next)
+  if (next) {
     nextTitle =
       validateString(next.data.first_name.text) + ' ' + validateString(next.data.last_name.text)
   }
-  // console.log('nextTitle = ' + nextTitle)
 
   // Validate and create Previous title
-  var previousTitle
-  if (!previous) {
-    previousTitle = null
-  } else {
+  var previousTitle = null
+  if (previous) {
     previousTitle =
       validateString(previous.data.first_name.text) +
-        ' ' +
-        validateString(previous.data.last_name.text) || null
+      ' ' +
+      validateString(previous.data.last_name.text)
   }
-  // console.log('previousTitle = ' + previousTitle)
-
   // console.log(pageContext)
+
   const document = data.allPrismicPeerSupporters.edges[0].node
   // const primaryNav = data.prismicPrimaryNavigation.data.top_navigation
   // const currentLang = data.prismicPrimaryNavigation.lang
@@ -98,7 +93,10 @@ export const query = graphql`
       }
     }
 
-    allPrismicPeerSupporters(filter: { lang: { eq: $locale }, uid: { eq: $uid } }) {
+    allPrismicPeerSupporters(
+      filter: { lang: { eq: $locale }, uid: { eq: $uid } }
+      sort: { fields: data___first_name___text, order: ASC }
+    ) {
       edges {
         next {
           uid
@@ -113,6 +111,7 @@ export const query = graphql`
             }
           }
         }
+
         previous {
           uid
           type
@@ -126,6 +125,7 @@ export const query = graphql`
             }
           }
         }
+
         node {
           lang
           type
@@ -172,7 +172,7 @@ export const query = graphql`
               document {
                 ... on PrismicForms {
                   data {
-                    form_title {
+                    form_name {
                       text
                     }
                     from_content {

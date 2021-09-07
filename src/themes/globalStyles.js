@@ -58,6 +58,16 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: underline;
   }
 
+  .visit {
+    text-decoration: none !important;
+    border-bottom: 1px solid transparent !important;
+  }
+
+  .visit:hover {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.primary[1100]} !important;
+  }
+
+
   a:focus {
     outline: none;
   }
@@ -67,9 +77,13 @@ export const GlobalStyles = createGlobalStyle`
     outline: 2px solid ${({ theme }) => theme.colors.focusVisible} !important; 
   }
 
-  /* a:-moz-focusring {
-    outline: 2px solid ${({ theme }) => theme.colors.focusVisible} !important; 
-  } */
+  .marginTopInital {
+    margin-top:0 !important;
+  }
+
+  [data-rmiz-overlay='true'] {
+    background-color: ${({ theme }) => theme.colors.header.bground.default} !important;
+  }
 
   h1 {
     font-size: ${({ theme }) => theme.fontSize['5xl']};

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 //Helpers
-import { gsap, Power3 } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { RichText } from 'prismic-reactjs'
 import linkResolver from '../../../utils/linkResolver'
 import CardItem from './item.js'
@@ -32,12 +30,13 @@ import { screenSize } from '/src/themes/globalStyles'
 import styled from 'styled-components'
 
 const CardsWrapper = styled.section`
-    padding: 0 ${({ theme }) => theme.padding['1/2']};
+  padding: 0 ${({ theme }) => theme.padding['1/2']};
 
   @media (max-width: ${({ theme }) => theme.screens.sm}) {
-    padding-top: 0px !important;
-    padding-bottom: 32px !important;
+    padding-top:  0 !important;
+    padding-bottom: ${({ theme }) => theme.padding.default} !important;
   }
+
   .title {
     width: 100%;
     display: flex;
@@ -97,13 +96,33 @@ const CardsWrapper = styled.section`
   .cardItem.gallery {
     overflow: visible;
     display: flex;
+    @media (max-width: ${({ theme }) => theme.screens.sm}) {
+      padding-top:  ${({ theme }) => theme.padding['1/2']} !important;
+    }
+
     a {
       width: 100%;
       text-decoration: none;
       > div {
         background-color: #fff;
+
+        div.portrait {
+          img {
+             aspect-ratio: 3/4;
+             object-fit: fill;
+             object-position: center bottom;
+          }
+        }
       }
     }
+
+    p {
+      display: flex;
+      a {
+        display: contents;
+      }
+    }
+
   }
   
 
@@ -111,6 +130,9 @@ const CardsWrapper = styled.section`
   .cardItem.profile {
     overflow: visible;
     display: flex;
+    @media (max-width: ${({ theme }) => theme.screens.sm}) {
+      padding-top:  ${({ theme }) => theme.padding['1/2']} !important;
+    }
     a {
       width: 100%;
       text-decoration: none;
@@ -209,6 +231,13 @@ const CardsWrapper = styled.section`
           p {
             justify-content: inherit;
           }
+
+          p{
+            display: flex;
+            a{
+             display: contents;
+            }
+          }
           .link {
             text-transform: uppercase;
             position: relative;
@@ -257,7 +286,7 @@ const CardsWrapper = styled.section`
     .carousel {
       .nav {
         .item {
-          background-color: #fff};
+          background-color:${({ theme }) => theme.colors.page[100]};
         }
 
         .item:hover,
@@ -380,37 +409,6 @@ const Cards = ({ slice }) => {
     // [screenSize.xxl]: 3,
     10000: columnCount,
   }
-
-  if (typeof window !== `undefined`) {
-    gsap.registerPlugin(ScrollTrigger, Power3)
-  }
-
-  useEffect(() => {
-    if (slice.primary.animate_scroll !== true) return
-    const aninItems = gsap.utils.toArray('.cardItem')
-    aninItems.forEach((item) => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: 'top bottom',
-          end: 'bottom bottom',
-          scrub: 1,
-          // markers: true
-        },
-      })
-
-      tl.fromTo(item.querySelector('.cardItem .image'), { y: +96 }, { y: 0, ease: Power3.easeOut })
-      tl.fromTo(
-        item.querySelector('.cardItem span'),
-        { y: +96, opacity: 0 },
-        { y: 0, opacity: 1, ease: Power3.easeOut }
-      )
-
-      return () => {
-        aninItems.item.kill()
-      }
-    })
-  }, [slice])
 
   return (
     <CardsWrapper

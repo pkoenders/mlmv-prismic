@@ -1,10 +1,11 @@
 {
   "Main": {
-    "form_title": {
+    "form_name": {
       "type": "StructuredText",
       "config": {
-        "single": "heading2",
-        "label": "Form title"
+        "single": "heading1",
+        "label": "Form name",
+        "placeholder": "Required"
       }
     },
     "from_content": {
@@ -95,7 +96,15 @@
               "button_type": {
                 "type": "Select",
                 "config": {
-                  "options": ["Primary", "Secondary", "Tertiary"],
+                  "options": [
+                    "Primary",
+                    "Secondary",
+                    "Tertiary",
+                    "White",
+                    "Black",
+                    "Link",
+                    "Transparent"
+                  ],
                   "default_value": "Primary",
                   "label": "Button type"
                 }

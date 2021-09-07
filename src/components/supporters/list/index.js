@@ -230,7 +230,7 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
   allPosts = hasSearchResults ? filteredData : sourceList
 
   // Done - We can log the results
-  console.log(allPosts)
+  // console.log(allPosts)
 
   return (
     // Set content width - xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'full'

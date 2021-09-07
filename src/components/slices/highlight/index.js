@@ -69,8 +69,8 @@ const Highlight = styled.section`
       align-items: center;
 
       .textBlock {
-        padding-left: ${({ theme }) => theme.padding['2xl']};
-        padding-right: ${({ theme }) => theme.padding['2xl']};
+        padding-left: ${({ theme }) => theme.padding['1/2']};
+        padding-right: ${({ theme }) => theme.padding['1/2']};
       }
 
       span.cta {
@@ -153,6 +153,13 @@ const Highlight = styled.section`
       .content {
         padding-left: ${({ theme }) => theme.padding['1/2']};
       }
+      @media (max-width: ${({ theme }) => theme.screens.sm}) {
+        flex-direction: column-reverse;
+        .content {
+          padding: ${({ theme }) => theme.padding['1/2']};
+          padding-top: 0px;
+        }
+      }
     }
   }
 
@@ -161,6 +168,10 @@ const Highlight = styled.section`
       flex-direction: row-reverse;
       @media (max-width: ${({ theme }) => theme.screens.sm}) {
         flex-direction: column-reverse;
+        .content {
+          padding: ${({ theme }) => theme.padding['1/2']};
+          padding-top: 0px;
+        }
       }
 
       .content {
@@ -182,7 +193,8 @@ const Highlight = styled.section`
       @media (max-width: ${({ theme }) => theme.screens.sm}) {
         grid-gap: ${({ theme }) => theme.padding['1/2']};
         .content {
-          padding: 0 ${({ theme }) => theme.padding['1/2']} 0;
+          padding: ${({ theme }) => theme.padding['1/2']};
+          padding-top: 0px;
         }
       }
     }
@@ -198,13 +210,14 @@ const Highlight = styled.section`
     &.media-top,
     &.media-bottom {
       @media (max-width: ${({ theme }) => theme.screens.sm}) {
-        padding-left: 0px;
-        padding-right: 0px;
+        /* padding-left: 0px;
+        padding-right: 0px; */
+        padding: 0px !important;
 
         div {
           .content {
-            padding-left: ${({ theme }) => theme.padding['1/2']};
-            padding-right: ${({ theme }) => theme.padding['1/2']};
+            padding: ${({ theme }) => theme.padding['1/2']};
+            padding-top: 0px;
             font-size: 100% !important;
             margin-bottom: 0px;
           }

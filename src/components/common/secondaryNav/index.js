@@ -38,8 +38,8 @@ const SecondaryNavWrapper = styled.section`
     a {
       display: flex;
       align-items: center;
-      margin: 0 ${({ theme }) => theme.margin['1/8']} 0 0;
-      padding: 0;
+      white-space: pre-line;
+      width: fit-content;
       border: none;
       outline: none;
       color: ${({ theme }) => theme.colors.header.default};
@@ -47,6 +47,7 @@ const SecondaryNavWrapper = styled.section`
       text-align: left;
       cursor: pointer;
       user-select: none;
+      line-height: ${({ theme }) => theme.lineHeight.tight};
 
       i {
         pointer-events: none;
@@ -54,14 +55,19 @@ const SecondaryNavWrapper = styled.section`
       }
     }
 
+    button {
+      padding-right: ${({ theme }) => theme.padding.default};
+    }
+
     .alignRight {
       display: flex;
+      flex-direction: row;
+      grid-gap: ${({ theme }) => theme.padding.default};
       align-items: center;
       margin: 0 0 0 auto;
 
       button:last-child,
       a:last-child {
-        margin: 0 0 0 ${({ theme }) => theme.margin['1/2']} !important;
         text-align: right;
       }
     }
@@ -101,6 +107,7 @@ const SecondaryNav = ({ currentLang, next, nextTitle, previous, previousTitle })
         </button>
 
         <span className="alignRight">
+          {/* {previous && previous.lang === currentLang && ( */}
           {previous && previous.lang === currentLang && (
             <Link aria-label={previousTitle} to={linkResolver(previous)}>
               <IconMaterial icon={'chevron_left'} />
@@ -108,6 +115,7 @@ const SecondaryNav = ({ currentLang, next, nextTitle, previous, previousTitle })
             </Link>
           )}
 
+          {/* {next && next.lang === currentLang && ( */}
           {next && next.lang === currentLang && (
             <Link aria-label={nextTitle} to={linkResolver(next)}>
               {nextTitle}

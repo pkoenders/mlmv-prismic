@@ -54,10 +54,10 @@ module.exports = {
             },
 
             {
-              family: 'Bodoni+Moda',
-              variants: ['500', '600'],
+              family: 'Merriweather',
+              variants: ['400', '700'],
               // fontDisplay: 'swap',
-              text: '“ ”',
+              // text: '“ ”',
               strategy: 'base64',
             },
           ],

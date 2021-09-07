@@ -12,6 +12,7 @@ import {
   validateString,
   getAutoSpacing,
   getManualSpacing,
+  getStyle,
 } from '/src/utils/helpers'
 
 // Form elements
@@ -42,8 +43,6 @@ const ContactNew = ({ formData, slice }) => {
     // Set up the section with an id and some classes and styles
     // Add a page ID to reference
     var sectionID = slice.id
-    // Leading content
-    var sectionIntro = slice.primary.content
     // Set the content width class
     var sectionWidth = getContentWidth(slice.primary.width)
     // Set the bgColor class
@@ -76,8 +75,8 @@ const ContactNew = ({ formData, slice }) => {
     allFormData = formData
   }
 
-  // Validate form title
-  const formTitle = validateString(allFormData.select_form.document.data.form_title.text)
+  // Validate form name
+  const formName = validateString(allFormData.select_form.document.data.form_name.text)
   // Validate form description
   const formDecription = validateString(allFormData.select_form.document.data.from_content.raw)
   // Form data
@@ -102,34 +101,6 @@ const ContactNew = ({ formData, slice }) => {
     const data = new FormData(e.target)
     const formDataEntries = Object.fromEntries(data.entries())
 
-    // Get the form
-    // let form = document.querySelector('form')
-
-    // Get all field data from the form
-    // let formData = new FormData(e.target)
-
-    // Convert to a query string
-    // let queryString = new URLSearchParams(formData).toString()
-    // function serialize(data) {
-    //   let obj = {}
-    //   for (let [key, value] of data) {
-    //     if (obj[key] !== undefined) {
-    //       if (!Array.isArray(obj[key])) {
-    //         obj[key] = [obj[key]]
-    //       }
-    //       obj[key].push(value)
-    //     } else {
-    //       obj[key] = value
-    //     }
-    //   }
-    //   return obj
-    // }
-
-    // // Convert to an object
-    // const formObj = serialize(formData)
-
-    // console.log(formObj)
-
     fetch(`/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -140,7 +111,9 @@ const ContactNew = ({ formData, slice }) => {
       .then((res) => {
         if (res) {
           setSuccessMsg(true)
-          document.querySelector('.form').classList.add('hide')
+
+          // console.log('form submit')
+          document.querySelector('form').classList.add('hide')
         }
       })
 
@@ -156,8 +129,8 @@ const ContactNew = ({ formData, slice }) => {
       legend.classList.remove('error')
     }
 
-    document.querySelector('.form').classList.remove('hide')
-    document.querySelector('.form').reset()
+    document.querySelector('form').classList.remove('hide')
+    document.querySelector('form').reset()
   }
 
   const onSubmit = async (values) => {
@@ -202,38 +175,33 @@ const ContactNew = ({ formData, slice }) => {
   return (
     // Set up ID and styles if from is from a slice
     <section
-      id={formData === undefined && sectionID}
-      className={formData === undefined && `section-layout form ${sectionWidth} ${bgColor}`}
+      // id={formData === undefined && sectionID}
+      id={sectionID}
+      className={`section-layout form ${sectionWidth} ${bgColor}`}
       style={{
         paddingTop: vPaddingTop,
         paddingBottom: vPaddingBottom,
       }}
     >
       <FormWrapper>
-        {sectionIntro && (
+        {formDecription && (
           <div className="titleArea">
-            <RichText render={sectionIntro.raw} linkResolver={linkResolver} />
-          </div>
-        )}
-
-        {(formTitle || formDecription) && (
-          <div className="titleArea">
-            {formTitle && <p className="titleText">{formTitle}</p>}
-            {formDecription && <RichText render={formDecription} linkResolver={linkResolver} />}
+            <RichText render={formDecription} linkResolver={linkResolver} />
           </div>
         )}
 
         <Form onSubmit={onSubmit}>
           {({ values, invalid }) => (
             <form
+              id="form"
               className="form"
-              name="ContactForm"
+              name={formName}
               // noValidate
               method="post"
               data-netlify="true"
               onSubmit={handleSubmit}
             >
-              <input type="hidden" name="form-name" value="ContactForm" />
+              <input type="hidden" name="form-name" value={formName} />
               <input type="hidden" name="location" value={pathName} />
 
               {formDataFields.map((primary, index) => {
@@ -398,7 +366,7 @@ const ContactNew = ({ formData, slice }) => {
                         <Button
                           buttonLabel={formDataFields[index].primary.button_name.text}
                           buttonType={'submit'}
-                          buttonStyle={'primary'}
+                          buttonStyle={getStyle(formDataFields[index].primary.button_type)}
                           buttonIcon={'send'}
                           buttonIconAlign={'right'}
                         />

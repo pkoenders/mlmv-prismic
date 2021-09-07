@@ -3,14 +3,50 @@ import GoogleMapReact from 'google-map-react'
 import linkResolver from '../../../utils/linkResolver'
 import { RichText } from 'prismic-reactjs'
 
-import './index.scss'
+// Icons
+import IconMaterial from '/src/components/common/icons/material'
+
+import styled from 'styled-components'
+
+const MapWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #bebebe;
+
+  .pin {
+    display: inline-flex;
+    align-items: flex-start;
+    margin-left: -20px;
+    width: 100%;
+    font-size: initial;
+
+    p {
+      white-space: nowrap;
+      color: ${({ theme }) => theme.colors.page.default};
+      background-color: #ffffff;
+      border: 1px solid ${({ theme }) => theme.colors.card[400]};
+      border-radius: ${({ theme }) => theme.borderRadius.sm};
+      box-shadow: ${({ theme }) => theme.boxShadow.md};
+      margin-left: ${({ theme }) => theme.margin['1/8']};
+      padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding['1/2']};
+    }
+
+    i {
+      font-size: 40px;
+      color: ${({ theme }) => theme.colors.accent.default};
+      margin: 0;
+      padding: 0;
+      line-height: 0;
+      text-shadow: ${({ theme }) => theme.boxShadow.md};
+      text-shadow: 0px 2px 6px ${({ theme }) => theme.colors.card[600]};
+    }
+  }
+`
 
 const LocationPin = ({ description }) => {
   return (
     <div className="pin">
-      <i className="material-icons-round" aria-hidden="true">
-        place
-      </i>
+      <IconMaterial icon={'place'} />
       <RichText render={description} linkResolver={linkResolver} />
     </div>
   )
@@ -33,7 +69,7 @@ const GoogleMap = ({ geopoint, description, zoomLevel }) => {
 
   return (
     // Important! Always set the container height explicitly
-    <div className="google-map">
+    <MapWrapper>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyAqtG-6jfYqhE9-yb6A0QYJ1z5onDubltQ' }}
         defaultCenter={location}
@@ -44,7 +80,7 @@ const GoogleMap = ({ geopoint, description, zoomLevel }) => {
       >
         <LocationPin lat={location.lat} lng={location.lng} description={description} />
       </GoogleMapReact>
-    </div>
+    </MapWrapper>
   )
 }
 

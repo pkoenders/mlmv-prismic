@@ -134,7 +134,9 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
 
-        eventsPage: allPrismicEvents {
+        eventsPage: allPrismicEvents(
+          sort: { order: [ASC, DESC], fields: [lang, data___start_date_time] }
+        ) {
           edges {
             next {
               uid

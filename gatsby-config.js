@@ -9,8 +9,8 @@ module.exports = {
     title: `My Life My Voice`,
     description: `Connecting the disables community to Peer Supporters - My Life My Voice`,
     siteUrl: `https://www.mylifemyvoice.org.nz`, // No trailing slash allowed!
-    // defaultImage: "/images/svg/logo-pixl.inline.svg", // Path to your image you placed in the 'static' folder
-    defaultImage: '/images/pkoenders.png', // Path to your image you placed in the 'static' folder
+    defaultImage: 'src/images/svg/brand-mlmv.inline.svg', // Path to your image you placed in the 'static' folder
+    // defaultImage: '/images/pkoenders.png', // Path to your image you placed in the 'static' folder
     author: 'Peter Koenders',
     year: '2021',
   },
@@ -122,13 +122,13 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
 
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
-        // trackingId: 'UA-7623107-7',
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     // replace "UA-XXXXXXXXX-X" with your own Tracking ID
+    //     // trackingId: 'UA-7623107-7',
+    //   },
+    // },
 
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-robots-txt',

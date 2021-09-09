@@ -1,5 +1,4 @@
-@import "./scss";
-@import "./hamburgers/hamburgers";
+@import './hamburgers/hamburgers';
 
 .hamburger:hover,
 .hamburger.is-active:hover {
@@ -10,7 +9,6 @@
   position: relative;
   z-index: 3002;
   padding: 0 10px;
-
 
   .hamburger-box {
     //height: 12px;
@@ -45,7 +43,6 @@
 }
 
 .hamburger.is-active {
-
   .hamburger-inner,
   .hamburger-inner::before,
   .hamburger-inner::after {
@@ -59,11 +56,5 @@
   .hamburger-inner::before,
   .hamburger-inner::after {
     margin-left: 0px;
-  }
-}
-
-@include respond-below(sm) {
-  .hamburger {
-    display: block;
   }
 }

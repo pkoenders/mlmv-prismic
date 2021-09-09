@@ -7,7 +7,7 @@ const SEOTwitter = ({ slice }) => (
     query={`${SEOquery}`}
     render={(data) => {
       const metaTitle = slice.primary.title.text
-        ? `${slice.primary.title.text} - ${data.site.siteMetadata.title}`
+        ? `${slice.primary.title.text} | ${data.site.siteMetadata.title}`
         : data.site.siteMetadata.title
 
       return (

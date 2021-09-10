@@ -292,15 +292,17 @@ const HeaderWrapper = styled.header`
         justify-self: center;
         align-items: stretch;
         padding: 0px ${({ theme }) => theme.padding['3xl']};
-        margin: 0 auto;
+        margin: 0 auto 0 ${({ theme }) => theme.margin.default};
         top: 0px;
         position: relative;
         width: auto;
         overflow-x: visible;
+        max-width: ${({ theme }) => theme.screens.md};
 
         li {
           display: flex;
           align-items: center;
+          /* height: ${({ theme }) => theme.header.height}; */
 
           button.secondaryNavBtn {
             display: flex;

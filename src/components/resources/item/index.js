@@ -15,7 +15,7 @@ import EventForm from '../../common/forms/formContact'
 
 import styled from 'styled-components'
 
-const SupportersHeader = styled.div`
+const Header = styled.div`
   display: flex;
 
   grid-gap: ${({ theme }) => theme.padding.default};
@@ -65,7 +65,7 @@ const SupportersHeader = styled.div`
   }
 `
 
-const SupportersBody = styled.div`
+const Body = styled.div`
   display: flex;
   @media (max-width: ${({ theme }) => theme.screens.sm}) {
     flex-direction: column;
@@ -85,6 +85,11 @@ const SupportersBody = styled.div`
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       width: 100%;
     }
+
+    section {
+      padding: 0;
+    }
+
     p {
       margin: 0;
       padding-bottom: ${({ theme }) => theme.padding.default};
@@ -118,7 +123,7 @@ const EventItem = ({ currentLang, itemData }) => {
     // Set content width - xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'full'
     <Section contentSize={'lg'}>
       <div>
-        <SupportersHeader>
+        <Header>
           <div className="intro">
             <span>{title && <H1>{title}</H1>}</span>
 
@@ -152,9 +157,9 @@ const EventItem = ({ currentLang, itemData }) => {
             )}
             {eventType === 'News item' && date && <P className="newsDate">{date}</P>}
           </div>
-        </SupportersHeader>
+        </Header>
 
-        <SupportersBody>
+        <Body>
           <div className="content">
             {mainContent && <RichText render={mainContent} linkResolver={linkResolver} />}
           </div>
@@ -167,7 +172,7 @@ const EventItem = ({ currentLang, itemData }) => {
               <EventForm formData={itemData.data} />
             </div>
           )}
-        </SupportersBody>
+        </Body>
       </div>
     </Section>
   )

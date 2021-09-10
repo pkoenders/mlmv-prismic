@@ -36,12 +36,10 @@ const SortListWrapper = styled.div`
     align-items: center;
     user-select: none;
     min-width: 160px;
-    /* width: 274px; */
     position: relative;
     cursor: pointer;
-
     background-color: ${({ theme }) => theme.colors.page.bground.default};
-    border: 1px solid ${({ theme }) => theme.colors.tertiary[600]};
+    border: 1px solid transparent;
     border-radius: ${({ theme }) => theme.borderRadius.sm};
     button {
       display: flex;
@@ -53,13 +51,11 @@ const SortListWrapper = styled.div`
     }
 
     div {
-      /* min-width: fit-content; */
       background-color: inherit;
       border: inherit;
       border-top: none;
-      border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
-        ${({ theme }) => theme.borderRadius.default};
-      overflow: hidden;
+      border-radius: 0 0 ${({ theme }) => theme.borderRadius.sm}
+        ${({ theme }) => theme.borderRadius.sm};
       position: absolute;
       left: -1px;
       right: -1px;
@@ -86,20 +82,30 @@ const SortListWrapper = styled.div`
       }
 
       button:hover {
-        background-color: ${({ theme }) => theme.colors.primary[200]};
-        border-top: 1px solid ${({ theme }) => theme.colors.primary[200]};
+        background-color: ${({ theme }) => theme.colors.card[100]};
+        border-top: 1px solid ${({ theme }) => theme.colors.card[300]};
       }
     }
     div.isActive {
       visibility: visible;
+      border-color: ${({ theme }) => theme.colors.primary[600]};
     }
   }
 
+  div.isActive,
   div:hover {
-    border-color: ${({ theme }) => theme.colors.primary.default};
+    border-color: ${({ theme }) => theme.colors.primary[600]};
     button {
       i {
         color: ${({ theme }) => theme.colors.primary.default};
+      }
+    }
+  }
+
+  div.isActive {
+    button {
+      i {
+        transform: rotate(180deg);
       }
     }
   }
@@ -116,12 +122,6 @@ const SortSelect = styled.button.attrs((props) => ({
 
   i {
     margin: 0 -${({ theme }) => theme.padding['1/4']} 0 auto;
-  }
-
-  &.isActive {
-    i {
-      transform: rotate(180deg);
-    }
   }
 `
 const SortItem = styled.button.attrs((props) => ({

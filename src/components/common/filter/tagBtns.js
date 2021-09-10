@@ -12,7 +12,7 @@ const ListTagBtnsWrapper = styled.div`
     display: flex;
     flex-direction: row;
     grid-gap: ${({ theme }) => theme.padding['1/8']};
-    top: ${({ theme }) => theme.padding['1/2']};
+    top: 0;
     right: ${({ theme }) => theme.padding['1/4']};
     button {
       display: flex;
@@ -26,11 +26,10 @@ const ListTagBtnsWrapper = styled.div`
       cursor: pointer;
       user-select: none;
       background-color: #fff;
-      border: 1px solid ${({ theme }) => theme.colors.tertiary[600]};
-      /* border-radius: ${({ theme }) => theme.borderRadius.sm}; */
+      border: 1px solid transparent;
       border-radius: 999rem;
       &:hover {
-        border: 1px solid ${({ theme }) => theme.colors.primary.default};
+        border: 1px solid ${({ theme }) => theme.colors.primary[600]};
         color: ${({ theme }) => theme.colors.primary.default};
       }
     }
@@ -61,42 +60,27 @@ const ListTagBtnsWrapper = styled.div`
   }
 
   .tagButton {
-    font-size: 82%;
+    font-size: 80%;
     text-transform: uppercase;
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
     cursor: pointer;
     padding: ${({ theme }) => theme.padding['1/8']} ${({ theme }) => theme.padding['1/2']};
     white-space: nowrap;
-    color: ${({ theme }) => theme.colors.textColor};
-    background-color: ${({ theme }) => theme.colors.white};
-    border: 1px solid ${({ theme }) => theme.colors.grey[400]};
-    border: 1px solid ${({ theme }) => theme.colors.primary[600]};
-    border-radius: ${({ theme }) => theme.borderRadius.sm};
-    /* box-shadow: none; */
-    /* box-shadow: ${({ theme }) => theme.boxShadow.default}; */
-
-    background-color: ${({ theme }) => theme.colors.secondary[100]};
-    background-color: #fff;
-    border: 1px solid ${({ theme }) => theme.colors.tertiary[400]};
     color: ${({ theme }) => theme.colors.page.default};
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: ${({ theme }) => theme.borderRadius.sm};
   }
 
   .tagButton:hover {
     color: ${({ theme }) => theme.colors.page.default};
-    background-color: ${({ theme }) => theme.colors.primary[200]};
-    background-color: #fff;
-    border: 1px solid ${({ theme }) => theme.colors.secondary[800]};
+    background-color: ${({ theme }) => theme.colors.card[400]};
   }
 
   .tagButton.isActive {
     color: ${({ theme }) => theme.colors.page.default};
-    color: #fff;
-    background-color: ${({ theme }) => theme.colors.primary.default};
-    border: 1px solid ${({ theme }) => theme.colors.primary[1100]};
-
-    color: ${({ theme }) => theme.colors.page.default};
-    background-color: ${({ theme }) => theme.colors.secondary[200]};
-    border: 1px solid ${({ theme }) => theme.colors.secondary[800]};
+    background-color: ${({ theme }) => theme.colors.tertiary[700]};
+    border: 1px solid transparent;
   }
 `
 

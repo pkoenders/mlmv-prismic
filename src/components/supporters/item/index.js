@@ -9,7 +9,7 @@ import { validateString } from '/src/utils/helpers'
 
 // Layout
 import Section from '/src/components/common/layout/pageLayout/'
-import SupporterForm from '/src/components/common/forms/formContact'
+import Form from '/src/components/common/forms/formContact'
 import Tags from '/src/components/common/filter/tags'
 
 // Icons
@@ -17,7 +17,7 @@ import IconMaterial from '/src/components/common/icons/material'
 
 import styled from 'styled-components'
 
-const SupportersHeader = styled.div`
+const Header = styled.div`
   display: flex;
 
   grid-gap: ${({ theme }) => theme.padding.default};
@@ -91,7 +91,7 @@ const SupportersHeader = styled.div`
   }
 `
 
-const SupportersBody = styled.div`
+const Body = styled.div`
   display: flex;
   @media (max-width: ${({ theme }) => theme.screens.sm}) {
     flex-direction: column;
@@ -114,6 +114,11 @@ const SupportersBody = styled.div`
     @media (max-width: ${({ theme }) => theme.screens.md}) {
       width: 100%;
     }
+
+    section {
+      padding: 0;
+    }
+
     div {
       display: flex;
       flex-direction: row;
@@ -152,7 +157,7 @@ const supportersItem = ({ currentLang, itemData }) => {
     // Set content width - xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'full'
     <Section contentSize={'lg'}>
       <div>
-        <SupportersHeader>
+        <Header>
           <div className="intro">
             <span>
               {supportersItem.image && (
@@ -182,9 +187,9 @@ const supportersItem = ({ currentLang, itemData }) => {
             </div>
           </div>
           <Tags tagData={tagData} />
-        </SupportersHeader>
+        </Header>
 
-        <SupportersBody>
+        <Body>
           <div className="content">
             {mainContent && <RichText render={mainContent} linkResolver={linkResolver} />}
           </div>
@@ -198,9 +203,9 @@ const supportersItem = ({ currentLang, itemData }) => {
               )}
             </div>
 
-            <SupporterForm formData={itemData.data} />
+            <Form formData={itemData.data} />
           </div>
-        </SupportersBody>
+        </Body>
       </div>
     </Section>
   )

@@ -5,7 +5,6 @@ import i18n from '/config/i18n'
 
 // Layout
 import Section from '/src/components/common/layout/pageLayout/'
-import PageTitle from '/src/components/common/layout/listResults/listPageTitle'
 import ListWrapper from '/src/components/common/layout/listResults/listWrapper'
 import GridItem from './item'
 
@@ -62,7 +61,7 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
     const selectListLabel = selectListBtn.querySelector('span').innerText
     const selectList = selectListBtn.nextSibling
 
-    selectListBtn.classList.toggle('isActive')
+    selectListBtn.parentNode.classList.toggle('isActive')
     selectList.classList.toggle('isActive')
 
     // Set the buttons state, if matched sort label? then hide
@@ -118,7 +117,7 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
     })
   }
   function handleCloseSortList() {
-    const selectList = document.querySelector('.sort div button')
+    const selectList = document.querySelector('.sort div')
     const sortList = document.querySelector('.sort div div')
     if (selectList) {
       selectList.classList.remove('isActive')
@@ -239,11 +238,10 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
 
   return (
     // Set content width - xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'full'
-    <Section contentSize={'lg'}>
-      <PageTitle pageIntro={pageIntro} />
-      <ListWrapper>
-        {pageIntro.show_filters === true && (
-          <Filter>
+    <>
+      {pageIntro.show_filters === true && (
+        <Filter>
+          <div>
             {pageIntro.show_tags === true && tagList.length > 0 && (
               <ListTagBtns
                 resetFilterBtns={resetFilterBtns}
@@ -286,31 +284,35 @@ const ResourcesList = ({ currentLang, pageIntro, dataList }) => {
                 <AscDesc onClick={sortAscDescClick} />
               )}
             </SearchBox>
-          </Filter>
-        )}
+          </div>
+        </Filter>
+      )}
 
-        <SearchTitle
-          filteredData={filteredData}
-          queryValue={queryValue}
-          queryLength={queryLength}
-        />
+      <Section contentSize={'lg marginTopInital'}>
+        <ListWrapper>
+          <SearchTitle
+            filteredData={filteredData}
+            queryValue={queryValue}
+            queryLength={queryLength}
+          />
 
-        {allPosts.length > 0 ? (
-          <List>
-            {allPosts.map((node, index) => (
-              <GridItem
-                resourceItem={allPosts[index]}
-                showTags={pageIntro.show_tags}
-                key={allPosts[index].item.id}
-                id={allPosts[index].item.id}
-              />
-            ))}
-          </List>
-        ) : (
-          <NoResults resetFilters={resetFilters} query={query} />
-        )}
-      </ListWrapper>
-    </Section>
+          {allPosts.length > 0 ? (
+            <List>
+              {allPosts.map((node, index) => (
+                <GridItem
+                  resourceItem={allPosts[index]}
+                  showTags={pageIntro.show_tags}
+                  key={allPosts[index].item.id}
+                  id={allPosts[index].item.id}
+                />
+              ))}
+            </List>
+          ) : (
+            <NoResults resetFilters={resetFilters} query={query} />
+          )}
+        </ListWrapper>
+      </Section>
+    </>
   )
 }
 

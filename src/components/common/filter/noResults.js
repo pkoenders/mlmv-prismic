@@ -15,7 +15,7 @@ const NoResultsWrapper = styled.div`
     margin: 0;
     font-size: 133px;
     font-weight: ${({ theme }) => theme.fontWeight.meduim};
-    color: ${({ theme }) => theme.colors.primary.default};
+    color: ${({ theme }) => theme.colors.card[600]};
   }
 
   button {

@@ -35,15 +35,13 @@ const Input = styled.div`
       width: 100%;
       padding: ${({ theme }) => theme.padding['1/4']} 0 ${({ theme }) => theme.padding['1/4']}
         ${({ theme }) => theme.padding['2xl']};
-      /* border: 1px solid ${({ theme }) => theme.colors.card[300]}; */
-      border: 1px solid ${({ theme }) => theme.colors.primary[600]};
-      border: 1px solid ${({ theme }) => theme.colors.tertiary[600]};
+      border: 1px solid transparent;
 
       border-radius: 999rem;
     }
     input:hover,
     input:focus {
-      border: 1px solid ${({ theme }) => theme.colors.primary.default};
+      border: 1px solid ${({ theme }) => theme.colors.primary[600]};
     }
 
     > i {

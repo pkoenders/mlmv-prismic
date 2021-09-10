@@ -75,13 +75,6 @@ export const query = graphql`
       uid
       id
       data {
-        title {
-          text
-        }
-        intro {
-          text
-          raw
-        }
         show_filters
         show_input
         show_sorting

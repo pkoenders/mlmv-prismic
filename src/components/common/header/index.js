@@ -316,7 +316,7 @@ const HeaderWrapper = styled.header`
           }
 
           button.secondaryNavBtn.isActive {
-            background-color: ${({ theme }) => theme.colors.header.bground[800]};
+            background-color: ${({ theme }) => theme.colors.header.bground[900]};
             i {
               transform: rotate(180deg);
             }
@@ -332,7 +332,7 @@ const HeaderWrapper = styled.header`
             margin: 0;
             padding: ${({ theme }) => theme.padding['1/2']} 0;
             top: ${({ theme }) => theme.header.height};
-            background-color: ${({ theme }) => theme.colors.header.bground[800]};
+            background-color: ${({ theme }) => theme.colors.header.bground[900]};
             border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
               ${({ theme }) => theme.borderRadius.default};
             box-shadow: ${({ theme }) => theme.boxShadow.lg} !important;
@@ -408,7 +408,9 @@ const HeaderWrapper = styled.header`
             position: absolute;
             bottom: 0px;
             visibility: hidden;
-            background-color: ${({ theme }) => theme.colors.page.bground.default};
+            /* background-color: ${({ theme }) => theme.colors.page.bground.default}; */
+            background-color: ${({ theme }) => theme.colors.card[200]};
+
             height: ${({ theme }) => theme.margin['1/8']};
             /* margin: 0 2px; */
             border-radius: 0;

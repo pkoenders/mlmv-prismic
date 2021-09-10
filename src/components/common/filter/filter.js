@@ -1,25 +1,23 @@
 import styled from 'styled-components'
 
 const FilterWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  grid-gap: ${({ theme }) => theme.margin['1/2']};
-  margin: 0 ${({ theme }) => theme.margin.default};
-  /* margin-bottom: ${({ theme }) => theme.margin['1/2']}; */
-  padding: ${({ theme }) => theme.padding['1/2']} ${({ theme }) => theme.padding.default};
-  background-color: ${({ theme }) => theme.colors.card[100]};
-  border: 1px solid ${({ theme }) => theme.colors.card[300]};
-
-  background-color: ${({ theme }) => theme.colors.tertiary[100]};
-  border: 2px solid ${({ theme }) => theme.colors.tertiary[300]};
-  border-radius: ${({ theme }) => theme.borderRadius.default};
-  // background-color: ${({ theme }) => theme.colors.primary[100]};
+  margin-top: ${({ theme }) => theme.header.height};
+  padding: ${({ theme }) => theme.padding.default} ${({ theme }) => theme.padding['1/2']};
+  background-color: ${({ theme }) => theme.colors.card[200]};
+  /* border-bottom: 1px solid ${({ theme }) => theme.colors.card[300]}; */
+  > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10000;
+    margin: 0 auto;
+    grid-gap: ${({ theme }) => theme.margin['1/2']};
+    max-width: ${({ theme }) => theme.screens.md};
+  }
 
   @media (max-width: ${({ theme }) => theme.screens.sm}) {
     flex-direction: column;
-    margin: 0;
   }
 `
 

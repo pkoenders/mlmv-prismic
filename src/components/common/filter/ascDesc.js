@@ -16,9 +16,7 @@ const AscDescBtnWrapper = styled.button.attrs((props) => ({
   padding: ${({ theme }) => theme.padding['1/4']};
   user-select: none;
   background-color: ${({ theme }) => theme.colors.page.bground.default};
-  border: 1px solid ${({ theme }) => theme.colors.card[300]};
-  border: 1px solid ${({ theme }) => theme.colors.primary[600]};
-  border: 1px solid ${({ theme }) => theme.colors.tertiary[600]};
+  border: 1px solid transparent;
   border-radius: ${({ theme }) => theme.borderRadius.sm};
 
   i {
@@ -32,7 +30,10 @@ const AscDescBtnWrapper = styled.button.attrs((props) => ({
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary.default};
-    border-color: ${({ theme }) => theme.colors.primary.default};
+    border-color: ${({ theme }) => theme.colors.primary[600]};
+    i {
+      color: ${({ theme }) => theme.colors.primary.default};
+    }
   }
 `
 const AscDesc = ({ onClick }) => {

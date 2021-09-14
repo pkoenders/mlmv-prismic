@@ -28,6 +28,11 @@ import styled from 'styled-components'
 
 const TextBlock = styled.section`
   padding: 0 ${({ theme }) => theme.padding['1/2']};
+
+  > div {
+    padding: 0;
+  }
+
   .col1,
   .col2 {
   }

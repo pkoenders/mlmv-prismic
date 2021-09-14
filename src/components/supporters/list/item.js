@@ -153,7 +153,7 @@ const PeerSupportersItem = ({ thisItem, animateScroll }) => {
                 <div className="imageWrapper">
                   <GatsbyImage
                     image={content.image.localFile.childImageSharp.gatsbyImageData}
-                    alt={content.image.alt ? content.image.alt : content.title.text}
+                    alt={content.image.alt ? content.image.alt : fullName}
                   />
                 </div>
               )}

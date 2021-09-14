@@ -31,7 +31,7 @@ const Card = ({ cardItem, presentationType }) => {
         presentationType === `carousel` ? `keen-slider__slide` : ''
       }`}
     >
-      <Link to={link.uid !== null ? linkResolver(link) : `./#null`} className="link">
+      <Link to={link.uid !== null ? linkResolver(link) : `#null`} className="link">
         <CardContent>
           {image && (
             <GatsbyImage

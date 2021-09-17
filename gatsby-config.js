@@ -93,8 +93,6 @@ module.exports = {
           main_navigation: require('./custom_types/main_navigation.json'),
           seo_cards: require('./custom_types/seo_cards.json'),
         },
-        // add prismic toolbar
-        // prismicToolbar: true,
       },
     },
 

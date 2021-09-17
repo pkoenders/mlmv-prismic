@@ -129,7 +129,7 @@ const WrapperHeroImage = styled.section`
             color: inherit;
             width: 100%;
             margin-bottom: 0px;
-            font-size: 104%;
+            font-size: 115%;
 
             a,
             a:hover {

@@ -11,7 +11,7 @@ import styled from 'styled-components'
 
 const BtnWrapper = styled.span`
   display: flex;
-  margin: ${({ theme }) => theme.margin.default} auto 0 auto;
+  margin: ${({ theme }) => theme.margin['1/2']} auto 0 auto;
 
   .btn:focus {
     outline: none;

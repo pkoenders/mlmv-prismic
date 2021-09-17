@@ -7,7 +7,7 @@ import IconMaterial from '/src/components/common/icons/material'
 import styled from 'styled-components'
 
 const Switcher = styled.div`
-  color: ${({ theme }) => theme.colors.header.default};
+  color: ${({ theme }) => theme.colors.header.text.default};
   height: ${({ theme }) => theme.header.height};
   width: fit-content;
   display: flex;
@@ -19,7 +19,7 @@ const Switcher = styled.div`
   z-index: 10000;
 
   &.open {
-    background-color: ${({ theme }) => theme.colors.header.bground.default};
+    background-color: ${({ theme }) => theme.colors.header.default};
     ul {
       display: block;
     }
@@ -29,18 +29,18 @@ const SwitcherBtn = styled.button.attrs((props) => ({
   type: props.type || 'button',
   'aria-label': 'Select a language',
 }))`
-  color: ${({ theme }) => theme.colors.header.default};
+  color: ${({ theme }) => theme.colors.header.text.default};
   padding: ${({ theme }) => theme.padding['1/8']};
   cursor: pointer;
   justify-content: center;
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.header.bground[900]};
+  background-color: ${({ theme }) => theme.colors.header[900]};
   border: 1px solid transparent;
   border-radius: ${({ theme }) => theme.borderRadius.sm};
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.header.bground[700]};
+    border-color: ${({ theme }) => theme.colors.header[700]};
   }
 `
 const ListLocales = styled.ul`
@@ -51,12 +51,8 @@ const ListLocales = styled.ul`
   padding: 0 0 ${({ theme }) => theme.padding['1/4']};
   list-style: none;
   width: auto;
-  color: ${({ theme }) => theme.colors.header.default};
-  background-color: ${({ theme }) => theme.colors.header.bground.default};
-  /* background-color: ${({ theme }) => theme.colors.header.bground[900]}; */
-
-  /* border: 1px solid ${({ theme }) => theme.colors.header.bground[800]};
-  border-top: none; */
+  color: ${({ theme }) => theme.colors.header.text.default};
+  background-color: ${({ theme }) => theme.colors.header.default};
   border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
     ${({ theme }) => theme.borderRadius.default};
   box-shadow: ${({ theme }) => theme.boxShadow.md};

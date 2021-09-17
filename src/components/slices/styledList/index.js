@@ -192,7 +192,9 @@ const StyledList = ({ slice }) => {
   // Set the bgColor class
   var bgColor = getBgColor(slice.primary.background_color)
   const bGroundTint = getColorTint(slice.primary.background_tint)
-  bgColor = 'background-' + bgColor + '-' + bGroundTint
+  bgColor === 'page'
+    ? (bgColor = 'background-' + bgColor)
+    : (bgColor = 'background-' + bgColor + '-' + bGroundTint)
   // Set the vertical padding - inline style
   const defaultPadding = getAutoSpacing(slice.primary.default_padding)
   var vPaddingTop = getManualSpacing(slice.primary.v_padding_top)

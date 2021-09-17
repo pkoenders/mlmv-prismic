@@ -166,7 +166,6 @@ export const query = graphql`
               text_alignment
               width
               columns
-              animate_scroll
               content {
                 text
                 raw
@@ -241,7 +240,6 @@ export const query = graphql`
               v_padding_bottom
               background_color
               background_tint
-              animate_scroll
             }
             items {
               format
@@ -332,11 +330,12 @@ export const query = graphql`
                         ... on PrismicSharedContentDataBodyImage {
                           slice_type
                           primary {
+                            format
                             image {
                               localFile {
                                 childImageSharp {
                                   gatsbyImageData(
-                                    aspectRatio: 1.777777
+                                    #aspectRatio: 1.777777
                                     quality: 80
                                     #width:735,
                                     #layout: CONSTRAINED,

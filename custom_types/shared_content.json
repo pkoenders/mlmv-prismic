@@ -58,7 +58,8 @@
               "format": {
                 "type": "Select",
                 "config": {
-                  "options": ["Landscape (default)", "Portrait"],
+                  "options": ["Landscape (default)", "Portrait", "Square", "Attention"],
+                  "default_value": "Landscape (default)",
                   "label": "Format",
                   "placeholder": "Landscape (default)"
                 }

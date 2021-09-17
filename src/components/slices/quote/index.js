@@ -21,31 +21,37 @@ import styled from 'styled-components'
 const QuoteWrapper = styled.section`
   padding: 0 ${({ theme }) => theme.padding['1/2']};
 
-  .title {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: ${({ theme }) => theme.margin.default};
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    grid-gap: ${({ theme }) => theme.padding.default};
-    li {
-      display: inherit;
-      flex-direction: inherit;
-      grid-gap: ${({ theme }) => theme.padding.default};
+  div {
+    margin: 0 auto;
+    .title {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: ${({ theme }) => theme.margin.default};
+      text-align: center;
     }
-  }
 
-  &.dark {
-    blockquote:before,
-    blockquote:after {
-      color: ${({ theme }) => theme.colors.grey.default};
+    div {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      grid-gap: ${({ theme }) => theme.padding.default};
+      > div {
+        display: inherit;
+        flex-direction: inherit;
+        width: auto;
+        grid-gap: ${({ theme }) => theme.padding.default};
+      }
+    }
+
+    &.dark {
+      blockquote:before,
+      blockquote:after {
+        color: ${({ theme }) => theme.colors.grey.default};
+      }
     }
   }
 `
@@ -58,9 +64,9 @@ const BlockQuote = styled.blockquote`
   flex-direction: column;
   grid-gap: ${({ theme }) => theme.padding['1/4']};
   align-items: flex-start;
-  margin: 0 auto 0 0;
+  margin: 0 ;
   border-left: 4px solid ${({ theme }) => theme.colors.tertiary.default};
-  padding: ${({ theme }) => theme.padding.default};
+  padding: ${({ theme }) => theme.padding['1/2']} ${({ theme }) => theme.padding.default};
 
   p {
     font-family: ${({ theme }) => theme.font.serif};
@@ -109,7 +115,9 @@ const Quotes = ({ slice }) => {
   // Set the bgColor class
   var bgColor = getBgColor(slice.primary.background_color)
   const bGroundTint = getColorTint(slice.primary.background_tint)
-  bgColor = 'background-' + bgColor + '-' + bGroundTint
+  bgColor === 'page'
+    ? (bgColor = 'background-' + bgColor)
+    : (bgColor = 'background-' + bgColor + '-' + bGroundTint)
   // Set the vertical padding - inline style
   const defaultPadding = getAutoSpacing(slice.primary.default_padding)
   var vPaddingTop = getManualSpacing(slice.primary.v_padding_top)
@@ -157,11 +165,11 @@ const Quotes = ({ slice }) => {
         )}
 
         {slice.items.length > 0 && (
-          <ul>
+          <div>
             {slice.items.map(
               (node, index) =>
                 slice.items[index].active === true && (
-                  <li key={slice.id + index}>
+                  <div key={slice.id + index}>
                     {slice.items[index].content.raw && (
                       <>
                         <BlockQuote>
@@ -173,10 +181,10 @@ const Quotes = ({ slice }) => {
                         </BlockQuote>
                       </>
                     )}
-                  </li>
+                  </div>
                 )
             )}
-          </ul>
+          </div>
         )}
       </div>
     </QuoteWrapper>

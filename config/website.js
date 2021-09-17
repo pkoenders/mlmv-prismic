@@ -3,7 +3,7 @@ module.exports = {
   title: 'My Life My Voice', // Navigation and Site Title
   titleAlt: 'My Life My Voice', // Title for JSONLD
   description: 'My Life My Voice - Enabling the voices and perspectives of disabled people',
-  headline: 'Writing and publishing content for LekoArts', // Headline for schema.org JSONLD
+  headline: 'My Life My Voice', // Headline for schema.org JSONLD
   // url: 'https://prismic-i18n.lekoarts.de', // Domain of your site. No trailing slash!
   // logo: '/logos/logo-1024.png', // Used for SEO
   // ogLanguage: 'en_US', // Facebook Language

@@ -25,7 +25,7 @@ const HeaderWrapper = styled.header`
     right: 0px;
     display: flex;
     height: 60px;
-    background-color: ${({ theme }) => theme.colors.header.bground[50]};
+    background-color: ${({ theme }) => theme.colors.header[50]};
     z-index: 10000;
 
     .skipLink {
@@ -37,7 +37,7 @@ const HeaderWrapper = styled.header`
       text-transform: uppercase;
       padding: ${({ theme }) => theme.padding['1/4']} ${({ theme }) => theme.padding.default};
 
-      color: ${({ theme }) => theme.colors.header.bground[800]};
+      color: ${({ theme }) => theme.colors.header[800]};
       background-color: ${({ theme }) => theme.colors.page[100]};
 
       border-radius: ${({ theme }) => theme.borderRadius.sm};
@@ -163,7 +163,7 @@ const HeaderWrapper = styled.header`
         button {
           font-size: 120%;
           font-weight: 400;
-          color: ${({ theme }) => theme.colors.header.default};
+          color: ${({ theme }) => theme.colors.header.text.default};
           background-color: transparent;
           border: none;
           padding: ${({ theme }) => theme.padding['1/2']};
@@ -188,13 +188,13 @@ const HeaderWrapper = styled.header`
         a:hover,
         button:hover {
           text-decoration: none !important;
-          color: ${({ theme }) => theme.colors.header.default};
+          color: ${({ theme }) => theme.colors.header.text.default};
         }
 
         a.activeNavItem,
         button.activeNavItem {
-          border-left: 5px solid ${({ theme }) => theme.colors.header.default};
-          color: ${({ theme }) => theme.colors.header.default};
+          border-left: 5px solid ${({ theme }) => theme.colors.header.text.default};
+          color: ${({ theme }) => theme.colors.header.text.default};
           font-weight: 600;
           margin-left: -5px;
         }
@@ -205,7 +205,7 @@ const HeaderWrapper = styled.header`
           bottom: 0px;
           display: flex;
           border-radius: 1.5px;
-          background-color: ${({ theme }) => theme.colors.header.default};
+          background-color: ${({ theme }) => theme.colors.header.text.default};
           height: 1px;
           width: 0;
           left: -3px;
@@ -264,7 +264,7 @@ const HeaderWrapper = styled.header`
     height: 100vh;
     max-width: 100%;
     border: none;
-    background: ${({ theme }) => theme.colors.header.bground.default};
+    background: ${({ theme }) => theme.colors.header.default};
 
     ul {
       display: block;
@@ -318,7 +318,7 @@ const HeaderWrapper = styled.header`
           }
 
           button.secondaryNavBtn.isActive {
-            background-color: ${({ theme }) => theme.colors.header.bground[900]};
+            background-color: ${({ theme }) => theme.colors.header[900]};
             i {
               transform: rotate(180deg);
             }
@@ -334,7 +334,7 @@ const HeaderWrapper = styled.header`
             margin: 0;
             padding: ${({ theme }) => theme.padding['1/2']} 0;
             top: ${({ theme }) => theme.header.height};
-            background-color: ${({ theme }) => theme.colors.header.bground[900]};
+            background-color: ${({ theme }) => theme.colors.header[900]};
             border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
               ${({ theme }) => theme.borderRadius.default};
             box-shadow: ${({ theme }) => theme.boxShadow.lg} !important;
@@ -381,7 +381,7 @@ const HeaderWrapper = styled.header`
             font-size: 95%;
             line-height: 190%;
             font-weight: 400;
-            color: ${({ theme }) => theme.colors.header.default};
+            color: ${({ theme }) => theme.colors.header.text.default};
             margin: 0;
             padding-left: ${({ theme }) => theme.padding['1/2']};
             padding-right: ${({ theme }) => theme.padding['1/2']};
@@ -393,7 +393,7 @@ const HeaderWrapper = styled.header`
 
           a:hover,
           button:hover {
-            color: ${({ theme }) => theme.colors.header.default};
+            color: ${({ theme }) => theme.colors.header.text.default};
           }
 
           a.activeNavItem,
@@ -401,7 +401,7 @@ const HeaderWrapper = styled.header`
             border-left: none;
             font-weight: normal;
             margin: inherit;
-            color: ${({ theme }) => theme.colors.header.default};
+            color: ${({ theme }) => theme.colors.header.text.default};
           }
 
           a:after,
@@ -443,7 +443,7 @@ const HeaderWrapper = styled.header`
   // Desktop header
   &::before {
     content: '';
-    background-color: ${({ theme }) => theme.colors.header.bground.default};
+    background-color: ${({ theme }) => theme.colors.header.default};
     opacity: 0;
     position: absolute;
     top: 0;
@@ -457,13 +457,13 @@ const HeaderWrapper = styled.header`
 
   &.fillBground {
     transition: all 0.75s;
-    background-color: ${({ theme }) => theme.colors.header.bground.default};
+    background-color: ${({ theme }) => theme.colors.header.default};
   }
 
   &.fillBground::before,
   &.fillBgroundQuick::before {
     content: '';
-    background-color: ${({ theme }) => theme.colors.header.bground.default};
+    background-color: ${({ theme }) => theme.colors.header.default};
     opacity: 1;
     position: absolute;
     top: 0;

@@ -266,7 +266,7 @@ const CardsWrapper = styled.section`
           /* box-shadow: none; */
         }
         .imageWrapper {
-          box-shadow: ${({ theme }) => theme.boxShadow.lg};
+          box-shadow: ${({ theme }) => theme.boxShadow.xl};
         }
         .content {
           .link {
@@ -308,7 +308,7 @@ const CardsWrapper = styled.section`
 
       .nav {
         .item {
-          background-color: ${({ theme }) => theme.colors.page.default};
+          background-color: ${({ theme }) => theme.colors.page[800]};
         }
 
         .item:hover,
@@ -335,7 +335,9 @@ const Cards = ({ slice }) => {
   // Set the bgColor class
   var bgColor = getBgColor(slice.primary.background_color)
   const bGroundTint = getColorTint(slice.primary.background_tint)
-  bgColor = 'background-' + bgColor + '-' + bGroundTint
+  bgColor === 'page'
+    ? (bgColor = 'background-' + bgColor)
+    : (bgColor = 'background-' + bgColor + '-' + bGroundTint)
   // Set the vertical padding - inline style
   const defaultPadding = getAutoSpacing(slice.primary.default_padding)
   var vPaddingTop = getManualSpacing(slice.primary.v_padding_top)

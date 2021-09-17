@@ -91,7 +91,6 @@ module.exports = {
           forms: require('./custom_types/forms.json'),
           shared_content: require('./custom_types/shared_content.json'),
           main_navigation: require('./custom_types/main_navigation.json'),
-          primary_navigation: require('./custom_types/primary_navigation.json'),
           seo_cards: require('./custom_types/seo_cards.json'),
         },
         // add prismic toolbar

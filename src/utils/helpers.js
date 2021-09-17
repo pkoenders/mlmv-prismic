@@ -469,7 +469,10 @@ export function getOpacity(value) {
     case null:
       return parseFloat(0.33)
 
-    case value:
+    case 100:
+      return '1'
+
+    case value <= 99:
       return parseFloat('0.' + value)
 
     default:

@@ -172,7 +172,7 @@ const PeerSupportersItem = ({ thisItem, animateScroll }) => {
                     {location}
                   </p>
                 )}
-                {tagData && <Tags tagData={tagData} />}
+                {tagData.length > 0 && <Tags tagData={tagData} />}
               </div>
             </CardContent>
           </Link>

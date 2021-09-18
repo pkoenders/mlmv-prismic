@@ -118,7 +118,7 @@ export const query = graphql`
                               layout: CONSTRAINED
                               formats: [AUTO, WEBP, AVIF]
                               placeholder: BLURRED
-                              transformOptions: { cropFocus: CENTER }
+                              transformOptions: { fit: COVER, cropFocus: ATTENTION }
                               # aspectRatio: 1.77
                             )
                           }

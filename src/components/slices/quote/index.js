@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 // Helpers
 import { RichText } from 'prismic-reactjs'
-import linkResolver from '../../../utils/linkResolver'
+// import linkResolver from '../../../utils/linkResolver'
 import {
   getContentWidth,
   getAutoSpacing,
@@ -29,6 +29,7 @@ const QuoteWrapper = styled.section`
       flex-direction: column;
       margin-bottom: ${({ theme }) => theme.margin.default};
       text-align: center;
+      font-size: 130%;
     }
 
     div {
@@ -160,7 +161,7 @@ const Quotes = ({ slice }) => {
       <div>
         {title.text && (
           <span className="title">
-            <RichText render={title.raw} linkResolver={linkResolver} />
+            <p>{title.text}</p>
           </span>
         )}
 

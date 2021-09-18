@@ -286,7 +286,7 @@ const CardsWrapper = styled.section`
     .carousel {
       .nav {
         .item {
-          background-color:${({ theme }) => theme.colors.page[100]};
+          background-color:${({ theme }) => theme.colors.page[200]};
         }
 
         .item:hover,

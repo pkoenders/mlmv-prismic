@@ -258,7 +258,7 @@
               "title": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink",
+                  "single": "paragraph",
                   "allowTargetBlank": true,
                   "label": "Title",
                   "placeholder": "Quote area title"

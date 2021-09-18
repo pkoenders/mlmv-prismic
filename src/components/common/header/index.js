@@ -318,9 +318,11 @@ const HeaderWrapper = styled.header`
           }
 
           button.secondaryNavBtn.isActive {
-            background-color: ${({ theme }) => theme.colors.header[900]};
+            background-color: ${({ theme }) => theme.colors.header[800]};
+            /* background-color: ${({ theme }) => theme.colors.primary[1100]}; */
             i {
               transform: rotate(180deg);
+              /* color: ${({ theme }) => theme.colors.header.default}; */
             }
           }
           button.secondaryNavBtn.isActive:after {
@@ -334,7 +336,8 @@ const HeaderWrapper = styled.header`
             margin: 0;
             padding: ${({ theme }) => theme.padding['1/2']} 0;
             top: ${({ theme }) => theme.header.height};
-            background-color: ${({ theme }) => theme.colors.header[900]};
+            background-color: ${({ theme }) => theme.colors.header[800]};
+            /* background-color: ${({ theme }) => theme.colors.primary[1100]}; */
             border-radius: 0 0 ${({ theme }) => theme.borderRadius.default}
               ${({ theme }) => theme.borderRadius.default};
             box-shadow: ${({ theme }) => theme.boxShadow.lg} !important;
@@ -358,6 +361,7 @@ const HeaderWrapper = styled.header`
               a:hover,
               a.activeNavItem {
                 background-color: ${({ theme }) => theme.colors.primary.default};
+                /* background-color: ${({ theme }) => theme.colors.header.default}; */
                 border: none;
                 i {
                   display: none;

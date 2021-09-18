@@ -26,7 +26,8 @@ const CardContent = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.colors.card[300]};
     img {
       transition: ${({ theme }) => theme.transition.easeIn.default};
-      aspect-ratio: 16/9;
+      /* aspect-ratio: 16/9; */
+      aspect-ratio: 5/4;
       transform: scale(1.033);
       object-position: center top !important;
     }

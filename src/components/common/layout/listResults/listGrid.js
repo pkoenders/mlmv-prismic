@@ -33,7 +33,7 @@ const Grid = styled.ul`
   @media (max-width: ${({ theme }) => theme.screens.sm}) {
     grid-row-gap: ${({ theme }) => theme.padding['1xl']};
     grid-column-gap: ${({ theme }) => theme.padding.default};
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: ${({ theme }) => theme.screens.xs}) {

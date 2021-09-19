@@ -41,7 +41,7 @@ const CardContent = styled.div`
     padding: ${({ theme }) => theme.padding['1/2']};
 
     .title {
-      font-size: 103%;
+      font-size: 102%;
       font-weight: 600;
       align-content: space-between;
       display: flex;

@@ -21,7 +21,7 @@ const Grid = styled.ul`
   width: auto;
 
   @media (max-width: ${({ theme }) => theme.screens.lg}) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media (max-width: ${({ theme }) => theme.screens.md}) {

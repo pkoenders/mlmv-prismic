@@ -61,7 +61,7 @@ const TextBlock = styled.section`
 
     span {
       width: fit-content;
-      margin: 0;
+      margin: ${({ theme }) => theme.margin['1/2']} 0 0;
     }
 
     @media (max-width: ${({ theme }) => theme.screens.sm}) {
@@ -172,6 +172,9 @@ const Text = ({ slice }) => {
   const secondaryButtonIcon = slice.primary.secondary_button_icon
   const secondaryButtonIconAlign = getPostionAlign(slice.primary.secondary_button_icon_align)
 
+  // Validate button align
+  const buttonAlign = getPostionAlign(slice.primary.button_alignment)
+
   return (
     <TextBlock
       id={sectionID}
@@ -196,7 +199,7 @@ const Text = ({ slice }) => {
         )}
 
         {(primaryButtonLabel || secondaryButtonLabel) && (
-          <span className="cta">
+          <span className={`cta ${buttonAlign}`}>
             {/* Primary Button */}
             {primaryButtonLabel && (
               <Button

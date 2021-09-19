@@ -169,10 +169,10 @@ const Highlight = styled.section`
     .content.txt-right,
     .content.txt-center {
       @media (max-width: ${({ theme }) => theme.screens.sm}) {
-        /* text-align: left; */
+        text-align: left;
 
-        .btn {
-          /* margin-left: 0; */
+        span.cta {
+          margin-left: 0;
         }
       }
     }

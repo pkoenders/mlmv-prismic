@@ -44,6 +44,9 @@ export const GlobalStyles = createGlobalStyle`
   }
    section.dark {
     color: ${({ theme }) => theme.colors.page[100]};
+    a {
+       color: ${({ theme }) => theme.colors.primary[700]};
+    }
   }
 
   a,
